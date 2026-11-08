@@ -10,23 +10,23 @@
 
 ## 🎯 BẢNG TỔNG HỢP 9 VAI TRÒ KỸ THUẬT
 
-| STT | Vai trò (Chức danh CNTT) | Công nghệ / Ngôn ngữ | Module Code chịu trách nhiệm trên GitHub | Nhánh Git |
-| :-: | :--- | :--- | :--- | :--- |
-| **1** | **BA & Prompt Engineer** | Python, Jinja2, python-docx | `ai_engine/synthesis/`, `backend/app/services/export_service.py` | `feature/01-po-ba-specifications` |
-| **2** | **Scrum Master & Automation QA** | Python, Pytest, Locust, Shell | `evaluation/metrics/`, `tests/` | `feature/02-scrum-process-templates` |
-| **3** | **Tech Lead & DevOps / Cloud** | Docker, GitHub Actions, Nginx | `docker-compose.yml`, `.github/workflows/`, `docs/architecture/` | `feature/03-devops-ci-cd-docker` |
-| **4** | **Data Engineer 1 (Scraper & OCR)** | Python, PaddleOCR, pdfplumber | `data_pipeline/scrapers/`, `data_pipeline/ocr/` | `feature/04-data-ocr-ingestion` |
-| **5** | **Data Engineer 2 (Parser & DB)** | Python, Regex, PostgreSQL, ORM | `data_pipeline/parser/`, `data_pipeline/registry/` | `feature/05-data-legal-registry` |
-| **6** | **AI Engineer 1 (Hybrid Search)** | Python, BM25, pgvector, PyTorch | `ai_engine/retrieval/`, `ai_engine/reranker/` | `feature/06-ai-retrieval-search` |
-| **7** | **AI Engineer 2 (Guardrails & Safety)**| Python, FastAPI, Gemini/OpenAI API| `ai_engine/guardrails/`, `ai_engine/synthesis/validator.py` | `feature/07-ai-grounding-citations` |
-| **8** | **Backend Developer (API & Matter)** | Python (FastAPI), SQLAlchemy | `backend/app/api/`, `backend/app/models/`, `backend/app/services/` | `feature/08-backend-matter-services` |
-| **9** | **Frontend Developer (Workspace UI)** | TypeScript, Next.js, TailwindCSS | `frontend/src/components/`, `frontend/src/pages/` | `feature/09-frontend-workspace-ui` |
+| STT | Vai trò (Chức danh CNTT) | Thành viên đảm nhận | Công nghệ / Ngôn ngữ | Module Code chịu trách nhiệm trên GitHub | Nhánh Git |
+| :-: | :--- | :--- | :--- | :--- | :--- |
+| **1** | **BA & Prompt Engineer (PO)** | **Đặng Minh Quân (Trưởng nhóm)** | Python, Jinja2, python-docx | `ai_engine/synthesis/`, `backend/app/services/export_service.py` | `feature/01-po-ba-specifications` |
+| **2** | **Scrum Master & Automation QA** | *(Đang cập nhật)* | Python, Pytest, Locust, Shell | `evaluation/metrics/`, `tests/` | `feature/02-scrum-process-templates` |
+| **3** | **Tech Lead & DevOps / Cloud** | *(Đang cập nhật)* | Docker, GitHub Actions, Nginx | `docker-compose.yml`, `.github/workflows/`, `docs/architecture/` | `feature/03-devops-ci-cd-docker` |
+| **4** | **Data Engineer 1 (Scraper & OCR)** | *(Đang cập nhật)* | Python, PaddleOCR, pdfplumber | `data_pipeline/scrapers/`, `data_pipeline/ocr/` | `feature/04-data-ocr-ingestion` |
+| **5** | **Data Engineer 2 (Parser & DB)** | *(Đang cập nhật)* | Python, Regex, PostgreSQL, ORM | `data_pipeline/parser/`, `data_pipeline/registry/` | `feature/05-data-legal-registry` |
+| **6** | **AI Engineer 1 (Hybrid Search)** | *(Đang cập nhật)* | Python, BM25, pgvector, PyTorch | `ai_engine/retrieval/`, `ai_engine/reranker/` | `feature/06-ai-retrieval-search` |
+| **7** | **AI Engineer 2 (Guardrails & Safety)**| *(Đang cập nhật)* | Python, FastAPI, Gemini/OpenAI API| `ai_engine/guardrails/`, `ai_engine/synthesis/validator.py` | `feature/07-ai-grounding-citations` |
+| **8** | **Backend Developer (API & Matter)** | *(Đang cập nhật)* | Python (FastAPI), SQLAlchemy | `backend/app/api/`, `backend/app/models/`, `backend/app/services/` | `feature/08-backend-matter-services` |
+| **9** | **Frontend Developer (Workspace UI)** | *(Đang cập nhật)* | TypeScript, Next.js, TailwindCSS | `frontend/src/components/`, `frontend/src/pages/` | `feature/09-frontend-workspace-ui` |
 
 ---
 
 ## 🛠️ CHI TIẾT CÔNG VIỆC VÀ MÃ NGUỒN CỦA TỪNG VAI TRÒ
 
-### 1. Thành viên 1: BA & AI Prompt Engineer (Nghiệp vụ & Kỹ sư Prompt)
+### 1. Thành viên 1: BA & AI Prompt Engineer (Nghiệp vụ & Kỹ sư Prompt) - Đặng Minh Quân
 * **Chuyên môn:** Phân tích yêu cầu + Kỹ thuật Prompting & Xuất báo cáo tự động.
 * **Công việc cụ thể:**
   * Lập tài liệu phân tích nghiệp vụ 3 sắc thuế: GTGT (VAT), TNDN (CIT), TNCN (PIT) và Hóa đơn điện tử.
