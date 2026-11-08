@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  # Vector Database & Relational Database for Legal Documents & Metadata
+  db:
+    image: pgvector/pgvector:pg16
+    container_name: vn_tax_db
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-vntax_admin}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-vntax_secret}
+      POSTGRES_DB: ${POSTGRES_DB:-vntax_copilot}
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  # Backend FastAPI Service
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: vn_tax_backend
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: postgresql://vntax_admin:vntax_secret@db:5432/vntax_copilot
+    depends_on:
+      - db
+
+  # Frontend Web Client
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: vn_tax_frontend
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+
+volumes:
+  pgdata:
