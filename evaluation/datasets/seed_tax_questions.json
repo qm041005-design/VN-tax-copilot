@@ -1,0 +1,322 @@
+[
+  {
+    "id": "SEED-VAT-01",
+    "tax_category": "VAT",
+    "question": "Doanh nghiệp mua hàng hóa có giá trị trên hóa đơn là 25 triệu đồng (đã bao gồm thuế GTGT), thanh toán bằng tiền mặt thì có được khấu trừ thuế GTGT đầu vào không?",
+    "taxpayer_type": "Doanh nghiệp nộp thuế theo phương pháp khấu trừ",
+    "tax_period": "2024",
+    "material_facts": "Hóa đơn mua hàng trị giá 25.000.000 VNĐ, thanh toán bằng tiền mặt, không có chứng từ thanh toán không dùng tiền mặt.",
+    "is_clarification_needed": false,
+    "applicable_authority": [
+      {
+        "document_number": "Luật 48/2024/QH15",
+        "document_type": "Luật",
+        "article": "Điều 14",
+        "clause": "Khoản 2",
+        "point": "Điểm b",
+        "title": "Điều kiện khấu trừ thuế giá trị gia tăng đầu vào"
+      }
+    ],
+    "ground_truth_conclusion": "Không được khấu trừ thuế GTGT đầu vào. Theo quy định, hàng hóa dịch vụ mua vào từng lần có giá trị từ 20 triệu đồng trở lên (đã bao gồm thuế GTGT) bắt buộc phải có chứng từ thanh toán không dùng tiền mặt."
+  },
+  {
+    "id": "SEED-VAT-02",
+    "tax_category": "VAT",
+    "question": "Hàng hóa xuất khẩu ra nước ngoài có bắt buộc phải áp dụng thuế suất thuế GTGT 0% không và cần những điều kiện gì?",
+    "taxpayer_type": "Doanh nghiệp xuất khẩu",
+    "tax_period": "2024",
+    "material_facts": "Hàng hóa thực tế xuất khẩu qua cửa khẩu Việt Nam, có hợp đồng xuất khẩu và tờ khai hải quan.",
+    "is_clarification_needed": false,
+    "applicable_authority": [
+      {
+        "document_number": "Luật 48/2024/QH15",
+        "document_type": "Luật",
+        "article": "Điều 9",
+        "clause": "Khoản 1",
+        "point": "Điểm a",
+        "title": "Thuế suất 0%"
+      }
+    ],
+    "ground_truth_conclusion": "Được áp dụng thuế suất 0% nếu đáp ứng đủ các điều kiện: Có hợp đồng bán hàng hóa với tổ chức nước ngoài, có chứng từ thanh toán qua ngân hàng và có tờ khai hải quan theo quy định."
+  },
+  {
+    "id": "SEED-VAT-03",
+    "tax_category": "VAT",
+    "question": "Trường hợp doanh nghiệp phát hiện hóa đơn GTGT đầu vào bị bỏ sót từ các kỳ tính thuế trước thì có được kê khai khấu trừ bổ sung không?",
+    "taxpayer_type": "Doanh nghiệp nộp thuế theo phương pháp khấu trừ",
+    "tax_period": "2024",
+    "material_facts": "Hóa đơn GTGT đầu vào hợp pháp phát sinh từ kỳ trước nhưng chưa kê khai.",
+    "is_clarification_needed": false,
+    "applicable_authority": [
+      {
+        "document_number": "Luật 48/2024/QH15",
+        "document_type": "Luật",
+        "article": "Điều 14",
+        "clause": "Khoản 1",
+        "point": "Điểm c",
+        "title": "Nguyên tắc khấu trừ thuế giá trị gia tăng đầu vào"
+      }
+    ],
+    "ground_truth_conclusion": "Doanh nghiệp được kê khai khấu trừ bổ sung vào kỳ tính thuế phát hiện sai sót trước khi cơ quan thuế, cơ quan có thẩm quyền công bố quyết định kiểm tra, thanh tra thuế tại trụ sở người nộp thuế."
+  },
+  {
+    "id": "SEED-VAT-04",
+    "tax_category": "VAT",
+    "question": "Công ty phần mềm bán phần mềm tự sản xuất trong nước thì chịu thuế suất thuế GTGT là bao nhiêu phần trăm?",
+    "taxpayer_type": "Doanh nghiệp sản xuất phần mềm",
+    "tax_period": "2024",
+    "material_facts": "Sản phẩm phần mềm do công ty tự sản xuất và tiêu thụ tại thị trường nội địa Việt Nam.",
+    "is_clarification_needed": false,
+    "applicable_authority": [
+      {
+        "document_number": "Luật 48/2024/QH15",
+        "document_type": "Luật",
+        "article": "Điều 5",
+        "clause": "Khoản 21",
+        "point": "",
+        "title": "Đối tượng không chịu thuế giá trị gia tăng"
+      }
+    ],
+    "ground_truth_conclusion": "Sản phẩm phần mềm và dịch vụ phần mềm thuộc đối tượng không chịu thuế GTGT (thuế suất không áp dụng, không phải chịu thuế GTGT đầu ra nhưng thuế GTGT đầu vào không được khấu trừ)."
+  },
+  {
+    "id": "SEED-VAT-05",
+    "tax_category": "VAT",
+    "question": "Hàng hóa cho, biếu, tặng khách hàng có phải lập hóa đơn và tính nộp thuế GTGT không?",
+    "taxpayer_type": "Doanh nghiệp nộp thuế theo phương pháp khấu trừ",
+    "tax_period": "2024",
+    "material_facts": "Hàng hóa xuất dùng để biếu, tặng khách hàng nhân dịp tri ân, không thu tiền.",
+    "is_clarification_needed": false,
+    "applicable_authority": [
+      {
+        "document_number": "Nghị định 123/2020/NĐ-CP",
+        "document_type": "Nghị định",
+        "article": "Điều 4",
+        "clause": "Khoản 1",
+        "point": "",
+        "title": "Nguyên tắc lập, quản lý, sử dụng hóa đơn, chứng từ"
+      }
+    ],
+    "ground_truth_conclusion": "Bắt buộc phải lập hóa đơn GTGT. Đối với hàng hóa cho, biếu, tặng, giá tính thuế GTGT là giá tính thuế của hàng hóa, dịch vụ cùng loại hoặc tương đương tại thời điểm phát sinh hoạt động này."
+  },
+  {
+    "id": "SEED-CIT-01",
+    "tax_category": "CIT",
+    "question": "Doanh nghiệp chi tiền trang phục cho người lao động bằng tiền mặt thì được tính vào chi phí được trừ tối đa là bao nhiêu?",
+    "taxpayer_type": "Doanh nghiệp hoạt động tại Việt Nam",
+    "tax_period": "2024",
+    "material_facts": "Doanh nghiệp chi trả tiền trang phục trực tiếp bằng tiền mặt cho người lao động, có quy chế tài chính và danh sách ký nhận.",
+    "is_clarification_needed": false,
+    "applicable_authority": [
+      {
+        "document_number": "Luật 67/2025/QH15",
+        "document_type": "Luật",
+        "article": "Điều 9",
+        "clause": "Khoản 2",
+        "point": "Điểm n",
+        "title": "Các khoản chi không được trừ khi xác định thu nhập chịu thuế TNDN"
+      }
+    ],
+    "ground_truth_conclusion": "Mức chi trang phục bằng tiền cho người lao động được tính vào chi phí được trừ tối đa không quá 05 (năm) triệu đồng/người/năm. Phần chi vượt mức 05 triệu đồng/người/năm sẽ bị loại khỏi chi phí được trừ."
+  },
+  {
+    "id": "SEED-CIT-02",
+    "tax_category": "CIT",
+    "question": "Khoản tiền phạt do vi phạm hợp đồng kinh tế và tiền phạt vi phạm hành chính về thuế có được tính vào chi phí được trừ khi tính thuế TNDN không?",
+    "taxpayer_type": "Doanh nghiệp nộp thuế TNDN",
+    "tax_period": "2024",
+    "material_facts": "Doanh nghiệp phát sinh 2 khoản chi: Phạt vi phạm hợp đồng thương mại với đối tác và phạt chậm nộp hồ sơ khai thuế.",
+    "is_clarification_needed": false,
+    "applicable_authority": [
+      {
+        "document_number": "Luật 67/2025/QH15",
+        "document_type": "Luật",
+        "article": "Điều 9",
+        "clause": "Khoản 2",
+        "point": "Điểm c",
+        "title": "Chi phí không được trừ"
+      }
+    ],
+    "ground_truth_conclusion": "Tiền phạt vi phạm hợp đồng kinh tế được bù trừ với khoản thu phạt vi phạm hợp đồng, phần còn lại được tính vào chi phí được trừ; ngược lại, tiền phạt vi phạm hành chính về thuế tuyệt đối KHÔNG được tính vào chi phí được trừ."
+  },
+  {
+    "id": "SEED-CIT-03",
+    "tax_category": "CIT",
+    "question": "Doanh nghiệp bị lỗ trong năm tính thuế thì được phép chuyển lỗ sang các năm sau tối đa trong thời gian bao nhiêu năm?",
+    "taxpayer_type": "Doanh nghiệp phát sinh lỗ kinh doanh",
+    "tax_period": "2024",
+    "material_facts": "Doanh nghiệp quyết toán năm có kết quả kinh doanh bị lỗ theo xác nhận của kiểm toán và tờ khai quyết toán thuế.",
+    "is_clarification_needed": false,
+    "applicable_authority": [
+      {
+        "document_number": "Luật 67/2025/QH15",
+        "document_type": "Luật",
+        "article": "Điều 16",
+        "clause": "Khoản 1",
+        "point": "",
+        "title": "Chuyển lỗ"
+      }
+    ],
+    "ground_truth_conclusion": "Doanh nghiệp sau khi quyết toán thuế mà bị lỗ thì được chuyển lỗ liên tục toàn bộ số lỗ vào thu nhập của những năm tiếp theo. Thời gian chuyển lỗ tính liên tục không quá 05 (năm) năm, kể từ năm tiếp sau năm phát sinh lỗ."
+  },
+  {
+    "id": "SEED-CIT-04",
+    "tax_category": "CIT",
+    "question": "Chi phí phúc lợi trực tiếp cho người lao động (như hiếu hỉ, sinh nhật, nghỉ mát) có bị khống chế trần mức chi không?",
+    "taxpayer_type": "Doanh nghiệp nộp thuế TNDN",
+    "tax_period": "2024",
+    "material_facts": "Khoản chi có hóa đơn chứng từ hợp pháp, thanh toán theo quy chế phúc lợi của công ty.",
+    "is_clarification_needed": false,
+    "applicable_authority": [
+      {
+        "document_number": "Luật 67/2025/QH15",
+        "document_type": "Luật",
+        "article": "Điều 9",
+        "clause": "Khoản 2",
+        "point": "Điểm đ",
+        "title": "Chi phí có tính chất phúc lợi"
+      }
+    ],
+    "ground_truth_conclusion": "Tổng số chi có tính chất phúc lợi chi trực tiếp cho người lao động được tính vào chi phí được trừ nếu không quá 01 tháng lương bình quân thực tế thực hiện trong năm tính thuế của doanh nghiệp."
+  },
+  {
+    "id": "SEED-CIT-05",
+    "tax_category": "CIT",
+    "question": "Thuế suất thuế TNDN phổ thông hiện hành áp dụng cho các doanh nghiệp thông thường tại Việt Nam là bao nhiêu phần trăm?",
+    "taxpayer_type": "Doanh nghiệp thành lập theo pháp luật Việt Nam",
+    "tax_period": "2024",
+    "material_facts": "Doanh nghiệp hoạt động sản xuất kinh doanh thông thường, không thuộc diện ưu đãi hay ngành nghề đặc thù (dầu khí, tài nguyên).",
+    "is_clarification_needed": false,
+    "applicable_authority": [
+      {
+        "document_number": "Luật 67/2025/QH15",
+        "document_type": "Luật",
+        "article": "Điều 10",
+        "clause": "Khoản 1",
+        "point": "",
+        "title": "Thuế suất thuế thu nhập doanh nghiệp"
+      }
+    ],
+    "ground_truth_conclusion": "Thuế suất thuế thu nhập doanh nghiệp phổ thông là 20% (trừ các trường hợp được hưởng thuế suất ưu đãi hoặc các ngành tìm kiếm, thăm dò, khai thác dầu khí, tài nguyên quý hiếm từ 32% đến 50%)."
+  },
+  {
+    "id": "SEED-PIT-01",
+    "tax_category": "PIT",
+    "question": "Mức giảm trừ gia cảnh cho bản thân người nộp thuế và cho mỗi người phụ thuộc theo quy định hiện hành là bao nhiêu tiền một tháng?",
+    "taxpayer_type": "Cá nhân cư trú có thu nhập từ tiền lương, tiền công",
+    "tax_period": "2024",
+    "material_facts": "Cá nhân cư trú có đăng ký người phụ thuộc hợp lệ.",
+    "is_clarification_needed": false,
+    "applicable_authority": [
+      {
+        "document_number": "Luật 109/2025/QH15",
+        "document_type": "Luật",
+        "article": "Điều 19",
+        "clause": "Khoản 1",
+        "point": "Điểm a, b",
+        "title": "Giảm trừ gia cảnh"
+      }
+    ],
+    "ground_truth_conclusion": "Mức giảm trừ đối với bản thân người nộp thuế là 11 triệu đồng/tháng (132 triệu đồng/năm); mức giảm trừ đối với mỗi người phụ thuộc là 4,4 triệu đồng/tháng."
+  },
+  {
+    "id": "SEED-PIT-02",
+    "tax_category": "PIT",
+    "question": "Khoản tiền ăn trưa, ăn giữa ca do người sử dụng lao động chi cho người lao động có phải tính vào thu nhập chịu thuế TNCN không?",
+    "taxpayer_type": "Cá nhân có thu nhập từ tiền lương, tiền công",
+    "tax_period": "2024",
+    "material_facts": "Doanh nghiệp tự nấu ăn hoặc chi bằng tiền ăn trưa vào tài khoản lương hàng tháng.",
+    "is_clarification_needed": false,
+    "applicable_authority": [
+      {
+        "document_number": "Luật 109/2025/QH15",
+        "document_type": "Luật",
+        "article": "Điều 3",
+        "clause": "Khoản 2",
+        "point": "Điểm đ",
+        "title": "Các khoản thu nhập không tính vào thu nhập chịu thuế"
+      }
+    ],
+    "ground_truth_conclusion": "Nếu doanh nghiệp trực tiếp tổ chức bữa ăn giữa ca thì được miễn toàn bộ. Nếu chi bằng tiền thì phần chi vượt quá mức 730.000 đồng/người/tháng sẽ phải tính vào thu nhập chịu thuế TNCN của người lao động."
+  },
+  {
+    "id": "SEED-PIT-03",
+    "tax_category": "PIT",
+    "question": "Cá nhân chuyển nhượng bất động sản giữa ai với ai thì được miễn thuế thu nhập cá nhân?",
+    "taxpayer_type": "Cá nhân cư trú tại Việt Nam",
+    "tax_period": "2024",
+    "material_facts": "Giao dịch chuyển nhượng bất động sản giữa người trong gia đình.",
+    "is_clarification_needed": false,
+    "applicable_authority": [
+      {
+        "document_number": "Luật 109/2025/QH15",
+        "document_type": "Luật",
+        "article": "Điều 4",
+        "clause": "Khoản 1",
+        "point": "",
+        "title": "Thu nhập được miễn thuế"
+      }
+    ],
+    "ground_truth_conclusion": "Được miễn thuế TNCN đối với thu nhập từ chuyển nhượng bất động sản giữa vợ với chồng; cha đẻ, mẹ đẻ với con đẻ; cha nuôi, mẹ nuôi với con nuôi; cha chồng, mẹ chồng với con dâu; cha vợ, mẹ vợ với con rể; ông nội, bà nội với cháu nội; ông ngoại, bà ngoại với cháu ngoại; anh, chị, em ruột với nhau."
+  },
+  {
+    "id": "SEED-PIT-04",
+    "tax_category": "PIT",
+    "question": "Cá nhân không ký hợp đồng lao động hoặc ký hợp đồng dưới 3 tháng có thu nhập từ 2 triệu đồng/lần trở lên thì công ty phải khấu trừ thuế TNCN theo tỷ lệ bao nhiêu?",
+    "taxpayer_type": "Cá nhân lao động thời vụ / vãng lai",
+    "tax_period": "2024",
+    "material_facts": "Chi trả tiền công, thù lao cho cá nhân không có hợp đồng lao động dài hạn, mức chi từ 2.000.000 VNĐ/lần trở lên.",
+    "is_clarification_needed": false,
+    "applicable_authority": [
+      {
+        "document_number": "Luật 109/2025/QH15",
+        "document_type": "Luật",
+        "article": "Điều 25",
+        "clause": "Khoản 1",
+        "point": "Điểm i",
+        "title": "Khấu trừ thuế đối với thu nhập vãng lai"
+      }
+    ],
+    "ground_truth_conclusion": "Tổ chức, cá nhân trả tiền lương, tiền công phải thực hiện khấu trừ thuế theo tỷ lệ 10% trên tổng thu nhập chi trả trước khi trả cho cá nhân (trừ trường hợp cá nhân đủ điều kiện làm Bản cam kết theo mẫu số 08/CK-TNCN)."
+  },
+  {
+    "id": "SEED-EINVOICE-01",
+    "tax_category": "EINVOICE",
+    "question": "Khi phát hiện hóa đơn điện tử có mã của cơ quan thuế đã gửi cho người mua có sai sót về tên, địa chỉ nhưng không sai mã số thuế và số tiền thì xử lý như thế nào?",
+    "taxpayer_type": "Người bán hàng hóa, dịch vụ sử dụng hóa đơn điện tử",
+    "tax_period": "2024",
+    "material_facts": "Hóa đơn điện tử có mã đã cấp, sai sót tên và địa chỉ của người mua nhưng đúng mã số thuế, đúng thành tiền và thuế suất.",
+    "is_clarification_needed": false,
+    "applicable_authority": [
+      {
+        "document_number": "Nghị định 123/2020/NĐ-CP",
+        "document_type": "Nghị định",
+        "article": "Điều 19",
+        "clause": "Khoản 2",
+        "point": "Điểm a",
+        "title": "Xử lý hóa đơn có sai sót"
+      }
+    ],
+    "ground_truth_conclusion": "Người bán thông báo cho người mua về việc hóa đơn có sai sót và không phải lập lại hóa đơn. Người bán thực hiện thông báo với cơ quan thuế theo Mẫu số 04/SS-HĐĐT (trừ trường hợp hóa đơn điện tử không có mã của cơ quan thuế chưa gửi dữ liệu)."
+  },
+  {
+    "id": "SEED-AMBIGUOUS-01",
+    "tax_category": "VAT",
+    "question": "Công ty tôi có được hoàn thuế GTGT không?",
+    "taxpayer_type": "Doanh nghiệp",
+    "tax_period": "Chưa rõ",
+    "material_facts": "Câu hỏi thiếu toàn bộ sự kiện trọng yếu: Dự án đầu tư hay xuất khẩu? Số thuế lũy kế âm là bao nhiêu? Phương pháp kê khai gì?",
+    "is_clarification_needed": true,
+    "applicable_authority": [
+      {
+        "document_number": "Luật 48/2024/QH15",
+        "document_type": "Luật",
+        "article": "Điều 15",
+        "clause": "",
+        "point": "",
+        "title": "Các trường hợp hoàn thuế"
+      }
+    ],
+    "ground_truth_conclusion": "Yêu cầu người dùng làm rõ (Abstention): Để xác định doanh nghiệp có đủ điều kiện hoàn thuế GTGT hay không, vui lòng cung cấp thêm: (1) Thuộc trường hợp Dự án đầu tư mới hay Hàng hóa xuất khẩu? (2) Số thuế GTGT đầu vào chưa được khấu trừ hết lũy kế là bao nhiêu (đã vượt ngưỡng 300 triệu đồng chưa)? (3) Doanh nghiệp áp dụng phương pháp khấu trừ hay trực tiếp?"
+  }
+]
