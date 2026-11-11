@@ -70,19 +70,26 @@
             "type": "array",
             "items": {
               "type": "object",
-              "required": [
-                "evidence_id",
-                "description"
-              ],
+"required": [
+  "evidence_id",
+  "description",
+  "source_id",
+  "acceptable_passage_ids"
+],
+              
               "properties": {
                 "evidence_id": {
                   "type": "string",
                   "minLength": 1
                 },
-                "description": {
-                  "type": "string"
-                },
-                "acceptable_passage_ids": {
+               "description": {
+  "type": "string"
+},
+"source_id": {
+  "type": "string",
+  "minLength": 1
+},
+"acceptable_passage_ids": {
                   "type": "array",
                   "uniqueItems": true,
                   "items": {
@@ -125,9 +132,10 @@
               ]
             }
           },
-          "reviewers": {
-            "type": "array",
-            "maxItems": 2,
+         "reviewers": {
+  "type": "array",
+  "minItems": 2,
+  "maxItems": 2,
             "items": {
               "type": "object",
               "required": [

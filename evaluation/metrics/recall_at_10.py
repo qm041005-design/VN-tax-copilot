@@ -2,12 +2,18 @@
 import argparse
 import json
 import sys
-from collections import defaultdict
+from collections import Counter, defaultdict
 from pathlib import Path
+
 
 def load_json(path):
     with Path(path).open("r", encoding="utf-8-sig") as file:
         return json.load(file)
+
+
+def average(values):
+    return sum(values) / len(values) if values else None
+
 
 def validate_inputs(benchmark, retrieval_results):
     if not isinstance(benchmark, dict):
@@ -22,30 +28,106 @@ def validate_inputs(benchmark, retrieval_results):
 
     case_ids = set()
     answerable_ids = set()
+    categories = Counter()
+    answerability_counts = Counter()
+    review_issues = []
+    source_issues = []
 
     for case in cases:
+        if not isinstance(case, dict):
+            raise ValueError("Moi case phai la JSON object.")
+
         case_id = case["case_id"]
+
+        if not isinstance(case_id, str) or not case_id:
+            raise ValueError("case_id khong hop le.")
 
         if case_id in case_ids:
             raise ValueError(f"Trung case_id: {case_id}")
 
         case_ids.add(case_id)
 
-        if case["answerability"] != "answerable":
+        answerability = case["answerability"]
+        category = case["category"]
+
+        if answerability not in (
+            "answerable", "unanswerable", "ambiguous"
+        ):
+            raise ValueError(
+                f"{case_id}: answerability khong hop le."
+            )
+
+        if category not in (
+            "VAT", "CIT", "PIT", "TAX_ADMIN", "E_INVOICE"
+        ):
+            raise ValueError(f"{case_id}: category khong hop le.")
+
+        answerability_counts[answerability] += 1
+
+        reviewers = case.get("reviewers", [])
+        reviewer_ids = []
+
+        if not isinstance(reviewers, list):
+            review_issues.append(f"{case_id}: reviewers khong hop le.")
+        else:
+            for reviewer in reviewers:
+                if not isinstance(reviewer, dict):
+                    review_issues.append(
+                        f"{case_id}: reviewer khong hop le."
+                    )
+                    continue
+
+                reviewer_id = reviewer.get("reviewer_id")
+                decision = reviewer.get("decision")
+
+                if not isinstance(reviewer_id, str) or not reviewer_id.strip():
+                    review_issues.append(
+                        f"{case_id}: reviewer_id thieu."
+                    )
+                else:
+                    reviewer_ids.append(reviewer_id.strip())
+
+                if decision != "approved":
+                    review_issues.append(
+                        f"{case_id}: reviewer chua approved."
+                    )
+
+            if len(reviewers) != 2:
+                review_issues.append(
+                    f"{case_id}: can dung 2 reviewers."
+                )
+
+            if len(reviewer_ids) != 2 or len(set(reviewer_ids)) != 2:
+                review_issues.append(
+                    f"{case_id}: reviewers phai doc lap."
+                )
+
+        if case.get("review_status") != "approved":
+            review_issues.append(
+                f"{case_id}: review_status chua approved."
+            )
+
+        if answerability != "answerable":
             continue
 
         answerable_ids.add(case_id)
+        categories[category] += 1
 
         evidence_list = case["required_evidence"]
 
-        if not evidence_list:
+        if not isinstance(evidence_list, list) or not evidence_list:
             raise ValueError(
-                f"{case_id}: Khong co required_evidence."
+                f"{case_id}: required_evidence phai co du lieu."
             )
 
         evidence_ids = set()
 
         for evidence in evidence_list:
+            if not isinstance(evidence, dict):
+                raise ValueError(
+                    f"{case_id}: evidence khong hop le."
+                )
+
             evidence_id = evidence["evidence_id"]
 
             if evidence_id in evidence_ids:
@@ -55,19 +137,34 @@ def validate_inputs(benchmark, retrieval_results):
 
             evidence_ids.add(evidence_id)
 
-            acceptable = evidence.get(
-                "acceptable_passage_ids", []
-            )
+            acceptable = evidence.get("acceptable_passage_ids")
 
-            if not acceptable:
+            if (
+                not isinstance(acceptable, list)
+                or not acceptable
+                or not all(
+                    isinstance(item, str) and item.strip()
+                    for item in acceptable
+                )
+            ):
                 raise ValueError(
-                    f"{case_id}: Evidence {evidence_id} "
-                    "chua co acceptable_passage_ids."
+                    f"{case_id}: {evidence_id} thieu "
+                    "acceptable_passage_ids hop le."
+                )
+
+            source_id = evidence.get("source_id")
+
+            if not isinstance(source_id, str) or not source_id.strip():
+                source_issues.append(
+                    f"{case_id}: {evidence_id} thieu source_id."
                 )
 
     results_by_id = {}
 
     for result in retrieval_results:
+        if not isinstance(result, dict):
+            raise ValueError("Retrieval result phai la object.")
+
         case_id = result["case_id"]
 
         if case_id in results_by_id:
@@ -77,18 +174,15 @@ def validate_inputs(benchmark, retrieval_results):
 
         passages = result["retrieved_passage_ids"]
 
-        if not isinstance(passages, list):
-            raise ValueError(
-                f"{case_id}: retrieved_passage_ids "
-                "phai la danh sach."
+        if (
+            not isinstance(passages, list)
+            or not all(
+                isinstance(passage_id, str) and passage_id.strip()
+                for passage_id in passages
             )
-
-        if not all(
-            isinstance(passage_id, str)
-            for passage_id in passages
         ):
             raise ValueError(
-                f"{case_id}: Passage ID phai la chuoi."
+                f"{case_id}: retrieved_passage_ids khong hop le."
             )
 
         results_by_id[case_id] = passages
@@ -101,23 +195,51 @@ def validate_inputs(benchmark, retrieval_results):
             + ", ".join(sorted(missing))
         )
 
-    return results_by_id
+    benchmark_issues = []
+
+    if len(cases) != 250:
+        benchmark_issues.append(
+            f"Can 250 cases, hien co {len(cases)}."
+        )
+
+    if answerability_counts["answerable"] != 200:
+        benchmark_issues.append(
+            "Can dung 200 answerable cases."
+        )
+
+    trap_count = (
+        answerability_counts["unanswerable"]
+        + answerability_counts["ambiguous"]
+    )
+
+    if trap_count != 50:
+        benchmark_issues.append(
+            "Can dung 50 trap cases."
+        )
+
+    for category in ("VAT", "CIT", "PIT"):
+        if categories[category] < 60:
+            benchmark_issues.append(
+                f"{category}: can it nhat 60 answerable cases."
+            )
+
+    return {
+        "results_by_id": results_by_id,
+        "answerability_counts": dict(answerability_counts),
+        "category_counts": dict(categories),
+        "benchmark_issues": benchmark_issues,
+        "review_issues": review_issues,
+        "source_issues": source_issues,
+    }
 
 
-def calculate_recall_at_10(
-    required_evidence,
-    retrieved_passages
-):
+def calculate_recall_at_10(required_evidence, retrieved_passages):
     top_10 = set(retrieved_passages[:10])
-
     matched = 0
     evidence_results = []
 
     for evidence in required_evidence:
-        acceptable = set(
-            evidence["acceptable_passage_ids"]
-        )
-
+        acceptable = set(evidence["acceptable_passage_ids"])
         found = bool(top_10.intersection(acceptable))
 
         if found:
@@ -129,22 +251,12 @@ def calculate_recall_at_10(
             "source_id": evidence.get("source_id")
         })
 
-    recall = matched / len(required_evidence)
-
-    return recall, evidence_results
-
-
-def average(values):
-    if not values:
-        return None
-
-    return sum(values) / len(values)
+    return matched / len(required_evidence), evidence_results
 
 
 def evaluate(benchmark, retrieval_results):
-    results_by_id = validate_inputs(
-        benchmark, retrieval_results
-    )
+    validation = validate_inputs(benchmark, retrieval_results)
+    results_by_id = validation["results_by_id"]
 
     case_results = []
     category_scores = defaultdict(list)
@@ -169,7 +281,9 @@ def evaluate(benchmark, retrieval_results):
         for evidence in evidence_results:
             source_id = evidence["source_id"]
 
-            if source_id is None:
+            # UNKNOWN chi dung de chan doan du lieu thieu.
+            # Du lieu thieu source_id khong duoc bao PASS.
+            if not isinstance(source_id, str) or not source_id.strip():
                 source_id = "UNKNOWN"
 
             source_counts[source_id]["required"] += 1
@@ -191,13 +305,10 @@ def evaluate(benchmark, retrieval_results):
         print(f"{case_id}: Recall@10 = {recall:.2%}")
 
     if not case_results:
-        raise ValueError(
-            "Khong co cau hoi answerable."
-        )
+        raise ValueError("Khong co cau hoi answerable.")
 
     macro_recall = average([
-        item["recall_at_10"]
-        for item in case_results
+        item["recall_at_10"] for item in case_results
     ])
 
     category_report = {}
@@ -219,9 +330,15 @@ def evaluate(benchmark, retrieval_results):
             )
         }
 
-    answerable_count = len(case_results)
+    all_issues = (
+        validation["benchmark_issues"]
+        + validation["review_issues"]
+        + validation["source_issues"]
+    )
 
-    if answerable_count != 200:
+    benchmark_valid = not all_issues
+
+    if not benchmark_valid:
         at03_status = "NOT_EVALUATED"
     elif macro_recall >= 0.90:
         at03_status = "PASS"
@@ -231,19 +348,32 @@ def evaluate(benchmark, retrieval_results):
     report = {
         "metric": "Recall@10",
         "requirement_ids": ["EVAL 05", "AT 03"],
-        "answerable_case_count": answerable_count,
+        "answerable_case_count": len(case_results),
+        "answerability_counts": validation["answerability_counts"],
+        "category_counts": validation["category_counts"],
         "macro_recall_at_10": macro_recall,
         "at03_threshold": 0.90,
         "at03_status": at03_status,
+        "benchmark_valid": benchmark_valid,
+        "validation_issues": all_issues,
         "cases": case_results,
         "by_category": category_report,
         "by_source": source_report
     }
 
     print("\n===== KET QUA TONG HOP =====")
-    print(f"So cau hoi: {answerable_count}")
+    print(f"So cau hoi answerable: {len(case_results)}")
     print(f"Macro Recall@10: {macro_recall:.2%}")
+    print(f"Benchmark hop le: {benchmark_valid}")
     print(f"AT03: {at03_status}")
+
+    if all_issues:
+        print("\n===== VAN DE CAN KHAC PHUC =====")
+        for issue in all_issues[:20]:
+            print(f"- {issue}")
+
+        if len(all_issues) > 20:
+            print(f"... va {len(all_issues) - 20} van de khac.")
 
     print("\n===== THEO NHOM THUE =====")
 
@@ -296,18 +426,12 @@ def main():
         benchmark = load_json(args.benchmark)
         retrieval_results = load_json(args.retrieval)
 
-        report = evaluate(
-            benchmark, retrieval_results
-        )
+        report = evaluate(benchmark, retrieval_results)
 
         output_path = Path(args.output)
-        output_path.parent.mkdir(
-            parents=True, exist_ok=True
-        )
+        output_path.parent.mkdir(parents=True, exist_ok=True)
 
-        with output_path.open(
-            "w", encoding="utf-8"
-        ) as file:
+        with output_path.open("w", encoding="utf-8") as file:
             json.dump(
                 report,
                 file,
