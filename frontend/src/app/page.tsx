@@ -44,14 +44,72 @@ const initialMatters: Matter[] = [
   },
 ];
 
-const legalContent = {
-  title: "Điều 9. Thuế suất",
-  law: "Luật Thuế giá trị gia tăng",
-  number: "48/2024/QH15",
-  article:
-    "Mức thuế suất thuế giá trị gia tăng được quy định theo từng nhóm hàng hóa, dịch vụ. Người nộp thuế cần xác định đúng đối tượng chịu thuế và mức thuế suất áp dụng theo quy định pháp luật tại thời điểm phát sinh nghĩa vụ thuế.",
-  note: "Nội dung hiển thị là dữ liệu minh họa giao diện. Cần đối chiếu văn bản pháp luật gốc trước khi sử dụng tư vấn thực tế.",
+type LegalContent = {
+  title: string;
+  articleNo: string;
+  law: string;
+  shortLaw: string;
+  number: string;
+  article: string;
+  note: string;
 };
+
+const legalNote =
+  "Nội dung hiển thị là dữ liệu minh họa giao diện. Cần đối chiếu văn bản pháp luật gốc trước khi sử dụng tư vấn thực tế.";
+
+const legalByTax: Record<string, LegalContent> = {
+  VAT: {
+    title: "Điều 9. Thuế suất",
+    articleNo: "Điều 09",
+    law: "Luật Thuế giá trị gia tăng",
+    shortLaw: "Luật Thuế GTGT",
+    number: "48/2024/QH15",
+    article:
+      "Mức thuế suất thuế giá trị gia tăng được quy định theo từng nhóm hàng hóa, dịch vụ. Người nộp thuế cần xác định đúng đối tượng chịu thuế và mức thuế suất áp dụng theo quy định pháp luật tại thời điểm phát sinh nghĩa vụ thuế.",
+    note: legalNote,
+  },
+  CIT: {
+    title: "Điều 10. Thuế suất",
+    articleNo: "Điều 10",
+    law: "Luật Thuế thu nhập doanh nghiệp",
+    shortLaw: "Luật Thuế TNDN",
+    number: "67/2025/QH15",
+    article:
+      "Thuế suất thuế thu nhập doanh nghiệp được xác định theo quy mô doanh thu và loại hình hoạt động của doanh nghiệp. Người nộp thuế cần xác định đúng mức thuế suất áp dụng cho kỳ tính thuế và các trường hợp được áp dụng mức thuế suất khác.",
+    note: legalNote,
+  },
+  PIT: {
+    title: "Điều 9. Biểu thuế lũy tiến từng phần",
+    articleNo: "Điều 09",
+    law: "Luật Thuế thu nhập cá nhân",
+    shortLaw: "Luật Thuế TNCN",
+    number: "109/2025/QH15",
+    article:
+      "Thu nhập tính thuế từ tiền lương, tiền công của cá nhân cư trú được áp dụng biểu thuế lũy tiến từng phần. Người nộp thuế cần xác định đúng thu nhập tính thuế và bậc thuế áp dụng theo quy định tại thời điểm tính thuế.",
+    note: legalNote,
+  },
+};
+
+function getLegalContent(tax: string | undefined): LegalContent {
+  return legalByTax[tax ?? "VAT"] ?? legalByTax.VAT;
+}
+
+const introMessage: Message = {
+  role: "assistant",
+  content:
+    "Xin chào! Tôi là VN Tax Copilot. Tôi có thể hỗ trợ bạn tra cứu quy định pháp luật thuế, phân tích tình huống và tổng hợp căn cứ pháp lý. Bạn muốn bắt đầu với vấn đề nào?",
+};
+
+function welcomeMessages(matter: Matter | undefined): Message[] {
+  if (!matter) return [introMessage];
+  return [
+    introMessage,
+    {
+      role: "assistant",
+      content: `Đối với hồ sơ "${matter.name}", bạn có thể đặt câu hỏi liên quan. Tôi sẽ trình bày kết quả kèm căn cứ pháp lý để bạn kiểm tra.`,
+    },
+  ];
+}
 
 export default function Home() {
   const [matters, setMatters] = useState(initialMatters);
@@ -59,24 +117,23 @@ export default function Home() {
   const [search, setSearch] = useState("");
   const [taxFilter, setTaxFilter] = useState("Tất cả");
   const [year, setYear] = useState("2026");
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      role: "assistant",
-      content:
-        "Xin chào! Tôi là VN Tax Copilot. Tôi có thể hỗ trợ bạn tra cứu quy định pháp luật thuế, phân tích tình huống và tổng hợp căn cứ pháp lý. Bạn muốn bắt đầu với vấn đề nào?",
-    },
-    {
-      role: "assistant",
-      content:
-        "Đối với hồ sơ hiện tại, bạn có thể đặt câu hỏi về thuế GTGT quý III. Tôi sẽ trình bày kết quả kèm căn cứ pháp lý để bạn kiểm tra.",
-    },
-  ]);
-  const [draft, setDraft] = useState("");
+  // Lịch sử chat và câu đang nhập được lưu riêng cho từng hồ sơ.
+  const [conversations, setConversations] = useState<
+    Record<string, Message[]>
+  >({});
+  const [drafts, setDrafts] = useState<Record<string, string>>({});
   const [drawerOpen, setDrawerOpen] = useState(true);
   const [reviewStatus, setReviewStatus] = useState("");
   const [notice, setNotice] = useState("");
 
   const selectedMatter = matters.find((item) => item.id === selectedId);
+  const messages = conversations[selectedId] ?? welcomeMessages(selectedMatter);
+  const draft = drafts[selectedId] ?? "";
+  const legal = getLegalContent(selectedMatter?.tax);
+
+  function setDraft(value: string) {
+    setDrafts((current) => ({ ...current, [selectedId]: value }));
+  }
 
   const filteredMatters = useMemo(() => {
     return matters.filter((item) => {
@@ -106,12 +163,16 @@ export default function Home() {
 
     setMatters((current) => [newMatter, ...current]);
     setSelectedId(newMatter.id);
-    setMessages([
-      {
-        role: "assistant",
-        content: `Hồ sơ "${name.trim()}" đã được tạo. Bạn có thể bắt đầu đặt câu hỏi về thuế tại đây.`,
-      },
-    ]);
+    setReviewStatus("");
+    setConversations((current) => ({
+      ...current,
+      [newMatter.id]: [
+        {
+          role: "assistant",
+          content: `Hồ sơ "${name.trim()}" đã được tạo. Bạn có thể bắt đầu đặt câu hỏi về thuế tại đây.`,
+        },
+      ],
+    }));
     setNotice("Đã tạo hồ sơ mới.");
   }
 
@@ -120,18 +181,22 @@ export default function Home() {
     if (!draft.trim()) return;
 
     const question = draft.trim();
+    const matterId = selectedId;
+    const baseMessages = messages;
 
-    setMessages((current) => [
+    setConversations((current) => ({
       ...current,
-      { role: "user", content: question },
-      {
-        role: "assistant",
-        content:
-          "Tôi đã tiếp nhận câu hỏi của bạn. Đây là phần phản hồi minh họa của giao diện. Khi kết nối Backend và AI Engine, nội dung sẽ được xử lý theo hồ sơ, sắc thuế và năm áp dụng đã chọn. Hãy kiểm tra căn cứ pháp lý ở khung trích dẫn bên phải.",
-      },
-    ]);
-
-    setDraft("");
+      [matterId]: [
+        ...(current[matterId] ?? baseMessages),
+        { role: "user", content: question },
+        {
+          role: "assistant",
+          content:
+            "Tôi đã tiếp nhận câu hỏi của bạn. Đây là phần phản hồi minh họa của giao diện. Khi kết nối Backend và AI Engine, nội dung sẽ được xử lý theo hồ sơ, sắc thuế và năm áp dụng đã chọn. Hãy kiểm tra căn cứ pháp lý ở khung trích dẫn bên phải.",
+        },
+      ],
+    }));
+    setDrafts((current) => ({ ...current, [matterId]: "" }));
   }
 
   function updateReview(status: "Đã duyệt" | "Từ chối") {
@@ -156,6 +221,16 @@ export default function Home() {
         ? "Hồ sơ đã được đánh dấu phê duyệt."
         : "Đã ghi nhận thao tác từ chối (minh họa)."
     );
+  }
+
+  async function copyCitation() {
+    try {
+      if (!navigator.clipboard) throw new Error("Clipboard unavailable");
+      await navigator.clipboard.writeText(`${legal.title}\n${legal.article}`);
+      setNotice("Đã sao chép nội dung trích dẫn.");
+    } catch {
+      setNotice("Không thể sao chép. Vui lòng sao chép thủ công.");
+    }
   }
 
   function exportReport() {
@@ -242,6 +317,7 @@ export default function Home() {
           <div className="search-box">
             <span>⌕</span>
             <input
+              aria-label="Tìm hồ sơ hoặc khách hàng"
               value={search}
               onChange={(event) => setSearch(event.target.value)}
               placeholder="Tìm hồ sơ, khách hàng..."
@@ -263,12 +339,6 @@ export default function Home() {
                 onClick={() => {
                   setSelectedId(matter.id);
                   setReviewStatus("");
-                  setMessages([
-                    {
-                      role: "assistant",
-                      content: `Bạn đang làm việc với hồ sơ "${matter.name}". Hãy nhập câu hỏi để bắt đầu nghiên cứu.`,
-                    },
-                  ]);
                 }}
               >
                 <div className="matter-card-top">
@@ -418,7 +488,8 @@ export default function Home() {
                         className="citation-link"
                         onClick={() => setDrawerOpen(true)}
                       >
-                        Điều 9 - Luật Thuế GTGT 48/2024/QH15
+                        {legal.title.split(".")[0]} - {legal.shortLaw}{" "}
+                        {legal.number}
                         <span>↗</span>
                       </button>
                     </div>
@@ -448,6 +519,7 @@ export default function Home() {
 
             <form className="chat-input-area" onSubmit={sendMessage}>
               <textarea
+                aria-label="Nhập câu hỏi về thuế"
                 value={draft}
                 onChange={(event) => setDraft(event.target.value)}
                 onKeyDown={(event) => {
@@ -489,12 +561,7 @@ export default function Home() {
               <span className="verified-tag">
                 <span /> VĂN BẢN THAM CHIẾU
               </span>
-              <button className="copy-button" onClick={() => {
-                void navigator.clipboard?.writeText(
-                  `${legalContent.title}\n${legalContent.article}`
-                );
-                setNotice("Đã sao chép nội dung trích dẫn.");
-              }}>
+              <button className="copy-button" onClick={copyCitation}>
                 Sao chép
               </button>
             </div>
@@ -503,24 +570,24 @@ export default function Home() {
               <div className="law-icon">§</div>
               <div>
                 <span className="law-type">VĂN BẢN PHÁP LUẬT</span>
-                <h3>{legalContent.law}</h3>
-                <p>Số {legalContent.number}</p>
+                <h3>{legal.law}</h3>
+                <p>Số {legal.number}</p>
               </div>
             </div>
 
             <div className="legal-content">
               <div className="article-meta">
                 <span>ĐIỀU KHOẢN ĐƯỢC TRÍCH DẪN</span>
-                <span className="article-number">Điều 09</span>
+                <span className="article-number">{legal.articleNo}</span>
               </div>
-              <h3>{legalContent.title}</h3>
-              <p>{legalContent.article}</p>
+              <h3>{legal.title}</h3>
+              <p>{legal.article}</p>
 
               <div className="highlight-note">
                 <div className="note-heading">
                   <span>i</span> Lưu ý pháp lý
                 </div>
-                {legalContent.note}
+                {legal.note}
               </div>
             </div>
 
@@ -532,7 +599,7 @@ export default function Home() {
               </div>
               <div className="source-row">
                 <span>Số hiệu</span>
-                <strong>{legalContent.number}</strong>
+                <strong>{legal.number}</strong>
               </div>
               <div className="source-row">
                 <span>Năm áp dụng</span>
