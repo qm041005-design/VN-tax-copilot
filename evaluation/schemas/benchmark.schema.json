@@ -1,0 +1,174 @@
+
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "VN Tax Copilot Benchmark Schema",
+  "description": "Schema for EVAL 01 and EVAL 02 benchmark evaluation",
+  "type": "object",
+  "required": [
+    "benchmark_version",
+    "cases"
+  ],
+  "properties": {
+    "benchmark_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "cases": {
+      "type": "array",
+      "minItems": 250,
+      "maxItems": 250,
+      "items": {
+        "type": "object",
+        "required": [
+          "case_id",
+          "question",
+          "category",
+          "answerability",
+          "tax_period",
+          "required_evidence",
+          "acceptable_conclusions",
+          "assumptions",
+          "material_claims",
+          "reviewers",
+          "review_status"
+        ],
+        "properties": {
+          "case_id": {
+            "type": "string",
+            "pattern": "^VN-TAX-[0-9]{3}$"
+          },
+          "question": {
+            "type": "string",
+            "minLength": 1
+          },
+          "category": {
+            "type": "string",
+            "enum": [
+              "VAT",
+              "CIT",
+              "PIT",
+              "TAX_ADMIN",
+              "E_INVOICE"
+            ]
+          },
+          "answerability": {
+            "type": "string",
+            "enum": [
+              "answerable",
+              "unanswerable",
+              "ambiguous"
+            ]
+          },
+          "tax_period": {
+            "type": ["string", "null"]
+          },
+          "research_as_of": {
+            "type": ["string", "null"],
+            "format": "date"
+          },
+          "required_evidence": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "evidence_id",
+                "description"
+              ],
+              "properties": {
+                "evidence_id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "description": {
+                  "type": "string"
+                },
+                "acceptable_passage_ids": {
+                  "type": "array",
+                  "uniqueItems": true,
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "acceptable_conclusions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "assumptions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "material_claims": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "tags": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "enum": [
+                "historical",
+                "amendment",
+                "conflicting_sources",
+                "transitional_rule",
+                "missing_facts"
+              ]
+            }
+          },
+          "reviewers": {
+            "type": "array",
+            "maxItems": 2,
+            "items": {
+              "type": "object",
+              "required": [
+                "reviewer_id",
+                "decision"
+              ],
+              "properties": {
+                "reviewer_id": {
+                  "type": "string"
+                },
+                "decision": {
+                  "type": "string",
+                  "enum": [
+                    "pending",
+                    "approved",
+                    "rejected"
+                  ]
+                },
+                "notes": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "adjudication_notes": {
+            "type": ["string", "null"]
+          },
+          "review_status": {
+            "type": "string",
+            "enum": [
+              "draft",
+              "under_review",
+              "adjudicated",
+              "approved"
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
