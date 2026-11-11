@@ -1,20 +1,26 @@
-version: '3.8'
-
 services:
-  # Vector Database & Relational Database for Legal Documents & Metadata
   db:
     image: pgvector/pgvector:pg16
     container_name: vn_tax_db
+    restart: unless-stopped
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-vntax_admin}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-vntax_secret}
       POSTGRES_DB: ${POSTGRES_DB:-vntax_copilot}
     ports:
-      - "5432:5432"
+      - "127.0.0.1:5432:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
+      - ./infra/postgres/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - pg_isready -U "$${POSTGRES_USER}" -d "$${POSTGRES_DB}"
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
 
-  # Backend FastAPI Service
   backend:
     build:
       context: ./backend
@@ -26,9 +32,9 @@ services:
     environment:
       DATABASE_URL: postgresql://vntax_admin:vntax_secret@db:5432/vntax_copilot
     depends_on:
-      - db
+      db:
+        condition: service_healthy
 
-  # Frontend Web Client
   frontend:
     build:
       context: ./frontend
