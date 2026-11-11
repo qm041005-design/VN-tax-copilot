@@ -1,6 +1,7 @@
 
 import argparse
 import json
+from jsonschema import Draft202012Validator
 import sys
 from collections import Counter, defaultdict
 from pathlib import Path
@@ -29,6 +30,7 @@ def validate_inputs(benchmark, retrieval_results):
     case_ids = set()
     answerable_ids = set()
     categories = Counter()
+    special_tags = Counter()
     answerability_counts = Counter()
     review_issues = []
     source_issues = []
@@ -63,6 +65,14 @@ def validate_inputs(benchmark, retrieval_results):
             raise ValueError(f"{case_id}: category khong hop le.")
 
         answerability_counts[answerability] += 1
+        tags = case.get("tags", [])
+
+        if isinstance(tags, list):
+            if "historical" in tags or "amendment" in tags:
+                special_tags["history_amendment"] += 1
+
+            if "conflicting_sources" in tags:
+                special_tags["conflicting_sources"] += 1
 
         reviewers = case.get("reviewers", [])
         reviewer_ids = []
@@ -222,6 +232,24 @@ def validate_inputs(benchmark, retrieval_results):
             benchmark_issues.append(
                 f"{category}: can it nhat 60 answerable cases."
             )
+        admin_invoice_count = (
+        categories["TAX_ADMIN"] + categories["E_INVOICE"]
+    )
+
+    if admin_invoice_count < 20:
+        benchmark_issues.append(
+            "Can it nhat 20 answerable cases TAX_ADMIN/E_INVOICE."
+        )
+
+    if special_tags["history_amendment"] < 40:
+        benchmark_issues.append(
+            "Can it nhat 40 cases historical/amendment."
+        )
+
+    if special_tags["conflicting_sources"] < 30:
+        benchmark_issues.append(
+            "Can it nhat 30 cases conflicting_sources."
+        )
 
     return {
         "results_by_id": results_by_id,
@@ -255,7 +283,32 @@ def calculate_recall_at_10(required_evidence, retrieved_passages):
 
 
 def evaluate(benchmark, retrieval_results):
+    schema_path = (
+        Path(__file__).resolve().parents[1]
+        / "schemas"
+        / "benchmark.schema.json"
+    )
+
+    schema = load_json(schema_path)
+    Draft202012Validator.check_schema(schema)
+
+    schema_errors = sorted(
+        Draft202012Validator(schema).iter_errors(benchmark),
+        key=lambda error: str(error.json_path)
+    )
+
+    if schema_errors:
+        return {
+            "benchmark_valid": False,
+            "at03_status": "NOT_EVALUATED",
+            "validation_issues": [
+                f"{error.json_path}: {error.message}"
+                for error in schema_errors
+            ],
+        }
+
     validation = validate_inputs(benchmark, retrieval_results)
+
     results_by_id = validation["results_by_id"]
 
     case_results = []

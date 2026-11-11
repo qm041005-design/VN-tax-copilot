@@ -22,10 +22,17 @@ def make_benchmark():
 
         evidence_id = f"E{i:03d}"
         passage_id = f"P{i:03d}"
+        tags = []
 
+        if i <= 40:
+            tags.append("historical")
+
+        if 41 <= i <= 70:
+            tags.append("conflicting_sources")
         cases.append({
             "case_id": case_id,
             "question": f"Synthetic test question {i}",
+            "tags": tags,
             "category": category,
             "answerability": (
                 "answerable" if answerable else "unanswerable"
@@ -108,6 +115,39 @@ class TestRecallAt10(unittest.TestCase):
             report["at03_status"], "NOT_EVALUATED"
         )
 
+
+    def test_missing_admin_invoice_cases(self):
+        benchmark, retrieval = make_benchmark()
+
+        for case in benchmark["cases"]:
+            if case["category"] == "TAX_ADMIN":
+                case["category"] = "VAT"
+
+        report = evaluate(benchmark, retrieval)
+
+        self.assertEqual(report["at03_status"], "NOT_EVALUATED")
+        self.assertFalse(report["benchmark_valid"])
+
+    def test_missing_special_cases(self):
+        benchmark, retrieval = make_benchmark()
+
+        for case in benchmark["cases"]:
+            case["tags"] = []
+
+        report = evaluate(benchmark, retrieval)
+
+        self.assertEqual(report["at03_status"], "NOT_EVALUATED")
+        self.assertFalse(report["benchmark_valid"])
+
+    def test_missing_required_question(self):
+        benchmark, retrieval = make_benchmark()
+
+        del benchmark["cases"][0]["question"]
+
+        report = evaluate(benchmark, retrieval)
+
+        self.assertEqual(report["at03_status"], "NOT_EVALUATED")
+        self.assertFalse(report["benchmark_valid"])
 
 if __name__ == "__main__":
     unittest.main()
