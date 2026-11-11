@@ -149,5 +149,49 @@ class TestRecallAt10(unittest.TestCase):
         self.assertEqual(report["at03_status"], "NOT_EVALUATED")
         self.assertFalse(report["benchmark_valid"])
 
+    def test_special_tags_only_in_unanswerable(self):
+        benchmark, retrieval = make_benchmark()
+
+        # Xoa tat ca nhan dac biet
+        for case in benchmark["cases"]:
+            case["tags"] = []
+
+        # Chuyen nhan sang 50 cau unanswerable
+        for case in benchmark["cases"]:
+            if case["answerability"] == "unanswerable":
+                case["tags"] = [
+                    "historical",
+                    "amendment",
+                    "conflicting_sources"
+                ]
+
+        report = evaluate(benchmark, retrieval)
+
+        self.assertEqual(
+            report["at03_status"], "NOT_EVALUATED"
+        )
+        self.assertFalse(report["benchmark_valid"])
+
+    def test_special_tags_only_in_unanswerable(self):
+        benchmark, retrieval = make_benchmark()
+
+        for case in benchmark["cases"]:
+            if case["answerability"] == "answerable":
+                case["tags"] = []
+            else:
+                case["tags"] = [
+                    "historical",
+                    "amendment",
+                    "conflicting_sources"
+                ]
+
+        report = evaluate(benchmark, retrieval)
+
+        self.assertEqual(
+            report["at03_status"], "NOT_EVALUATED"
+        )
+        self.assertFalse(report["benchmark_valid"])
+
+
 if __name__ == "__main__":
     unittest.main()

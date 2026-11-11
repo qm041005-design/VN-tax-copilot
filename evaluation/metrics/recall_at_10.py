@@ -65,14 +65,7 @@ def validate_inputs(benchmark, retrieval_results):
             raise ValueError(f"{case_id}: category khong hop le.")
 
         answerability_counts[answerability] += 1
-        tags = case.get("tags", [])
 
-        if isinstance(tags, list):
-            if "historical" in tags or "amendment" in tags:
-                special_tags["history_amendment"] += 1
-
-            if "conflicting_sources" in tags:
-                special_tags["conflicting_sources"] += 1
 
         reviewers = case.get("reviewers", [])
         reviewer_ids = []
@@ -119,6 +112,16 @@ def validate_inputs(benchmark, retrieval_results):
 
         if answerability != "answerable":
             continue
+
+        tags = case.get("tags", [])
+
+        if isinstance(tags, list):
+            if "historical" in tags or "amendment" in tags:
+                special_tags["history_amendment"] += 1
+
+            if "conflicting_sources" in tags:
+                special_tags["conflicting_sources"] += 1
+
 
         answerable_ids.add(case_id)
         categories[category] += 1
