@@ -9,7 +9,7 @@ Backend là "cửa ngõ dữ liệu" giữa Frontend (React) và database. Ở S
 3. Ghi **audit log** (ai làm gì, lúc nào) và **cô lập dữ liệu theo tenant**.
 4. Tự sinh **Swagger** (`/docs`) để Frontend/AI/QA xem và thử API ngay trên trình duyệt.
 
-Chưa làm (sprint sau): đăng nhập SSO/JWT + phân quyền, API `/research` (nối với AI), xuất DOCX/PDF, duyệt bài.
+Chưa làm (sprint sau): đăng nhập thật (SSO/JWT) + phân quyền, API `/research` (nối với AI), xuất DOCX/PDF, duyệt bài.
 
 ## 2. Cấu trúc thư mục
 ```
@@ -19,7 +19,7 @@ backend/
 │   ├── core/                    # "Hạ tầng" dùng chung
 │   │   ├── config.py            #   Cấu hình (đọc .env / biến môi trường)
 │   │   ├── database.py          #   Engine, Session, Base, get_db()
-│   │   └── security.py          #   Xác định người gọi (tạm: header X-User-Id / X-Tenant-Id)
+│   │   └── security.py          #   Xác định người gọi (BẢN TẠM: đọc header X-User-Id / X-Tenant-Id)
 │   ├── models/                  # Cấu trúc BẢNG trong DB (SQLAlchemy)
 │   │   ├── matter.py            #   matters + research_history
 │   │   ├── audit.py             #   audit_logs
@@ -57,7 +57,7 @@ Vì sao tách tầng? Mỗi file một nhiệm vụ → sửa một chỗ không
 1. Client gửi `POST /api/v1/matters` với JSON body.
 2. FastAPI khớp route trong `api/v1/matters.py::create_matter`.
 3. Body được kiểm tra bởi `MatterCreate` (schemas). Sai → trả **422** ngay, code không chạy tiếp.
-4. FastAPI tiêm `db` (từ `get_db`) và `user` (từ `get_current_user`).
+4. FastAPI tiêm `db` (từ `get_db`) và `user` (từ `get_current_user`: đọc header `X-User-Id` / `X-Tenant-Id`, bản tạm chưa kiểm tra danh tính).
 5. Endpoint gọi `matter_service.create_matter(...)`: tạo object `Matter` (gán `tenant_id`, `created_by` từ `user`), ghi 1 dòng `audit_logs`, `commit`.
 6. Kết quả được chuyển sang `MatterOut` và trả **201** + JSON.
 
@@ -91,11 +91,11 @@ Vì sao tách tầng? Mỗi file một nhiệm vụ → sửa một chỗ không
 | POST | /api/v1/matters/{id}/history | Lưu lượt tra cứu | 201 / 404 / 422 |
 | GET | /api/v1/matters/{id}/history | Xem lịch sử (header `X-Total-Count`) | 200 / 404 |
 
-Header tạm thời (sẽ thay bằng JWT): `X-User-Id`, `X-Tenant-Id`.
+Định danh **tạm thời** (chưa có đăng nhập): gửi `X-User-Id` và `X-Tenant-Id` (mặc định `dev-user` / `thtax`). Client tự khai nên **không dùng khi triển khai thật**; sprint sau thay bằng SSO/JWT trong `core/security.py`.
 
 Ví dụ gọi bằng curl:
 ```bash
-curl -X POST http://localhost:8000/api/v1/matters -H "Content-Type: application/json" \
+curl -X POST http://localhost:8000/api/v1/matters -H "Content-Type: application/json" -H "X-Tenant-Id: thtax" \
   -d '{"title":"Khấu trừ VAT Q1/2026","client_name":"Công ty ABC","tax_types":["VAT"],"tax_period":"2026"}'
 ```
 
@@ -104,7 +104,10 @@ curl -X POST http://localhost:8000/api/v1/matters -H "Content-Type: application/
 - **Xóa mềm:** DELETE chỉ đổi `status=archived`; dữ liệu được giữ cho kiểm toán.
 - **Audit cùng giao dịch:** dòng audit và thao tác chính được commit cùng lúc.
 - **Thời gian UTC** trong DB; frontend đổi sang giờ Việt Nam khi hiển thị.
-- **Không tin client** với `tenant_id`/`created_by`: luôn lấy từ `get_current_user`.
+- **Không tin client** với `tenant_id`/`created_by`: luôn lấy từ `get_current_user` (hiện đọc từ header tạm; sau này từ token đã ký), không bao giờ từ body. Lưu ý: bản tạm chưa chống được việc giả header.
+- **Danh sách mặc định ẩn hồ sơ archive** (`status` không truyền = `active`); `status=all` để xem cả hai.
+- **Cột NOT NULL phải chặn ở schema**: nhận `null` cho `title`/`client_name`/`tax_types` ở PATCH -> 422, không để lọt xuống DB (sẽ thành 500). Chuỗi bắt buộc được bỏ khoảng trắng đầu/cuối trước khi kiểm tra.
+- **Độ dài trong schema khớp độ dài cột DB** (SQLite khi test không chặn nhưng PostgreSQL thì có).
 
 ## 8. Hướng dẫn mở rộng
 **Thêm endpoint mới (vd /api/v1/exports):**
@@ -120,7 +123,7 @@ curl -X POST http://localhost:8000/api/v1/matters -H "Content-Type: application/
 - **`/docs` trống / lỗi kết nối DB?** Chưa bật Postgres: `docker compose up -d db`, kiểm tra `/health`.
 - **Đổi cột mà DB không đổi?** Xem mục 8 (create_all không migrate).
 - **Test báo lỗi import?** Chạy từ thư mục `backend/` và đã `pip install -r requirements.txt`.
-- **Gọi API từ frontend bị CORS?** Chưa bật CORS; thêm `CORSMiddleware` trong `main.py` cho origin `http://localhost:3000` (việc phối hợp với nhóm 9).
+- **Gọi API từ frontend bị CORS?** CORS đã bật trong `main.py`, origin cho phép lấy từ biến `CORS_ORIGINS` (mặc định `http://localhost:3000`). Frontend chạy ở origin khác thì thêm vào biến đó.
 
 ## 10. Việc tiếp theo (Sprint 3+)
-Đăng nhập SSO/JWT + RBAC (researcher/reviewer/admin/auditor) · Alembic migration · `/api/v1/research` nối AI · luồng duyệt draft→approved · xuất DOCX/PDF · CORS.
+Đăng nhập thật SSO/JWT + RBAC (researcher/reviewer/admin/auditor) · Alembic migration · `/api/v1/research` nối AI · luồng duyệt draft→approved · xuất DOCX/PDF.

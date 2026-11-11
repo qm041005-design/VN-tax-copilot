@@ -17,7 +17,6 @@ Lưu ý bảo mật:
 """
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
-
 class Settings(BaseSettings):
     # Thông tin hiển thị trên trang Swagger (/docs)
     app_name: str = "VN Tax Research Copilot API"
@@ -32,8 +31,18 @@ class Settings(BaseSettings):
     # - Chạy trong docker-compose: host = db (tên service), đã set sẵn trong docker-compose.yml
     database_url: str = "postgresql://vntax_admin:vntax_secret@localhost:5432/vntax_copilot"
 
+    # --- CORS ---
+    # Các origin của frontend được phép gọi trực tiếp backend từ trình duyệt, ngăn cách bằng dấu phẩy.
+    # Ví dụ prod:  CORS_ORIGINS=https://copilot.example.com
+    cors_origins: str = "http://localhost:3000,http://127.0.0.1:3000"
+
     # env_file: đọc file .env; extra="ignore": bỏ qua biến lạ để không báo lỗi
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
+
+    @property
+    def cors_origin_list(self) -> list[str]:
+        """Chuỗi CORS_ORIGINS -> danh sách origin (bỏ khoảng trắng, bỏ phần tử rỗng)."""
+        return [o.strip() for o in self.cors_origins.split(",") if o.strip()]
 
 
 # Tạo 1 đối tượng dùng chung toàn app (singleton đơn giản)

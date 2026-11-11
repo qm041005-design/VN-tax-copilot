@@ -17,6 +17,9 @@ from app.core.security import CurrentUser
 from app.models import AuditLog, Matter, MatterStatus, ResearchHistory
 from app.schemas.matter import HistoryCreate, MatterCreate, MatterUpdate
 
+# Giá trị đặc biệt của tham số `status` ở danh sách: không lọc theo trạng thái (gồm cả đã archive)
+STATUS_ALL = "all"
+
 
 def _audit(db: Session, user: CurrentUser, action: str, rtype: str, rid, detail: dict | None = None):
     """
@@ -51,13 +54,17 @@ def list_matters(db: Session, user: CurrentUser, status: str | None, q: str | No
                  limit: int, offset: int) -> tuple[list[Matter], int]:
     """
     Danh sách hồ sơ của tenant, có lọc + phân trang.
-      status : "active" | "archived" | None (tất cả)
+      status : "active" | "archived" | "all". None (không truyền) = "active":
+               hồ sơ đã archive bị ẩn khỏi danh sách mặc định (đúng mô tả ở MatterStatus.ARCHIVED).
+               Muốn xem cả hồ sơ đã archive thì truyền status="all" hoặc "archived".
       q      : từ khóa tìm trong tên hồ sơ hoặc tên khách hàng (không phân biệt hoa/thường)
       limit/offset : phân trang (lấy `limit` dòng, bỏ qua `offset` dòng đầu)
     Trả về (danh_sách, tổng_số_khớp_điều_kiện) – tổng số để frontend biết có bao nhiêu trang.
     """
     stmt = select(Matter).where(Matter.tenant_id == user.tenant_id)
-    if status:
+    if status is None:
+        status = MatterStatus.ACTIVE.value
+    if status != STATUS_ALL:
         stmt = stmt.where(Matter.status == status)
     if q:
         like = f"%{q}%"

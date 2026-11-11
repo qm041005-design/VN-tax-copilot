@@ -8,11 +8,12 @@ Mọi route bắt đầu bằng /api/v1/matters (prefix "/api/v1" gắn ở api/
 
 Hai dependency được tiêm vào hầu hết endpoint:
     db   = Depends(get_db)           -> phiên làm việc DB cho request này
-    user = Depends(get_current_user) -> ai đang gọi (user_id, tenant_id)
+    user = Depends(get_current_user) -> ai đang gọi (user_id, tenant_id), lấy từ header X-User-Id / X-Tenant-Id
+                                        (bản TẠM, chưa có đăng nhập – xem core/security.py).
 
 Bảng route:
     POST   /matters                 tạo hồ sơ               -> 201
-    GET    /matters                 danh sách (lọc/phân trang)
+    GET    /matters                 danh sách (lọc/phân trang); mặc định ẩn hồ sơ đã archive
     GET    /matters/{id}            xem chi tiết            -> 404 nếu không có / khác tenant
     PATCH  /matters/{id}            sửa một phần
     DELETE /matters/{id}            archive (xóa mềm)
@@ -51,7 +52,9 @@ def create_matter(data: MatterCreate, db: Session = Depends(get_db), user: Curre
 @router.get("", response_model=MatterList, summary="Danh sách hồ sơ vụ việc")
 def list_matters(
     # alias="status": tên tham số trên URL là `status`, đặt tên biến `status_` để khỏi trùng module `status`
-    status_: str | None = Query(default=None, alias="status", pattern="^(active|archived)$"),
+    # Không truyền = chỉ hồ sơ "active" (hồ sơ đã archive bị ẩn). all = cả hai loại.
+    status_: str | None = Query(default=None, alias="status", pattern="^(active|archived|all)$",
+                                description="active (mặc định) | archived | all"),
     q: str | None = Query(default=None, description="Tìm theo tên hồ sơ / khách hàng"),
     limit: int = Query(default=20, ge=1, le=100),   # tối đa 100 dòng/trang để tránh quá tải
     offset: int = Query(default=0, ge=0),

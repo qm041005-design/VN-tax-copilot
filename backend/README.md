@@ -56,8 +56,9 @@ Dừng server: bấm `Ctrl+C`. Tắt database: `docker compose stop`.
 
 ## 2. Thử API ngay trên Swagger (không cần frontend)
 
-1. Mở http://localhost:8000/docs
-2. Bấm `POST /api/v1/matters` → **Try it out** → dán JSON → **Execute**:
+1. Mở http://localhost:8000/docs (hiện **chưa cần đăng nhập**, không cần Authorize).
+2. (Tùy chọn) Mỗi endpoint có 2 ô header `x-user-id` và `x-tenant-id`; bỏ trống thì mặc định `dev-user` / `thtax`.
+3. Bấm `POST /api/v1/matters` → **Try it out** → dán JSON → **Execute**:
 ```json
 {
   "title": "Khấu trừ VAT đầu vào Q1/2026",
@@ -66,8 +67,8 @@ Dừng server: bấm `Ctrl+C`. Tắt database: `docker compose stop`.
   "tax_period": "2026"
 }
 ```
-3. Kết quả đúng là mã **201** kèm `id`. Copy `id` đó dùng cho các endpoint khác.
-4. Lưu một lượt tra cứu: `POST /api/v1/matters/{matter_id}/history`:
+4. Kết quả đúng là mã **201** kèm `id`. Copy `id` đó dùng cho các endpoint khác.
+5. Lưu một lượt tra cứu: `POST /api/v1/matters/{matter_id}/history`:
 ```json
 {
   "question": "Thuế suất GTGT phổ thông là bao nhiêu?",
@@ -83,25 +84,33 @@ Dữ liệu ban đầu là **rỗng**: các hồ sơ bạn thấy là do bạn t
 
 ## 3. Danh sách API
 
-Tiền tố: `/api/v1`. Mọi dữ liệu được lọc theo tenant, hồ sơ của tenant khác trả **404**.
+Tiền tố: `/api/v1`. **Chưa có đăng nhập** (xem mục *Xác thực tạm thời* bên dưới). Mọi dữ liệu được lọc theo tenant, hồ sơ của tenant khác trả **404**.
 
 | Method | Đường dẫn | Mô tả | Mã trả về |
 |---|---|---|---|
 | GET | `/health` | Kiểm tra server và DB | 200 |
 | POST | `/api/v1/matters` | Tạo hồ sơ | 201, 422 |
-| GET | `/api/v1/matters?status=&q=&limit=&offset=` | Danh sách hồ sơ (lọc, phân trang) | 200 |
-| GET | `/api/v1/matters/{id}` | Chi tiết hồ sơ | 200, 404 |
-| PATCH | `/api/v1/matters/{id}` | Sửa một phần hồ sơ | 200, 404 |
+| GET | `/api/v1/matters?status=&q=&limit=&offset=` | Danh sách hồ sơ (lọc, phân trang). `status` = `active` (**mặc định**, ẩn hồ sơ đã archive) \| `archived` \| `all` | 200 |
+| GET | `/api/v1/matters/{id}` | Chi tiết hồ sơ (xem được cả hồ sơ đã archive) | 200, 404 |
+| PATCH | `/api/v1/matters/{id}` | Sửa một phần hồ sơ (`title`, `client_name`, `tax_types` không được `null`) | 200, 404, 422 |
 | DELETE | `/api/v1/matters/{id}` | Lưu trữ (archive, xóa mềm) | 200, 404 |
 | POST | `/api/v1/matters/{id}/history` | Lưu một lượt tra cứu | 201, 404, 422 |
 | GET | `/api/v1/matters/{id}/history?limit=&offset=` | Xem lịch sử tra cứu (tổng số ở header `X-Total-Count`) | 200, 404 |
 
-**Header tạm thời** (chưa có đăng nhập thật, sẽ thay bằng SSO/JWT ở sprint sau):
+**Xác thực tạm thời (CHƯA CÓ ĐĂNG NHẬP):** người gọi tự khai 2 header:
 
 | Header | Mặc định | Ý nghĩa |
 |---|---|---|
 | `X-User-Id` | `dev-user` | Người gọi |
-| `X-Tenant-Id` | `thtax` | Tổ chức (dùng để cô lập dữ liệu) |
+| `X-Tenant-Id` | `thtax` | Tổ chức, dùng để cô lập dữ liệu |
+
+> **Cảnh báo:** vì client tự khai nên ai cũng giả được tenant của người khác, và không đăng nhập vẫn tạo được hồ sơ. Bản này chỉ dùng để **phát triển và thử trong nhóm, KHÔNG triển khai thật**. Việc cô lập dữ liệu theo tenant đã được cài đặt sẵn ở mọi truy vấn; sprint sau chỉ cần thay hàm `get_current_user` trong `app/core/security.py` bằng đăng nhập SSO/JWT thật (kèm phân quyền) mà các endpoint không phải đổi.
+
+**Cấu hình** (`.env` hoặc biến môi trường; xem `.env.example`):
+
+| Biến | Bắt buộc | Ý nghĩa |
+|---|---|---|
+| `CORS_ORIGINS` | Không | Origin frontend được gọi backend, ngăn cách bằng dấu phẩy (mặc định `http://localhost:3000,http://127.0.0.1:3000`) |
 
 Giá trị hợp lệ của `tax_types` / `tax_type`: `VAT` (GTGT), `CIT` (TNDN), `PIT` (TNCN). Giá trị khác bị từ chối (422).
 
@@ -120,8 +129,9 @@ const res = await fetch("http://localhost:8000/api/v1/matters", {
 });
 const matter = await res.json();
 ```
-- Phân trang danh sách: dùng `total`, `limit`, `offset` trong kết quả `GET /matters`.
-- **Backend chưa bật CORS.** Nếu trình duyệt chặn khi gọi từ `http://localhost:3000`, báo backend (nhóm 8) để thêm `CORSMiddleware` vào `app/main.py`.
+- Hiện **chưa có đăng nhập**: gửi `X-User-Id` / `X-Tenant-Id` như ví dụ trên (hoặc bỏ trống để dùng mặc định). Khi backend có đăng nhập thật sẽ báo nhóm để đổi sang `Authorization`.
+- Phân trang danh sách: dùng `total`, `limit`, `offset` trong kết quả `GET /matters`. Danh sách **mặc định chỉ có hồ sơ `active`**; muốn hiện cả hồ sơ đã archive thì thêm `?status=all`.
+- **CORS đã bật** cho `http://localhost:3000` (đổi bằng `CORS_ORIGINS`). Header `X-Total-Count` của lịch sử tra cứu đã được expose để JS đọc được.
 
 ### AI (nhóm 6, 7)
 - Sau khi sinh câu trả lời, gọi `POST /api/v1/matters/{id}/history` để lưu. Trường `citations` nhận danh sách đối tượng `{source_id, title, legal_identifier, dieu, khoan, diem, url}`. Cần thêm trường (vd phiên bản, ngày hiệu lực) thì báo backend, sửa ở `app/schemas/matter.py`.
@@ -131,9 +141,9 @@ const matter = await res.json();
 - Chạy test tự động (dùng SQLite, không cần Docker):
 ```powershell
 cd backend
-python -m pytest -q          # kết quả đúng: 5 passed
+python -m pytest -q          # kết quả đúng: tất cả passed, không có failed/error
 ```
-- Thêm ca test mới vào `backend/tests/` (xem `test_matters.py` làm mẫu, đặc biệt `test_tenant_isolation`).
+- Thêm ca test mới vào `backend/tests/` (xem `test_matters.py` làm mẫu, đặc biệt `test_tenant_isolation`). Dùng `auth(user, tenant)` trong `tests/helpers.py` để lấy header định danh tạm. Test CORS ở `test_cors.py`.
 
 ### DevOps (nhóm 3)
 - `backend/Dockerfile` đã có, `docker-compose.yml` ở gốc repo đã khai báo service `backend` (cổng 8000) trỏ tới service `db`.
@@ -148,7 +158,7 @@ python -m pytest -q          # kết quả đúng: 5 passed
 backend/
 ├── app/
 │   ├── main.py              # Điểm khởi động, tạo bảng, /health
-│   ├── core/                # Cấu hình, kết nối DB, xác định người gọi
+│   ├── core/                # Cấu hình, kết nối DB, xác định người gọi (security.py, bản tạm)
 │   ├── models/              # Cấu trúc bảng DB (matters, research_history, audit_logs)
 │   ├── schemas/             # Khuôn JSON vào/ra + kiểm tra dữ liệu
 │   ├── services/            # Logic nghiệp vụ, truy vấn DB
@@ -204,4 +214,4 @@ Xóa sạch dữ liệu dev (khi đổi cấu trúc bảng): `docker compose dow
 
 ## 9. Chưa làm (kế hoạch sprint sau)
 
-Đăng nhập SSO/JWT và phân quyền (researcher, reviewer, admin, auditor), Alembic migration, CORS, `/api/v1/research` nối AI, luồng duyệt draft → approved, xuất DOCX/PDF.
+**Đăng nhập thật (SSO/JWT)** thay cho header tạm, và phân quyền (researcher, reviewer, admin, auditor), Alembic migration, `/api/v1/research` nối AI, luồng duyệt draft → approved, xuất DOCX/PDF.
