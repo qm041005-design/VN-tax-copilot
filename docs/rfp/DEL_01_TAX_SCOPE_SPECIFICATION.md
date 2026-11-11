@@ -4,7 +4,8 @@
 * **Mã yêu cầu RFP:** `DEL 01` (Discovery & Scope Register), `RES 01` (Tax Category & Period Capture), `RES 04` (Legal Hierarchy).
 * **Khách hàng giả định:** THTax ([thtax.vn](https://thtax.vn))
 * **Tác giả:** Đặng Minh Quân (Product Owner / Business Analyst)
-* **Phiên bản:** 1.0 - Sprint 0 Baseline
+* **Phiên bản:** 1.1 - SCRUM-1 seed baseline, cập nhật 11/11/2026
+* **Trạng thái:** Hoàn thiện bản đặc tả và dữ liệu seed để review; chưa phải phê duyệt nghiệp vụ thuế hay nghiệm thu RFP.
 
 ---
 
@@ -42,7 +43,7 @@ Hệ thống **VN-tax-copilot** được thiết kế nhằm hỗ trợ các chu
 
 ## 2. DANH MỤC NGUỒN VĂN BẢN PHÁP LUẬT CỐT LÕI (LEGAL INVENTORY)
 
-Dựa trên Phụ lục Annex F của RFP, hệ thống thu thập và pháp điển hóa các văn bản nền tảng:
+Dựa trên Phụ lục Annex F của RFP, đây là danh mục nguồn khởi đầu cần kiểm tra, không phải chứng nhận luật hiện hành. Chỉ nạp quy tắc áp dụng sau khi xác minh văn bản gốc, sửa đổi, quy định chuyển tiếp và kỳ tính thuế. Danh mục này khác với nguồn lịch sử dùng cho bộ seed năm 2024.
 
 | STT | Sắc thuế / Lĩnh vực | Văn bản cốt lõi | Văn bản sửa đổi / Hướng dẫn thi hành | Ghi chú hiệu lực |
 | :-: | :--- | :--- | :--- | :--- |
@@ -65,9 +66,11 @@ Cấp 1: Hiến pháp, Luật, Nghị quyết của Quốc hội (Giá trị ph�
 Cấp 2: Nghị định của Chính phủ
   ▲
 Cấp 3: Thông tư của Bộ Tài chính
-  ▲
-Cấp 4: Công văn hướng dẫn hành chính (Cục Thuế, Tổng cục Thuế) & Giải đáp Q&A
 ```
+
+Nguồn tham khảo riêng: Công văn, giải đáp Q&A và bình luận.
+
+Sơ đồ trên chỉ mô tả các nhóm nguồn thường dùng trong pilot, không phải danh sách đầy đủ thứ bậc pháp luật. Công văn, Q&A và bình luận không tạo thành một bậc văn bản quy phạm pháp luật bên dưới Thông tư. Văn bản hợp nhất là công cụ đọc, phải giữ liên kết tới bản gốc và từng văn bản sửa đổi. Thứ bậc, quy tắc xung đột và khả năng áp dụng phải được chuyên gia phê duyệt; không sử dụng thứ hạng tìm kiếm để quyết định ưu tiên pháp lý.
 
 ### ⚠️ Quy tắc bắt buộc đối với Công văn (Administrative Letter):
 * **Công văn không phải là văn bản quy phạm pháp luật chung.**
@@ -94,3 +97,27 @@ Mọi câu trả lời của VN-tax-copilot bắt buộc phải tuân theo khung
 4. **Phân tích chi tiết (Analysis):** Lập luận giải thích lý do vì sao điều khoản đó áp dụng vào tình huống này.
 5. **Giới hạn & Lưu ý loại trừ (Limitations):** Nêu rõ các rủi ro, ngoại lệ hoặc điều kiện đi kèm.
 6. **Bước nghiên cứu tiếp theo (Suggested Next Steps):** Đề xuất kiểm tra thêm hồ sơ chứng từ thanh toán, hợp đồng hoặc công văn giải trình.
+
+## 6. ĐẦU VÀO VÀ TIÊU CHÍ CHẤP NHẬN
+
+Theo RES 01, ghi nhận câu hỏi, sắc thuế, Việt Nam là thẩm quyền áp dụng, ngày giao dịch, kỳ thuế, ngày nghiên cứu (`research_as_of`), loại người nộp thuế, tình trạng cư trú khi liên quan, sự kiện trọng yếu và định dạng đầu ra. Ngày giao dịch, kỳ thuế và ngày nghiên cứu là ba thông tin khác nhau. Nếu thiếu dữ kiện ảnh hưởng kết luận thì hỏi lại, không tự bổ sung giả định quyết định nghĩa vụ thuế.
+
+Phạm vi pilot theo RFP trang 4 là năm hiện tại cộng năm năm trước và các quy định tiền nhiệm liên quan, tùy quyền truy cập nguồn. Bộ seed hiện tại chỉ kiểm tra các tình huống lịch sử năm 2024 và câu hỏi thiếu dữ kiện, chưa chứng minh độ bao phủ toàn pilot. Tóm tắt tiếng Anh là tùy chọn và phải giữ nguồn tiếng Việt; thuế nhà thầu, chuyển giá, hải quan và hiệp định thuế là phần mở rộng cần xác định riêng.
+
+| Mã nội bộ | Tình huống | Kết quả chấp nhận | RFP |
+| :--- | :--- | :--- | :--- |
+| AC-01 | Thiếu kỳ thuế hoặc sự kiện ảnh hưởng nghĩa vụ | Hỏi đúng thông tin thiếu; chưa chốt kết luận | RES 01, CIT 08 |
+| AC-02 | Có đủ sự kiện và nguồn được phép sử dụng | Trả lời 6 phần, gắn căn cứ cho từng kết luận trọng yếu | RES 03, CIT 01 |
+| AC-03 | Câu hỏi năm 2024, kết quả truy hồi có luật ban hành sau đó | Không mặc định áp dụng luật mới; kiểm tra lịch sử và chuyển tiếp | RES 05 |
+| AC-04 | Tìm được công văn hoặc Q&A | Hiển thị loại nguồn và giới hạn; không coi là quy định chung | RES 04 |
+| AC-05 | Nguồn thiếu, lỗi liên kết hoặc mâu thuẫn | Nêu thiếu sót hoặc từ chối kết luận; đề xuất tra cứu tiếp | CIT 03, CIT 08, RES 06 |
+| AC-06 | Dữ liệu benchmark chuẩn bị bàn giao | Đủ 30 ID duy nhất, JSON hợp lệ, nguồn và kỳ rõ ràng, nhãn review trung thực | DEL 04, EVAL 01–02 |
+
+## 7. PHẠM VI HOÀN THÀNH SCRUM-1
+
+- Đặc tả phạm vi ba sắc thuế và quy định hỗ trợ, đầu vào, cấu trúc trả lời, nguyên tắc phân loại nguồn và hiệu lực theo kỳ.
+- `evaluation/datasets/seed_tax_questions.json`: 30 câu seed, gồm 24 câu có thể trả lời và 6 câu cần làm rõ; giữ nguyên 16 ID cũ và bổ sung 14 ID mới.
+- Mỗi câu có `jurisdiction`, `research_as_of`, `expected_behavior`, `review_status`; nguồn có URL, mô tả phiên bản và ngày kiểm tra. Điều/Khoản/Điểm chỉ điền khi tồn tại, không tạo Điểm giả. Với văn bản sửa đổi, trích dẫn vị trí quy định tại văn bản được sửa và liên kết văn bản sửa đổi.
+- Chạy `python evaluation/validate_seed_dataset.py` và kiểm tra diff trước khi commit có mã `SCRUM-1` trên nhánh cá nhân.
+
+Đây là hoàn thành đầu việc xây dựng seed của Sprint 0. Không tuyên bố đã hoàn thành toàn bộ DEL 01 hoặc EVAL 01–02: DEL 01 còn bao gồm discovery, quyền sử dụng nguồn, phụ thuộc và rủi ro; EVAL 01 yêu cầu 200 câu trả lời được và 50 câu không trả lời được hoặc mơ hồ tại G1. Theo EVAL 02, hai chuyên gia thuế độc lập phải gán nhãn, xử lý bất đồng trước khi chấm nghiệm thu. Toàn bộ seed hiện có trạng thái `pending_tax_expert_review`, không dùng làm holdout nghiệm thu sau khi dùng để phát triển.

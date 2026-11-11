@@ -9,35 +9,81 @@
     "is_clarification_needed": false,
     "applicable_authority": [
       {
-        "document_number": "Luật 48/2024/QH15",
-        "document_type": "Luật",
-        "article": "Điều 14",
+        "document_number": "Thông tư 219/2013/TT-BTC",
+        "document_type": "Thông tư",
+        "article": "Điều 15",
         "clause": "Khoản 2",
-        "point": "Điểm b",
-        "title": "Điều kiện khấu trừ thuế giá trị gia tăng đầu vào"
+        "point": "",
+        "title": "Điều kiện thanh toán để khấu trừ thuế",
+        "source_url": "https://vanban.chinhphu.vn/?docid=172570&pageid=27160",
+        "version_note": "Đọc theo phiên bản áp dụng kỳ 2024; không suy ra quy định hiện hành từ bản gốc.",
+        "last_checked_at": "2026-11-11",
+        "source_kind": "official_document_record",
+        "pinpoint_validation_status": "pending_tax_expert_review"
+      },
+      {
+        "document_number": "Thông tư 26/2015/TT-BTC",
+        "document_type": "Thông tư",
+        "article": "Điều 1",
+        "clause": "Khoản 10",
+        "point": "",
+        "title": "Sửa đổi Điều 15 Thông tư 219/2013/TT-BTC",
+        "source_url": "https://vanban.chinhphu.vn/?docid=179270&pageid=27160",
+        "version_note": "Đọc theo phiên bản áp dụng kỳ 2024; không suy ra quy định hiện hành từ bản gốc.",
+        "last_checked_at": "2026-11-11",
+        "source_kind": "official_document_record",
+        "pinpoint_validation_status": "pending_tax_expert_review"
       }
     ],
-    "ground_truth_conclusion": "Không được khấu trừ thuế GTGT đầu vào. Theo quy định, hàng hóa dịch vụ mua vào từng lần có giá trị từ 20 triệu đồng trở lên (đã bao gồm thuế GTGT) bắt buộc phải có chứng từ thanh toán không dùng tiền mặt."
+    "ground_truth_conclusion": "Không được khấu trừ thuế GTGT đầu vào. Theo quy định, hàng hóa dịch vụ mua vào từng lần có giá trị từ 20 triệu đồng trở lên (đã bao gồm thuế GTGT) bắt buộc phải có chứng từ thanh toán không dùng tiền mặt.",
+    "jurisdiction": "VN",
+    "research_as_of": "2026-11-11",
+    "review_status": "pending_tax_expert_review",
+    "expected_behavior": "answer_with_citations",
+    "clarification_questions": []
   },
   {
     "id": "SEED-VAT-02",
     "tax_category": "VAT",
-    "question": "Hàng hóa xuất khẩu ra nước ngoài có bắt buộc phải áp dụng thuế suất thuế GTGT 0% không và cần những điều kiện gì?",
+    "question": "Trong năm 2024, hàng hóa xuất khẩu thông thường có hợp đồng, tờ khai hải quan và chứng từ thanh toán qua ngân hàng có được áp dụng thuế suất GTGT 0% không?",
     "taxpayer_type": "Doanh nghiệp xuất khẩu",
     "tax_period": "2024",
-    "material_facts": "Hàng hóa thực tế xuất khẩu qua cửa khẩu Việt Nam, có hợp đồng xuất khẩu và tờ khai hải quan.",
+    "material_facts": "Hàng hóa xuất khẩu thông thường, tiêu dùng ngoài Việt Nam; đủ hợp đồng, tờ khai hải quan và chứng từ thanh toán qua ngân hàng; không thuộc ngoại lệ tại khoản 3 Điều 9.",
     "is_clarification_needed": false,
     "applicable_authority": [
       {
-        "document_number": "Luật 48/2024/QH15",
-        "document_type": "Luật",
+        "document_number": "Thông tư 219/2013/TT-BTC",
+        "document_type": "Thông tư",
         "article": "Điều 9",
         "clause": "Khoản 1",
         "point": "Điểm a",
-        "title": "Thuế suất 0%"
+        "title": "Hàng hóa xuất khẩu",
+        "source_url": "https://vanban.chinhphu.vn/?docid=172570&pageid=27160",
+        "version_note": "Đọc theo phiên bản áp dụng kỳ 2024; không suy ra quy định hiện hành từ bản gốc.",
+        "last_checked_at": "2026-11-11",
+        "source_kind": "official_document_record",
+        "pinpoint_validation_status": "pending_tax_expert_review"
+      },
+      {
+        "document_number": "Thông tư 219/2013/TT-BTC",
+        "document_type": "Thông tư",
+        "article": "Điều 9",
+        "clause": "Khoản 2",
+        "point": "Điểm a",
+        "title": "Điều kiện áp dụng thuế suất 0%",
+        "source_url": "https://vanban.chinhphu.vn/?docid=172570&pageid=27160",
+        "version_note": "Đọc theo phiên bản áp dụng kỳ 2024; không suy ra quy định hiện hành từ bản gốc.",
+        "last_checked_at": "2026-11-11",
+        "source_kind": "official_document_record",
+        "pinpoint_validation_status": "pending_tax_expert_review"
       }
     ],
-    "ground_truth_conclusion": "Được áp dụng thuế suất 0% nếu đáp ứng đủ các điều kiện: Có hợp đồng bán hàng hóa với tổ chức nước ngoài, có chứng từ thanh toán qua ngân hàng và có tờ khai hải quan theo quy định."
+    "ground_truth_conclusion": "Được áp dụng thuế suất 0% cho giao dịch đã nêu khi đáp ứng điều kiện tại điểm a khoản 2 Điều 9 và không thuộc ngoại lệ tại khoản 3 Điều 9. Không đồng nhất mọi giao dịch được gọi là xuất khẩu với thuế suất 0%.",
+    "jurisdiction": "VN",
+    "research_as_of": "2026-11-11",
+    "review_status": "pending_tax_expert_review",
+    "expected_behavior": "answer_with_citations",
+    "clarification_questions": []
   },
   {
     "id": "SEED-VAT-03",
@@ -45,19 +91,29 @@
     "question": "Trường hợp doanh nghiệp phát hiện hóa đơn GTGT đầu vào bị bỏ sót từ các kỳ tính thuế trước thì có được kê khai khấu trừ bổ sung không?",
     "taxpayer_type": "Doanh nghiệp nộp thuế theo phương pháp khấu trừ",
     "tax_period": "2024",
-    "material_facts": "Hóa đơn GTGT đầu vào hợp pháp phát sinh từ kỳ trước nhưng chưa kê khai.",
+    "material_facts": "Hóa đơn đầu vào hợp pháp phát sinh và bị bỏ sót trong năm 2024, phát hiện tháng 11/2024; đủ điều kiện khấu trừ; chưa công bố quyết định kiểm tra, thanh tra tại trụ sở.",
     "is_clarification_needed": false,
     "applicable_authority": [
       {
-        "document_number": "Luật 48/2024/QH15",
-        "document_type": "Luật",
+        "document_number": "Thông tư 219/2013/TT-BTC",
+        "document_type": "Thông tư",
         "article": "Điều 14",
-        "clause": "Khoản 1",
-        "point": "Điểm c",
-        "title": "Nguyên tắc khấu trừ thuế giá trị gia tăng đầu vào"
+        "clause": "Khoản 8",
+        "point": "",
+        "title": "Khấu trừ thuế đầu vào phát hiện sai sót",
+        "source_url": "https://vanban.chinhphu.vn/?docid=172570&pageid=27160",
+        "version_note": "Đọc theo phiên bản áp dụng kỳ 2024; không suy ra quy định hiện hành từ bản gốc.",
+        "last_checked_at": "2026-11-11",
+        "source_kind": "official_document_record",
+        "pinpoint_validation_status": "pending_tax_expert_review"
       }
     ],
-    "ground_truth_conclusion": "Doanh nghiệp được kê khai khấu trừ bổ sung vào kỳ tính thuế phát hiện sai sót trước khi cơ quan thuế, cơ quan có thẩm quyền công bố quyết định kiểm tra, thanh tra thuế tại trụ sở người nộp thuế."
+    "ground_truth_conclusion": "Được kê khai khấu trừ bổ sung khi phát hiện sai sót theo khoản 8 Điều 14, trước khi công bố quyết định kiểm tra hoặc thanh tra tại trụ sở người nộp thuế. Không kết luận mất quyền khấu trừ chỉ vì hóa đơn thuộc kỳ trước.",
+    "jurisdiction": "VN",
+    "research_as_of": "2026-11-11",
+    "review_status": "pending_tax_expert_review",
+    "expected_behavior": "answer_with_citations",
+    "clarification_questions": []
   },
   {
     "id": "SEED-VAT-04",
@@ -69,15 +125,25 @@
     "is_clarification_needed": false,
     "applicable_authority": [
       {
-        "document_number": "Luật 48/2024/QH15",
-        "document_type": "Luật",
-        "article": "Điều 5",
+        "document_number": "Thông tư 219/2013/TT-BTC",
+        "document_type": "Thông tư",
+        "article": "Điều 4",
         "clause": "Khoản 21",
         "point": "",
-        "title": "Đối tượng không chịu thuế giá trị gia tăng"
+        "title": "Phần mềm thuộc đối tượng không chịu thuế",
+        "source_url": "https://vanban.chinhphu.vn/?docid=172570&pageid=27160",
+        "version_note": "Đọc theo phiên bản áp dụng kỳ 2024; không suy ra quy định hiện hành từ bản gốc.",
+        "last_checked_at": "2026-11-11",
+        "source_kind": "official_document_record",
+        "pinpoint_validation_status": "pending_tax_expert_review"
       }
     ],
-    "ground_truth_conclusion": "Sản phẩm phần mềm và dịch vụ phần mềm thuộc đối tượng không chịu thuế GTGT (thuế suất không áp dụng, không phải chịu thuế GTGT đầu ra nhưng thuế GTGT đầu vào không được khấu trừ)."
+    "ground_truth_conclusion": "Sản phẩm phần mềm đáp ứng phân loại theo pháp luật thuộc đối tượng không chịu thuế GTGT, không phải thuế suất 0%. Việc xử lý thuế đầu vào phải xét riêng mục đích sử dụng và quy định khấu trừ, không suy rộng mọi đầu vào của công ty đều không được khấu trừ.",
+    "jurisdiction": "VN",
+    "research_as_of": "2026-11-11",
+    "review_status": "pending_tax_expert_review",
+    "expected_behavior": "answer_with_citations",
+    "clarification_questions": []
   },
   {
     "id": "SEED-VAT-05",
@@ -85,7 +151,7 @@
     "question": "Hàng hóa cho, biếu, tặng khách hàng có phải lập hóa đơn và tính nộp thuế GTGT không?",
     "taxpayer_type": "Doanh nghiệp nộp thuế theo phương pháp khấu trừ",
     "tax_period": "2024",
-    "material_facts": "Hàng hóa xuất dùng để biếu, tặng khách hàng nhân dịp tri ân, không thu tiền.",
+    "material_facts": "Tháng 11/2024, doanh nghiệp biếu tặng hàng hóa chịu thuế GTGT cho khách hàng; không phải khuyến mại theo pháp luật thương mại, không thu tiền.",
     "is_clarification_needed": false,
     "applicable_authority": [
       {
@@ -94,10 +160,33 @@
         "article": "Điều 4",
         "clause": "Khoản 1",
         "point": "",
-        "title": "Nguyên tắc lập, quản lý, sử dụng hóa đơn, chứng từ"
+        "title": "Lập hóa đơn khi biếu tặng",
+        "source_url": "https://chinhphu.vn/default.aspx?docid=201365&pageid=27160",
+        "version_note": "Đọc theo phiên bản áp dụng kỳ 2024; không suy ra quy định hiện hành từ bản gốc.",
+        "last_checked_at": "2026-11-11",
+        "source_kind": "official_document_record",
+        "pinpoint_validation_status": "pending_tax_expert_review"
+      },
+      {
+        "document_number": "Thông tư 219/2013/TT-BTC",
+        "document_type": "Thông tư",
+        "article": "Điều 7",
+        "clause": "Khoản 3",
+        "point": "",
+        "title": "Giá tính thuế đối với hàng biếu tặng",
+        "source_url": "https://vanban.chinhphu.vn/?docid=172570&pageid=27160",
+        "version_note": "Đọc theo phiên bản áp dụng kỳ 2024; không suy ra quy định hiện hành từ bản gốc.",
+        "last_checked_at": "2026-11-11",
+        "source_kind": "official_document_record",
+        "pinpoint_validation_status": "pending_tax_expert_review"
       }
     ],
-    "ground_truth_conclusion": "Bắt buộc phải lập hóa đơn GTGT. Đối với hàng hóa cho, biếu, tặng, giá tính thuế GTGT là giá tính thuế của hàng hóa, dịch vụ cùng loại hoặc tương đương tại thời điểm phát sinh hoạt động này."
+    "ground_truth_conclusion": "Bắt buộc phải lập hóa đơn GTGT. Đối với hàng hóa cho, biếu, tặng, giá tính thuế GTGT là giá tính thuế của hàng hóa, dịch vụ cùng loại hoặc tương đương tại thời điểm phát sinh hoạt động này.",
+    "jurisdiction": "VN",
+    "research_as_of": "2026-11-11",
+    "review_status": "pending_tax_expert_review",
+    "expected_behavior": "answer_with_citations",
+    "clarification_questions": []
   },
   {
     "id": "SEED-CIT-01",
@@ -109,15 +198,38 @@
     "is_clarification_needed": false,
     "applicable_authority": [
       {
-        "document_number": "Luật 67/2025/QH15",
-        "document_type": "Luật",
-        "article": "Điều 9",
+        "document_number": "Thông tư 78/2014/TT-BTC",
+        "document_type": "Thông tư",
+        "article": "Điều 6",
         "clause": "Khoản 2",
-        "point": "Điểm n",
-        "title": "Các khoản chi không được trừ khi xác định thu nhập chịu thuế TNDN"
+        "point": "Điểm 2.7",
+        "title": "Sửa đổi khoản 2 Điều 6 Thông tư 78/2014/TT-BTC về trang phục",
+        "source_url": "https://vbpl.moj.gov.vn/vinhlong/Pages/vbpq-toanvan.aspx?ItemID=46368&Keyword=",
+        "version_note": "Điều 6 được thay thế bởi Điều 4 Thông tư 96/2015/TT-BTC; đọc nội dung sửa đổi áp dụng năm 2024.",
+        "last_checked_at": "2026-11-11",
+        "source_kind": "official_document_record",
+        "pinpoint_validation_status": "pending_tax_expert_review"
+      },
+      {
+        "document_number": "Thông tư 96/2015/TT-BTC",
+        "document_type": "Thông tư",
+        "article": "Điều 4",
+        "clause": "",
+        "point": "",
+        "title": "Sửa đổi Điều 6 Thông tư 78/2014/TT-BTC",
+        "source_url": "https://vanban.chinhphu.vn/?docid=180650&pageid=27160",
+        "version_note": "Đọc theo phiên bản áp dụng kỳ 2024; không suy ra quy định hiện hành từ bản gốc.",
+        "last_checked_at": "2026-11-11",
+        "source_kind": "official_document_record",
+        "pinpoint_validation_status": "pending_tax_expert_review"
       }
     ],
-    "ground_truth_conclusion": "Mức chi trang phục bằng tiền cho người lao động được tính vào chi phí được trừ tối đa không quá 05 (năm) triệu đồng/người/năm. Phần chi vượt mức 05 triệu đồng/người/năm sẽ bị loại khỏi chi phí được trừ."
+    "ground_truth_conclusion": "Mức chi trang phục bằng tiền cho người lao động được tính vào chi phí được trừ tối đa không quá 05 (năm) triệu đồng/người/năm. Phần chi vượt mức 05 triệu đồng/người/năm sẽ bị loại khỏi chi phí được trừ.",
+    "jurisdiction": "VN",
+    "research_as_of": "2026-11-11",
+    "review_status": "pending_tax_expert_review",
+    "expected_behavior": "answer_with_citations",
+    "clarification_questions": []
   },
   {
     "id": "SEED-CIT-02",
@@ -129,15 +241,51 @@
     "is_clarification_needed": false,
     "applicable_authority": [
       {
-        "document_number": "Luật 67/2025/QH15",
-        "document_type": "Luật",
-        "article": "Điều 9",
+        "document_number": "Thông tư 78/2014/TT-BTC",
+        "document_type": "Thông tư",
+        "article": "Điều 7",
+        "clause": "Khoản 13",
+        "point": "",
+        "title": "Bù trừ phạt, bồi thường do vi phạm hợp đồng",
+        "source_url": "https://vbpl.moj.gov.vn/vinhlong/Pages/vbpq-toanvan.aspx?ItemID=46368&Keyword=",
+        "version_note": "Đọc theo phiên bản áp dụng kỳ 2024; không suy ra quy định hiện hành từ bản gốc.",
+        "last_checked_at": "2026-11-11",
+        "source_kind": "official_document_record",
+        "pinpoint_validation_status": "pending_tax_expert_review"
+      },
+      {
+        "document_number": "Thông tư 78/2014/TT-BTC",
+        "document_type": "Thông tư",
+        "article": "Điều 6",
         "clause": "Khoản 2",
-        "point": "Điểm c",
-        "title": "Chi phí không được trừ"
+        "point": "Điểm 2.36",
+        "title": "Loại khoản phạt vi phạm hành chính",
+        "source_url": "https://vbpl.moj.gov.vn/vinhlong/Pages/vbpq-toanvan.aspx?ItemID=46368&Keyword=",
+        "version_note": "Điều 6 được thay thế bởi Điều 4 Thông tư 96/2015/TT-BTC; đọc nội dung sửa đổi áp dụng năm 2024.",
+        "last_checked_at": "2026-11-11",
+        "source_kind": "official_document_record",
+        "pinpoint_validation_status": "pending_tax_expert_review"
+      },
+      {
+        "document_number": "Thông tư 96/2015/TT-BTC",
+        "document_type": "Thông tư",
+        "article": "Điều 4",
+        "clause": "",
+        "point": "",
+        "title": "Sửa đổi Điều 6 Thông tư 78/2014/TT-BTC",
+        "source_url": "https://vanban.chinhphu.vn/?docid=180650&pageid=27160",
+        "version_note": "Đọc theo phiên bản áp dụng kỳ 2024; không suy ra quy định hiện hành từ bản gốc.",
+        "last_checked_at": "2026-11-11",
+        "source_kind": "official_document_record",
+        "pinpoint_validation_status": "pending_tax_expert_review"
       }
     ],
-    "ground_truth_conclusion": "Tiền phạt vi phạm hợp đồng kinh tế được bù trừ với khoản thu phạt vi phạm hợp đồng, phần còn lại được tính vào chi phí được trừ; ngược lại, tiền phạt vi phạm hành chính về thuế tuyệt đối KHÔNG được tính vào chi phí được trừ."
+    "ground_truth_conclusion": "Tiền phạt vi phạm hợp đồng phải bù trừ với khoản thu phạt, bồi thường hợp đồng theo khoản 13 Điều 7; chênh lệch âm được giảm trừ vào thu nhập khác, hoặc thu nhập sản xuất kinh doanh nếu không có thu nhập khác. Khoản phạt vi phạm hành chính về thuế không được trừ; không gộp hai loại phạt.",
+    "jurisdiction": "VN",
+    "research_as_of": "2026-11-11",
+    "review_status": "pending_tax_expert_review",
+    "expected_behavior": "answer_with_citations",
+    "clarification_questions": []
   },
   {
     "id": "SEED-CIT-03",
@@ -149,15 +297,25 @@
     "is_clarification_needed": false,
     "applicable_authority": [
       {
-        "document_number": "Luật 67/2025/QH15",
-        "document_type": "Luật",
-        "article": "Điều 16",
-        "clause": "Khoản 1",
+        "document_number": "Thông tư 78/2014/TT-BTC",
+        "document_type": "Thông tư",
+        "article": "Điều 9",
+        "clause": "Khoản 2",
         "point": "",
-        "title": "Chuyển lỗ"
+        "title": "Chuyển lỗ",
+        "source_url": "https://vbpl.moj.gov.vn/vinhlong/Pages/vbpq-toanvan.aspx?ItemID=46368&Keyword=",
+        "version_note": "Đọc theo phiên bản áp dụng kỳ 2024; không suy ra quy định hiện hành từ bản gốc.",
+        "last_checked_at": "2026-11-11",
+        "source_kind": "official_document_record",
+        "pinpoint_validation_status": "pending_tax_expert_review"
       }
     ],
-    "ground_truth_conclusion": "Doanh nghiệp sau khi quyết toán thuế mà bị lỗ thì được chuyển lỗ liên tục toàn bộ số lỗ vào thu nhập của những năm tiếp theo. Thời gian chuyển lỗ tính liên tục không quá 05 (năm) năm, kể từ năm tiếp sau năm phát sinh lỗ."
+    "ground_truth_conclusion": "Doanh nghiệp sau khi quyết toán thuế mà bị lỗ thì được chuyển lỗ liên tục toàn bộ số lỗ vào thu nhập của những năm tiếp theo. Thời gian chuyển lỗ tính liên tục không quá 05 (năm) năm, kể từ năm tiếp sau năm phát sinh lỗ.",
+    "jurisdiction": "VN",
+    "research_as_of": "2026-11-11",
+    "review_status": "pending_tax_expert_review",
+    "expected_behavior": "answer_with_citations",
+    "clarification_questions": []
   },
   {
     "id": "SEED-CIT-04",
@@ -169,115 +327,227 @@
     "is_clarification_needed": false,
     "applicable_authority": [
       {
-        "document_number": "Luật 67/2025/QH15",
-        "document_type": "Luật",
-        "article": "Điều 9",
+        "document_number": "Thông tư 78/2014/TT-BTC",
+        "document_type": "Thông tư",
+        "article": "Điều 6",
         "clause": "Khoản 2",
-        "point": "Điểm đ",
-        "title": "Chi phí có tính chất phúc lợi"
+        "point": "Điểm 2.30",
+        "title": "Giới hạn khoản chi phúc lợi",
+        "source_url": "https://vbpl.moj.gov.vn/vinhlong/Pages/vbpq-toanvan.aspx?ItemID=46368&Keyword=",
+        "version_note": "Điều 6 được thay thế bởi Điều 4 Thông tư 96/2015/TT-BTC; đọc nội dung sửa đổi áp dụng năm 2024.",
+        "last_checked_at": "2026-11-11",
+        "source_kind": "official_document_record",
+        "pinpoint_validation_status": "pending_tax_expert_review"
+      },
+      {
+        "document_number": "Thông tư 06/2018/TT-BTC",
+        "document_type": "Thông tư",
+        "article": "Điều 3",
+        "clause": "Khoản 4",
+        "point": "",
+        "title": "Sửa đổi danh mục chi phúc lợi",
+        "source_url": "https://vbpl.vn/nganhangnhanuoc/Pages/vbpq-toanvan.aspx?ItemID=128846&Keyword=",
+        "version_note": "Đọc theo phiên bản áp dụng kỳ 2024; không suy ra quy định hiện hành từ bản gốc.",
+        "last_checked_at": "2026-11-11",
+        "source_kind": "official_document_record",
+        "pinpoint_validation_status": "pending_tax_expert_review"
+      },
+      {
+        "document_number": "Thông tư 96/2015/TT-BTC",
+        "document_type": "Thông tư",
+        "article": "Điều 4",
+        "clause": "",
+        "point": "",
+        "title": "Sửa đổi Điều 6 Thông tư 78/2014/TT-BTC",
+        "source_url": "https://vanban.chinhphu.vn/?docid=180650&pageid=27160",
+        "version_note": "Đọc theo phiên bản áp dụng kỳ 2024; không suy ra quy định hiện hành từ bản gốc.",
+        "last_checked_at": "2026-11-11",
+        "source_kind": "official_document_record",
+        "pinpoint_validation_status": "pending_tax_expert_review"
       }
     ],
-    "ground_truth_conclusion": "Tổng số chi có tính chất phúc lợi chi trực tiếp cho người lao động được tính vào chi phí được trừ nếu không quá 01 tháng lương bình quân thực tế thực hiện trong năm tính thuế của doanh nghiệp."
+    "ground_truth_conclusion": "Tổng số chi có tính chất phúc lợi chi trực tiếp cho người lao động được tính vào chi phí được trừ nếu không quá 01 tháng lương bình quân thực tế thực hiện trong năm tính thuế của doanh nghiệp.",
+    "jurisdiction": "VN",
+    "research_as_of": "2026-11-11",
+    "review_status": "pending_tax_expert_review",
+    "expected_behavior": "answer_with_citations",
+    "clarification_questions": []
   },
   {
     "id": "SEED-CIT-05",
     "tax_category": "CIT",
-    "question": "Thuế suất thuế TNDN phổ thông hiện hành áp dụng cho các doanh nghiệp thông thường tại Việt Nam là bao nhiêu phần trăm?",
+    "question": "Trong kỳ tính thuế năm 2024, doanh nghiệp thông thường không hưởng ưu đãi áp dụng thuế suất TNDN bao nhiêu?",
     "taxpayer_type": "Doanh nghiệp thành lập theo pháp luật Việt Nam",
     "tax_period": "2024",
     "material_facts": "Doanh nghiệp hoạt động sản xuất kinh doanh thông thường, không thuộc diện ưu đãi hay ngành nghề đặc thù (dầu khí, tài nguyên).",
     "is_clarification_needed": false,
     "applicable_authority": [
       {
-        "document_number": "Luật 67/2025/QH15",
-        "document_type": "Luật",
-        "article": "Điều 10",
+        "document_number": "Thông tư 78/2014/TT-BTC",
+        "document_type": "Thông tư",
+        "article": "Điều 11",
         "clause": "Khoản 1",
         "point": "",
-        "title": "Thuế suất thuế thu nhập doanh nghiệp"
+        "title": "Thuế suất thông thường từ 01/01/2016",
+        "source_url": "https://vbpl.moj.gov.vn/vinhlong/Pages/vbpq-toanvan.aspx?ItemID=46368&Keyword=",
+        "version_note": "Đọc theo phiên bản áp dụng kỳ 2024; không suy ra quy định hiện hành từ bản gốc.",
+        "last_checked_at": "2026-11-11",
+        "source_kind": "official_document_record",
+        "pinpoint_validation_status": "pending_tax_expert_review"
       }
     ],
-    "ground_truth_conclusion": "Thuế suất thuế thu nhập doanh nghiệp phổ thông là 20% (trừ các trường hợp được hưởng thuế suất ưu đãi hoặc các ngành tìm kiếm, thăm dò, khai thác dầu khí, tài nguyên quý hiếm từ 32% đến 50%)."
+    "ground_truth_conclusion": "Thuế suất TNDN thông thường cho tình huống năm 2024 là 20%. Không áp dụng kết luận này cho trường hợp ưu đãi hoặc hoạt động đặc thù chưa được xét trong dữ kiện.",
+    "jurisdiction": "VN",
+    "research_as_of": "2026-11-11",
+    "review_status": "pending_tax_expert_review",
+    "expected_behavior": "answer_with_citations",
+    "clarification_questions": []
   },
   {
     "id": "SEED-PIT-01",
     "tax_category": "PIT",
-    "question": "Mức giảm trừ gia cảnh cho bản thân người nộp thuế và cho mỗi người phụ thuộc theo quy định hiện hành là bao nhiêu tiền một tháng?",
+    "question": "Trong kỳ tính thuế năm 2024, mức giảm trừ gia cảnh cho bản thân và mỗi người phụ thuộc là bao nhiêu mỗi tháng?",
     "taxpayer_type": "Cá nhân cư trú có thu nhập từ tiền lương, tiền công",
     "tax_period": "2024",
     "material_facts": "Cá nhân cư trú có đăng ký người phụ thuộc hợp lệ.",
     "is_clarification_needed": false,
     "applicable_authority": [
       {
-        "document_number": "Luật 109/2025/QH15",
-        "document_type": "Luật",
-        "article": "Điều 19",
+        "document_number": "Nghị quyết 954/2020/UBTVQH14",
+        "document_type": "Nghị quyết",
+        "article": "Điều 1",
         "clause": "Khoản 1",
-        "point": "Điểm a, b",
-        "title": "Giảm trừ gia cảnh"
+        "point": "",
+        "title": "Giảm trừ bản thân",
+        "source_url": "https://cms.baochinhphu.vn/cuc-thue-luu-y-khi-quyet-toan-va-hoan-thue-tu-dong-102260305191148461.htm",
+        "version_note": "Đọc theo phiên bản áp dụng kỳ 2024; không suy ra quy định hiện hành từ bản gốc.",
+        "last_checked_at": "2026-11-11",
+        "source_kind": "official_explanation",
+        "pinpoint_validation_status": "pending_tax_expert_review"
+      },
+      {
+        "document_number": "Nghị quyết 954/2020/UBTVQH14",
+        "document_type": "Nghị quyết",
+        "article": "Điều 1",
+        "clause": "Khoản 2",
+        "point": "",
+        "title": "Giảm trừ người phụ thuộc",
+        "source_url": "https://cms.baochinhphu.vn/cuc-thue-luu-y-khi-quyet-toan-va-hoan-thue-tu-dong-102260305191148461.htm",
+        "version_note": "Đọc theo phiên bản áp dụng kỳ 2024; không suy ra quy định hiện hành từ bản gốc.",
+        "last_checked_at": "2026-11-11",
+        "source_kind": "official_explanation",
+        "pinpoint_validation_status": "pending_tax_expert_review"
       }
     ],
-    "ground_truth_conclusion": "Mức giảm trừ đối với bản thân người nộp thuế là 11 triệu đồng/tháng (132 triệu đồng/năm); mức giảm trừ đối với mỗi người phụ thuộc là 4,4 triệu đồng/tháng."
+    "ground_truth_conclusion": "Mức giảm trừ đối với bản thân người nộp thuế là 11 triệu đồng/tháng (132 triệu đồng/năm); mức giảm trừ đối với mỗi người phụ thuộc là 4,4 triệu đồng/tháng.",
+    "jurisdiction": "VN",
+    "research_as_of": "2026-11-11",
+    "review_status": "pending_tax_expert_review",
+    "expected_behavior": "answer_with_citations",
+    "clarification_questions": []
   },
   {
     "id": "SEED-PIT-02",
     "tax_category": "PIT",
-    "question": "Khoản tiền ăn trưa, ăn giữa ca do người sử dụng lao động chi cho người lao động có phải tính vào thu nhập chịu thuế TNCN không?",
+    "question": "Trong năm 2024, công ty chi tiền ăn giữa ca 900.000 đồng/người/tháng thì phần nào phải tính vào thu nhập chịu thuế TNCN?",
     "taxpayer_type": "Cá nhân có thu nhập từ tiền lương, tiền công",
     "tax_period": "2024",
-    "material_facts": "Doanh nghiệp tự nấu ăn hoặc chi bằng tiền ăn trưa vào tài khoản lương hàng tháng.",
+    "material_facts": "Công ty không tổ chức bữa ăn, trả bằng tiền 900.000 đồng/người/tháng trong năm 2024; không áp dụng tình huống từ 15/06/2025.",
     "is_clarification_needed": false,
     "applicable_authority": [
       {
-        "document_number": "Luật 109/2025/QH15",
-        "document_type": "Luật",
-        "article": "Điều 3",
+        "document_number": "Thông tư 111/2013/TT-BTC",
+        "document_type": "Thông tư",
+        "article": "Điều 2",
         "clause": "Khoản 2",
-        "point": "Điểm đ",
-        "title": "Các khoản thu nhập không tính vào thu nhập chịu thuế"
+        "point": "Điểm g.5",
+        "title": "Tiền ăn giữa ca",
+        "source_url": "https://vanban.chinhphu.vn/?docid=169566&pageid=27160",
+        "version_note": "Đọc theo phiên bản áp dụng kỳ 2024; không suy ra quy định hiện hành từ bản gốc.",
+        "last_checked_at": "2026-11-11",
+        "source_kind": "official_document_record",
+        "pinpoint_validation_status": "pending_tax_expert_review"
+      },
+      {
+        "document_number": "Thông tư 26/2016/TT-BLĐTBXH",
+        "document_type": "Thông tư",
+        "article": "Điều 22",
+        "clause": "Khoản 4",
+        "point": "",
+        "title": "Mức tiền ăn giữa ca trong giai đoạn 2024",
+        "source_url": "https://cms.baochinhphu.vn/xac-dinh-thu-nhap-chiu-thue-khoan-chi-an-ca-cho-nguoi-lao-dong-102251030101936343.htm",
+        "version_note": "Đọc theo phiên bản áp dụng kỳ 2024; không suy ra quy định hiện hành từ bản gốc.",
+        "last_checked_at": "2026-11-11",
+        "source_kind": "official_explanation",
+        "pinpoint_validation_status": "pending_tax_expert_review"
       }
     ],
-    "ground_truth_conclusion": "Nếu doanh nghiệp trực tiếp tổ chức bữa ăn giữa ca thì được miễn toàn bộ. Nếu chi bằng tiền thì phần chi vượt quá mức 730.000 đồng/người/tháng sẽ phải tính vào thu nhập chịu thuế TNCN của người lao động."
+    "ground_truth_conclusion": "Với dữ kiện năm 2024, phần vượt mức 730.000 đồng/người/tháng, tức 170.000 đồng, tính vào thu nhập chịu thuế. Nếu trực tiếp tổ chức bữa ăn theo quy định thì cách xử lý khác. Không dùng mức này làm quy tắc mặc định cho năm 2025 hoặc 2026.",
+    "jurisdiction": "VN",
+    "research_as_of": "2026-11-11",
+    "review_status": "pending_tax_expert_review",
+    "expected_behavior": "answer_with_citations",
+    "clarification_questions": []
   },
   {
     "id": "SEED-PIT-03",
     "tax_category": "PIT",
-    "question": "Cá nhân chuyển nhượng bất động sản giữa ai với ai thì được miễn thuế thu nhập cá nhân?",
+    "question": "Năm 2024, cha đẻ chuyển nhượng bất động sản cho con đẻ, có giấy tờ chứng minh quan hệ, có được miễn thuế TNCN không?",
     "taxpayer_type": "Cá nhân cư trú tại Việt Nam",
     "tax_period": "2024",
-    "material_facts": "Giao dịch chuyển nhượng bất động sản giữa người trong gia đình.",
+    "material_facts": "Chuyển nhượng giữa cha đẻ và con đẻ trong năm 2024; có giấy tờ chứng minh quan hệ hợp lệ.",
     "is_clarification_needed": false,
     "applicable_authority": [
       {
-        "document_number": "Luật 109/2025/QH15",
-        "document_type": "Luật",
-        "article": "Điều 4",
+        "document_number": "Thông tư 111/2013/TT-BTC",
+        "document_type": "Thông tư",
+        "article": "Điều 3",
         "clause": "Khoản 1",
-        "point": "",
-        "title": "Thu nhập được miễn thuế"
+        "point": "Điểm a",
+        "title": "Miễn thuế chuyển nhượng bất động sản giữa người thân",
+        "source_url": "https://vanban.chinhphu.vn/?docid=169566&pageid=27160",
+        "version_note": "Đọc theo phiên bản áp dụng kỳ 2024; không suy ra quy định hiện hành từ bản gốc.",
+        "last_checked_at": "2026-11-11",
+        "source_kind": "official_document_record",
+        "pinpoint_validation_status": "pending_tax_expert_review"
       }
     ],
-    "ground_truth_conclusion": "Được miễn thuế TNCN đối với thu nhập từ chuyển nhượng bất động sản giữa vợ với chồng; cha đẻ, mẹ đẻ với con đẻ; cha nuôi, mẹ nuôi với con nuôi; cha chồng, mẹ chồng với con dâu; cha vợ, mẹ vợ với con rể; ông nội, bà nội với cháu nội; ông ngoại, bà ngoại với cháu ngoại; anh, chị, em ruột với nhau."
+    "ground_truth_conclusion": "Được miễn thuế TNCN đối với thu nhập từ chuyển nhượng bất động sản giữa cha đẻ và con đẻ khi chứng minh được quan hệ. Không suy rộng miễn thuế cho tất cả người cùng gia đình.",
+    "jurisdiction": "VN",
+    "research_as_of": "2026-11-11",
+    "review_status": "pending_tax_expert_review",
+    "expected_behavior": "answer_with_citations",
+    "clarification_questions": []
   },
   {
     "id": "SEED-PIT-04",
     "tax_category": "PIT",
     "question": "Cá nhân không ký hợp đồng lao động hoặc ký hợp đồng dưới 3 tháng có thu nhập từ 2 triệu đồng/lần trở lên thì công ty phải khấu trừ thuế TNCN theo tỷ lệ bao nhiêu?",
-    "taxpayer_type": "Cá nhân lao động thời vụ / vãng lai",
+    "taxpayer_type": "Cá nhân cư trú lao động thời vụ / vãng lai",
     "tax_period": "2024",
-    "material_facts": "Chi trả tiền công, thù lao cho cá nhân không có hợp đồng lao động dài hạn, mức chi từ 2.000.000 VNĐ/lần trở lên.",
+    "material_facts": "Năm 2024, trả tiền công từ 2 triệu đồng/lần cho cá nhân cư trú không ký hợp đồng hoặc hợp đồng dưới 3 tháng; không có cam kết đủ điều kiện tạm chưa khấu trừ.",
     "is_clarification_needed": false,
     "applicable_authority": [
       {
-        "document_number": "Luật 109/2025/QH15",
-        "document_type": "Luật",
+        "document_number": "Thông tư 111/2013/TT-BTC",
+        "document_type": "Thông tư",
         "article": "Điều 25",
         "clause": "Khoản 1",
         "point": "Điểm i",
-        "title": "Khấu trừ thuế đối với thu nhập vãng lai"
+        "title": "Khấu trừ tiền công của cá nhân cư trú",
+        "source_url": "https://vanban.chinhphu.vn/?docid=169566&pageid=27160",
+        "version_note": "Đọc theo phiên bản áp dụng kỳ 2024; không suy ra quy định hiện hành từ bản gốc.",
+        "last_checked_at": "2026-11-11",
+        "source_kind": "official_document_record",
+        "pinpoint_validation_status": "pending_tax_expert_review"
       }
     ],
-    "ground_truth_conclusion": "Tổ chức, cá nhân trả tiền lương, tiền công phải thực hiện khấu trừ thuế theo tỷ lệ 10% trên tổng thu nhập chi trả trước khi trả cho cá nhân (trừ trường hợp cá nhân đủ điều kiện làm Bản cam kết theo mẫu số 08/CK-TNCN)."
+    "ground_truth_conclusion": "Khấu trừ 10% trên tổng thu nhập trước khi chi trả cho cá nhân cư trú trong tình huống đã nêu. Ngoại lệ tạm chưa khấu trừ chỉ áp dụng khi đáp ứng đủ điều kiện cam kết, không phải chỉ cần nộp một mẫu cam kết.",
+    "jurisdiction": "VN",
+    "research_as_of": "2026-11-11",
+    "review_status": "pending_tax_expert_review",
+    "expected_behavior": "answer_with_citations",
+    "clarification_questions": []
   },
   {
     "id": "SEED-EINVOICE-01",
@@ -294,10 +564,20 @@
         "article": "Điều 19",
         "clause": "Khoản 2",
         "point": "Điểm a",
-        "title": "Xử lý hóa đơn có sai sót"
+        "title": "Xử lý sai tên hoặc địa chỉ người mua",
+        "source_url": "https://chinhphu.vn/default.aspx?docid=201365&pageid=27160",
+        "version_note": "Đọc theo phiên bản áp dụng kỳ 2024; không suy ra quy định hiện hành từ bản gốc.",
+        "last_checked_at": "2026-11-11",
+        "source_kind": "official_document_record",
+        "pinpoint_validation_status": "pending_tax_expert_review"
       }
     ],
-    "ground_truth_conclusion": "Người bán thông báo cho người mua về việc hóa đơn có sai sót và không phải lập lại hóa đơn. Người bán thực hiện thông báo với cơ quan thuế theo Mẫu số 04/SS-HĐĐT (trừ trường hợp hóa đơn điện tử không có mã của cơ quan thuế chưa gửi dữ liệu)."
+    "ground_truth_conclusion": "Người bán thông báo cho người mua về việc hóa đơn có sai sót và không phải lập lại hóa đơn. Người bán thực hiện thông báo với cơ quan thuế theo Mẫu số 04/SS-HĐĐT (trừ trường hợp hóa đơn điện tử không có mã của cơ quan thuế chưa gửi dữ liệu).",
+    "jurisdiction": "VN",
+    "research_as_of": "2026-11-11",
+    "review_status": "pending_tax_expert_review",
+    "expected_behavior": "answer_with_citations",
+    "clarification_questions": []
   },
   {
     "id": "SEED-AMBIGUOUS-01",
@@ -307,16 +587,438 @@
     "tax_period": "Chưa rõ",
     "material_facts": "Câu hỏi thiếu toàn bộ sự kiện trọng yếu: Dự án đầu tư hay xuất khẩu? Số thuế lũy kế âm là bao nhiêu? Phương pháp kê khai gì?",
     "is_clarification_needed": true,
+    "applicable_authority": [],
+    "ground_truth_conclusion": "Chưa kết luận được hoàn thuế. Hỏi kỳ tính thuế, ngày giao dịch, trường hợp đề nghị hoàn, phương pháp tính thuế, số thuế chưa khấu trừ và hồ sơ liên quan. Chỉ chọn căn cứ sau khi xác định kỳ áp dụng; không mặc định luật mới hoặc ngưỡng hoàn thuế.",
+    "jurisdiction": "VN",
+    "research_as_of": "2026-11-11",
+    "review_status": "pending_tax_expert_review",
+    "expected_behavior": "clarify",
+    "clarification_questions": [
+      "Kỳ thuế và ngày giao dịch nào?",
+      "Đề nghị hoàn theo trường hợp nào?",
+      "Phương pháp tính thuế, số thuế chưa khấu trừ và hồ sơ liên quan là gì?"
+    ]
+  },
+  {
+    "id": "SEED-VAT-06",
+    "tax_category": "VAT",
+    "question": "Năm 2024, hóa đơn mua hàng 19 triệu đồng trả tiền mặt có bị loại khấu trừ chỉ vì trả tiền mặt không?",
+    "taxpayer_type": "Doanh nghiệp",
+    "tax_period": "2024",
+    "material_facts": "Doanh nghiệp khấu trừ, hóa đơn hợp pháp 19 triệu đã gồm thuế; chỉ một lần mua của nhà cung cấp trong ngày; phục vụ hoạt động chịu thuế; đủ các điều kiện khác.",
+    "is_clarification_needed": false,
     "applicable_authority": [
       {
-        "document_number": "Luật 48/2024/QH15",
-        "document_type": "Luật",
+        "document_number": "Thông tư 219/2013/TT-BTC",
+        "document_type": "Thông tư",
         "article": "Điều 15",
-        "clause": "",
+        "clause": "Khoản 2",
         "point": "",
-        "title": "Các trường hợp hoàn thuế"
+        "title": "Điều kiện thanh toán để khấu trừ thuế",
+        "source_url": "https://vanban.chinhphu.vn/?docid=172570&pageid=27160",
+        "version_note": "Đọc theo phiên bản áp dụng kỳ 2024; không suy ra quy định hiện hành từ bản gốc.",
+        "last_checked_at": "2026-11-11",
+        "source_kind": "official_document_record",
+        "pinpoint_validation_status": "pending_tax_expert_review"
+      },
+      {
+        "document_number": "Thông tư 26/2015/TT-BTC",
+        "document_type": "Thông tư",
+        "article": "Điều 1",
+        "clause": "Khoản 10",
+        "point": "",
+        "title": "Sửa đổi Điều 15 Thông tư 219/2013/TT-BTC",
+        "source_url": "https://vanban.chinhphu.vn/?docid=179270&pageid=27160",
+        "version_note": "Đọc theo phiên bản áp dụng kỳ 2024; không suy ra quy định hiện hành từ bản gốc.",
+        "last_checked_at": "2026-11-11",
+        "source_kind": "official_document_record",
+        "pinpoint_validation_status": "pending_tax_expert_review"
       }
     ],
-    "ground_truth_conclusion": "Yêu cầu người dùng làm rõ (Abstention): Để xác định doanh nghiệp có đủ điều kiện hoàn thuế GTGT hay không, vui lòng cung cấp thêm: (1) Thuộc trường hợp Dự án đầu tư mới hay Hàng hóa xuất khẩu? (2) Số thuế GTGT đầu vào chưa được khấu trừ hết lũy kế là bao nhiêu (đã vượt ngưỡng 300 triệu đồng chưa)? (3) Doanh nghiệp áp dụng phương pháp khấu trừ hay trực tiếp?"
+    "ground_truth_conclusion": "Không bị loại chỉ vì thanh toán tiền mặt, do hóa đơn dưới 20 triệu đồng và không có cộng gộp mua cùng nhà cung cấp trong ngày. Vẫn phải đáp ứng các điều kiện khấu trừ khác.",
+    "clarification_questions": [],
+    "jurisdiction": "VN",
+    "research_as_of": "2026-11-11",
+    "review_status": "pending_tax_expert_review",
+    "expected_behavior": "answer_with_citations"
+  },
+  {
+    "id": "SEED-VAT-07",
+    "tax_category": "VAT",
+    "question": "Năm 2024, mua hai lần cùng một nhà cung cấp trong ngày, hóa đơn 12 và 10 triệu đồng đều trả tiền mặt, có được khấu trừ GTGT không?",
+    "taxpayer_type": "Doanh nghiệp",
+    "tax_period": "2024",
+    "material_facts": "Hai hóa đơn hợp pháp cùng một nhà cung cấp có cùng mã số thuế, cùng ngày; tổng 22 triệu đồng gồm thuế, đều trả tiền mặt; không thuộc ngoại lệ.",
+    "is_clarification_needed": false,
+    "applicable_authority": [
+      {
+        "document_number": "Thông tư 219/2013/TT-BTC",
+        "document_type": "Thông tư",
+        "article": "Điều 15",
+        "clause": "Khoản 5",
+        "point": "",
+        "title": "Cộng gộp mua nhiều lần cùng ngày",
+        "source_url": "https://vanban.chinhphu.vn/?docid=172570&pageid=27160",
+        "version_note": "Đọc theo phiên bản áp dụng kỳ 2024; không suy ra quy định hiện hành từ bản gốc.",
+        "last_checked_at": "2026-11-11",
+        "source_kind": "official_document_record",
+        "pinpoint_validation_status": "pending_tax_expert_review"
+      },
+      {
+        "document_number": "Thông tư 26/2015/TT-BTC",
+        "document_type": "Thông tư",
+        "article": "Điều 1",
+        "clause": "Khoản 10",
+        "point": "",
+        "title": "Sửa đổi Điều 15",
+        "source_url": "https://vanban.chinhphu.vn/?docid=179270&pageid=27160",
+        "version_note": "Đọc theo phiên bản áp dụng kỳ 2024; không suy ra quy định hiện hành từ bản gốc.",
+        "last_checked_at": "2026-11-11",
+        "source_kind": "official_document_record",
+        "pinpoint_validation_status": "pending_tax_expert_review"
+      }
+    ],
+    "ground_truth_conclusion": "Không đủ điều kiện thanh toán để khấu trừ: tổng mua cùng nhà cung cấp trong ngày đạt 22 triệu đồng. Không xét riêng từng hóa đơn dưới 20 triệu để bỏ qua điều kiện thanh toán.",
+    "clarification_questions": [],
+    "jurisdiction": "VN",
+    "research_as_of": "2026-11-11",
+    "review_status": "pending_tax_expert_review",
+    "expected_behavior": "answer_with_citations"
+  },
+  {
+    "id": "SEED-CIT-06",
+    "tax_category": "CIT",
+    "question": "Năm 2024, chi phí mua hàng 25 triệu đồng có hóa đơn hợp pháp nhưng trả tiền mặt có được trừ khi tính TNDN không?",
+    "taxpayer_type": "Doanh nghiệp",
+    "tax_period": "2024",
+    "material_facts": "Khoản chi phục vụ kinh doanh, hóa đơn 25 triệu gồm thuế; đã thanh toán hoàn toàn bằng tiền mặt, không thuộc trường hợp đặc biệt.",
+    "is_clarification_needed": false,
+    "applicable_authority": [
+      {
+        "document_number": "Thông tư 78/2014/TT-BTC",
+        "document_type": "Thông tư",
+        "article": "Điều 6",
+        "clause": "Khoản 1",
+        "point": "Điểm c",
+        "title": "Điều kiện thanh toán của chi phí được trừ",
+        "source_url": "https://vbpl.moj.gov.vn/vinhlong/Pages/vbpq-toanvan.aspx?ItemID=46368&Keyword=",
+        "version_note": "Điều 6 được thay thế bởi Điều 4 Thông tư 96/2015/TT-BTC; đọc nội dung sửa đổi áp dụng năm 2024.",
+        "last_checked_at": "2026-11-11",
+        "source_kind": "official_document_record",
+        "pinpoint_validation_status": "pending_tax_expert_review"
+      },
+      {
+        "document_number": "Thông tư 96/2015/TT-BTC",
+        "document_type": "Thông tư",
+        "article": "Điều 4",
+        "clause": "",
+        "point": "",
+        "title": "Sửa đổi Điều 6 Thông tư 78/2014/TT-BTC",
+        "source_url": "https://vanban.chinhphu.vn/?docid=180650&pageid=27160",
+        "version_note": "Đọc theo phiên bản áp dụng kỳ 2024; không suy ra quy định hiện hành từ bản gốc.",
+        "last_checked_at": "2026-11-11",
+        "source_kind": "official_document_record",
+        "pinpoint_validation_status": "pending_tax_expert_review"
+      }
+    ],
+    "ground_truth_conclusion": "Không đáp ứng điều kiện chi phí được trừ do hóa đơn từ 20 triệu đồng trở lên mà không có chứng từ thanh toán không dùng tiền mặt. Có hóa đơn hợp pháp chưa đủ.",
+    "clarification_questions": [],
+    "jurisdiction": "VN",
+    "research_as_of": "2026-11-11",
+    "review_status": "pending_tax_expert_review",
+    "expected_behavior": "answer_with_citations"
+  },
+  {
+    "id": "SEED-CIT-07",
+    "tax_category": "CIT",
+    "question": "Năm 2024, cấp trang phục bằng hiện vật trị giá 7 triệu đồng/người có tự động bị loại phần vượt 5 triệu không?",
+    "taxpayer_type": "Doanh nghiệp",
+    "tax_period": "2024",
+    "material_facts": "Chỉ cấp trang phục bằng hiện vật cho người lao động, có đầy đủ hóa đơn chứng từ, phục vụ kinh doanh và đáp ứng điều kiện thanh toán; không chi tiền trang phục.",
+    "is_clarification_needed": false,
+    "applicable_authority": [
+      {
+        "document_number": "Thông tư 78/2014/TT-BTC",
+        "document_type": "Thông tư",
+        "article": "Điều 6",
+        "clause": "Khoản 2",
+        "point": "Điểm 2.7",
+        "title": "Chi trang phục bằng hiện vật",
+        "source_url": "https://vbpl.moj.gov.vn/vinhlong/Pages/vbpq-toanvan.aspx?ItemID=46368&Keyword=",
+        "version_note": "Điều 6 được thay thế bởi Điều 4 Thông tư 96/2015/TT-BTC; đọc nội dung sửa đổi áp dụng năm 2024.",
+        "last_checked_at": "2026-11-11",
+        "source_kind": "official_document_record",
+        "pinpoint_validation_status": "pending_tax_expert_review"
+      },
+      {
+        "document_number": "Thông tư 96/2015/TT-BTC",
+        "document_type": "Thông tư",
+        "article": "Điều 4",
+        "clause": "",
+        "point": "",
+        "title": "Sửa đổi Điều 6 Thông tư 78/2014/TT-BTC",
+        "source_url": "https://vanban.chinhphu.vn/?docid=180650&pageid=27160",
+        "version_note": "Đọc theo phiên bản áp dụng kỳ 2024; không suy ra quy định hiện hành từ bản gốc.",
+        "last_checked_at": "2026-11-11",
+        "source_kind": "official_document_record",
+        "pinpoint_validation_status": "pending_tax_expert_review"
+      }
+    ],
+    "ground_truth_conclusion": "Không áp trần 5 triệu đồng/người/năm của khoản chi bằng tiền cho trang phục bằng hiện vật. Khoản cấp hiện vật được xét theo hóa đơn chứng từ và các điều kiện chi phí được trừ.",
+    "clarification_questions": [],
+    "jurisdiction": "VN",
+    "research_as_of": "2026-11-11",
+    "review_status": "pending_tax_expert_review",
+    "expected_behavior": "answer_with_citations"
+  },
+  {
+    "id": "SEED-PIT-05",
+    "tax_category": "PIT",
+    "question": "Người có mặt tại Việt Nam 200 ngày trong năm dương lịch 2024 có đáp ứng tiêu chí ngày để là cá nhân cư trú không?",
+    "taxpayer_type": "Cá nhân",
+    "tax_period": "2024",
+    "material_facts": "Có hồ sơ xuất nhập cảnh xác định 200 ngày có mặt tại Việt Nam năm 2024; chỉ xét tiêu chí nội luật, không yêu cầu phân tích hiệp định thuế.",
+    "is_clarification_needed": false,
+    "applicable_authority": [
+      {
+        "document_number": "Thông tư 111/2013/TT-BTC",
+        "document_type": "Thông tư",
+        "article": "Điều 1",
+        "clause": "Khoản 1",
+        "point": "Điểm a",
+        "title": "Tiêu chí ngày hiện diện",
+        "source_url": "https://vanban.chinhphu.vn/?docid=169566&pageid=27160",
+        "version_note": "Đọc theo phiên bản áp dụng kỳ 2024; không suy ra quy định hiện hành từ bản gốc.",
+        "last_checked_at": "2026-11-11",
+        "source_kind": "official_document_record",
+        "pinpoint_validation_status": "pending_tax_expert_review"
+      }
+    ],
+    "ground_truth_conclusion": "Có, đạt tiêu chí từ 183 ngày trong năm dương lịch theo nội luật. Không cần chờ đủ 12 tháng liên tục khi đã đạt tiêu chí năm dương lịch.",
+    "clarification_questions": [],
+    "jurisdiction": "VN",
+    "research_as_of": "2026-11-11",
+    "review_status": "pending_tax_expert_review",
+    "expected_behavior": "answer_with_citations"
+  },
+  {
+    "id": "SEED-PIT-06",
+    "tax_category": "PIT",
+    "question": "Năm 2024, cá nhân không cư trú nhận tiền lương cho công việc thực hiện hoàn toàn tại Việt Nam áp dụng thuế suất TNCN nào?",
+    "taxpayer_type": "Cá nhân",
+    "tax_period": "2024",
+    "material_facts": "Đã xác định là cá nhân không cư trú; tiền lương chịu thuế phát sinh từ công việc tại Việt Nam; không đề nghị áp dụng hiệp định thuế.",
+    "is_clarification_needed": false,
+    "applicable_authority": [
+      {
+        "document_number": "Thông tư 111/2013/TT-BTC",
+        "document_type": "Thông tư",
+        "article": "Điều 18",
+        "clause": "Khoản 1",
+        "point": "",
+        "title": "Tiền lương của cá nhân không cư trú",
+        "source_url": "https://vanban.chinhphu.vn/?docid=169566&pageid=27160",
+        "version_note": "Đọc theo phiên bản áp dụng kỳ 2024; không suy ra quy định hiện hành từ bản gốc.",
+        "last_checked_at": "2026-11-11",
+        "source_kind": "official_document_record",
+        "pinpoint_validation_status": "pending_tax_expert_review"
+      }
+    ],
+    "ground_truth_conclusion": "Áp dụng thuế suất 20% trên thu nhập chịu thuế từ tiền lương, tiền công trong tình huống này; không dùng biểu lũy tiến của cá nhân cư trú.",
+    "clarification_questions": [],
+    "jurisdiction": "VN",
+    "research_as_of": "2026-11-11",
+    "review_status": "pending_tax_expert_review",
+    "expected_behavior": "answer_with_citations"
+  },
+  {
+    "id": "SEED-PIT-07",
+    "tax_category": "PIT",
+    "question": "Năm 2024, cá nhân nhận lãi tiền gửi tiết kiệm tại ngân hàng được phép hoạt động tại Việt Nam có được miễn thuế TNCN không?",
+    "taxpayer_type": "Cá nhân",
+    "tax_period": "2024",
+    "material_facts": "Lãi tiền gửi tiết kiệm cá nhân tại tổ chức tín dụng hợp pháp, không phải lãi cho doanh nghiệp hoặc cá nhân khác vay.",
+    "is_clarification_needed": false,
+    "applicable_authority": [
+      {
+        "document_number": "Thông tư 111/2013/TT-BTC",
+        "document_type": "Thông tư",
+        "article": "Điều 3",
+        "clause": "Khoản 1",
+        "point": "Điểm g.1",
+        "title": "Miễn thuế lãi tiền gửi",
+        "source_url": "https://vanban.chinhphu.vn/?docid=169566&pageid=27160",
+        "version_note": "Đọc theo phiên bản áp dụng kỳ 2024; không suy ra quy định hiện hành từ bản gốc.",
+        "last_checked_at": "2026-11-11",
+        "source_kind": "official_document_record",
+        "pinpoint_validation_status": "pending_tax_expert_review"
+      }
+    ],
+    "ground_truth_conclusion": "Thu nhập lãi tiền gửi tiết kiệm nêu trên được miễn thuế TNCN. Không mở rộng kết luận cho lãi cho doanh nghiệp hoặc cá nhân khác vay.",
+    "clarification_questions": [],
+    "jurisdiction": "VN",
+    "research_as_of": "2026-11-11",
+    "review_status": "pending_tax_expert_review",
+    "expected_behavior": "answer_with_citations"
+  },
+  {
+    "id": "SEED-EINVOICE-02",
+    "tax_category": "EINVOICE",
+    "question": "Tháng 11/2024, đã chuyển quyền sở hữu hàng hóa cho khách nhưng chưa thu tiền thì có phải lập hóa đơn không?",
+    "taxpayer_type": "Doanh nghiệp",
+    "tax_period": "2024",
+    "material_facts": "Bán hàng hóa thông thường trong nước, đã chuyển quyền sở hữu ngày 10/11/2024; chưa thu tiền; không thuộc trường hợp đặc thù.",
+    "is_clarification_needed": false,
+    "applicable_authority": [
+      {
+        "document_number": "Nghị định 123/2020/NĐ-CP",
+        "document_type": "Nghị định",
+        "article": "Điều 9",
+        "clause": "Khoản 1",
+        "point": "",
+        "title": "Thời điểm lập hóa đơn bán hàng hóa",
+        "source_url": "https://chinhphu.vn/default.aspx?docid=201365&pageid=27160",
+        "version_note": "Đọc theo phiên bản áp dụng kỳ 2024; không suy ra quy định hiện hành từ bản gốc.",
+        "last_checked_at": "2026-11-11",
+        "source_kind": "official_document_record",
+        "pinpoint_validation_status": "pending_tax_expert_review"
+      }
+    ],
+    "ground_truth_conclusion": "Phải lập hóa đơn tại thời điểm chuyển giao quyền sở hữu hoặc quyền sử dụng hàng hóa, không chờ thu tiền.",
+    "clarification_questions": [],
+    "jurisdiction": "VN",
+    "research_as_of": "2026-11-11",
+    "review_status": "pending_tax_expert_review",
+    "expected_behavior": "answer_with_citations"
+  },
+  {
+    "id": "SEED-EINVOICE-03",
+    "tax_category": "EINVOICE",
+    "question": "Dịch vụ thông thường hoàn thành tháng 11/2024, chưa thu tiền và trước đó không nhận tiền, có phải lập hóa đơn khi hoàn thành không?",
+    "taxpayer_type": "Doanh nghiệp",
+    "tax_period": "2024",
+    "material_facts": "Dịch vụ hoàn thành ngày 15/11/2024; không thu trước hoặc trong quá trình cung cấp; không thuộc trường hợp riêng tại khoản 4 Điều 9.",
+    "is_clarification_needed": false,
+    "applicable_authority": [
+      {
+        "document_number": "Nghị định 123/2020/NĐ-CP",
+        "document_type": "Nghị định",
+        "article": "Điều 9",
+        "clause": "Khoản 2",
+        "point": "",
+        "title": "Thời điểm lập hóa đơn dịch vụ",
+        "source_url": "https://chinhphu.vn/default.aspx?docid=201365&pageid=27160",
+        "version_note": "Đọc theo phiên bản áp dụng kỳ 2024; không suy ra quy định hiện hành từ bản gốc.",
+        "last_checked_at": "2026-11-11",
+        "source_kind": "official_document_record",
+        "pinpoint_validation_status": "pending_tax_expert_review"
+      }
+    ],
+    "ground_truth_conclusion": "Phải lập hóa đơn khi hoàn thành cung cấp dịch vụ, không phân biệt đã thu tiền hay chưa trong tình huống đã nêu.",
+    "clarification_questions": [],
+    "jurisdiction": "VN",
+    "research_as_of": "2026-11-11",
+    "review_status": "pending_tax_expert_review",
+    "expected_behavior": "answer_with_citations"
+  },
+  {
+    "id": "SEED-AMBIGUOUS-02",
+    "tax_category": "VAT",
+    "question": "Mặt hàng của tôi đang chịu thuế GTGT 8% hay 10%?",
+    "taxpayer_type": "Doanh nghiệp",
+    "tax_period": "Chưa rõ",
+    "material_facts": "Chưa có loại hàng hóa, mã ngành, ngày giao dịch và phương pháp tính thuế.",
+    "is_clarification_needed": true,
+    "applicable_authority": [],
+    "ground_truth_conclusion": "Chưa đủ dữ kiện để kết luận. Hỏi rõ các thông tin còn thiếu trước khi chọn phiên bản văn bản và đưa ra kết luận pháp lý; không tự giả định dữ kiện trọng yếu.",
+    "clarification_questions": [
+      "Hàng hóa hoặc dịch vụ cụ thể là gì?",
+      "Ngày giao dịch và kỳ thuế nào?",
+      "Doanh nghiệp tính thuế theo phương pháp nào?"
+    ],
+    "jurisdiction": "VN",
+    "research_as_of": "2026-11-11",
+    "review_status": "pending_tax_expert_review",
+    "expected_behavior": "clarify"
+  },
+  {
+    "id": "SEED-AMBIGUOUS-03",
+    "tax_category": "VAT",
+    "question": "Bán dịch vụ cho khách nước ngoài có được thuế GTGT 0% không?",
+    "taxpayer_type": "Doanh nghiệp",
+    "tax_period": "Chưa rõ",
+    "material_facts": "Chưa rõ nơi tiêu dùng dịch vụ, thời điểm, hợp đồng và chứng từ thanh toán.",
+    "is_clarification_needed": true,
+    "applicable_authority": [],
+    "ground_truth_conclusion": "Chưa đủ dữ kiện để kết luận. Hỏi rõ các thông tin còn thiếu trước khi chọn phiên bản văn bản và đưa ra kết luận pháp lý; không tự giả định dữ kiện trọng yếu.",
+    "clarification_questions": [
+      "Dịch vụ được thực hiện và tiêu dùng ở đâu?",
+      "Giao dịch phát sinh khi nào?",
+      "Có hợp đồng và chứng từ thanh toán nào?"
+    ],
+    "jurisdiction": "VN",
+    "research_as_of": "2026-11-11",
+    "review_status": "pending_tax_expert_review",
+    "expected_behavior": "clarify"
+  },
+  {
+    "id": "SEED-AMBIGUOUS-04",
+    "tax_category": "CIT",
+    "question": "Chi phí này có được trừ khi tính thuế TNDN không?",
+    "taxpayer_type": "Doanh nghiệp",
+    "tax_period": "Chưa rõ",
+    "material_facts": "Không mô tả khoản chi, kỳ thuế, mục đích kinh doanh, hóa đơn hoặc cách thanh toán.",
+    "is_clarification_needed": true,
+    "applicable_authority": [],
+    "ground_truth_conclusion": "Chưa đủ dữ kiện để kết luận. Hỏi rõ các thông tin còn thiếu trước khi chọn phiên bản văn bản và đưa ra kết luận pháp lý; không tự giả định dữ kiện trọng yếu.",
+    "clarification_questions": [
+      "Khoản chi là gì và thuộc kỳ thuế nào?",
+      "Có liên quan hoạt động kinh doanh không?",
+      "Có hóa đơn, chứng từ và hình thức thanh toán nào?"
+    ],
+    "jurisdiction": "VN",
+    "research_as_of": "2026-11-11",
+    "review_status": "pending_tax_expert_review",
+    "expected_behavior": "clarify"
+  },
+  {
+    "id": "SEED-AMBIGUOUS-05",
+    "tax_category": "PIT",
+    "question": "Tôi làm việc cho công ty nước ngoài thì là cá nhân cư trú hay không cư trú?",
+    "taxpayer_type": "Cá nhân",
+    "tax_period": "Chưa rõ",
+    "material_facts": "Chưa rõ ngày hiện diện, nơi ở thường xuyên, kỳ xét và chứng nhận cư trú nước khác.",
+    "is_clarification_needed": true,
+    "applicable_authority": [],
+    "ground_truth_conclusion": "Chưa đủ dữ kiện để kết luận. Hỏi rõ các thông tin còn thiếu trước khi chọn phiên bản văn bản và đưa ra kết luận pháp lý; không tự giả định dữ kiện trọng yếu.",
+    "clarification_questions": [
+      "Bạn có mặt tại Việt Nam những ngày nào?",
+      "Có nơi ở thường xuyên hoặc hợp đồng thuê nhà tại Việt Nam không?",
+      "Kỳ cần xác định và hồ sơ cư trú nước ngoài là gì?"
+    ],
+    "jurisdiction": "VN",
+    "research_as_of": "2026-11-11",
+    "review_status": "pending_tax_expert_review",
+    "expected_behavior": "clarify"
+  },
+  {
+    "id": "SEED-AMBIGUOUS-06",
+    "tax_category": "EINVOICE",
+    "question": "Hóa đơn điện tử đã gửi khách bị sai thì hủy hay điều chỉnh?",
+    "taxpayer_type": "Doanh nghiệp",
+    "tax_period": "Chưa rõ",
+    "material_facts": "Thiếu ngày lập và phát hiện lỗi, nội dung sai, trạng thái cấp mã và gửi dữ liệu.",
+    "is_clarification_needed": true,
+    "applicable_authority": [],
+    "ground_truth_conclusion": "Chưa đủ dữ kiện để kết luận. Hỏi rõ các thông tin còn thiếu trước khi chọn phiên bản văn bản và đưa ra kết luận pháp lý; không tự giả định dữ kiện trọng yếu.",
+    "clarification_questions": [
+      "Ngày lập hóa đơn và ngày phát hiện lỗi?",
+      "Sai tên, mã số thuế, số tiền hay thuế suất?",
+      "Hóa đơn có mã không và đã gửi dữ liệu cho cơ quan thuế chưa?"
+    ],
+    "jurisdiction": "VN",
+    "research_as_of": "2026-11-11",
+    "review_status": "pending_tax_expert_review",
+    "expected_behavior": "clarify"
   }
 ]
