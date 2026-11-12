@@ -1,39 +1,241 @@
-from sqlalchemy import Column, Integer, String, Text, ForeignKey, DateTime
+
+from sqlalchemy import (
+    Column,
+    Integer,
+    String,
+    Text,
+    ForeignKey,
+    DateTime,
+    UniqueConstraint
+)
 from sqlalchemy.orm import declarative_base, relationship
 from datetime import datetime
 
+
 Base = declarative_base()
 
-# METADATA DAT-01: Thông tin văn bản luật
+
+
+
 class LegalDocument(Base):
-    __tablename__ = 'legal_documents'
 
-    id = Column(Integer, primary_key=True, autoincrement=True)
-    doc_code = Column(String(100), unique=True, nullable=False, index=True)  # VD: 38/2019/QH14
-    title = Column(String(500), nullable=False)                              # VD: Luật Quản lý thuế 2019
-    doc_type = Column(String(50), nullable=False)                            # Luật, Nghị định, Thông tư, Công văn
-    hierarchy_level = Column(Integer, nullable=False, default=4)             # Thứ bậc hiệu lực (1, 2, 3, 4)
-    issuer = Column(String(200))                                             # Quốc hội, Chính phủ, Bộ Tài chính...
+    __tablename__ = "legal_documents"
+
+    id = Column(
+        Integer,
+        primary_key=True,
+        autoincrement=True
+    )
+
+    # Thông tin nhận diện văn bản
+    doc_code = Column(
+        String(100),
+        unique=True,
+        nullable=False,
+        index=True
+    )
+
+    title = Column(
+        String(500),
+        nullable=False
+    )
+
+    doc_type = Column(
+        String(50),
+        nullable=False,
+        index=True
+    )
+
+    hierarchy_level = Column(
+        Integer,
+        nullable=False
+    )
+
+    # Metadata pháp lý
+    issuer = Column(String(200))
+
+    source_url = Column(String(1000))
+
     issue_date = Column(DateTime)
-    created_at = Column(DateTime, default=datetime.utcnow)
 
-    chunks = relationship("LegalChunk", back_populates="document", cascade="all, delete-orphan")
+    effective_date = Column(DateTime)
 
+    expiry_date = Column(DateTime, nullable=True)
 
-# ĐOẠN TRÍCH DAT-02: Bóc tách chi tiết từng Điều - Khoản - Điểm
-class LegalChunk(Base):
-    __tablename__ = 'legal_chunks'
+    # Phiên bản văn bản
+    version = Column(
+        String(50),
+        nullable=False,
+        default="1.0"
+    )
 
-    id = Column(Integer, primary_key=True, autoincrement=True)
-    doc_id = Column(Integer, ForeignKey('legal_documents.id'), nullable=False, index=True)
     
-    article_number = Column(Integer, nullable=False)   # Số Điều
-    article_title = Column(String(300))                 # Tiêu đề Điều
-    clause_number = Column(Integer, default=0)          # Số Khoản
-    point_letter = Column(String(5), default='')        # Ký hiệu Điểm (a, b, c...)
+    amends_doc_code = Column(
+        String(100),
+        nullable=True,
+        index=True
+    )
 
-    citation_path = Column(String(255), nullable=False) # VD: "Điểm a, Khoản 2, Điều 16, Luật 38/2019/QH14"
-    content = Column(Text, nullable=False)              # Nội dung trích dẫn
-    hierarchy_level = Column(Integer, nullable=False)   # Trọng số ưu tiên (kế thừa từ văn bản)
+    created_at = Column(
+        DateTime,
+        default=datetime.utcnow
+    )
 
-    document = relationship("LegalDocument", back_populates="chunks")
+    updated_at = Column(
+        DateTime,
+        default=datetime.utcnow,
+        onupdate=datetime.utcnow
+    )
+
+    # Quan hệ với các đoạn trích
+    chunks = relationship(
+        "LegalChunk",
+        back_populates="document",
+        cascade="all, delete-orphan"
+    )
+
+    
+    amendments = relationship(
+        "LegalDocumentAmendment",
+        foreign_keys="LegalDocumentAmendment.original_doc_id",
+        back_populates="original_document",
+        cascade="all, delete-orphan"
+    )
+
+    
+    amended_by = relationship(
+        "LegalDocumentAmendment",
+        foreign_keys="LegalDocumentAmendment.amending_doc_id",
+        back_populates="amending_document"
+    )
+
+
+
+
+class LegalChunk(Base):
+
+    __tablename__ = "legal_chunks"
+
+    id = Column(
+        Integer,
+        primary_key=True,
+        autoincrement=True
+    )
+
+    doc_id = Column(
+        Integer,
+        ForeignKey("legal_documents.id"),
+        nullable=False,
+        index=True
+    )
+
+    # Dùng String để hỗ trợ Điều 1a, 14b...
+    article_number = Column(
+        String(20),
+        nullable=False,
+        index=True
+    )
+
+    article_title = Column(String(300))
+
+    clause_number = Column(
+        Integer,
+        default=0
+    )
+
+    point_letter = Column(
+        String(5),
+        default=""
+    )
+
+    # Đường dẫn trích dẫn pháp lý
+    citation_path = Column(
+        String(500),
+        nullable=False
+    )
+
+    
+    content = Column(
+        Text,
+        nullable=False
+    )
+
+    
+    source_page = Column(
+        Integer,
+        nullable=True
+    )
+
+    hierarchy_level = Column(
+        Integer,
+        nullable=False
+    )
+
+    document = relationship(
+        "LegalDocument",
+        back_populates="chunks"
+    )
+
+
+
+
+class LegalDocumentAmendment(Base):
+
+    __tablename__ = "legal_document_amendments"
+
+    id = Column(
+        Integer,
+        primary_key=True,
+        autoincrement=True
+    )
+
+    original_doc_id = Column(
+        Integer,
+        ForeignKey("legal_documents.id"),
+        nullable=False,
+        index=True
+    )
+
+    amending_doc_id = Column(
+        Integer,
+        ForeignKey("legal_documents.id"),
+        nullable=False,
+        index=True
+    )
+
+    amendment_type = Column(
+        String(50),
+        nullable=True
+    )
+
+    description = Column(
+        Text,
+        nullable=True
+    )
+
+    created_at = Column(
+        DateTime,
+        default=datetime.utcnow
+    )
+
+    
+    original_document = relationship(
+        "LegalDocument",
+        foreign_keys=[original_doc_id],
+        back_populates="amendments"
+    )
+
+    
+    amending_document = relationship(
+        "LegalDocument",
+        foreign_keys=[amending_doc_id],
+        back_populates="amended_by"
+    )
+
+    __table_args__ = (
+        UniqueConstraint(
+            "original_doc_id",
+            "amending_doc_id",
+            name="uq_document_amendment"
+        ),
+    )
