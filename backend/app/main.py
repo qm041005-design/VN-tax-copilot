@@ -47,9 +47,8 @@ app.add_middleware(
     allow_origins=settings.cors_origin_list,
     allow_credentials=False,  # không dùng cookie
     allow_methods=["GET", "POST", "PATCH", "DELETE", "OPTIONS"],
-    # X-User-Id / X-Tenant-Id: header định danh TẠM THỜI (xem core/security.py). Thiếu chúng ở đây thì
-    # trình duyệt chặn preflight khi frontend gửi 2 header này. Khi có đăng nhập thật thì đổi thành "Authorization".
-    allow_headers=["Content-Type", "X-User-Id", "X-Tenant-Id"],
+    # Authorization: Bearer <token> (xem core/security.py). Thiếu ở đây thì trình duyệt chặn preflight.
+    allow_headers=["Content-Type", "Authorization"],
     # Mặc định JS cross-origin KHÔNG đọc được header này; frontend cần nó để phân trang lịch sử tra cứu.
     expose_headers=["X-Total-Count"],
     max_age=600,  # trình duyệt nhớ kết quả preflight 10 phút, đỡ gọi OPTIONS lặp lại

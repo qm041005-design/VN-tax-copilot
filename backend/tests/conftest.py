@@ -14,6 +14,8 @@ import os
 os.environ["DATABASE_URL"] = "sqlite:///./test.db"  # phải đặt TRƯỚC khi import app
 os.environ["APP_ENV"] = "dev"
 os.environ["CORS_ORIGINS"] = "http://localhost:3000"
+# Token khớp tests/helpers.py: token của <user> là "test-token-<user>-local"
+os.environ["AUTH_TOKENS"] = "test-token-alice-local:alice:thtax,test-token-bob-local:bob:other"
 
 import pytest
 from fastapi.testclient import TestClient

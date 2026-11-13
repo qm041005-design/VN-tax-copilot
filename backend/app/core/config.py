@@ -36,6 +36,12 @@ class Settings(BaseSettings):
     # Ví dụ prod:  CORS_ORIGINS=https://copilot.example.com
     cors_origins: str = "http://localhost:3000,http://127.0.0.1:3000"
 
+    # --- Xác thực tối thiểu (môi trường thử nghiệm) ---
+    # Danh sách token cố định, mỗi mục dạng  <token>:<user_id>:<tenant_id>, ngăn cách bằng dấu phẩy.
+    #   AUTH_TOKENS=tok-alice-xxxx:alice:thtax,tok-bob-yyyy:bob:other
+    # Rỗng = không ai gọi được API (an toàn mặc định). Token phải >= 16 ký tự.
+    auth_tokens: str = ""
+
     # env_file: đọc file .env; extra="ignore": bỏ qua biến lạ để không báo lỗi
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 
@@ -43,6 +49,17 @@ class Settings(BaseSettings):
     def cors_origin_list(self) -> list[str]:
         """Chuỗi CORS_ORIGINS -> danh sách origin (bỏ khoảng trắng, bỏ phần tử rỗng)."""
         return [o.strip() for o in self.cors_origins.split(",") if o.strip()]
+
+    @property
+    def auth_token_map(self) -> dict[str, tuple[str, str]]:
+        """AUTH_TOKENS -> {token: (user_id, tenant_id)}. Mục sai định dạng / token ngắn -> lỗi khi khởi động."""
+        result = {}
+        for item in filter(None, (i.strip() for i in self.auth_tokens.split(","))):
+            parts = [p.strip() for p in item.split(":")]
+            if len(parts) != 3 or not all(parts) or len(parts[0]) < 16:
+                raise ValueError(f"AUTH_TOKENS sai định dạng ở mục bắt đầu bằng '{item[:4]}…'")
+            result[parts[0]] = (parts[1], parts[2])
+        return result
 
 
 # Tạo 1 đối tượng dùng chung toàn app (singleton đơn giản)

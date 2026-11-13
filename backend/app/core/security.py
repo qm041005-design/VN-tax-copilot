@@ -1,31 +1,25 @@
 """
-app/core/security.py  –  XÁC ĐỊNH "AI ĐANG GỌI API" (BẢN TẠM, CHƯA CÓ ĐĂNG NHẬP)
-==============================================================================
-Mục đích:
-    Cho mọi endpoint biết người gọi là ai (user_id) và thuộc tổ chức nào (tenant_id).
+app/core/security.py  –  XÁC THỰC TỐI THIỂU CHO MÔI TRƯỜNG THỬ NGHIỆM
+====================================================================
+Client gửi header:   Authorization: Bearer <token>
+Token được cấp sẵn trong biến môi trường AUTH_TOKENS (xem core/config.py), mỗi token gắn với
+1 user_id + 1 tenant_id. Thiếu / sai token -> 401. tenant_id KHÔNG còn do client tự khai.
 
-TÌNH TRẠNG HIỆN TẠI – CHỈ LÀ PLACEHOLDER, CHƯA AN TOÀN ĐỂ TRIỂN KHAI THẬT:
-    Chưa có đăng nhập. Client tự khai 2 header HTTP:
-        X-User-Id:   alice
-        X-Tenant-Id: thtax
-    Nếu không gửi thì mặc định "dev-user" / "thtax" (tiện thử trên Swagger).
+Trên Swagger (/docs): bấm nút "Authorize", dán token (không cần gõ chữ "Bearer").
 
-    => Ai cũng khai được tenant của người khác, và không đăng nhập vẫn dùng được API.
-       Dùng để phát triển và thử trong nhóm; KHÔNG đưa lên môi trường thật khi chưa thay bằng đăng nhập.
-
-VÌ SAO VẪN LÀM TRƯỚC PHẦN CÔ LẬP TENANT:
-    RFP yêu cầu cô lập dữ liệu theo tenant ở MỌI đường truy cập (SEC 01).
-    Toàn bộ service đã lọc theo tenant_id ngay từ bây giờ, nên sau này chỉ cần SỬA HÀM NÀY
-    (đọc người dùng từ token SSO/JWT đã kiểm tra chữ ký thay vì header), các endpoint không phải đổi.
-
-TODO (sprint sau, cần thống nhất với nhóm):
-    - Đăng nhập SSO + MFA (RFP SEC 01), token có chữ ký, thiếu/sai token -> 401.
-    - Phân quyền theo vai trò: researcher / reviewer / admin / auditor.
-    - Bỏ giá trị mặc định "dev-user"/"thtax" và bỏ đọc header tự khai.
+TODO (sprint sau): SSO + MFA (RFP SEC 01), token có chữ ký/hết hạn, phân quyền theo vai trò
+(researcher / reviewer / admin / auditor). Chỉ cần thay hàm get_current_user, endpoint giữ nguyên.
 """
+import secrets
 from dataclasses import dataclass
 
-from fastapi import Header
+from fastapi import Depends, HTTPException, status
+from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
+
+from app.core.config import settings
+
+_bearer = HTTPBearer(auto_error=False, description="Token thử nghiệm cấp trong AUTH_TOKENS")
+_TOKENS = settings.auth_token_map  # đọc 1 lần lúc khởi động; sai định dạng thì app không chạy
 
 
 @dataclass
@@ -35,9 +29,12 @@ class CurrentUser:
     tenant_id: str
 
 
-def get_current_user(
-    x_user_id: str = Header(default="dev-user", description="ID người dùng (tạm thời)"),
-    x_tenant_id: str = Header(default="thtax", description="ID tenant (tạm thời)"),
-) -> CurrentUser:
-    """Dependency FastAPI: đọc 2 header và trả về CurrentUser (chưa kiểm tra danh tính)."""
-    return CurrentUser(user_id=x_user_id, tenant_id=x_tenant_id)
+def get_current_user(cred: HTTPAuthorizationCredentials | None = Depends(_bearer)) -> CurrentUser:
+    """Dependency FastAPI: kiểm tra Bearer token, trả về CurrentUser; sai/thiếu -> 401."""
+    if cred is not None:
+        # compare_digest: so sánh thời gian hằng, tránh đoán token qua thời gian phản hồi
+        for token, (user_id, tenant_id) in _TOKENS.items():
+            if secrets.compare_digest(token.encode(), cred.credentials.encode()):
+                return CurrentUser(user_id=user_id, tenant_id=tenant_id)
+    raise HTTPException(status.HTTP_401_UNAUTHORIZED, "Chưa đăng nhập hoặc token không hợp lệ",
+                        headers={"WWW-Authenticate": "Bearer"})

@@ -8,8 +8,9 @@ Mọi route bắt đầu bằng /api/v1/matters (prefix "/api/v1" gắn ở api/
 
 Hai dependency được tiêm vào hầu hết endpoint:
     db   = Depends(get_db)           -> phiên làm việc DB cho request này
-    user = Depends(get_current_user) -> ai đang gọi (user_id, tenant_id), lấy từ header X-User-Id / X-Tenant-Id
-                                        (bản TẠM, chưa có đăng nhập – xem core/security.py).
+    user = Depends(get_current_user) -> ai đang gọi (user_id, tenant_id), lấy từ header
+                                        Authorization: Bearer <token> (xem core/security.py). Sai/thiếu -> 401.
+Quyền trên hồ sơ: khác tenant -> 404; hồ sơ đã archive chỉ được xem, PATCH / thêm lịch sử -> 409.
 
 Bảng route:
     POST   /matters                 tạo hồ sơ               -> 201
@@ -27,6 +28,7 @@ from sqlalchemy.orm import Session
 
 from app.core.database import get_db
 from app.core.security import CurrentUser, get_current_user
+from app.models import MatterStatus
 from app.schemas.matter import (HistoryCreate, HistoryOut, MatterCreate, MatterList, MatterOut,
                                 MatterUpdate)
 from app.services import matter_service as svc
@@ -40,6 +42,14 @@ def _get_or_404(db: Session, user: CurrentUser, matter_id: uuid.UUID):
     matter = svc.get_matter(db, user, matter_id)
     if matter is None:
         raise HTTPException(status.HTTP_404_NOT_FOUND, "Không tìm thấy hồ sơ vụ việc")
+    return matter
+
+
+def _get_writable_or_error(db: Session, user: CurrentUser, matter_id: uuid.UUID):
+    """Như _get_or_404, thêm quyền GHI: hồ sơ đã archive chỉ được xem, sửa/thêm lịch sử -> 409."""
+    matter = _get_or_404(db, user, matter_id)
+    if matter.status == MatterStatus.ARCHIVED.value:
+        raise HTTPException(status.HTTP_409_CONFLICT, "Hồ sơ đã lưu trữ, chỉ được xem")
     return matter
 
 
@@ -74,7 +84,7 @@ def get_matter(matter_id: uuid.UUID, db: Session = Depends(get_db), user: Curren
 @router.patch("/{matter_id}", response_model=MatterOut, summary="Cập nhật hồ sơ")
 def update_matter(matter_id: uuid.UUID, data: MatterUpdate, db: Session = Depends(get_db),
                   user: CurrentUser = Depends(get_current_user)):
-    return svc.update_matter(db, user, _get_or_404(db, user, matter_id), data)
+    return svc.update_matter(db, user, _get_writable_or_error(db, user, matter_id), data)
 
 
 @router.delete("/{matter_id}", response_model=MatterOut, summary="Lưu trữ (archive) hồ sơ - xóa mềm")
@@ -86,7 +96,7 @@ def archive_matter(matter_id: uuid.UUID, db: Session = Depends(get_db), user: Cu
              summary="Lưu một lượt tra cứu vào hồ sơ")
 def add_history(matter_id: uuid.UUID, data: HistoryCreate, db: Session = Depends(get_db),
                 user: CurrentUser = Depends(get_current_user)):
-    return svc.add_history(db, user, _get_or_404(db, user, matter_id), data)
+    return svc.add_history(db, user, _get_writable_or_error(db, user, matter_id), data)
 
 
 @router.get("/{matter_id}/history", summary="Lịch sử tra cứu của hồ sơ")

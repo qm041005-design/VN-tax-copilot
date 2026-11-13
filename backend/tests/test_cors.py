@@ -13,7 +13,7 @@ def _preflight(client, method: str, origin: str = ORIGIN, path: str = "/api/v1/m
     return client.options(path, headers={
         "Origin": origin,
         "Access-Control-Request-Method": method,
-        "Access-Control-Request-Headers": "x-user-id,x-tenant-id,content-type",
+        "Access-Control-Request-Headers": "authorization,content-type",
     })
 
 
@@ -24,7 +24,7 @@ def test_preflight_from_frontend_is_allowed(client):
         assert r.headers["access-control-allow-origin"] == ORIGIN
         assert method in r.headers["access-control-allow-methods"]
         allowed = r.headers["access-control-allow-headers"].lower()
-        assert "x-user-id" in allowed and "x-tenant-id" in allowed and "content-type" in allowed
+        assert "authorization" in allowed and "content-type" in allowed
 
 
 def test_preflight_works_for_item_routes(client):
