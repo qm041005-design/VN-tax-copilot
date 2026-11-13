@@ -1,0 +1,7 @@
+# Không đưa vào image: môi trường ảo của máy dev, file bí mật, file sinh ra khi chạy/test
+.venv/
+.env
+**/__pycache__/
+.pytest_cache/
+*.db
+tests/
