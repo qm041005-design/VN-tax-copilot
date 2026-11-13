@@ -9,15 +9,15 @@ Tài liệu này quy định cách phối hợp mã nguồn giữa 9 thành viê
 
 | STT | Thành viên (Họ và Tên) | GitHub Username | Vai trò đảm nhiệm | Nhánh làm việc khởi tạo |
 | :-: | :--- | :--- | :--- | :--- |
-| **1** | *(Điền tên bạn)* | `@...` | **Product Owner (PO) / BA** | `feature/01-po-ba-specifications` |
-| **2** | *(Điền tên bạn)* | `@...` | **Scrum Master (SM) / Process** | `feature/02-scrum-process-templates` |
-| **3** | *(Điền tên bạn)* | `@...` | **Tech Lead & DevOps / Cloud** | `feature/03-devops-ci-cd-docker` |
-| **4** | *(Điền tên bạn)* | `@...` | **Data Engineer 1 (Ingestion & OCR)** | `feature/04-data-ocr-ingestion` |
-| **5** | *(Điền tên bạn)* | `@...` | **Data Engineer 2 (Legal Registry)** | `feature/05-data-legal-registry` |
-| **6** | *(Điền tên bạn)* | `@...` | **AI / RAG Engineer 1 (Retrieval & Search)** | `feature/06-ai-retrieval-search` |
-| **7** | *(Điền tên bạn)* | `@...` | **AI / RAG Engineer 2 (Grounding & Safety)** | `feature/07-ai-grounding-citations` |
-| **8** | *(Điền tên bạn)* | `@...` | **Backend Engineer (APIs & Matter)** | `feature/08-backend-matter-services` |
-| **9** | *(Điền tên bạn)* | `@...` | **Frontend Engineer (Workspace UI)** | `feature/09-frontend-workspace-ui` |
+| **1** | **Đặng Minh Quân (Trưởng nhóm)** | `@qm041005-design` | **BA & AI Prompt Engineer (PO)** | `feature/01-po-ba-specifications` |
+| **2** | *(Thành viên chọn)* | `@...` | **Scrum Master & Automation QA** | `feature/02-scrum-process-templates` |
+| **3** | *(Thành viên chọn)* | `@...` | **Tech Lead & DevOps / Cloud** | `feature/03-devops-ci-cd-docker` |
+| **4** | *(Thành viên chọn)* | `@...` | **Data Engineer 1 (Crawl & OCR)** | `feature/04-data-ocr-ingestion` |
+| **5** | *(Thành viên chọn)* | `@...` | **Data Engineer 2 (Parser & DB)** | `feature/05-data-legal-registry` |
+| **6** | *(Thành viên chọn)* | `@...` | **AI Engineer 1 (Hybrid Search)** | `feature/06-ai-retrieval-search` |
+| **7** | *(Thành viên chọn)* | `@...` | **AI Engineer 2 (Safety Guardrails)** | `feature/07-ai-grounding-citations` |
+| **8** | *(Thành viên chọn)* | `@...` | **Backend Developer (FastAPI)** | `feature/08-backend-matter-services` |
+| **9** | *(Thành viên chọn)* | `@...` | **Frontend Developer (Next.js)** | `feature/09-frontend-workspace-ui` |
 
 ---
 
@@ -30,7 +30,7 @@ Dự án áp dụng mô hình phân nhánh chuẩn **Git Flow**:
    │ (Pull Request cuối mỗi Sprint)
   develop (Nhánh tích hợp chung của cả nhóm)
    ▲
-   ├── feature/01-po-ba-specifications
+   ├── feature/01-po-ba-specifications (Đặng Minh Quân)
    ├── feature/02-scrum-process-templates
    ├── feature/03-devops-ci-cd-docker
    ├── feature/04-data-ocr-ingestion
@@ -59,8 +59,8 @@ cd VN-tax-copilot
 # Lấy danh sách nhánh mới nhất từ GitHub
 git fetch origin
 
-# Chuyển sang nhánh của mình (ví dụ thành viên làm Backend):
-git checkout feature/08-backend-matter-services
+# Chuyển sang nhánh của mình (Ví dụ trưởng nhóm):
+git checkout feature/01-po-ba-specifications
 ```
 
 ### Bước 3: Cập nhật code mới nhất từ nhánh `develop` trước khi code
