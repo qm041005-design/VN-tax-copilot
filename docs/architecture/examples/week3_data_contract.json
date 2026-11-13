@@ -1,0 +1,72 @@
+{
+  "fixture_only": true,
+  "contract_status": "proposed",
+  "note": "Dữ liệu giả lập để thảo luận cấu trúc, không phải căn cứ pháp lý; không đưa vào kho luật thật.",
+  "research_request": {
+    "matter_id": "11111111-1111-4111-8111-111111111111",
+    "question": "Cần bổ sung những dữ kiện nào để nghiên cứu tình huống thuế GTGT này?",
+    "tax_type": "VAT",
+    "tax_period": null,
+    "research_as_of": "2026-11-13",
+    "material_facts": "Hồ sơ giả lập, chưa có thời điểm giao dịch.",
+    "limit": 10
+  },
+  "source_detail_shape": {
+    "source_id": "42",
+    "title": "TÀI LIỆU GIẢ LẬP — KHÔNG PHẢI LUẬT",
+    "legal_identifier": "FIXTURE-001",
+    "dieu": "1a",
+    "khoan": null,
+    "diem": null,
+    "url": "https://example.org/fixture-only.pdf",
+    "citation_path": "Điều 1a, FIXTURE-001 (giả lập)",
+    "doc_type": "LUAT",
+    "hierarchy_level": 1,
+    "effective_date": null,
+    "expiry_date": null,
+    "snippet": "Nội dung giả lập dùng kiểm tra ánh xạ.",
+    "content": "Nội dung giả lập dùng kiểm tra ánh xạ. Không có giá trị làm căn cứ pháp lý.",
+    "article_title": "Điều giả lập",
+    "issuer": null,
+    "version": "fixture-v1",
+    "source_page": 1
+  },
+  "mapped_passage_shape": {
+    "passage_id": "42",
+    "text": "Nội dung giả lập dùng kiểm tra ánh xạ. Không có giá trị làm căn cứ pháp lý.",
+    "legal_identifier": "FIXTURE-001",
+    "dieu": "1a",
+    "khoan": null,
+    "diem": null,
+    "url": "https://example.org/fixture-only.pdf",
+    "source_page": 1,
+    "version": "fixture-v1",
+    "doc_type": "LUAT",
+    "hierarchy_level": 1,
+    "effective_date": null,
+    "expiry_date": null
+  },
+  "export_sources_shape": {
+    "42": {
+      "document_number": "FIXTURE-001",
+      "article": "1a",
+      "clause": null,
+      "point": null,
+      "source_url": "https://example.org/fixture-only.pdf",
+      "version_note": "Phiên bản lưu trữ fixture-v1; dữ liệu giả lập, chưa xác minh pháp lý."
+    }
+  },
+  "synthesis_result": {
+    "status": "clarify",
+    "sections": {
+      "issue": [{"text": "Cần làm rõ tình huống trước khi nghiên cứu.", "citation_ids": []}],
+      "facts": [],
+      "authority": [],
+      "analysis": [],
+      "limitations": [{"text": "Chưa có dữ kiện đầy đủ và chưa có nguồn pháp lý được xác minh.", "citation_ids": []}],
+      "next_steps": []
+    },
+    "clarification_questions": ["Giao dịch diễn ra khi nào và thuộc kỳ tính thuế nào?", "Nội dung giao dịch và đối tượng liên quan là gì?"],
+    "warnings": ["Ví dụ cấu trúc; chưa gọi AI hoặc kiểm chứng nghiệp vụ."]
+  }
+}

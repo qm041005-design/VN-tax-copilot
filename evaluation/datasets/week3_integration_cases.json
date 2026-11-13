@@ -1,0 +1,635 @@
+{
+  "suite_id": "week3-integration-v0.1",
+  "purpose": "Development integration scenarios, not the 250-case acceptance benchmark.",
+  "approval_status": "proposed_pending_team_confirmation",
+  "source_dataset": "evaluation/datasets/seed_tax_questions.json",
+  "source_review_status": "pending_tax_expert_review",
+  "legal_conclusions_revalidated": false,
+  "cases": [
+    {
+      "case_id": "W3-001",
+      "seed_case_id": "SEED-VAT-01",
+      "category": "VAT",
+      "scenario": "verified_evidence",
+      "review_status": "pending_tax_expert_review",
+      "request_template": {
+        "matter_id": null,
+        "question": "Doanh nghiệp mua hàng hóa có giá trị trên hóa đơn là 25 triệu đồng (đã bao gồm thuế GTGT), thanh toán bằng tiền mặt thì có được khấu trừ thuế GTGT đầu vào không?",
+        "tax_type": "VAT",
+        "tax_period": "2024",
+        "research_as_of": "2026-11-11",
+        "material_facts": "Hóa đơn mua hàng trị giá 25.000.000 VNĐ, thanh toán bằng tiền mặt, không có chứng từ thanh toán không dùng tiền mặt.",
+        "limit": 10
+      },
+      "candidate_evidence": [
+        {
+          "evidence_id": "W3-001-E01",
+          "document_number": "Thông tư 219/2013/TT-BTC",
+          "article": "Điều 15",
+          "clause": "Khoản 2",
+          "point": "",
+          "source_url": "https://vanban.chinhphu.vn/?docid=172570&pageid=27160",
+          "version_note": "Đọc theo phiên bản áp dụng kỳ 2024; không suy ra quy định hiện hành từ bản gốc.",
+          "source_id": null,
+          "acceptable_passage_ids": [],
+          "source_pages": [],
+          "review_status": "pending_tax_expert_review"
+        },
+        {
+          "evidence_id": "W3-001-E02",
+          "document_number": "Thông tư 26/2015/TT-BTC",
+          "article": "Điều 1",
+          "clause": "Khoản 10",
+          "point": "",
+          "source_url": "https://vanban.chinhphu.vn/?docid=179270&pageid=27160",
+          "version_note": "Đọc theo phiên bản áp dụng kỳ 2024; không suy ra quy định hiện hành từ bản gốc.",
+          "source_id": null,
+          "acceptable_passage_ids": [],
+          "source_pages": [],
+          "review_status": "pending_tax_expert_review"
+        }
+      ],
+      "setup": {
+        "retrieved_passages": "load_bound_full_text_sources_after_review",
+        "evidence_assessment": "sufficient_only_after_review"
+      },
+      "preconditions": [
+        "Create an isolated test matter with an authorized test user; replace request_template.matter_id with its returned UUID.",
+        "Verify candidate references against the original and applicable amendments for the tax period.",
+        "Bind actual source_id/passage IDs and PDF pages; obtain trusted sufficient-evidence assessment."
+      ],
+      "expected": {
+        "synthesis_status": "draft",
+        "clarification_questions_from_seed": [],
+        "assertions": [
+          "Never assign approved review status automatically.",
+          "Preserve the question and matter association when saving history.",
+          "Return all six sections, with nonempty authority and analysis.",
+          "All citation_ids resolve to the authorized full-text evidence supplied for this run.",
+          "Inspect source support and legal applicability separately; valid IDs alone are insufficient.",
+          "Export a draft DOCX with traceable references."
+        ]
+      },
+      "execution": {
+        "status": "not_run",
+        "blockers": [
+          "Synthesis integration and scenario setup are pending.",
+          "Verified evidence and registry ID bindings are pending."
+        ],
+        "actual_result": null,
+        "evidence_artifact": null
+      }
+    },
+    {
+      "case_id": "W3-002",
+      "seed_case_id": "SEED-VAT-02",
+      "category": "VAT",
+      "scenario": "verified_evidence",
+      "review_status": "pending_tax_expert_review",
+      "request_template": {
+        "matter_id": null,
+        "question": "Trong năm 2024, hàng hóa xuất khẩu thông thường có hợp đồng, tờ khai hải quan và chứng từ thanh toán qua ngân hàng có được áp dụng thuế suất GTGT 0% không?",
+        "tax_type": "VAT",
+        "tax_period": "2024",
+        "research_as_of": "2026-11-11",
+        "material_facts": "Hàng hóa xuất khẩu thông thường, tiêu dùng ngoài Việt Nam; đủ hợp đồng, tờ khai hải quan và chứng từ thanh toán qua ngân hàng; không thuộc ngoại lệ tại khoản 3 Điều 9.",
+        "limit": 10
+      },
+      "candidate_evidence": [
+        {
+          "evidence_id": "W3-002-E01",
+          "document_number": "Thông tư 219/2013/TT-BTC",
+          "article": "Điều 9",
+          "clause": "Khoản 1",
+          "point": "Điểm a",
+          "source_url": "https://vanban.chinhphu.vn/?docid=172570&pageid=27160",
+          "version_note": "Đọc theo phiên bản áp dụng kỳ 2024; không suy ra quy định hiện hành từ bản gốc.",
+          "source_id": null,
+          "acceptable_passage_ids": [],
+          "source_pages": [],
+          "review_status": "pending_tax_expert_review"
+        },
+        {
+          "evidence_id": "W3-002-E02",
+          "document_number": "Thông tư 219/2013/TT-BTC",
+          "article": "Điều 9",
+          "clause": "Khoản 2",
+          "point": "Điểm a",
+          "source_url": "https://vanban.chinhphu.vn/?docid=172570&pageid=27160",
+          "version_note": "Đọc theo phiên bản áp dụng kỳ 2024; không suy ra quy định hiện hành từ bản gốc.",
+          "source_id": null,
+          "acceptable_passage_ids": [],
+          "source_pages": [],
+          "review_status": "pending_tax_expert_review"
+        }
+      ],
+      "setup": {
+        "retrieved_passages": "load_bound_full_text_sources_after_review",
+        "evidence_assessment": "sufficient_only_after_review"
+      },
+      "preconditions": [
+        "Create an isolated test matter with an authorized test user; replace request_template.matter_id with its returned UUID.",
+        "Verify candidate references against the original and applicable amendments for the tax period.",
+        "Bind actual source_id/passage IDs and PDF pages; obtain trusted sufficient-evidence assessment."
+      ],
+      "expected": {
+        "synthesis_status": "draft",
+        "clarification_questions_from_seed": [],
+        "assertions": [
+          "Never assign approved review status automatically.",
+          "Preserve the question and matter association when saving history.",
+          "Return all six sections, with nonempty authority and analysis.",
+          "All citation_ids resolve to the authorized full-text evidence supplied for this run.",
+          "Inspect source support and legal applicability separately; valid IDs alone are insufficient.",
+          "Export a draft DOCX with traceable references."
+        ]
+      },
+      "execution": {
+        "status": "not_run",
+        "blockers": [
+          "Synthesis integration and scenario setup are pending.",
+          "Verified evidence and registry ID bindings are pending."
+        ],
+        "actual_result": null,
+        "evidence_artifact": null
+      }
+    },
+    {
+      "case_id": "W3-003",
+      "seed_case_id": "SEED-CIT-01",
+      "category": "CIT",
+      "scenario": "verified_evidence",
+      "review_status": "pending_tax_expert_review",
+      "request_template": {
+        "matter_id": null,
+        "question": "Doanh nghiệp chi tiền trang phục cho người lao động bằng tiền mặt thì được tính vào chi phí được trừ tối đa là bao nhiêu?",
+        "tax_type": "CIT",
+        "tax_period": "2024",
+        "research_as_of": "2026-11-11",
+        "material_facts": "Doanh nghiệp chi trả tiền trang phục trực tiếp bằng tiền mặt cho người lao động, có quy chế tài chính và danh sách ký nhận.",
+        "limit": 10
+      },
+      "candidate_evidence": [
+        {
+          "evidence_id": "W3-003-E01",
+          "document_number": "Thông tư 78/2014/TT-BTC",
+          "article": "Điều 6",
+          "clause": "Khoản 2",
+          "point": "Điểm 2.7",
+          "source_url": "https://vbpl.moj.gov.vn/vinhlong/Pages/vbpq-toanvan.aspx?ItemID=46368&Keyword=",
+          "version_note": "Điều 6 được thay thế bởi Điều 4 Thông tư 96/2015/TT-BTC; đọc nội dung sửa đổi áp dụng năm 2024.",
+          "source_id": null,
+          "acceptable_passage_ids": [],
+          "source_pages": [],
+          "review_status": "pending_tax_expert_review"
+        },
+        {
+          "evidence_id": "W3-003-E02",
+          "document_number": "Thông tư 96/2015/TT-BTC",
+          "article": "Điều 4",
+          "clause": "",
+          "point": "",
+          "source_url": "https://vanban.chinhphu.vn/?docid=180650&pageid=27160",
+          "version_note": "Đọc theo phiên bản áp dụng kỳ 2024; không suy ra quy định hiện hành từ bản gốc.",
+          "source_id": null,
+          "acceptable_passage_ids": [],
+          "source_pages": [],
+          "review_status": "pending_tax_expert_review"
+        }
+      ],
+      "setup": {
+        "retrieved_passages": "load_bound_full_text_sources_after_review",
+        "evidence_assessment": "sufficient_only_after_review"
+      },
+      "preconditions": [
+        "Create an isolated test matter with an authorized test user; replace request_template.matter_id with its returned UUID.",
+        "Verify candidate references against the original and applicable amendments for the tax period.",
+        "Bind actual source_id/passage IDs and PDF pages; obtain trusted sufficient-evidence assessment."
+      ],
+      "expected": {
+        "synthesis_status": "draft",
+        "clarification_questions_from_seed": [],
+        "assertions": [
+          "Never assign approved review status automatically.",
+          "Preserve the question and matter association when saving history.",
+          "Return all six sections, with nonempty authority and analysis.",
+          "All citation_ids resolve to the authorized full-text evidence supplied for this run.",
+          "Inspect source support and legal applicability separately; valid IDs alone are insufficient.",
+          "Export a draft DOCX with traceable references."
+        ]
+      },
+      "execution": {
+        "status": "not_run",
+        "blockers": [
+          "Synthesis integration and scenario setup are pending.",
+          "Verified evidence and registry ID bindings are pending."
+        ],
+        "actual_result": null,
+        "evidence_artifact": null
+      }
+    },
+    {
+      "case_id": "W3-004",
+      "seed_case_id": "SEED-CIT-03",
+      "category": "CIT",
+      "scenario": "verified_evidence",
+      "review_status": "pending_tax_expert_review",
+      "request_template": {
+        "matter_id": null,
+        "question": "Doanh nghiệp bị lỗ trong năm tính thuế thì được phép chuyển lỗ sang các năm sau tối đa trong thời gian bao nhiêu năm?",
+        "tax_type": "CIT",
+        "tax_period": "2024",
+        "research_as_of": "2026-11-11",
+        "material_facts": "Doanh nghiệp quyết toán năm có kết quả kinh doanh bị lỗ theo xác nhận của kiểm toán và tờ khai quyết toán thuế.",
+        "limit": 10
+      },
+      "candidate_evidence": [
+        {
+          "evidence_id": "W3-004-E01",
+          "document_number": "Thông tư 78/2014/TT-BTC",
+          "article": "Điều 9",
+          "clause": "Khoản 2",
+          "point": "",
+          "source_url": "https://vbpl.moj.gov.vn/vinhlong/Pages/vbpq-toanvan.aspx?ItemID=46368&Keyword=",
+          "version_note": "Đọc theo phiên bản áp dụng kỳ 2024; không suy ra quy định hiện hành từ bản gốc.",
+          "source_id": null,
+          "acceptable_passage_ids": [],
+          "source_pages": [],
+          "review_status": "pending_tax_expert_review"
+        }
+      ],
+      "setup": {
+        "retrieved_passages": "load_bound_full_text_sources_after_review",
+        "evidence_assessment": "sufficient_only_after_review"
+      },
+      "preconditions": [
+        "Create an isolated test matter with an authorized test user; replace request_template.matter_id with its returned UUID.",
+        "Verify candidate references against the original and applicable amendments for the tax period.",
+        "Bind actual source_id/passage IDs and PDF pages; obtain trusted sufficient-evidence assessment."
+      ],
+      "expected": {
+        "synthesis_status": "draft",
+        "clarification_questions_from_seed": [],
+        "assertions": [
+          "Never assign approved review status automatically.",
+          "Preserve the question and matter association when saving history.",
+          "Return all six sections, with nonempty authority and analysis.",
+          "All citation_ids resolve to the authorized full-text evidence supplied for this run.",
+          "Inspect source support and legal applicability separately; valid IDs alone are insufficient.",
+          "Export a draft DOCX with traceable references."
+        ]
+      },
+      "execution": {
+        "status": "not_run",
+        "blockers": [
+          "Synthesis integration and scenario setup are pending.",
+          "Verified evidence and registry ID bindings are pending."
+        ],
+        "actual_result": null,
+        "evidence_artifact": null
+      }
+    },
+    {
+      "case_id": "W3-005",
+      "seed_case_id": "SEED-PIT-03",
+      "category": "PIT",
+      "scenario": "verified_evidence",
+      "review_status": "pending_tax_expert_review",
+      "request_template": {
+        "matter_id": null,
+        "question": "Năm 2024, cha đẻ chuyển nhượng bất động sản cho con đẻ, có giấy tờ chứng minh quan hệ, có được miễn thuế TNCN không?",
+        "tax_type": "PIT",
+        "tax_period": "2024",
+        "research_as_of": "2026-11-11",
+        "material_facts": "Chuyển nhượng giữa cha đẻ và con đẻ trong năm 2024; có giấy tờ chứng minh quan hệ hợp lệ.",
+        "limit": 10
+      },
+      "candidate_evidence": [
+        {
+          "evidence_id": "W3-005-E01",
+          "document_number": "Thông tư 111/2013/TT-BTC",
+          "article": "Điều 3",
+          "clause": "Khoản 1",
+          "point": "Điểm a",
+          "source_url": "https://vanban.chinhphu.vn/?docid=169566&pageid=27160",
+          "version_note": "Đọc theo phiên bản áp dụng kỳ 2024; không suy ra quy định hiện hành từ bản gốc.",
+          "source_id": null,
+          "acceptable_passage_ids": [],
+          "source_pages": [],
+          "review_status": "pending_tax_expert_review"
+        }
+      ],
+      "setup": {
+        "retrieved_passages": "load_bound_full_text_sources_after_review",
+        "evidence_assessment": "sufficient_only_after_review"
+      },
+      "preconditions": [
+        "Create an isolated test matter with an authorized test user; replace request_template.matter_id with its returned UUID.",
+        "Verify candidate references against the original and applicable amendments for the tax period.",
+        "Bind actual source_id/passage IDs and PDF pages; obtain trusted sufficient-evidence assessment."
+      ],
+      "expected": {
+        "synthesis_status": "draft",
+        "clarification_questions_from_seed": [],
+        "assertions": [
+          "Never assign approved review status automatically.",
+          "Preserve the question and matter association when saving history.",
+          "Return all six sections, with nonempty authority and analysis.",
+          "All citation_ids resolve to the authorized full-text evidence supplied for this run.",
+          "Inspect source support and legal applicability separately; valid IDs alone are insufficient.",
+          "Export a draft DOCX with traceable references."
+        ]
+      },
+      "execution": {
+        "status": "not_run",
+        "blockers": [
+          "Synthesis integration and scenario setup are pending.",
+          "Verified evidence and registry ID bindings are pending."
+        ],
+        "actual_result": null,
+        "evidence_artifact": null
+      }
+    },
+    {
+      "case_id": "W3-006",
+      "seed_case_id": "SEED-PIT-05",
+      "category": "PIT",
+      "scenario": "verified_evidence",
+      "review_status": "pending_tax_expert_review",
+      "request_template": {
+        "matter_id": null,
+        "question": "Người có mặt tại Việt Nam 200 ngày trong năm dương lịch 2024 có đáp ứng tiêu chí ngày để là cá nhân cư trú không?",
+        "tax_type": "PIT",
+        "tax_period": "2024",
+        "research_as_of": "2026-11-11",
+        "material_facts": "Có hồ sơ xuất nhập cảnh xác định 200 ngày có mặt tại Việt Nam năm 2024; chỉ xét tiêu chí nội luật, không yêu cầu phân tích hiệp định thuế.",
+        "limit": 10
+      },
+      "candidate_evidence": [
+        {
+          "evidence_id": "W3-006-E01",
+          "document_number": "Thông tư 111/2013/TT-BTC",
+          "article": "Điều 1",
+          "clause": "Khoản 1",
+          "point": "Điểm a",
+          "source_url": "https://vanban.chinhphu.vn/?docid=169566&pageid=27160",
+          "version_note": "Đọc theo phiên bản áp dụng kỳ 2024; không suy ra quy định hiện hành từ bản gốc.",
+          "source_id": null,
+          "acceptable_passage_ids": [],
+          "source_pages": [],
+          "review_status": "pending_tax_expert_review"
+        }
+      ],
+      "setup": {
+        "retrieved_passages": "load_bound_full_text_sources_after_review",
+        "evidence_assessment": "sufficient_only_after_review"
+      },
+      "preconditions": [
+        "Create an isolated test matter with an authorized test user; replace request_template.matter_id with its returned UUID.",
+        "Verify candidate references against the original and applicable amendments for the tax period.",
+        "Bind actual source_id/passage IDs and PDF pages; obtain trusted sufficient-evidence assessment."
+      ],
+      "expected": {
+        "synthesis_status": "draft",
+        "clarification_questions_from_seed": [],
+        "assertions": [
+          "Never assign approved review status automatically.",
+          "Preserve the question and matter association when saving history.",
+          "Return all six sections, with nonempty authority and analysis.",
+          "All citation_ids resolve to the authorized full-text evidence supplied for this run.",
+          "Inspect source support and legal applicability separately; valid IDs alone are insufficient.",
+          "Export a draft DOCX with traceable references."
+        ]
+      },
+      "execution": {
+        "status": "not_run",
+        "blockers": [
+          "Synthesis integration and scenario setup are pending.",
+          "Verified evidence and registry ID bindings are pending."
+        ],
+        "actual_result": null,
+        "evidence_artifact": null
+      }
+    },
+    {
+      "case_id": "W3-007",
+      "seed_case_id": "SEED-AMBIGUOUS-02",
+      "category": "VAT",
+      "scenario": "missing_facts",
+      "review_status": "pending_tax_expert_review",
+      "request_template": {
+        "matter_id": null,
+        "question": "Mặt hàng của tôi đang chịu thuế GTGT 8% hay 10%?",
+        "tax_type": "VAT",
+        "tax_period": null,
+        "research_as_of": "2026-11-11",
+        "material_facts": null,
+        "limit": 10
+      },
+      "candidate_evidence": [],
+      "setup": {
+        "retrieved_passages": [],
+        "evidence_assessment": "missing_material_facts"
+      },
+      "preconditions": [
+        "Create an isolated test matter with an authorized test user; replace request_template.matter_id with its returned UUID.",
+        "Ensure the test matter does not supply the missing tax period or residency facts; otherwise this is a different scenario."
+      ],
+      "expected": {
+        "synthesis_status": "clarify",
+        "clarification_questions_from_seed": [
+          "Hàng hóa hoặc dịch vụ cụ thể là gì?",
+          "Ngày giao dịch và kỳ thuế nào?",
+          "Doanh nghiệp tính thuế theo phương pháp nào?"
+        ],
+        "assertions": [
+          "Never assign approved review status automatically.",
+          "Preserve the question and matter association when saving history.",
+          "Ask concrete questions about the missing material facts.",
+          "Do not give a definitive tax conclusion or invent missing facts."
+        ]
+      },
+      "execution": {
+        "status": "not_run",
+        "blockers": [
+          "Synthesis integration and scenario setup are pending."
+        ],
+        "actual_result": null,
+        "evidence_artifact": null
+      }
+    },
+    {
+      "case_id": "W3-008",
+      "seed_case_id": "SEED-AMBIGUOUS-05",
+      "category": "PIT",
+      "scenario": "missing_facts",
+      "review_status": "pending_tax_expert_review",
+      "request_template": {
+        "matter_id": null,
+        "question": "Tôi làm việc cho công ty nước ngoài thì là cá nhân cư trú hay không cư trú?",
+        "tax_type": "PIT",
+        "tax_period": null,
+        "research_as_of": "2026-11-11",
+        "material_facts": null,
+        "limit": 10
+      },
+      "candidate_evidence": [],
+      "setup": {
+        "retrieved_passages": [],
+        "evidence_assessment": "missing_material_facts"
+      },
+      "preconditions": [
+        "Create an isolated test matter with an authorized test user; replace request_template.matter_id with its returned UUID.",
+        "Ensure the test matter does not supply the missing tax period or residency facts; otherwise this is a different scenario."
+      ],
+      "expected": {
+        "synthesis_status": "clarify",
+        "clarification_questions_from_seed": [
+          "Bạn có mặt tại Việt Nam những ngày nào?",
+          "Có nơi ở thường xuyên hoặc hợp đồng thuê nhà tại Việt Nam không?",
+          "Kỳ cần xác định và hồ sơ cư trú nước ngoài là gì?"
+        ],
+        "assertions": [
+          "Never assign approved review status automatically.",
+          "Preserve the question and matter association when saving history.",
+          "Ask concrete questions about the missing material facts.",
+          "Do not give a definitive tax conclusion or invent missing facts."
+        ]
+      },
+      "execution": {
+        "status": "not_run",
+        "blockers": [
+          "Synthesis integration and scenario setup are pending."
+        ],
+        "actual_result": null,
+        "evidence_artifact": null
+      }
+    },
+    {
+      "case_id": "W3-009",
+      "seed_case_id": "SEED-VAT-01",
+      "category": "VAT",
+      "scenario": "empty_retrieval",
+      "review_status": "pending_tax_expert_review",
+      "request_template": {
+        "matter_id": null,
+        "question": "Doanh nghiệp mua hàng hóa có giá trị trên hóa đơn là 25 triệu đồng (đã bao gồm thuế GTGT), thanh toán bằng tiền mặt thì có được khấu trừ thuế GTGT đầu vào không?",
+        "tax_type": "VAT",
+        "tax_period": "2024",
+        "research_as_of": "2026-11-11",
+        "material_facts": "Hóa đơn mua hàng trị giá 25.000.000 VNĐ, thanh toán bằng tiền mặt, không có chứng từ thanh toán không dùng tiền mặt.",
+        "limit": 10
+      },
+      "candidate_evidence": [
+        {
+          "evidence_id": "W3-009-E01",
+          "document_number": "Thông tư 219/2013/TT-BTC",
+          "article": "Điều 15",
+          "clause": "Khoản 2",
+          "point": "",
+          "source_url": "https://vanban.chinhphu.vn/?docid=172570&pageid=27160",
+          "version_note": "Đọc theo phiên bản áp dụng kỳ 2024; không suy ra quy định hiện hành từ bản gốc.",
+          "source_id": null,
+          "acceptable_passage_ids": [],
+          "source_pages": [],
+          "review_status": "pending_tax_expert_review"
+        },
+        {
+          "evidence_id": "W3-009-E02",
+          "document_number": "Thông tư 26/2015/TT-BTC",
+          "article": "Điều 1",
+          "clause": "Khoản 10",
+          "point": "",
+          "source_url": "https://vanban.chinhphu.vn/?docid=179270&pageid=27160",
+          "version_note": "Đọc theo phiên bản áp dụng kỳ 2024; không suy ra quy định hiện hành từ bản gốc.",
+          "source_id": null,
+          "acceptable_passage_ids": [],
+          "source_pages": [],
+          "review_status": "pending_tax_expert_review"
+        }
+      ],
+      "setup": {
+        "retrieved_passages": [],
+        "evidence_assessment": "insufficient"
+      },
+      "preconditions": [
+        "Create an isolated test matter with an authorized test user; replace request_template.matter_id with its returned UUID."
+      ],
+      "expected": {
+        "synthesis_status": "abstain",
+        "clarification_questions_from_seed": [],
+        "assertions": [
+          "Never assign approved review status automatically.",
+          "Preserve the question and matter association when saving history.",
+          "Do not generate a definitive tax answer or invent citations.",
+          "Explain the evidence limitation and a next research step."
+        ]
+      },
+      "execution": {
+        "status": "not_run",
+        "blockers": [
+          "Synthesis integration and scenario setup are pending."
+        ],
+        "actual_result": null,
+        "evidence_artifact": null
+      }
+    },
+    {
+      "case_id": "W3-010",
+      "seed_case_id": "SEED-CIT-03",
+      "category": "CIT",
+      "scenario": "unverified_applicability",
+      "review_status": "pending_tax_expert_review",
+      "request_template": {
+        "matter_id": null,
+        "question": "Doanh nghiệp bị lỗ trong năm tính thuế thì được phép chuyển lỗ sang các năm sau tối đa trong thời gian bao nhiêu năm?",
+        "tax_type": "CIT",
+        "tax_period": "2024",
+        "research_as_of": "2026-11-11",
+        "material_facts": "Doanh nghiệp quyết toán năm có kết quả kinh doanh bị lỗ theo xác nhận của kiểm toán và tờ khai quyết toán thuế.",
+        "limit": 10
+      },
+      "candidate_evidence": [
+        {
+          "evidence_id": "W3-010-E01",
+          "document_number": "Thông tư 78/2014/TT-BTC",
+          "article": "Điều 9",
+          "clause": "Khoản 2",
+          "point": "",
+          "source_url": "https://vbpl.moj.gov.vn/vinhlong/Pages/vbpq-toanvan.aspx?ItemID=46368&Keyword=",
+          "version_note": "Đọc theo phiên bản áp dụng kỳ 2024; không suy ra quy định hiện hành từ bản gốc.",
+          "source_id": null,
+          "acceptable_passage_ids": [],
+          "source_pages": [],
+          "review_status": "pending_tax_expert_review"
+        }
+      ],
+      "setup": {
+        "retrieved_passages": "use_isolated_source_fixture_with_unknown_effective_date_and_unresolved_applicability",
+        "evidence_assessment": "insufficient"
+      },
+      "preconditions": [
+        "Create an isolated test matter with an authorized test user; replace request_template.matter_id with its returned UUID.",
+        "Do not mutate the shared legal registry; isolate the unknown-applicability fixture."
+      ],
+      "expected": {
+        "synthesis_status": "abstain",
+        "clarification_questions_from_seed": [],
+        "assertions": [
+          "Never assign approved review status automatically.",
+          "Preserve the question and matter association when saving history.",
+          "Do not generate a definitive tax answer or invent citations.",
+          "Explain the evidence limitation and a next research step."
+        ]
+      },
+      "execution": {
+        "status": "not_run",
+        "blockers": [
+          "Synthesis integration and scenario setup are pending."
+        ],
+        "actual_result": null,
+        "evidence_artifact": null
+      }
+    }
+  ]
+}
