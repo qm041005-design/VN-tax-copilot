@@ -62,12 +62,14 @@ backend/
 │       ├── matters.py             #   /matters ...
 │       ├── sources.py             #   /sources ...
 │       └── research.py            #   /research
+├── tests/                         # Test tự động (pytest) – xem TESTING.md
 ├── requirements.txt               # Thư viện Python
 ├── Dockerfile, .dockerignore      # Đóng gói container
 ├── .env.example                   # Mẫu cấu hình (copy thành .env)
 ├── README.md                      # Cách chạy
 ├── BACKEND_GUIDE.md               # File này
-└── API_CONTRACT.md                # Hợp đồng dữ liệu với frontend
+├── API_CONTRACT.md                # Hợp đồng dữ liệu với frontend
+└── TESTING.md                     # Hướng dẫn kiểm thử
 ```
 
 ---
@@ -181,7 +183,7 @@ Hiện trạng tìm kiếm: so khớp từ khóa (ILIKE) – đủ để nối l
 - **`/docs` lỗi kết nối DB?** Chưa `docker compose up -d db`; kiểm tra `/health`.
 - **Đổi cột mà DB không đổi?** `create_all` không migrate – xem mục 5.
 - **Frontend báo CORS error?** Thêm địa chỉ frontend vào `CORS_ORIGINS`.
-- **Test ở đâu?** Trên nhánh `feature/08-backend-matter-services`: `backend/tests/` và hướng dẫn `backend/TESTING.md`.
+- **Test ở đâu?** Thư mục `backend/tests/` (37 test, chạy `python -m pytest` trong thư mục `backend`), hướng dẫn chi tiết ở `backend/TESTING.md`.
 
 ## 11. Việc tiếp theo (Sprint 3+)
 

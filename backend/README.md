@@ -7,9 +7,7 @@ Phần Backend của dự án **Vietnam Tax Research Copilot with Citations** ·
 | **README.md** (file này) | Muốn **chạy** backend trên máy trong 5 phút |
 | [`BACKEND_GUIDE.md`](BACKEND_GUIDE.md) | Muốn **hiểu** backend làm gì, từng thư mục/file, cách nối với module của nhóm mình |
 | [`API_CONTRACT.md`](API_CONTRACT.md) | Frontend / AI cần biết **gửi gì – nhận gì** khi gọi API |
-
-> Test tự động và hướng dẫn kiểm thử chỉ nằm trên nhánh `feature/08-backend-matter-services`
-> (`backend/tests/`, `backend/TESTING.md`), không merge vào `develop`.
+| [`TESTING.md`](TESTING.md) | Muốn **kiểm thử** backend (test tự động trong `tests/` + test tay trên Swagger) |
 
 ---
 

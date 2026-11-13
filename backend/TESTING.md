@@ -1,7 +1,7 @@
 # 🧪 TESTING – Hướng dẫn kiểm thử Backend
 
 > **3 điều cần biết trước**
-> 1. File này và thư mục `backend/tests/` **chỉ có trên nhánh `feature/08-backend-matter-services`** (không merge vào `develop`).
+> 1. Test nằm trong thư mục `backend/tests/` (có trên nhánh `feature/08-backend-matter-services`, và trên `develop` sau khi PR backend được merge).
 > 2. Test dùng database **riêng** tên `vntax_test` – test xóa sạch bảng mỗi lần chạy, nên **không bao giờ** trỏ test vào `vntax_copilot`.
 > 3. Luôn gõ `python -m pytest` và `python -m uvicorn` (có `python -m` phía trước).
 
@@ -155,7 +155,7 @@ docker exec vn_tax_db psql -U vntax_admin -d vntax_copilot -c "DELETE FROM legal
 |---|---|
 | `Fatal error in launcher: Unable to create process ...` | `.venv` tạo ở thư mục cũ rồi bị di chuyển → tạo lại: `deactivate`, `Remove-Item -Recurse -Force .venv`, rồi làm lại bước 1a (từ `python -m venv .venv`). Nếu xóa báo *Access is denied*: tắt hết server/test đang chạy (Ctrl+C) rồi xóa lại |
 | `No module named fastapi` / `pytest` | Chưa kích hoạt `.venv` (đầu dòng không có `(.venv)`) → `.venv\Scripts\Activate.ps1` |
-| `file or directory not found: tests/` | (1) Đang đứng ở thư mục gốc `VN-tax-copilot` → `cd backend` rồi chạy lại. (2) Hoặc đang ở nhánh merge (không có test) → `git switch feature/08-backend-matter-services` |
+| `file or directory not found: tests/` | (1) Đang đứng ở thư mục gốc `VN-tax-copilot` → `cd backend` rồi chạy lại. (2) Đang ở nhánh chưa có code backend → `git switch feature/08-backend-matter-services` (hoặc `develop` sau khi đã merge) |
 | Test báo `ERROR` hàng loạt, có dòng `Connection refused ... port 5432` | Container DB tắt hoặc đã bị xóa → `docker compose up -d db` (ở thư mục gốc; dữ liệu vẫn còn trong volume) |
 | Mọi API trả **401** | Chưa bấm **Authorize** trên Swagger, hoặc `.env` thiếu dòng `AUTH_TOKENS` (copy lại từ `.env.example`, chạy lại server) |
 | `connection refused` khi chạy test | Docker / DB chưa bật → `docker compose up -d db` |
@@ -175,19 +175,4 @@ docker exec vn_tax_db psql -U vntax_admin -d vntax_copilot -c "DELETE FROM legal
 
 Không đặt `TEST_DATABASE_URL` → test chạy trên SQLite (file `test.db`, không cần Docker) – dùng khi chỉ muốn kiểm tra nhanh.
 
-## Phụ lục B – Nhánh merge (không chứa test)
-
-| Nhánh | Chứa | Dùng để |
-|---|---|---|
-| `feature/08-backend-matter-services` | Code + `tests/` + `TESTING.md` | Làm việc, test |
-| `feature/SCRUM-24-backend-api` | Code + tài liệu, **không có test** | Mở Pull Request vào `develop` |
-
-Khi code ở feature/08 thay đổi, đồng bộ sang nhánh merge (đứng ở thư mục gốc repo):
-```powershell
-git switch feature/SCRUM-24-backend-api
-git checkout feature/08-backend-matter-services -- backend/app backend/requirements.txt backend/Dockerfile backend/.dockerignore backend/.env.example backend/README.md backend/BACKEND_GUIDE.md backend/API_CONTRACT.md docker-compose.yml .gitignore
-git status
-git commit -m "feat(SCRUM-24): dong bo code backend tu feature/08"
-git switch feature/08-backend-matter-services
-```
-`git status` **không được** có `backend/tests` hay `backend/TESTING.md`. Không mở Pull Request từ feature/08 vào `develop`.
+**Sau khi sửa code backend**, luôn chạy lại `python -m pytest` trước khi commit/push – thấy `failed` là có chỗ hỏng.
