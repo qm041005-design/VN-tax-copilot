@@ -7,7 +7,9 @@ Dùng "v1" để sau này đổi cấu trúc lớn có thể ra v2 mà không ph
 """
 from fastapi import APIRouter
 
-from app.api.v1 import matters
+from app.api.v1 import matters, research, sources
 
 api_router = APIRouter(prefix="/api/v1")
 api_router.include_router(matters.router)
+api_router.include_router(sources.router)
+api_router.include_router(research.router)
