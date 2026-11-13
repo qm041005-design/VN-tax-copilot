@@ -149,7 +149,7 @@ class TestRecallAt10(unittest.TestCase):
         self.assertEqual(report["at03_status"], "NOT_EVALUATED")
         self.assertFalse(report["benchmark_valid"])
 
-    def test_special_tags_only_in_unanswerable(self):
+    def test_special_tags_moved_to_unanswerable(self):
         benchmark, retrieval = make_benchmark()
 
         # Xoa tat ca nhan dac biet

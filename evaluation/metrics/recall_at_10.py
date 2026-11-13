@@ -6,7 +6,6 @@ import sys
 from collections import Counter, defaultdict
 from pathlib import Path
 
-
 def load_json(path):
     with Path(path).open("r", encoding="utf-8-sig") as file:
         return json.load(file)
@@ -464,23 +463,37 @@ def main():
         help="Duong dan benchmark JSON"
     )
 
-    parser.add_argument(
+    group = parser.add_mutually_exclusive_group(required=True)
+
+    group.add_argument(
         "--retrieval",
-        required=True,
         help="Duong dan retrieval results JSON"
     )
 
+    group.add_argument(
+        "--passages",
+        help="Duong dan passages JSON de chay BM25"
+    )
     parser.add_argument(
         "--output",
         default="evaluation/metrics/recall_report.json",
-        help="Duong dan luu bao cao JSON"
+        help="Duong dan file bao cao JSON"
     )
 
     args = parser.parse_args()
 
     try:
         benchmark = load_json(args.benchmark)
-        retrieval_results = load_json(args.retrieval)
+
+        if args.passages:
+            from evaluation.metrics.bm25_adapter import run_bm25_retrieval
+
+            passages = load_json(args.passages)
+            if not isinstance(passages, list):
+                raise ValueError("Passages phai la JSON array.")
+            retrieval_results = run_bm25_retrieval(benchmark, passages)
+        else:
+            retrieval_results = load_json(args.retrieval)
 
         report = evaluate(benchmark, retrieval_results)
 

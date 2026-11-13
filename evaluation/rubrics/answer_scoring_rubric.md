@@ -167,3 +167,45 @@ Mọi bất đồng chuyên môn phải được ghi nhận và giải quyết t
 Tài liệu này là bản dự thảo triển khai dựa trên THTax RFP.
 
 Chỉ được coi là rubric nghiệm thu chính thức sau khi được nhóm dự án và các bên đánh giá có thẩm quyền phê duyệt.
+
+## 11. Phiếu chấm điểm câu trả lời AI
+
+Mỗi câu trả lời được đánh giá độc lập theo các tiêu chí sau:
+
+| Tiêu chí | PASS | FAIL |
+|---|---|---|
+| Độ chính xác | Kết luận pháp lý chính xác | Kết luận sai |
+| Phạm vi áp dụng | Đúng phạm vi câu hỏi | Sai phạm vi |
+| Đáp ứng câu hỏi | Trả lời đúng yêu cầu | Thiếu hoặc lạc đề |
+| Giả định và giới hạn | Nêu đầy đủ khi cần | Bỏ sót điều kiện quan trọng |
+| Chứng cứ | Nhận định quan trọng có chứng cứ hỗ trợ | Thiếu hoặc dẫn chứng sai |
+| Thời kỳ pháp luật | Áp dụng đúng thời kỳ | Áp dụng sai thời kỳ |
+| Thẩm quyền tài phán | Áp dụng đúng pháp luật Việt Nam liên quan | Sai thẩm quyền |
+
+### 11.1. Quy tắc kết luận
+
+- PASS khi tất cả tiêu chí bắt buộc đều PASS.
+- FAIL khi ít nhất một tiêu chí bắt buộc FAIL.
+- Câu hỏi có thể trả lời nhưng AI từ chối: FAIL.
+- Không được đánh dấu PASS khi chưa kiểm tra chứng cứ.
+
+### 11.2. Mẫu ghi nhận đánh giá
+
+- Case ID:
+- Reviewer ID:
+- Câu trả lời AI:
+- Phiên bản hệ thống:
+- Kết quả từng tiêu chí:
+- Nhận định quan trọng chưa được hỗ trợ:
+- Nguồn trích dẫn không hợp lệ:
+- Kết luận: PASS / FAIL
+- Lý do:
+- Ngày đánh giá:
+
+### 11.3. Xử lý bất đồng
+
+1. Hai reviewer chấm độc lập.
+2. Ghi lại kết quả và lý do của từng người.
+3. Đối chiếu chứng cứ và các tiêu chí bất đồng.
+4. Ghi kết quả thống nhất vào adjudication_notes.
+5. Chỉ chuyển review_status sang approved sau khi hoàn tất phê duyệt theo quy trình dự án.
