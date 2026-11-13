@@ -11,7 +11,9 @@ File đặc biệt: pytest tự nạp trước khi chạy test.
 """
 import os
 
-os.environ["DATABASE_URL"] = "sqlite:///./test.db"  # phải đặt TRƯỚC khi import app
+# Mặc định SQLite. Test trên PostgreSQL thật: đặt TEST_DATABASE_URL tới một DB RIÊNG cho test
+# (fixture xóa sạch bảng mỗi test – KHÔNG trỏ vào DB dev/prod). Xem README mục "Test trên PostgreSQL".
+os.environ["DATABASE_URL"] = os.environ.get("TEST_DATABASE_URL", "sqlite:///./test.db")  # TRƯỚC khi import app
 os.environ["APP_ENV"] = "dev"
 os.environ["CORS_ORIGINS"] = "http://localhost:3000"
 # Token khớp tests/helpers.py: token của <user> là "test-token-<user>-local"
