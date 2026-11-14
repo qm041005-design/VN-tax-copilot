@@ -55,8 +55,9 @@ b) Hoàn thuế, miễn thuế, giảm thuế;
 
     assert len(chunks) == 3
     assert chunks[0]["article_number"] == "1a"
-    assert chunks[0]["clause_number"] == 0
+    assert chunks[0]["clause_number"] == "0"
     assert chunks[0]["point_letter"] == "a"
+    assert chunks[0]["status"] == "CHUA_XAC_DINH"
     assert "Nghị định này quy định chi tiết thi hành" in chunks[0]["article_intro"]
     assert "Nghị định này quy định chi tiết thi hành" in chunks[0]["content"]
     assert chunks[2]["point_letter"] == "đ"
@@ -75,8 +76,8 @@ b) Biên bản kiểm tra thuế.
     chunks = chunk_legal_document(text, "38/2019/QH14", hierarchy_level=1, source_page=10)
 
     assert len(chunks) == 3
-    assert chunks[0]["clause_number"] == 1
-    assert chunks[1]["clause_number"] == 2
+    assert chunks[0]["clause_number"] == "1"
+    assert chunks[1]["clause_number"] == "2"
     assert chunks[1]["point_letter"] == "a"
     assert "Được nhận văn bản liên quan" in chunks[1]["clause_intro"]
     assert "Được nhận văn bản liên quan" in chunks[1]["content"]
@@ -84,7 +85,7 @@ b) Biên bản kiểm tra thuế.
 
 
 def test_chunker_multi_articles_mixed_structure():
-    """Kiểm tra văn bản nhiều Điều liên tiếp có cấu trúc hỗn hợp và Khoản sửa đổi 1a."""
+    """Kiểm tra văn bản nhiều Điều liên tiếp và giữ nguyên chữ cái trong số Khoản (1a)."""
     text = """
 Điều 1. Phạm vi điều chỉnh
 Luật này quy định việc quản lý các loại thuế.
@@ -98,11 +99,11 @@ Trong Luật này, các từ ngữ dưới đây được hiểu như sau:
 
     assert len(chunks) == 3
     assert chunks[0]["article_number"] == "1"
-    assert chunks[0]["clause_number"] == 0
+    assert chunks[0]["clause_number"] == "0"
     assert chunks[1]["article_number"] == "1a"
-    assert chunks[1]["clause_number"] == 1
+    assert chunks[1]["clause_number"] == "1"
     assert "Trong Luật này, các từ ngữ dưới đây" in chunks[1]["content"]
-    assert chunks[2]["clause_number"] == 1
+    assert chunks[2]["clause_number"] == "1a"
     assert "Khoản 1a, Điều 1a" in chunks[2]["citation_path"]
 
 
@@ -113,11 +114,16 @@ def test_chunker_empty_or_unstructured_text():
 
 
 def test_chunker_enriched_metadata():
-    """Kiểm tra bổ sung đầy đủ nguồn, trang, hiệu lực, phiên bản, sửa đổi/thay thế."""
+    """Kiểm tra bổ sung nguồn, trang, hiệu lực, phiên bản và trạng thái mặc định khi thiếu ngày hiệu lực."""
     text = """
 Điều 2. Đối tượng áp dụng
 Áp dụng đối với doanh nghiệp hoạt động tại Việt Nam.
 """
+    
+    chunks_no_date = chunk_legal_document(text, "99/2025/NĐ-CP", hierarchy_level=2, source_page=3)
+    assert chunks_no_date[0]["status"] == "CHUA_XAC_DINH"
+
+    
     eff_date = datetime(2026, 1, 1)
     meta = {
         "doc_type": "NGHI_DINH",
@@ -143,7 +149,7 @@ def test_chunker_enriched_metadata():
 
 @pytest.mark.skipif(not HAS_SQLALCHEMY, reason="SQLAlchemy chưa tải được trên môi trường này")
 def test_models_schema_columns_and_metadata():
-    """Kiểm tra các cột metadata mới trên SQLAlchemy models."""
+    """Kiểm tra các cột metadata mới và kiểu chuỗi của clause_number trên SQLAlchemy models."""
     doc_cols = set(LegalDocument.__table__.columns.keys())
     chunk_cols = set(LegalChunk.__table__.columns.keys())
     amend_cols = set(LegalDocumentAmendment.__table__.columns.keys())
@@ -151,3 +157,5 @@ def test_models_schema_columns_and_metadata():
     assert {"source_url", "total_pages", "effective_date", "expiry_date", "status", "version", "amends_doc_code", "replaces_doc_code"}.issubset(doc_cols)
     assert {"article_intro", "clause_intro", "source_page", "source_url", "effective_date", "status", "version"}.issubset(chunk_cols)
     assert {"original_doc_id", "amending_doc_id", "amendment_type", "effective_date"}.issubset(amend_cols)
+    assert LegalChunk.__table__.columns["clause_number"].type.python_type is str
+    assert LegalDocument.__table__.columns["status"].default.arg == "CHUA_XAC_DINH"
