@@ -40,6 +40,6 @@ Payload được kiểm tra toàn bộ trước khi thêm bản ghi. Lỗi valid
 
 Từ gốc repo: `python -m pytest -q backend/tests/test_legal_ingestion.py`.
 
-Bộ test gồm round-trip database → API, Khoản 1a/0, ngày sai, thời điểm hết hiệu lực, lịch sử kỳ thuế, metadata lệch, duplicate không ghi đè, batch lỗi không ghi dở và rollback. Dữ liệu là fixture giả lập, SQLite riêng. Chưa chạy với parser thật của Duyên hoặc PostgreSQL/Docker: đó là bước tích hợp tiếp theo, không nằm trong kết quả test này.
+Bộ test gồm round-trip database → API, Khoản 1a/0, ngày sai, thời điểm hết hiệu lực, lịch sử kỳ thuế, metadata lệch, duplicate không ghi đè, batch lỗi không ghi dở và rollback. Dữ liệu là fixture giả lập, SQLite riêng. Kiểm tra bổ sung đã chạy parser của Duyên với trích đoạn PDF thật qua PostgreSQL/Docker; xem [bằng chứng tích hợp](../docs/integration/SCRUM-24-POSTGRES.md). Bộ test đơn vị và smoke không thay thế kiểm thử chuyên môn hoặc quy mô pilot.
 
 Không có thay đổi schema database trong bước bổ sung này; migration Khoản dạng chuỗi từ bản sửa trước vẫn phải áp dụng nếu DB cũ chưa được nâng cấp.

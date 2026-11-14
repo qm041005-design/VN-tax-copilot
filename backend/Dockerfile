@@ -8,6 +8,7 @@ COPY backend/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 COPY backend /app/backend
 COPY ai_engine /app/ai_engine
+COPY data_pipeline/parser /app/data_pipeline/parser
 WORKDIR /app/backend
 EXPOSE 8000
 # 0.0.0.0 để truy cập được từ ngoài container

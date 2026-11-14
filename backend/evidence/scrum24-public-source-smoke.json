@@ -1,0 +1,23 @@
+{
+  "status": "pass",
+  "run_at": "2026-11-14T08:50:45.791977+00:00",
+  "source": "48/2024/QH15",
+  "pdf_sha256": "8be4caa345b42bce86386831da0bf4a9ed2bebbc54b471535c758431a5277569",
+  "pdf_page": 1,
+  "parsed_articles": [
+    "1",
+    "2",
+    "3"
+  ],
+  "stored_chunks": 3,
+  "matched_sources": 3,
+  "matter_id": "040a4210-f928-4c7d-8584-f30dc0f7372b",
+  "history_id": "99c9e5fb-24cf-4dec-8391-d3d64e165a29",
+  "source_page_verified": true,
+  "anonymous_api_status": 401,
+  "research_status": "abstain",
+  "legal_review_status": "pending_expert_review",
+  "history_survived_backend_restart": true,
+  "frontend_http_status": 200,
+  "cors_preflight_status": 200
+}

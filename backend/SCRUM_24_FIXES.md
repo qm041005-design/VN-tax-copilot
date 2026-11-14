@@ -1,6 +1,8 @@
 # SCRUM-24 — sửa tích hợp backend
 
-> Bổ sung bước nhận dữ liệu parser và kiểm thử validation: [PARSER_IMPORT.md](PARSER_IMPORT.md). Hàm nhập nội bộ đã có; chưa chạy nhập văn bản thật hoặc kiểm thử PostgreSQL.
+> Cập nhật kiểm thử PostgreSQL/Docker ngày 14/11: [bằng chứng tích hợp](../docs/integration/SCRUM-24-POSTGRES.md).
+
+> Bổ sung bước nhận dữ liệu parser và kiểm thử validation: [PARSER_IMPORT.md](PARSER_IMPORT.md). Hàm nhập nội bộ đã có và đã chạy smoke với trích đoạn PDF thật trên PostgreSQL.
 
 Ngày 14/11/2026. Nhánh `codex/scrum-24-backend-fixes`, dựa trên backend `df45332`, guardrails An `8083a0e` và BM25 Thanh `28f9c8a`. Đây là code sửa bổ sung, không phải chứng nhận nghiệm thu doanh nghiệp.
 
@@ -34,7 +36,7 @@ Nếu dùng backend/.env, chạy từ thư mục backend sau khi đặt PYTHONPA
 
 `create_all()` không đổi kiểu cột cũ. Với PostgreSQL đã có dữ liệu, sao lưu, dừng writer, áp dụng `backend/migrations/001_clause_number_text.sql`, rồi kiểm tra dữ liệu cũ và mới. SQL dùng transaction, đổi kiểu bằng CAST và tạo bảng nhãn nếu chưa có. Không tự chạy migration trên database người dùng; không drop dữ liệu để nâng cấp.
 
-SQLite trong test được tạo mới hoàn toàn. File SQLite ứng dụng đang dùng cần kế hoạch chuyển đổi riêng; migration trên là PostgreSQL-only. SQL migration chưa chạy trên PostgreSQL trong môi trường này vì Docker daemon chưa bật.
+SQLite trong test được tạo mới hoàn toàn. File SQLite ứng dụng đang dùng cần kế hoạch chuyển đổi riêng; migration trên là PostgreSQL-only. SQL migration đã kiểm tra trên PostgreSQL biệt lập; xem bằng chứng tích hợp ở đầu tài liệu.
 
 Phối hợp Duyên: kiểu clause_number mới tương thích String(20); các trường mới khác của registry và quan hệ sửa đổi vẫn cần thống nhất migration chung. Nguồn chưa có nhãn sắc thuế phải được phân loại trước khi bật bộ lọc để tránh tưởng rằng kho không có văn bản.
 
@@ -42,13 +44,13 @@ Phối hợp Duyên: kiểu clause_number mới tương thích String(20); các 
 
 Backend Docker build context đổi thành gốc repo, Dockerfile là backend/Dockerfile để copy cả backend và ai_engine. Không dùng `docker build backend` nữa; dùng `docker build -f backend/Dockerfile .`. Root .dockerignore loại file bí mật, database và môi trường local. Compose giữ AUTH_TOKENS/CORS và đồng bộ DATABASE_URL với POSTGRES_*.
 
-Phúc cần giữ các thay đổi này khi ghép PR Docker/CI. Frontend chưa nằm trên nhánh sửa backend này; Compose đầy đủ còn phụ thuộc nhánh frontend. Docker build và PostgreSQL thực tế chưa được kiểm chứng ở đây.
+Phúc cần giữ các thay đổi này khi ghép PR Docker/CI. Nhánh tích hợp hiện đã có frontend và cấu hình Docker/CI của Phúc; xem hướng dẫn tích hợp ở đầu tài liệu để chạy lại.
 
 ## Bằng chứng và giới hạn
 
-- 101 test đạt: backend cũ + hồi quy kỳ thuế lịch sử/sắc thuế/Khoản 1a/guardrails qua HTTP, 45 test guardrails và 3 test BM25.
-- Test backend dùng SQLite riêng và provider giả lập, không tư vấn pháp lý, không gọi LLM thật.
+- Kiểm tra ban đầu: 101 test đạt: backend cũ + hồi quy kỳ thuế lịch sử/sắc thuế/Khoản 1a/guardrails qua HTTP, 45 test guardrails và 3 test BM25.
+- Kiểm tra ban đầu dùng SQLite; lần tích hợp sau chạy 168 test trên PostgreSQL riêng và smoke HTTP với PDF thật. Provider vẫn giả lập trong unit test, không gọi LLM thật.
 - Test giả lập assessor chỉ dùng để kiểm tra việc chặn/cho phép và ID trích dẫn. Sản phẩm vẫn mặc định chưa cấu hình assessor.
-- Chưa đo tải pilot, chưa nghiệm thu chuyên môn, chưa xác nhận Docker/PostgreSQL hay frontend end-to-end.
+- Đã xác nhận Docker/PostgreSQL và HTTP API; chưa đo tải pilot, chưa nghiệm thu chuyên môn hoặc thao tác UI đầy đủ bằng browser.
 
 Các hướng dẫn SCRUM-23 về áp dụng patch endpoint chỉ dành backend cũ: nhánh này đã tích hợp endpoint, không áp dụng patch lần nữa.
