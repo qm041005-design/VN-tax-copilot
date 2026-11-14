@@ -115,7 +115,7 @@ Gửi:
 | `tax_period` | Không | Kỳ thuế; bỏ trống thì lấy của hồ sơ |
 | `research_as_of` | Không | Chỉ lấy luật còn hiệu lực tại ngày này |
 | `material_facts` | Không | Tình tiết bổ sung |
-| `doc_type` | Không | Chỉ tìm trong `LUAT` / `NGHI_DINH` / `THONG_TU` / `CONG_VAN` |
+| `doc_type` | Không | Chỉ tìm trong `LUAT` / `NGHI_DINH` / `THONG_TU` / `CONG_VAN` / `UNKNOWN` |
 | `limit` | Không | Số nguồn tối đa (1–50, mặc định 10) |
 
 Nhận:
@@ -150,7 +150,7 @@ Nhận:
 Trả **mảng** các `history` như 3.5 (mới nhất trước). Tổng số bản ghi nằm ở **header** `X-Total-Count` (dùng để phân trang).
 
 ### 3.7 Tìm đoạn luật – `GET /sources/search?q=thuế suất&as_of=2026-03-15` → 200
-Trả mảng **SourceHit** (xếp theo độ khớp, rồi Luật trước Nghị định trước Thông tư trước Công văn):
+Trả mảng **SourceHit** (xếp theo độ khớp, rồi Luật trước Nghị định trước Thông tư trước Công văn trước văn bản chưa xác định):
 ```json
 [{
   "source_id": "42",
@@ -161,11 +161,22 @@ Trả mảng **SourceHit** (xếp theo độ khớp, rồi Luật trước Ngh�
   "citation_path": "Điểm a, Khoản 3, Điều 9, 48/2024/QH15",
   "doc_type": "LUAT",
   "hierarchy_level": 1,
+  "status": "CON_HIEU_LUC",
   "effective_date": "2025-07-01T00:00:00",
   "expiry_date": null,
   "snippet": "300 ký tự đầu của đoạn luật..."
 }]
 ```
+
+| Trường | Giá trị có thể có |
+|---|---|
+| `dieu`, `khoan` | Chuỗi, **có thể kèm chữ**: `"1a"`, `"2a"`. `khoan = null` khi đoạn không thuộc Khoản nào |
+| `diem` | `"a"`, `"b"`, … hoặc `null` |
+| `doc_type` | `LUAT` · `NGHI_DINH` · `THONG_TU` · `CONG_VAN` · `UNKNOWN` |
+| `hierarchy_level` | `1` Luật · `2` Nghị định · `3` Thông tư · `4` Công văn · `5` chưa xác định (`UNKNOWN`) |
+| `status` | `CON_HIEU_LUC` (còn hiệu lực) · `HET_HIEU_LUC` (hết hiệu lực) · `SUA_DOI_BO_SUNG` (đã sửa đổi, bổ sung) · `BI_THAY_THE` (bị thay thế) · `CHUA_XAC_DINH` (chưa xác định) |
+
+Frontend nên hiện nhãn cảnh báo khi `status` khác `CON_HIEU_LUC`.
 
 ### 3.8 Nguyên văn đoạn luật – `GET /sources/{source_id}` → 200
 Trả **SourceDetail** = mọi trường của SourceHit, thêm:
@@ -197,8 +208,9 @@ export interface Citation {
 }
 export interface SourceHit extends Citation {
   citation_path: string;
-  doc_type: string;                      // LUAT | NGHI_DINH | THONG_TU | CONG_VAN
-  hierarchy_level: number;               // 1 Luật > 2 Nghị định > 3 Thông tư > 4 Công văn
+  doc_type: string;                      // LUAT | NGHI_DINH | THONG_TU | CONG_VAN | UNKNOWN
+  hierarchy_level: number;               // 1 Luật > 2 Nghị định > 3 Thông tư > 4 Công văn > 5 UNKNOWN
+  status: "CHUA_XAC_DINH" | "CON_HIEU_LUC" | "HET_HIEU_LUC" | "SUA_DOI_BO_SUNG" | "BI_THAY_THE";
   effective_date: string | null; expiry_date: string | null;
   snippet: string;
 }

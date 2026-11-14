@@ -109,8 +109,8 @@ Vì sao tách tầng: mỗi file một việc → sửa chỗ này không vỡ c
 | `matters` | Backend | Hồ sơ: `id` (UUID), `tenant_id`, `title`, `client_name`, `description`, `tax_types` (`["VAT","CIT","PIT"]`), `tax_period`, `status` (`active`/`archived`), `created_by`, `created_at`, `updated_at` |
 | `research_history` | Backend | Mỗi lượt tra cứu: `matter_id`, `actor`, `question`, `tax_type`, `tax_period`, `research_as_of`, `material_facts`, `answer`, `citations` (JSON), `warnings` (JSON), `review_status` (`draft`…), `answer_version`, `created_at` |
 | `audit_logs` | Backend | Nhật ký chỉ thêm, không sửa/xóa: `actor`, `action` (vd `matter.create`), `resource_type`, `resource_id`, `detail`, `created_at` |
-| `legal_documents` | Nhóm 5 (Data) | Văn bản luật: `doc_code` (vd `48/2024/QH15`), `title`, `doc_type` (`LUAT`/`NGHI_DINH`/`THONG_TU`/`CONG_VAN`), `hierarchy_level` (1–4), `effective_date`, `expiry_date`, `source_url`… |
-| `legal_chunks` | Nhóm 5 (Data) | Đoạn luật đã tách theo Điều → Khoản → Điểm: `article_number`, `clause_number`, `point_letter`, `citation_path`, `content`… |
+| `legal_documents` | Nhóm 5 (Data) | Văn bản luật: `doc_code` (vd `48/2024/QH15`), `title`, `doc_type` (`LUAT`/`NGHI_DINH`/`THONG_TU`/`CONG_VAN`/`UNKNOWN`), `hierarchy_level` (1–5, 5 = chưa xác định), `status` (hiệu lực), `effective_date`, `expiry_date`, `source_url`… |
+| `legal_chunks` | Nhóm 5 (Data) | Đoạn luật đã tách theo Điều → Khoản → Điểm: `article_number`, `clause_number` (chuỗi, vd `"2a"`; `"0"` = không có Khoản), `point_letter`, `citation_path`, `content`, `status`… |
 
 Bảng được tự tạo khi server khởi động (`create_all`). Lưu ý: `create_all` **không sửa** bảng đã có – đổi cột thì phải xóa DB dev (`docker compose down -v`) hoặc dùng Alembic (sprint sau).
 
@@ -153,7 +153,7 @@ Bảng được tự tạo khi server khởi động (`create_all`). Lưu ý: `c
 | Nhóm | Nối ở đâu | Ghi chú |
 |---|---|---|
 | **9 – Frontend** | Gọi các API trong `API_CONTRACT.md` | Gửi header `Authorization`; CORS đã mở cho `localhost:3000` |
-| **5 – Data (Parser & DB)** | Nạp dữ liệu vào `legal_documents`, `legal_chunks` | `app/models/legal_source.py` phải khớp cột với `data_pipeline/registry/models.py`. Đổi cột → báo backend |
+| **5 – Data (Parser & DB)** | Nạp dữ liệu vào `legal_documents`, `legal_chunks` | `app/models/legal_source.py` phải khớp **đủ mọi cột** với `data_pipeline/registry/models.py`. Đổi cột → báo backend; kiểm tra khớp bằng `tests/test_data_pipeline_sync.py` |
 | **6 – Retrieval** | Thay nội dung hàm `source_service.search` bằng Hybrid Search (BM25 + vector) | Giữ nguyên đầu vào/đầu ra `[(chunk, score)]` thì API không phải đổi |
 | **7 – Guardrails** / **1 – Prompt** | Sinh `answer` trong `api/v1/research.py` (chỗ có ghi chú `shortcut:`) | Che thông tin cá nhân trước khi gửi câu hỏi ra dịch vụ AI bên ngoài |
 | **1 – Export DOCX** | Gọi `matter_service.get_matter` / `list_history` để lấy dữ liệu xuất báo cáo | Thêm endpoint export theo mục 9 |
