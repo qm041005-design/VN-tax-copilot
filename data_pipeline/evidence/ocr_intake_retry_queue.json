@@ -1,0 +1,150 @@
+[
+  {
+    "source_id": "LUAT67_2025",
+    "legal_identifier": "67/2025/QH15",
+    "pdf_page": 1,
+    "quality_status": "quarantined_stamp_overlay",
+    "quality_flags": [],
+    "suspicious_numbers": [],
+    "extraction_method": "tesseract_vie",
+    "mean_ocr_confidence": 92.69,
+    "retry_attempts": [
+      {
+        "strategy": "bo_muc_mau",
+        "mean_ocr_confidence": 91.77,
+        "text_chars": 1832,
+        "text_sha256": "e694cd6135d403b3d1667988fe5c9b9c44ee1f52708b1fefd6e339b94f1f54aa",
+        "suspicious_numbers": [],
+        "new_tokens_vs_primary": [
+          "ngtinchinhphu6i",
+          "GHINHPH",
+          "UV",
+          "NThO",
+          "gia",
+          "kệ",
+          "1607",
+          "2009",
+          "2820",
+          "207",
+          "GHÍMH",
+          "Hiền"
+        ],
+        "hint": "có_chữ_mới_cần_người_xác_nhận"
+      },
+      {
+        "strategy": "dpi200_adaptive",
+        "mean_ocr_confidence": 92.56,
+        "text_chars": 1903,
+        "text_sha256": "4c453ef453ecdec6c140ea5127cee014f7187e6d4ba29b90b73703bc76c4792b",
+        "suspicious_numbers": [],
+        "new_tokens_vs_primary": [
+          "TỬ",
+          "Email",
+          "thongdnchinhphufehinhphir",
+          "Cơ",
+          "VNThời",
+          "gian",
+          "đo",
+          "ĐẾN",
+          "E",
+          "TÌM",
+          "ĐỆN",
+          "ĐẾt"
+        ],
+        "hint": "có_chữ_mới_cần_người_xác_nhận"
+      }
+    ],
+    "manual_notes": null,
+    "next_action": "xử lý lại hoặc gõ tay rồi đối chiếu"
+  },
+  {
+    "source_id": "LUAT67_2025",
+    "legal_identifier": "67/2025/QH15",
+    "pdf_page": 15,
+    "quality_status": "quarantined_suspect_numbers",
+    "quality_flags": [],
+    "suspicious_numbers": [
+      "6,000"
+    ],
+    "extraction_method": "tesseract_vie",
+    "mean_ocr_confidence": 94.92,
+    "retry_attempts": [
+      {
+        "strategy": "bo_muc_mau",
+        "mean_ocr_confidence": 94.92,
+        "text_chars": 2242,
+        "text_sha256": "9a02aebae0d95fb140338ecfa29586ec4b798506068ca2f8022a5df05f629f7a",
+        "suspicious_numbers": [
+          "6,000"
+        ],
+        "new_tokens_vs_primary": [],
+        "hint": "không_rõ_cải_thiện"
+      },
+      {
+        "strategy": "dpi200_adaptive",
+        "mean_ocr_confidence": 95.01,
+        "text_chars": 2244,
+        "text_sha256": "9103c7ebedb8224d22323de0ef4dd446e05ac2bf273478a6fa87824f81dc6b33",
+        "suspicious_numbers": [],
+        "new_tokens_vs_primary": [
+          "chỉ",
+          "tầng"
+        ],
+        "hint": "không_rõ_cải_thiện"
+      }
+    ],
+    "manual_notes": null,
+    "next_action": "xử lý lại hoặc gõ tay rồi đối chiếu"
+  },
+  {
+    "source_id": "LUAT109_2025",
+    "legal_identifier": "109/2025/QH15",
+    "pdf_page": 15,
+    "quality_status": "quarantined_stamp_overlay",
+    "quality_flags": [
+      "trang_cuối_chữ_ký"
+    ],
+    "suspicious_numbers": [],
+    "extraction_method": "tesseract_vie",
+    "mean_ocr_confidence": 94.39,
+    "retry_attempts": [
+      {
+        "strategy": "bo_muc_mau",
+        "mean_ocr_confidence": 94.88,
+        "text_chars": 1200,
+        "text_sha256": "9200381c7ed5bdbac816e11c62a1c644d2be38f84fb415491f6b5be1f1513d80",
+        "suspicious_numbers": [],
+        "new_tokens_vs_primary": [
+          "sửa",
+          "khóa",
+          "XE",
+          "CHỦ",
+          "1JCH",
+          "QUÓC",
+          "Trần",
+          "Thanh",
+          "Mẫn"
+        ],
+        "hint": "có_chữ_mới_cần_người_xác_nhận"
+      },
+      {
+        "strategy": "dpi200_adaptive",
+        "mean_ocr_confidence": 94.35,
+        "text_chars": 1184,
+        "text_sha256": "b38aff066aaf4d30714bbe0a911c0f77dd83cf2b631f9f3e40b25e741e22f02d",
+        "suspicious_numbers": [],
+        "new_tokens_vs_primary": [
+          "sửa",
+          "Mam",
+          "khóa",
+          "CHỦ",
+          "TỊCH",
+          "QUÓC"
+        ],
+        "hint": "có_chữ_mới_cần_người_xác_nhận"
+      }
+    ],
+    "manual_notes": null,
+    "next_action": "xử lý lại hoặc gõ tay rồi đối chiếu"
+  }
+]

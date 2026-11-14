@@ -23,3 +23,18 @@ python -m pytest data_pipeline/ocr/tests -q
 **Cờ `needs_review`** trong JSON từng trang: confidence thấp, có con dấu/chữ ký màu, số dạng `6,000`
 (nghi `6.000`), hoặc trang cuối. Confidence cao **không** đồng nghĩa đúng (xem báo cáo, mục 4).
 Kết quả OCR nên giữ trạng thái `pending_human_review` cho tới khi có người thẩm định.
+
+## Tiếp nhận & chuẩn hóa đầu vào (SCRUM-20) – `intake.py`
+Chọn trang **đại diện** (trang scan, trang có bảng, trang đầu/cuối, trang có bản chuẩn), xử lý, và lưu cho từng trang:
+nguồn + URL, **mã băm PDF** (đối chiếu manifest) và **mã băm text**, **số trang PDF (đếm từ 1)**, phương pháp trích xuất, trạng thái chất lượng.
+Trang lỗi tự động vào hàng đợi xử lý lại (có thử lại bằng bỏ mực màu / 200 DPI + adaptive, **không** thay kết quả gốc).
+
+```bash
+python -m data_pipeline.ocr.pilot --max-pages 1     # tải đủ 10 PDF vào data_pipeline/local_data
+python -m data_pipeline.ocr.intake run              # >= 20 trang; ghi data_pipeline/evidence/ocr_intake_*.json|csv
+python -m data_pipeline.ocr.intake annotate --notes <json>        # (tuỳ chọn) ghi chú sơ bộ
+python -m data_pipeline.ocr.intake apply-review --csv <phiếu đã điền>   # nạp kết quả đối chiếu thủ công
+```
+Đối chiếu thủ công: mở `local_data/intake/review/index.html` (ảnh trang cạnh text), điền `ket_qua` (`ok`/`loi`), `loai_loi`, `ghi_chu`
+trong `ocr_intake_manual_review.csv`. `pending_human_review` = **chưa ai đối chiếu**, không phải "đạt".
+Báo cáo: `data_pipeline/evidence/ocr_intake_report_2026-11-14.md`.

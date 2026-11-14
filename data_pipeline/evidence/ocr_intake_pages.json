@@ -1,0 +1,1347 @@
+[
+  {
+    "source_id": "LUAT48_2024",
+    "legal_identifier": "48/2024/QH15",
+    "official_url": "https://vanban.chinhphu.vn/?pageid=27160&docid=212476",
+    "download_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2025/01/luat48.pdf",
+    "retrieved_at": "2026-11-11T20:47:18.507538+00:00",
+    "pdf_file": "LUAT48_2024.pdf",
+    "pdf_sha256": "8be4caa345b42bce86386831da0bf4a9ed2bebbc54b471535c758431a5277569",
+    "pdf_sha256_manifest": "8be4caa345b42bce86386831da0bf4a9ed2bebbc54b471535c758431a5277569",
+    "sha256_verified": true,
+    "total_pages": 20,
+    "pdf_page": 1,
+    "selection_reasons": [
+      "trang_đầu"
+    ],
+    "page_features": {
+      "scanned": false,
+      "table": false,
+      "colored_ink_pct": 0.0
+    },
+    "extraction_method": "native_pdf",
+    "ocr_config": null,
+    "mean_ocr_confidence": null,
+    "text_sha256": "a8389d3a2060116e13bb79c88e62cb8f34d89074bca2779a9ee931595d853d08",
+    "text_chars": 1823,
+    "suspicious_numbers": [],
+    "unicode": {
+      "is_nfc": true,
+      "combining_marks": 0,
+      "replacement_chars": 0,
+      "private_use_chars": 0,
+      "control_chars": 0,
+      "foreign_char_ratio": 0.0
+    },
+    "quality_status": "pending_human_review",
+    "quality_flags": [],
+    "error": null,
+    "processed_by": "Nguyen Gia Quy",
+    "processed_at": "2026-11-13T19:06:32+00:00",
+    "manual_review": {
+      "status": "pending",
+      "assigned_to": "Nguyen Gia Quy",
+      "result": null,
+      "error_types": [],
+      "notes": null,
+      "reviewed_at": null
+    },
+    "retry": {
+      "needed": false,
+      "attempts": []
+    }
+  },
+  {
+    "source_id": "LUAT48_2024",
+    "legal_identifier": "48/2024/QH15",
+    "official_url": "https://vanban.chinhphu.vn/?pageid=27160&docid=212476",
+    "download_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2025/01/luat48.pdf",
+    "retrieved_at": "2026-11-11T20:47:18.507538+00:00",
+    "pdf_file": "LUAT48_2024.pdf",
+    "pdf_sha256": "8be4caa345b42bce86386831da0bf4a9ed2bebbc54b471535c758431a5277569",
+    "pdf_sha256_manifest": "8be4caa345b42bce86386831da0bf4a9ed2bebbc54b471535c758431a5277569",
+    "sha256_verified": true,
+    "total_pages": 20,
+    "pdf_page": 2,
+    "selection_reasons": [
+      "trang_thân_văn_bản"
+    ],
+    "page_features": {
+      "scanned": false,
+      "table": false,
+      "colored_ink_pct": 0.0
+    },
+    "extraction_method": "native_pdf",
+    "ocr_config": null,
+    "mean_ocr_confidence": null,
+    "text_sha256": "a420ffff7f779d3bdb62f18dd7c7d3a96a7ef12cd7a2c620379460ab78eec629",
+    "text_chars": 2402,
+    "suspicious_numbers": [],
+    "unicode": {
+      "is_nfc": true,
+      "combining_marks": 0,
+      "replacement_chars": 0,
+      "private_use_chars": 0,
+      "control_chars": 0,
+      "foreign_char_ratio": 0.0
+    },
+    "quality_status": "pending_human_review",
+    "quality_flags": [],
+    "error": null,
+    "processed_by": "Nguyen Gia Quy",
+    "processed_at": "2026-11-13T19:06:32+00:00",
+    "manual_review": {
+      "status": "pending",
+      "assigned_to": "Nguyen Gia Quy",
+      "result": null,
+      "error_types": [],
+      "notes": null,
+      "reviewed_at": null
+    },
+    "retry": {
+      "needed": false,
+      "attempts": []
+    }
+  },
+  {
+    "source_id": "LUAT48_2024",
+    "legal_identifier": "48/2024/QH15",
+    "official_url": "https://vanban.chinhphu.vn/?pageid=27160&docid=212476",
+    "download_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2025/01/luat48.pdf",
+    "retrieved_at": "2026-11-11T20:47:18.507538+00:00",
+    "pdf_file": "LUAT48_2024.pdf",
+    "pdf_sha256": "8be4caa345b42bce86386831da0bf4a9ed2bebbc54b471535c758431a5277569",
+    "pdf_sha256_manifest": "8be4caa345b42bce86386831da0bf4a9ed2bebbc54b471535c758431a5277569",
+    "sha256_verified": true,
+    "total_pages": 20,
+    "pdf_page": 6,
+    "selection_reasons": [
+      "trang_thân_văn_bản"
+    ],
+    "page_features": {
+      "scanned": false,
+      "table": false,
+      "colored_ink_pct": 0.0
+    },
+    "extraction_method": "native_pdf",
+    "ocr_config": null,
+    "mean_ocr_confidence": null,
+    "text_sha256": "12666573946fad9aee7743e45c921fda955c1643b0fc7ffc54d2b95b8062a3da",
+    "text_chars": 2076,
+    "suspicious_numbers": [],
+    "unicode": {
+      "is_nfc": true,
+      "combining_marks": 0,
+      "replacement_chars": 0,
+      "private_use_chars": 0,
+      "control_chars": 0,
+      "foreign_char_ratio": 0.0
+    },
+    "quality_status": "pending_human_review",
+    "quality_flags": [],
+    "error": null,
+    "processed_by": "Nguyen Gia Quy",
+    "processed_at": "2026-11-13T19:06:32+00:00",
+    "manual_review": {
+      "status": "pending",
+      "assigned_to": "Nguyen Gia Quy",
+      "result": null,
+      "error_types": [],
+      "notes": null,
+      "reviewed_at": null
+    },
+    "retry": {
+      "needed": false,
+      "attempts": []
+    }
+  },
+  {
+    "source_id": "LUAT48_2024",
+    "legal_identifier": "48/2024/QH15",
+    "official_url": "https://vanban.chinhphu.vn/?pageid=27160&docid=212476",
+    "download_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2025/01/luat48.pdf",
+    "retrieved_at": "2026-11-11T20:47:18.507538+00:00",
+    "pdf_file": "LUAT48_2024.pdf",
+    "pdf_sha256": "8be4caa345b42bce86386831da0bf4a9ed2bebbc54b471535c758431a5277569",
+    "pdf_sha256_manifest": "8be4caa345b42bce86386831da0bf4a9ed2bebbc54b471535c758431a5277569",
+    "sha256_verified": true,
+    "total_pages": 20,
+    "pdf_page": 10,
+    "selection_reasons": [
+      "trang_thân_văn_bản"
+    ],
+    "page_features": {
+      "scanned": false,
+      "table": false,
+      "colored_ink_pct": 0.0
+    },
+    "extraction_method": "native_pdf",
+    "ocr_config": null,
+    "mean_ocr_confidence": null,
+    "text_sha256": "375999a48c5658f05a2f07eebb1264cc8ba26becaffe80eb8b1fa57e417411f0",
+    "text_chars": 2318,
+    "suspicious_numbers": [],
+    "unicode": {
+      "is_nfc": true,
+      "combining_marks": 0,
+      "replacement_chars": 0,
+      "private_use_chars": 0,
+      "control_chars": 0,
+      "foreign_char_ratio": 0.0
+    },
+    "quality_status": "pending_human_review",
+    "quality_flags": [],
+    "error": null,
+    "processed_by": "Nguyen Gia Quy",
+    "processed_at": "2026-11-13T19:06:32+00:00",
+    "manual_review": {
+      "status": "pending",
+      "assigned_to": "Nguyen Gia Quy",
+      "result": null,
+      "error_types": [],
+      "notes": null,
+      "reviewed_at": null
+    },
+    "retry": {
+      "needed": false,
+      "attempts": []
+    }
+  },
+  {
+    "source_id": "LUAT48_2024",
+    "legal_identifier": "48/2024/QH15",
+    "official_url": "https://vanban.chinhphu.vn/?pageid=27160&docid=212476",
+    "download_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2025/01/luat48.pdf",
+    "retrieved_at": "2026-11-11T20:47:18.507538+00:00",
+    "pdf_file": "LUAT48_2024.pdf",
+    "pdf_sha256": "8be4caa345b42bce86386831da0bf4a9ed2bebbc54b471535c758431a5277569",
+    "pdf_sha256_manifest": "8be4caa345b42bce86386831da0bf4a9ed2bebbc54b471535c758431a5277569",
+    "sha256_verified": true,
+    "total_pages": 20,
+    "pdf_page": 15,
+    "selection_reasons": [
+      "trang_thân_văn_bản"
+    ],
+    "page_features": {
+      "scanned": false,
+      "table": false,
+      "colored_ink_pct": 0.0
+    },
+    "extraction_method": "native_pdf",
+    "ocr_config": null,
+    "mean_ocr_confidence": null,
+    "text_sha256": "268a0bb6cf46f7e589b64a2e81e53d4d2d683d5622f420d6343a97526ad1fc93",
+    "text_chars": 2759,
+    "suspicious_numbers": [],
+    "unicode": {
+      "is_nfc": true,
+      "combining_marks": 0,
+      "replacement_chars": 0,
+      "private_use_chars": 0,
+      "control_chars": 0,
+      "foreign_char_ratio": 0.0
+    },
+    "quality_status": "pending_human_review",
+    "quality_flags": [],
+    "error": null,
+    "processed_by": "Nguyen Gia Quy",
+    "processed_at": "2026-11-13T19:06:32+00:00",
+    "manual_review": {
+      "status": "pending",
+      "assigned_to": "Nguyen Gia Quy",
+      "result": null,
+      "error_types": [],
+      "notes": null,
+      "reviewed_at": null
+    },
+    "retry": {
+      "needed": false,
+      "attempts": []
+    }
+  },
+  {
+    "source_id": "LUAT48_2024",
+    "legal_identifier": "48/2024/QH15",
+    "official_url": "https://vanban.chinhphu.vn/?pageid=27160&docid=212476",
+    "download_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2025/01/luat48.pdf",
+    "retrieved_at": "2026-11-11T20:47:18.507538+00:00",
+    "pdf_file": "LUAT48_2024.pdf",
+    "pdf_sha256": "8be4caa345b42bce86386831da0bf4a9ed2bebbc54b471535c758431a5277569",
+    "pdf_sha256_manifest": "8be4caa345b42bce86386831da0bf4a9ed2bebbc54b471535c758431a5277569",
+    "sha256_verified": true,
+    "total_pages": 20,
+    "pdf_page": 19,
+    "selection_reasons": [
+      "trang_thân_văn_bản"
+    ],
+    "page_features": {
+      "scanned": false,
+      "table": false,
+      "colored_ink_pct": 0.0
+    },
+    "extraction_method": "native_pdf",
+    "ocr_config": null,
+    "mean_ocr_confidence": null,
+    "text_sha256": "9c2b988af722a6a91f3056a050d89c094ecf2aa1c793434303e13074542f90e5",
+    "text_chars": 1604,
+    "suspicious_numbers": [],
+    "unicode": {
+      "is_nfc": true,
+      "combining_marks": 0,
+      "replacement_chars": 0,
+      "private_use_chars": 0,
+      "control_chars": 0,
+      "foreign_char_ratio": 0.0
+    },
+    "quality_status": "pending_human_review",
+    "quality_flags": [],
+    "error": null,
+    "processed_by": "Nguyen Gia Quy",
+    "processed_at": "2026-11-13T19:06:32+00:00",
+    "manual_review": {
+      "status": "pending",
+      "assigned_to": "Nguyen Gia Quy",
+      "result": null,
+      "error_types": [],
+      "notes": null,
+      "reviewed_at": null
+    },
+    "retry": {
+      "needed": false,
+      "attempts": []
+    }
+  },
+  {
+    "source_id": "LUAT48_2024",
+    "legal_identifier": "48/2024/QH15",
+    "official_url": "https://vanban.chinhphu.vn/?pageid=27160&docid=212476",
+    "download_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2025/01/luat48.pdf",
+    "retrieved_at": "2026-11-11T20:47:18.507538+00:00",
+    "pdf_file": "LUAT48_2024.pdf",
+    "pdf_sha256": "8be4caa345b42bce86386831da0bf4a9ed2bebbc54b471535c758431a5277569",
+    "pdf_sha256_manifest": "8be4caa345b42bce86386831da0bf4a9ed2bebbc54b471535c758431a5277569",
+    "sha256_verified": true,
+    "total_pages": 20,
+    "pdf_page": 20,
+    "selection_reasons": [
+      "trang_cuối"
+    ],
+    "page_features": {
+      "scanned": false,
+      "table": false,
+      "colored_ink_pct": 0.0
+    },
+    "extraction_method": "tesseract_vie",
+    "ocr_config": {
+      "engine": "tesseract",
+      "lang": "vie",
+      "dpi": 150,
+      "binarize": "otsu",
+      "psm": 3
+    },
+    "mean_ocr_confidence": 89.93,
+    "text_sha256": "0fa16d02aada362f7078b060011861809481e3c3305591159faf3b5b1229d959",
+    "text_chars": 265,
+    "suspicious_numbers": [],
+    "unicode": {
+      "is_nfc": true,
+      "combining_marks": 0,
+      "replacement_chars": 0,
+      "private_use_chars": 0,
+      "control_chars": 0,
+      "foreign_char_ratio": 0.0
+    },
+    "quality_status": "pending_human_review",
+    "quality_flags": [
+      "trang_cuối_chữ_ký"
+    ],
+    "error": null,
+    "processed_by": "Nguyen Gia Quy",
+    "processed_at": "2026-11-13T19:06:33+00:00",
+    "manual_review": {
+      "status": "pending",
+      "assigned_to": "Nguyen Gia Quy",
+      "result": null,
+      "error_types": [],
+      "notes": null,
+      "reviewed_at": null
+    },
+    "retry": {
+      "needed": false,
+      "attempts": []
+    }
+  },
+  {
+    "source_id": "LUAT67_2025",
+    "legal_identifier": "67/2025/QH15",
+    "official_url": "https://vanban.chinhphu.vn/?pageid=27160&docid=214607",
+    "download_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2025/7/67qh.signed.pdf",
+    "retrieved_at": "2026-11-11T20:46:05.615122+00:00",
+    "pdf_file": "LUAT67_2025.pdf",
+    "pdf_sha256": "ae706468190afe8d111dd0fccf240e7a980eb002c5d0b5cb1cfe127d92f9c1cd",
+    "pdf_sha256_manifest": "ae706468190afe8d111dd0fccf240e7a980eb002c5d0b5cb1cfe127d92f9c1cd",
+    "sha256_verified": true,
+    "total_pages": 21,
+    "pdf_page": 1,
+    "selection_reasons": [
+      "trang_scan",
+      "trang_đầu"
+    ],
+    "page_features": {
+      "scanned": true,
+      "table": false,
+      "colored_ink_pct": 0.1143
+    },
+    "extraction_method": "tesseract_vie",
+    "ocr_config": {
+      "engine": "tesseract",
+      "lang": "vie",
+      "dpi": 150,
+      "binarize": "otsu",
+      "psm": 3
+    },
+    "mean_ocr_confidence": 92.69,
+    "text_sha256": "66ab0ced951c338e3fa3aedbd535fc55a86a6709e4015402d86ef4b874442ca6",
+    "text_chars": 1835,
+    "suspicious_numbers": [],
+    "unicode": {
+      "is_nfc": true,
+      "combining_marks": 0,
+      "replacement_chars": 0,
+      "private_use_chars": 0,
+      "control_chars": 0,
+      "foreign_char_ratio": 0.0007
+    },
+    "quality_status": "quarantined_stamp_overlay",
+    "quality_flags": [],
+    "error": null,
+    "processed_by": "Nguyen Gia Quy",
+    "processed_at": "2026-11-13T19:06:38+00:00",
+    "manual_review": {
+      "status": "pending",
+      "assigned_to": "Nguyen Gia Quy",
+      "result": null,
+      "error_types": [],
+      "notes": null,
+      "reviewed_at": null
+    },
+    "retry": {
+      "needed": true,
+      "attempts": [
+        {
+          "strategy": "bo_muc_mau",
+          "mean_ocr_confidence": 91.77,
+          "text_chars": 1832,
+          "text_sha256": "e694cd6135d403b3d1667988fe5c9b9c44ee1f52708b1fefd6e339b94f1f54aa",
+          "suspicious_numbers": [],
+          "new_tokens_vs_primary": [
+            "ngtinchinhphu6i",
+            "GHINHPH",
+            "UV",
+            "NThO",
+            "gia",
+            "kệ",
+            "1607",
+            "2009",
+            "2820",
+            "207",
+            "GHÍMH",
+            "Hiền"
+          ],
+          "hint": "có_chữ_mới_cần_người_xác_nhận"
+        },
+        {
+          "strategy": "dpi200_adaptive",
+          "mean_ocr_confidence": 92.56,
+          "text_chars": 1903,
+          "text_sha256": "4c453ef453ecdec6c140ea5127cee014f7187e6d4ba29b90b73703bc76c4792b",
+          "suspicious_numbers": [],
+          "new_tokens_vs_primary": [
+            "TỬ",
+            "Email",
+            "thongdnchinhphufehinhphir",
+            "Cơ",
+            "VNThời",
+            "gian",
+            "đo",
+            "ĐẾN",
+            "E",
+            "TÌM",
+            "ĐỆN",
+            "ĐẾt"
+          ],
+          "hint": "có_chữ_mới_cần_người_xác_nhận"
+        }
+      ]
+    },
+    "preliminary_check": {
+      "by": "Claude (AI) - sơ bộ, KHÔNG phải đối chiếu thủ công của người",
+      "note": "Phần thân đọc được ('Luật số: 67/2025/QH15', 'LUẬT'), nhưng đầu trang lẫn rác từ dấu ký số và dấu 'CÔNG VĂN ĐẾN' (vd. 'ngtinchinhphudz', 'CỔNG THÔNG TM ĐIỆN TỰ GHH PHỦ'). Thử lại không cải thiện. Đề xuất cắt vùng đầu trang trước OCR.",
+      "at": "2026-11-13T19:11:08+00:00"
+    }
+  },
+  {
+    "source_id": "LUAT67_2025",
+    "legal_identifier": "67/2025/QH15",
+    "official_url": "https://vanban.chinhphu.vn/?pageid=27160&docid=214607",
+    "download_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2025/7/67qh.signed.pdf",
+    "retrieved_at": "2026-11-11T20:46:05.615122+00:00",
+    "pdf_file": "LUAT67_2025.pdf",
+    "pdf_sha256": "ae706468190afe8d111dd0fccf240e7a980eb002c5d0b5cb1cfe127d92f9c1cd",
+    "pdf_sha256_manifest": "ae706468190afe8d111dd0fccf240e7a980eb002c5d0b5cb1cfe127d92f9c1cd",
+    "sha256_verified": true,
+    "total_pages": 21,
+    "pdf_page": 2,
+    "selection_reasons": [
+      "trang_thân_văn_bản"
+    ],
+    "page_features": {
+      "scanned": true,
+      "table": false,
+      "colored_ink_pct": 0.0
+    },
+    "extraction_method": "tesseract_vie",
+    "ocr_config": {
+      "engine": "tesseract",
+      "lang": "vie",
+      "dpi": 150,
+      "binarize": "otsu",
+      "psm": 3
+    },
+    "mean_ocr_confidence": 93.81,
+    "text_sha256": "ce4fc8029e680065b94a58246e261490e1022b763f85777bf365c42681a72149",
+    "text_chars": 2286,
+    "suspicious_numbers": [],
+    "unicode": {
+      "is_nfc": true,
+      "combining_marks": 0,
+      "replacement_chars": 0,
+      "private_use_chars": 0,
+      "control_chars": 0,
+      "foreign_char_ratio": 0.00112
+    },
+    "quality_status": "pending_human_review",
+    "quality_flags": [],
+    "error": null,
+    "processed_by": "Nguyen Gia Quy",
+    "processed_at": "2026-11-13T19:06:53+00:00",
+    "manual_review": {
+      "status": "pending",
+      "assigned_to": "Nguyen Gia Quy",
+      "result": null,
+      "error_types": [],
+      "notes": null,
+      "reviewed_at": null
+    },
+    "retry": {
+      "needed": false,
+      "attempts": []
+    }
+  },
+  {
+    "source_id": "LUAT67_2025",
+    "legal_identifier": "67/2025/QH15",
+    "official_url": "https://vanban.chinhphu.vn/?pageid=27160&docid=214607",
+    "download_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2025/7/67qh.signed.pdf",
+    "retrieved_at": "2026-11-11T20:46:05.615122+00:00",
+    "pdf_file": "LUAT67_2025.pdf",
+    "pdf_sha256": "ae706468190afe8d111dd0fccf240e7a980eb002c5d0b5cb1cfe127d92f9c1cd",
+    "pdf_sha256_manifest": "ae706468190afe8d111dd0fccf240e7a980eb002c5d0b5cb1cfe127d92f9c1cd",
+    "sha256_verified": true,
+    "total_pages": 21,
+    "pdf_page": 10,
+    "selection_reasons": [
+      "có_bản_chuẩn"
+    ],
+    "page_features": {
+      "scanned": true,
+      "table": false,
+      "colored_ink_pct": 0.0
+    },
+    "extraction_method": "tesseract_vie",
+    "ocr_config": {
+      "engine": "tesseract",
+      "lang": "vie",
+      "dpi": 150,
+      "binarize": "otsu",
+      "psm": 3
+    },
+    "mean_ocr_confidence": 94.91,
+    "text_sha256": "9be73768a81702c09e9190f95c37dc5139a112e34ce6778e1c39ff73ecac5ad4",
+    "text_chars": 2310,
+    "suspicious_numbers": [],
+    "unicode": {
+      "is_nfc": true,
+      "combining_marks": 0,
+      "replacement_chars": 0,
+      "private_use_chars": 0,
+      "control_chars": 0,
+      "foreign_char_ratio": 0.0
+    },
+    "quality_status": "pending_human_review",
+    "quality_flags": [],
+    "error": null,
+    "processed_by": "Nguyen Gia Quy",
+    "processed_at": "2026-11-13T19:06:58+00:00",
+    "manual_review": {
+      "status": "pending",
+      "assigned_to": "Nguyen Gia Quy",
+      "result": null,
+      "error_types": [],
+      "notes": null,
+      "reviewed_at": null
+    },
+    "retry": {
+      "needed": false,
+      "attempts": []
+    },
+    "gold_check": {
+      "gold_source": "bản chép sơ bộ do Claude, chưa người rà",
+      "cer": 0.00348,
+      "diacritic_char_accuracy": 0.99788
+    }
+  },
+  {
+    "source_id": "LUAT67_2025",
+    "legal_identifier": "67/2025/QH15",
+    "official_url": "https://vanban.chinhphu.vn/?pageid=27160&docid=214607",
+    "download_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2025/7/67qh.signed.pdf",
+    "retrieved_at": "2026-11-11T20:46:05.615122+00:00",
+    "pdf_file": "LUAT67_2025.pdf",
+    "pdf_sha256": "ae706468190afe8d111dd0fccf240e7a980eb002c5d0b5cb1cfe127d92f9c1cd",
+    "pdf_sha256_manifest": "ae706468190afe8d111dd0fccf240e7a980eb002c5d0b5cb1cfe127d92f9c1cd",
+    "sha256_verified": true,
+    "total_pages": 21,
+    "pdf_page": 11,
+    "selection_reasons": [
+      "trang_scan"
+    ],
+    "page_features": {
+      "scanned": true,
+      "table": false,
+      "colored_ink_pct": 0.0
+    },
+    "extraction_method": "tesseract_vie",
+    "ocr_config": {
+      "engine": "tesseract",
+      "lang": "vie",
+      "dpi": 150,
+      "binarize": "otsu",
+      "psm": 3
+    },
+    "mean_ocr_confidence": 94.57,
+    "text_sha256": "c14913936808ad06588f4beb1051bc2ded380d7984e214d1bc6394474c738c1d",
+    "text_chars": 2407,
+    "suspicious_numbers": [],
+    "unicode": {
+      "is_nfc": true,
+      "combining_marks": 0,
+      "replacement_chars": 0,
+      "private_use_chars": 0,
+      "control_chars": 0,
+      "foreign_char_ratio": 0.00053
+    },
+    "quality_status": "pending_human_review",
+    "quality_flags": [],
+    "error": null,
+    "processed_by": "Nguyen Gia Quy",
+    "processed_at": "2026-11-13T19:07:03+00:00",
+    "manual_review": {
+      "status": "pending",
+      "assigned_to": "Nguyen Gia Quy",
+      "result": null,
+      "error_types": [],
+      "notes": null,
+      "reviewed_at": null
+    },
+    "retry": {
+      "needed": false,
+      "attempts": []
+    }
+  },
+  {
+    "source_id": "LUAT67_2025",
+    "legal_identifier": "67/2025/QH15",
+    "official_url": "https://vanban.chinhphu.vn/?pageid=27160&docid=214607",
+    "download_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2025/7/67qh.signed.pdf",
+    "retrieved_at": "2026-11-11T20:46:05.615122+00:00",
+    "pdf_file": "LUAT67_2025.pdf",
+    "pdf_sha256": "ae706468190afe8d111dd0fccf240e7a980eb002c5d0b5cb1cfe127d92f9c1cd",
+    "pdf_sha256_manifest": "ae706468190afe8d111dd0fccf240e7a980eb002c5d0b5cb1cfe127d92f9c1cd",
+    "sha256_verified": true,
+    "total_pages": 21,
+    "pdf_page": 15,
+    "selection_reasons": [
+      "có_bản_chuẩn"
+    ],
+    "page_features": {
+      "scanned": true,
+      "table": false,
+      "colored_ink_pct": 0.0
+    },
+    "extraction_method": "tesseract_vie",
+    "ocr_config": {
+      "engine": "tesseract",
+      "lang": "vie",
+      "dpi": 150,
+      "binarize": "otsu",
+      "psm": 3
+    },
+    "mean_ocr_confidence": 94.92,
+    "text_sha256": "9a02aebae0d95fb140338ecfa29586ec4b798506068ca2f8022a5df05f629f7a",
+    "text_chars": 2242,
+    "suspicious_numbers": [
+      "6,000"
+    ],
+    "unicode": {
+      "is_nfc": true,
+      "combining_marks": 0,
+      "replacement_chars": 0,
+      "private_use_chars": 0,
+      "control_chars": 0,
+      "foreign_char_ratio": 0.0
+    },
+    "quality_status": "quarantined_suspect_numbers",
+    "quality_flags": [],
+    "error": null,
+    "processed_by": "Nguyen Gia Quy",
+    "processed_at": "2026-11-13T19:07:08+00:00",
+    "manual_review": {
+      "status": "pending",
+      "assigned_to": "Nguyen Gia Quy",
+      "result": null,
+      "error_types": [],
+      "notes": null,
+      "reviewed_at": null
+    },
+    "retry": {
+      "needed": true,
+      "attempts": [
+        {
+          "strategy": "bo_muc_mau",
+          "mean_ocr_confidence": 94.92,
+          "text_chars": 2242,
+          "text_sha256": "9a02aebae0d95fb140338ecfa29586ec4b798506068ca2f8022a5df05f629f7a",
+          "suspicious_numbers": [
+            "6,000"
+          ],
+          "new_tokens_vs_primary": [],
+          "hint": "không_rõ_cải_thiện"
+        },
+        {
+          "strategy": "dpi200_adaptive",
+          "mean_ocr_confidence": 95.01,
+          "text_chars": 2244,
+          "text_sha256": "9103c7ebedb8224d22323de0ef4dd446e05ac2bf273478a6fa87824f81dc6b33",
+          "suspicious_numbers": [],
+          "new_tokens_vs_primary": [
+            "chỉ",
+            "tầng"
+          ],
+          "hint": "không_rõ_cải_thiện"
+        }
+      ]
+    },
+    "gold_check": {
+      "gold_source": "bản chép sơ bộ do Claude, chưa người rà",
+      "cer": 0.00314,
+      "diacritic_char_accuracy": 0.99211
+    },
+    "preliminary_check": {
+      "by": "Claude (AI) - sơ bộ, KHÔNG phải đối chiếu thủ công của người",
+      "note": "Bản gốc 150 DPI đọc '6.000 tỷ đồng' thành '6,000'. Thử lại 200 DPI + adaptive đọc đúng '6.000' (khớp ảnh). Nên dùng kết quả thử lại sau khi người xác nhận.",
+      "at": "2026-11-13T19:11:08+00:00"
+    }
+  },
+  {
+    "source_id": "LUAT67_2025",
+    "legal_identifier": "67/2025/QH15",
+    "official_url": "https://vanban.chinhphu.vn/?pageid=27160&docid=214607",
+    "download_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2025/7/67qh.signed.pdf",
+    "retrieved_at": "2026-11-11T20:46:05.615122+00:00",
+    "pdf_file": "LUAT67_2025.pdf",
+    "pdf_sha256": "ae706468190afe8d111dd0fccf240e7a980eb002c5d0b5cb1cfe127d92f9c1cd",
+    "pdf_sha256_manifest": "ae706468190afe8d111dd0fccf240e7a980eb002c5d0b5cb1cfe127d92f9c1cd",
+    "sha256_verified": true,
+    "total_pages": 21,
+    "pdf_page": 20,
+    "selection_reasons": [
+      "trang_thân_văn_bản"
+    ],
+    "page_features": {
+      "scanned": true,
+      "table": false,
+      "colored_ink_pct": 0.0
+    },
+    "extraction_method": "tesseract_vie",
+    "ocr_config": {
+      "engine": "tesseract",
+      "lang": "vie",
+      "dpi": 150,
+      "binarize": "otsu",
+      "psm": 3
+    },
+    "mean_ocr_confidence": 94.94,
+    "text_sha256": "2ab74fae200e4a15368b911054d6d979bb082f1522f09e1dde456f437a259a22",
+    "text_chars": 2101,
+    "suspicious_numbers": [],
+    "unicode": {
+      "is_nfc": true,
+      "combining_marks": 0,
+      "replacement_chars": 0,
+      "private_use_chars": 0,
+      "control_chars": 0,
+      "foreign_char_ratio": 0.0
+    },
+    "quality_status": "pending_human_review",
+    "quality_flags": [],
+    "error": null,
+    "processed_by": "Nguyen Gia Quy",
+    "processed_at": "2026-11-13T19:07:23+00:00",
+    "manual_review": {
+      "status": "pending",
+      "assigned_to": "Nguyen Gia Quy",
+      "result": null,
+      "error_types": [],
+      "notes": null,
+      "reviewed_at": null
+    },
+    "retry": {
+      "needed": false,
+      "attempts": []
+    }
+  },
+  {
+    "source_id": "LUAT67_2025",
+    "legal_identifier": "67/2025/QH15",
+    "official_url": "https://vanban.chinhphu.vn/?pageid=27160&docid=214607",
+    "download_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2025/7/67qh.signed.pdf",
+    "retrieved_at": "2026-11-11T20:46:05.615122+00:00",
+    "pdf_file": "LUAT67_2025.pdf",
+    "pdf_sha256": "ae706468190afe8d111dd0fccf240e7a980eb002c5d0b5cb1cfe127d92f9c1cd",
+    "pdf_sha256_manifest": "ae706468190afe8d111dd0fccf240e7a980eb002c5d0b5cb1cfe127d92f9c1cd",
+    "sha256_verified": true,
+    "total_pages": 21,
+    "pdf_page": 21,
+    "selection_reasons": [
+      "trang_cuối"
+    ],
+    "page_features": {
+      "scanned": true,
+      "table": false,
+      "colored_ink_pct": 0.0
+    },
+    "extraction_method": "tesseract_vie",
+    "ocr_config": {
+      "engine": "tesseract",
+      "lang": "vie",
+      "dpi": 150,
+      "binarize": "otsu",
+      "psm": 3
+    },
+    "mean_ocr_confidence": 94.49,
+    "text_sha256": "a1d5c9ef79ee683711b726d8283dc1c5f77bce983c71f21187824cd20cb356c3",
+    "text_chars": 1737,
+    "suspicious_numbers": [],
+    "unicode": {
+      "is_nfc": true,
+      "combining_marks": 0,
+      "replacement_chars": 0,
+      "private_use_chars": 0,
+      "control_chars": 0,
+      "foreign_char_ratio": 0.00074
+    },
+    "quality_status": "pending_human_review",
+    "quality_flags": [
+      "trang_cuối_chữ_ký"
+    ],
+    "error": null,
+    "processed_by": "Nguyen Gia Quy",
+    "processed_at": "2026-11-13T19:07:27+00:00",
+    "manual_review": {
+      "status": "pending",
+      "assigned_to": "Nguyen Gia Quy",
+      "result": null,
+      "error_types": [],
+      "notes": null,
+      "reviewed_at": null
+    },
+    "retry": {
+      "needed": false,
+      "attempts": []
+    },
+    "preliminary_check": {
+      "by": "Claude (AI) - sơ bộ, KHÔNG phải đối chiếu thủ công của người",
+      "note": "Tên người ký và ngày thông qua (14/6/2025) đúng; còn dòng rác '11109104,' từ dấu.",
+      "at": "2026-11-13T19:11:08+00:00"
+    }
+  },
+  {
+    "source_id": "LUAT109_2025",
+    "legal_identifier": "109/2025/QH15",
+    "official_url": "https://vanban.chinhphu.vn/?pageid=27160&docid=216495",
+    "download_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/01/luat109-2025.pdf",
+    "retrieved_at": "2026-11-11T20:46:07.023093+00:00",
+    "pdf_file": "LUAT109_2025.pdf",
+    "pdf_sha256": "b169757e9015d3618d4b81640fbeb26bae9498a45bd8560467c3a71ce1a1c560",
+    "pdf_sha256_manifest": "b169757e9015d3618d4b81640fbeb26bae9498a45bd8560467c3a71ce1a1c560",
+    "sha256_verified": true,
+    "total_pages": 15,
+    "pdf_page": 1,
+    "selection_reasons": [
+      "trang_scan",
+      "trang_đầu"
+    ],
+    "page_features": {
+      "scanned": true,
+      "table": false,
+      "colored_ink_pct": 0.0008
+    },
+    "extraction_method": "tesseract_vie",
+    "ocr_config": {
+      "engine": "tesseract",
+      "lang": "vie",
+      "dpi": 150,
+      "binarize": "otsu",
+      "psm": 3
+    },
+    "mean_ocr_confidence": 94.46,
+    "text_sha256": "e3702b31b0788fe6774b60ba48b295835f5e6a55458a50ea7ff9d8f00d4f21f0",
+    "text_chars": 1534,
+    "suspicious_numbers": [],
+    "unicode": {
+      "is_nfc": true,
+      "combining_marks": 0,
+      "replacement_chars": 0,
+      "private_use_chars": 0,
+      "control_chars": 0,
+      "foreign_char_ratio": 0.0
+    },
+    "quality_status": "pending_human_review",
+    "quality_flags": [],
+    "error": null,
+    "processed_by": "Nguyen Gia Quy",
+    "processed_at": "2026-11-13T19:07:32+00:00",
+    "manual_review": {
+      "status": "pending",
+      "assigned_to": "Nguyen Gia Quy",
+      "result": null,
+      "error_types": [],
+      "notes": null,
+      "reviewed_at": null
+    },
+    "retry": {
+      "needed": false,
+      "attempts": []
+    }
+  },
+  {
+    "source_id": "LUAT109_2025",
+    "legal_identifier": "109/2025/QH15",
+    "official_url": "https://vanban.chinhphu.vn/?pageid=27160&docid=216495",
+    "download_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/01/luat109-2025.pdf",
+    "retrieved_at": "2026-11-11T20:46:07.023093+00:00",
+    "pdf_file": "LUAT109_2025.pdf",
+    "pdf_sha256": "b169757e9015d3618d4b81640fbeb26bae9498a45bd8560467c3a71ce1a1c560",
+    "pdf_sha256_manifest": "b169757e9015d3618d4b81640fbeb26bae9498a45bd8560467c3a71ce1a1c560",
+    "sha256_verified": true,
+    "total_pages": 15,
+    "pdf_page": 2,
+    "selection_reasons": [
+      "trang_thân_văn_bản"
+    ],
+    "page_features": {
+      "scanned": true,
+      "table": false,
+      "colored_ink_pct": 0.0001
+    },
+    "extraction_method": "tesseract_vie",
+    "ocr_config": {
+      "engine": "tesseract",
+      "lang": "vie",
+      "dpi": 150,
+      "binarize": "otsu",
+      "psm": 3
+    },
+    "mean_ocr_confidence": 94.78,
+    "text_sha256": "119ee16cbb49abf07d17cc846dd4beec6003673ece8d5fe9178f5f14b70be865",
+    "text_chars": 1983,
+    "suspicious_numbers": [],
+    "unicode": {
+      "is_nfc": true,
+      "combining_marks": 0,
+      "replacement_chars": 0,
+      "private_use_chars": 0,
+      "control_chars": 0,
+      "foreign_char_ratio": 0.00065
+    },
+    "quality_status": "pending_human_review",
+    "quality_flags": [],
+    "error": null,
+    "processed_by": "Nguyen Gia Quy",
+    "processed_at": "2026-11-13T19:07:37+00:00",
+    "manual_review": {
+      "status": "pending",
+      "assigned_to": "Nguyen Gia Quy",
+      "result": null,
+      "error_types": [],
+      "notes": null,
+      "reviewed_at": null
+    },
+    "retry": {
+      "needed": false,
+      "attempts": []
+    }
+  },
+  {
+    "source_id": "LUAT109_2025",
+    "legal_identifier": "109/2025/QH15",
+    "official_url": "https://vanban.chinhphu.vn/?pageid=27160&docid=216495",
+    "download_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/01/luat109-2025.pdf",
+    "retrieved_at": "2026-11-11T20:46:07.023093+00:00",
+    "pdf_file": "LUAT109_2025.pdf",
+    "pdf_sha256": "b169757e9015d3618d4b81640fbeb26bae9498a45bd8560467c3a71ce1a1c560",
+    "pdf_sha256_manifest": "b169757e9015d3618d4b81640fbeb26bae9498a45bd8560467c3a71ce1a1c560",
+    "sha256_verified": true,
+    "total_pages": 15,
+    "pdf_page": 4,
+    "selection_reasons": [
+      "có_bản_chuẩn"
+    ],
+    "page_features": {
+      "scanned": true,
+      "table": false,
+      "colored_ink_pct": 0.0
+    },
+    "extraction_method": "tesseract_vie",
+    "ocr_config": {
+      "engine": "tesseract",
+      "lang": "vie",
+      "dpi": 150,
+      "binarize": "otsu",
+      "psm": 3
+    },
+    "mean_ocr_confidence": 95.14,
+    "text_sha256": "4d8ff40037e80ca0bde403f9f494b7bb82fa7fe18fd85ae2cce48643376daf9a",
+    "text_chars": 2041,
+    "suspicious_numbers": [],
+    "unicode": {
+      "is_nfc": true,
+      "combining_marks": 0,
+      "replacement_chars": 0,
+      "private_use_chars": 0,
+      "control_chars": 0,
+      "foreign_char_ratio": 0.0
+    },
+    "quality_status": "pending_human_review",
+    "quality_flags": [],
+    "error": null,
+    "processed_by": "Nguyen Gia Quy",
+    "processed_at": "2026-11-13T19:07:42+00:00",
+    "manual_review": {
+      "status": "pending",
+      "assigned_to": "Nguyen Gia Quy",
+      "result": null,
+      "error_types": [],
+      "notes": null,
+      "reviewed_at": null
+    },
+    "retry": {
+      "needed": false,
+      "attempts": []
+    },
+    "gold_check": {
+      "gold_source": "bản chép sơ bộ do Claude, chưa người rà",
+      "cer": 0.00444,
+      "diacritic_char_accuracy": 0.98874
+    }
+  },
+  {
+    "source_id": "LUAT109_2025",
+    "legal_identifier": "109/2025/QH15",
+    "official_url": "https://vanban.chinhphu.vn/?pageid=27160&docid=216495",
+    "download_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/01/luat109-2025.pdf",
+    "retrieved_at": "2026-11-11T20:46:07.023093+00:00",
+    "pdf_file": "LUAT109_2025.pdf",
+    "pdf_sha256": "b169757e9015d3618d4b81640fbeb26bae9498a45bd8560467c3a71ce1a1c560",
+    "pdf_sha256_manifest": "b169757e9015d3618d4b81640fbeb26bae9498a45bd8560467c3a71ce1a1c560",
+    "sha256_verified": true,
+    "total_pages": 15,
+    "pdf_page": 8,
+    "selection_reasons": [
+      "trang_có_bảng",
+      "trang_scan"
+    ],
+    "page_features": {
+      "scanned": true,
+      "table": true,
+      "colored_ink_pct": 0.0036
+    },
+    "extraction_method": "tesseract_vie",
+    "ocr_config": {
+      "engine": "tesseract",
+      "lang": "vie",
+      "dpi": 150,
+      "binarize": "otsu",
+      "psm": 3
+    },
+    "mean_ocr_confidence": 95.13,
+    "text_sha256": "6d372ebb7dc032e9a4e47e26f514b3967dade8944a6f8bcdfb82d8c561434f74",
+    "text_chars": 2131,
+    "suspicious_numbers": [],
+    "unicode": {
+      "is_nfc": true,
+      "combining_marks": 0,
+      "replacement_chars": 0,
+      "private_use_chars": 0,
+      "control_chars": 0,
+      "foreign_char_ratio": 0.0
+    },
+    "quality_status": "pending_human_review",
+    "quality_flags": [
+      "bảng_chưa_tái_dựng_cấu_trúc"
+    ],
+    "error": null,
+    "processed_by": "Nguyen Gia Quy",
+    "processed_at": "2026-11-13T19:07:47+00:00",
+    "manual_review": {
+      "status": "pending",
+      "assigned_to": "Nguyen Gia Quy",
+      "result": null,
+      "error_types": [],
+      "notes": null,
+      "reviewed_at": null
+    },
+    "retry": {
+      "needed": false,
+      "attempts": []
+    },
+    "preliminary_check": {
+      "by": "Claude (AI) - sơ bộ, KHÔNG phải đối chiếu thủ công của người",
+      "note": "Bảng biểu thuế luỹ tiến (Điều 9): đúng đủ 5 hàng, 20 giá trị số (bậc, ngưỡng năm/tháng, thuế suất) khớp ảnh. Lỗi chữ: 'luỹ tiến'->'luỹ tiền', 'triệu'->'ưiệu', 'Chính phủ'->'Chính phú'. Cột chưa được tái dựng (text nối theo dòng).",
+      "at": "2026-11-13T19:11:08+00:00"
+    }
+  },
+  {
+    "source_id": "LUAT109_2025",
+    "legal_identifier": "109/2025/QH15",
+    "official_url": "https://vanban.chinhphu.vn/?pageid=27160&docid=216495",
+    "download_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/01/luat109-2025.pdf",
+    "retrieved_at": "2026-11-11T20:46:07.023093+00:00",
+    "pdf_file": "LUAT109_2025.pdf",
+    "pdf_sha256": "b169757e9015d3618d4b81640fbeb26bae9498a45bd8560467c3a71ce1a1c560",
+    "pdf_sha256_manifest": "b169757e9015d3618d4b81640fbeb26bae9498a45bd8560467c3a71ce1a1c560",
+    "sha256_verified": true,
+    "total_pages": 15,
+    "pdf_page": 10,
+    "selection_reasons": [
+      "có_bản_chuẩn"
+    ],
+    "page_features": {
+      "scanned": true,
+      "table": false,
+      "colored_ink_pct": 0.0
+    },
+    "extraction_method": "tesseract_vie",
+    "ocr_config": {
+      "engine": "tesseract",
+      "lang": "vie",
+      "dpi": 150,
+      "binarize": "otsu",
+      "psm": 3
+    },
+    "mean_ocr_confidence": 95.07,
+    "text_sha256": "451f0b9356fc843ec699e3697f24acdf6c4acae1a034ed2a39188c576ebde154",
+    "text_chars": 2191,
+    "suspicious_numbers": [],
+    "unicode": {
+      "is_nfc": true,
+      "combining_marks": 0,
+      "replacement_chars": 0,
+      "private_use_chars": 0,
+      "control_chars": 0,
+      "foreign_char_ratio": 0.0
+    },
+    "quality_status": "pending_human_review",
+    "quality_flags": [],
+    "error": null,
+    "processed_by": "Nguyen Gia Quy",
+    "processed_at": "2026-11-13T19:07:57+00:00",
+    "manual_review": {
+      "status": "pending",
+      "assigned_to": "Nguyen Gia Quy",
+      "result": null,
+      "error_types": [],
+      "notes": null,
+      "reviewed_at": null
+    },
+    "retry": {
+      "needed": false,
+      "attempts": []
+    },
+    "gold_check": {
+      "gold_source": "bản chép sơ bộ do Claude, chưa người rà",
+      "cer": 0.01241,
+      "diacritic_char_accuracy": 0.95868
+    }
+  },
+  {
+    "source_id": "LUAT109_2025",
+    "legal_identifier": "109/2025/QH15",
+    "official_url": "https://vanban.chinhphu.vn/?pageid=27160&docid=216495",
+    "download_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/01/luat109-2025.pdf",
+    "retrieved_at": "2026-11-11T20:46:07.023093+00:00",
+    "pdf_file": "LUAT109_2025.pdf",
+    "pdf_sha256": "b169757e9015d3618d4b81640fbeb26bae9498a45bd8560467c3a71ce1a1c560",
+    "pdf_sha256_manifest": "b169757e9015d3618d4b81640fbeb26bae9498a45bd8560467c3a71ce1a1c560",
+    "sha256_verified": true,
+    "total_pages": 15,
+    "pdf_page": 14,
+    "selection_reasons": [
+      "trang_thân_văn_bản"
+    ],
+    "page_features": {
+      "scanned": true,
+      "table": false,
+      "colored_ink_pct": 0.0002
+    },
+    "extraction_method": "tesseract_vie",
+    "ocr_config": {
+      "engine": "tesseract",
+      "lang": "vie",
+      "dpi": 150,
+      "binarize": "otsu",
+      "psm": 3
+    },
+    "mean_ocr_confidence": 94.92,
+    "text_sha256": "088e1cf6ce833035e43beacc3fc86e57c9e9ecf711d62162fca7b9e05575e33f",
+    "text_chars": 2055,
+    "suspicious_numbers": [],
+    "unicode": {
+      "is_nfc": true,
+      "combining_marks": 0,
+      "replacement_chars": 0,
+      "private_use_chars": 0,
+      "control_chars": 0,
+      "foreign_char_ratio": 0.0
+    },
+    "quality_status": "pending_human_review",
+    "quality_flags": [],
+    "error": null,
+    "processed_by": "Nguyen Gia Quy",
+    "processed_at": "2026-11-13T19:08:05+00:00",
+    "manual_review": {
+      "status": "pending",
+      "assigned_to": "Nguyen Gia Quy",
+      "result": null,
+      "error_types": [],
+      "notes": null,
+      "reviewed_at": null
+    },
+    "retry": {
+      "needed": false,
+      "attempts": []
+    }
+  },
+  {
+    "source_id": "LUAT109_2025",
+    "legal_identifier": "109/2025/QH15",
+    "official_url": "https://vanban.chinhphu.vn/?pageid=27160&docid=216495",
+    "download_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/01/luat109-2025.pdf",
+    "retrieved_at": "2026-11-11T20:46:07.023093+00:00",
+    "pdf_file": "LUAT109_2025.pdf",
+    "pdf_sha256": "b169757e9015d3618d4b81640fbeb26bae9498a45bd8560467c3a71ce1a1c560",
+    "pdf_sha256_manifest": "b169757e9015d3618d4b81640fbeb26bae9498a45bd8560467c3a71ce1a1c560",
+    "sha256_verified": true,
+    "total_pages": 15,
+    "pdf_page": 15,
+    "selection_reasons": [
+      "trang_cuối"
+    ],
+    "page_features": {
+      "scanned": true,
+      "table": false,
+      "colored_ink_pct": 0.8346
+    },
+    "extraction_method": "tesseract_vie",
+    "ocr_config": {
+      "engine": "tesseract",
+      "lang": "vie",
+      "dpi": 150,
+      "binarize": "otsu",
+      "psm": 3
+    },
+    "mean_ocr_confidence": 94.39,
+    "text_sha256": "3f66daf8789e272f7edebf614baffc87e8fc55137a8c0ac783bb19ded6a561b9",
+    "text_chars": 1181,
+    "suspicious_numbers": [],
+    "unicode": {
+      "is_nfc": true,
+      "combining_marks": 0,
+      "replacement_chars": 0,
+      "private_use_chars": 0,
+      "control_chars": 0,
+      "foreign_char_ratio": 0.0
+    },
+    "quality_status": "quarantined_stamp_overlay",
+    "quality_flags": [
+      "trang_cuối_chữ_ký"
+    ],
+    "error": null,
+    "processed_by": "Nguyen Gia Quy",
+    "processed_at": "2026-11-13T19:08:08+00:00",
+    "manual_review": {
+      "status": "pending",
+      "assigned_to": "Nguyen Gia Quy",
+      "result": null,
+      "error_types": [],
+      "notes": null,
+      "reviewed_at": null
+    },
+    "retry": {
+      "needed": true,
+      "attempts": [
+        {
+          "strategy": "bo_muc_mau",
+          "mean_ocr_confidence": 94.88,
+          "text_chars": 1200,
+          "text_sha256": "9200381c7ed5bdbac816e11c62a1c644d2be38f84fb415491f6b5be1f1513d80",
+          "suspicious_numbers": [],
+          "new_tokens_vs_primary": [
+            "sửa",
+            "khóa",
+            "XE",
+            "CHỦ",
+            "1JCH",
+            "QUÓC",
+            "Trần",
+            "Thanh",
+            "Mẫn"
+          ],
+          "hint": "có_chữ_mới_cần_người_xác_nhận"
+        },
+        {
+          "strategy": "dpi200_adaptive",
+          "mean_ocr_confidence": 94.35,
+          "text_chars": 1184,
+          "text_sha256": "b38aff066aaf4d30714bbe0a911c0f77dd83cf2b631f9f3e40b25e741e22f02d",
+          "suspicious_numbers": [],
+          "new_tokens_vs_primary": [
+            "sửa",
+            "Mam",
+            "khóa",
+            "CHỦ",
+            "TỊCH",
+            "QUÓC"
+          ],
+          "hint": "có_chữ_mới_cần_người_xác_nhận"
+        }
+      ]
+    },
+    "preliminary_check": {
+      "by": "Claude (AI) - sơ bộ, KHÔNG phải đối chiếu thủ công của người",
+      "note": "Bản gốc mất tên người ký và 'CHỦ TỊCH' do con dấu đè. Thử lại 'bo_muc_mau' khôi phục 'Trần Thanh Mẫn'; 'dpi200_adaptive' khôi phục 'CHỦ TỊCH' (còn lỗi 'QUÓC', 'Mam'). Cần người xác nhận hoặc gõ tay khối chữ ký.",
+      "at": "2026-11-13T19:11:08+00:00"
+    }
+  }
+]

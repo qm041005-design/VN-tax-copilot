@@ -1,0 +1,32 @@
+{
+  "tong_trang_da_xu_ly": 21,
+  "van_ban_da_xu_ly": 3,
+  "van_ban_ky_vong": 10,
+  "van_ban_thieu": [
+    "TT219_2013",
+    "TT111_2013",
+    "TT96_2015",
+    "TT26_2015",
+    "ND123_2020",
+    "TT78_2014",
+    "ND70_2025"
+  ],
+  "dat_toi_thieu_trang": true,
+  "dat_du_10_van_ban": false,
+  "trang_scan": 14,
+  "trang_co_bang": 1,
+  "theo_phuong_phap": {
+    "native_pdf": 6,
+    "tesseract_vie": 15
+  },
+  "theo_trang_thai": {
+    "pending_human_review": 18,
+    "quarantined_stamp_overlay": 2,
+    "quarantined_suspect_numbers": 1
+  },
+  "hash_pdf_khop_manifest": 3,
+  "trang_loi_can_xu_ly_lai": 3,
+  "trang_moi_van_ban": 0,
+  "nguoi_thuc_hien": "Nguyen Gia Quy",
+  "ngay": "2026-11-13T19:11:08+00:00"
+}

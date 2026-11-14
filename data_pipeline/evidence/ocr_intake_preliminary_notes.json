@@ -1,0 +1,8 @@
+{
+  "_ghi_chu": "Nhận xét SƠ BỘ do Claude (AI) đọc ảnh trang và so với OCR ngày 14/11/2026. Chưa phải đối chiếu thủ công của người; mọi trang vẫn chờ người xác nhận.",
+  "LUAT109_2025:8": "Bảng biểu thuế luỹ tiến (Điều 9): đúng đủ 5 hàng, 20 giá trị số (bậc, ngưỡng năm/tháng, thuế suất) khớp ảnh. Lỗi chữ: 'luỹ tiến'->'luỹ tiền', 'triệu'->'ưiệu', 'Chính phủ'->'Chính phú'. Cột chưa được tái dựng (text nối theo dòng).",
+  "LUAT109_2025:15": "Bản gốc mất tên người ký và 'CHỦ TỊCH' do con dấu đè. Thử lại 'bo_muc_mau' khôi phục 'Trần Thanh Mẫn'; 'dpi200_adaptive' khôi phục 'CHỦ TỊCH' (còn lỗi 'QUÓC', 'Mam'). Cần người xác nhận hoặc gõ tay khối chữ ký.",
+  "LUAT67_2025:1": "Phần thân đọc được ('Luật số: 67/2025/QH15', 'LUẬT'), nhưng đầu trang lẫn rác từ dấu ký số và dấu 'CÔNG VĂN ĐẾN' (vd. 'ngtinchinhphudz', 'CỔNG THÔNG TM ĐIỆN TỰ GHH PHỦ'). Thử lại không cải thiện. Đề xuất cắt vùng đầu trang trước OCR.",
+  "LUAT67_2025:15": "Bản gốc 150 DPI đọc '6.000 tỷ đồng' thành '6,000'. Thử lại 200 DPI + adaptive đọc đúng '6.000' (khớp ảnh). Nên dùng kết quả thử lại sau khi người xác nhận.",
+  "LUAT67_2025:21": "Tên người ký và ngày thông qua (14/6/2025) đúng; còn dòng rác '11109104,' từ dấu."
+}
