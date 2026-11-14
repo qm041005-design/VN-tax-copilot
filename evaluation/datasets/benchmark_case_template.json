@@ -1,0 +1,37 @@
+
+{
+  "case_id": "VN-TAX-001",
+  "question": "Nhập câu hỏi pháp luật thuế đã được xác minh",
+  "category": "VAT",
+  "answerability": "answerable",
+  "tax_period": null,
+  "research_as_of": null,
+  "required_evidence": [
+    {
+      "evidence_id": "E001",
+      "description": "Mô tả chứng cứ cần tìm",
+      "source_id": "SOURCE_ID_TO_VERIFY",
+      "acceptable_passage_ids": [
+        "PASSAGE_ID_TO_VERIFY"
+      ]
+    }
+  ],
+  "acceptable_conclusions": [],
+  "assumptions": [],
+  "material_claims": [],
+  "tags": [],
+  "reviewers": [
+    {
+      "reviewer_id": "REVIEWER_1",
+      "decision": "pending",
+      "notes": ""
+    },
+    {
+      "reviewer_id": "REVIEWER_2",
+      "decision": "pending",
+      "notes": ""
+    }
+  ],
+  "adjudication_notes": null,
+  "review_status": "draft"
+}

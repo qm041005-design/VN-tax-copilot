@@ -218,3 +218,7 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Generated Recall@10 reports
+evaluation/metrics/recall_report.json
+evaluation/metrics/test_output.json
