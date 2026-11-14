@@ -1,3 +1,5 @@
+> **Cập nhật SCRUM-24 (14/11/2026):** xem [hướng dẫn tích hợp mới](SCRUM_24_FIXES.md) trước các lệnh bên dưới; backend hiện phụ thuộc ai_engine ở gốc repo, dùng migration cho DB cũ và Docker build context ở gốc.
+
 # 📘 BACKEND GUIDE – VN Tax Copilot
 
 Tài liệu giải thích backend cho **mọi thành viên** (kể cả người chưa từng dùng FastAPI).

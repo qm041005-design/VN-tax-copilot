@@ -1,5 +1,7 @@
 # 📄 API CONTRACT – Hợp đồng dữ liệu giữa Backend và Frontend
 
+> Cập nhật SCRUM-24 ngày 14/11/2026: đọc [SCRUM_24_FIXES.md](SCRUM_24_FIXES.md) về bộ lọc kỳ thuế/sắc thuế, BM25, guardrails, migration và giới hạn trước khi tích hợp.
+
 ## 0. "API contract" là gì? Vì sao cần?
 
 Backend (nhóm 8) và Frontend (nhóm 9) làm song song trên 2 nhánh khác nhau. Để khi ghép lại **chạy được ngay**, hai bên phải thống nhất trước:
@@ -113,7 +115,7 @@ Gửi:
 | `question` | Có | Câu hỏi (1–2000 ký tự) |
 | `tax_type` | Không | `VAT` / `CIT` / `PIT` |
 | `tax_period` | Không | Kỳ thuế; bỏ trống thì lấy của hồ sơ |
-| `research_as_of` | Không | Chỉ lấy luật còn hiệu lực tại ngày này |
+| `research_as_of` | Không | Mốc nghiên cứu; chỉ dùng làm bộ lọc ứng viên theo ngày nếu không có kỳ thuế |
 | `material_facts` | Không | Tình tiết bổ sung |
 | `doc_type` | Không | Chỉ tìm trong `LUAT` / `NGHI_DINH` / `THONG_TU` / `CONG_VAN` |
 | `limit` | Không | Số nguồn tối đa (1–50, mặc định 10) |
@@ -143,14 +145,14 @@ Nhận:
   "sources": [ /* SourceHit – xem 3.7, cùng thứ tự với history.citations */ ]
 }
 ```
-- `answer` hiện **luôn `null`** (chưa nối AI) → frontend hiển thị `warnings[0]` trong bong bóng trả lời.
+- `answer` mặc định `null` khi thiếu căn cứ/dữ kiện hoặc chưa cấu hình callback AI trên server. Backend đã gọi guardrails; chỉ trả answer khi đạt kiểm tra. Response có thêm `research_result` (status draft/clarify/abstain và sáu phần); frontend cũ có thể bỏ qua trường mới. Lịch sử chưa lưu nguyên object sáu phần.
 - Không tìm thấy nguồn: `citations: []`, `sources: []`, `warnings[0]` = "Không tìm thấy căn cứ pháp lý phù hợp…".
 
 ### 3.6 Lịch sử chat – `GET /matters/{id}/history` → 200
 Trả **mảng** các `history` như 3.5 (mới nhất trước). Tổng số bản ghi nằm ở **header** `X-Total-Count` (dùng để phân trang).
 
 ### 3.7 Tìm đoạn luật – `GET /sources/search?q=thuế suất&as_of=2026-03-15` → 200
-Trả mảng **SourceHit** (xếp theo độ khớp, rồi Luật trước Nghị định trước Thông tư trước Công văn):
+Trả mảng **SourceHit** xếp theo BM25; thứ hạng không xác định thứ bậc pháp lý. Hỗ trợ thêm tax_type và tax_period (YYYY, YYYY-MM, YYYY-Q1..Q4). Kỳ thuế ưu tiên hơn as_of để giữ nguồn lịch sử; metadata hiệu lực thiếu vẫn cần thẩm định:
 ```json
 [{
   "source_id": "42",
@@ -219,7 +221,7 @@ export interface ResearchRequest {
   matter_id: string; question: string; tax_type?: TaxType; tax_period?: string;
   research_as_of?: string; material_facts?: string; doc_type?: string; limit?: number;
 }
-export interface ResearchResponse { history: HistoryItem; sources: SourceHit[]; }
+export interface ResearchResponse { history: HistoryItem; sources: SourceHit[]; research_result?: { status: "draft" | "clarify" | "abstain"; sections: Record<string, {text: string; citation_ids: string[]}[]>; clarification_questions: string[]; warnings: string[] } | null; }
 ```
 
 ---

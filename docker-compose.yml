@@ -17,14 +17,14 @@ services:
   # Backend FastAPI Service
   backend:
     build:
-      context: ./backend
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: backend/Dockerfile
     container_name: vn_tax_backend
     restart: unless-stopped
     ports:
       - "8000:8000"
     environment:
-      DATABASE_URL: postgresql://vntax_admin:vntax_secret@db:5432/vntax_copilot
+      DATABASE_URL: postgresql://${POSTGRES_USER:-vntax_admin}:${POSTGRES_PASSWORD:-vntax_secret}@db:5432/${POSTGRES_DB:-vntax_copilot}
       # Token thử nghiệm (token:user:tenant). Thiếu thì mọi API trả 401. Staging: đặt biến AUTH_TOKENS riêng.
       AUTH_TOKENS: ${AUTH_TOKENS:-dev-token-alice-0001:alice:thtax,dev-token-bob-0002:bob:other}
       CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:3000,http://127.0.0.1:3000}

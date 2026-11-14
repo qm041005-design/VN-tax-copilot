@@ -55,3 +55,4 @@ class ResearchResponse(BaseModel):
     """`history` = bản ghi đã lưu vào hồ sơ; `sources` = các đoạn luật tìm được (cùng thứ tự với history.citations)."""
     history: HistoryOut
     sources: list[SourceHit]
+    research_result: dict | None = None

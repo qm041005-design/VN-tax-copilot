@@ -44,7 +44,7 @@ class LegalChunk(Base):
     doc_id: Mapped[int] = mapped_column(ForeignKey("legal_documents.id"), index=True)
     article_number: Mapped[str] = mapped_column(String(20), index=True)   # "9", "14a"
     article_title: Mapped[str | None] = mapped_column(String(300), nullable=True)
-    clause_number: Mapped[int | None] = mapped_column(Integer, default=0)  # 0 = không có Khoản
+    clause_number: Mapped[str | None] = mapped_column(String(20), default="0")  # Giữ 1a; 0 là không có Khoản
     point_letter: Mapped[str | None] = mapped_column(String(5), default="")  # "" = không có Điểm
     citation_path: Mapped[str] = mapped_column(String(500))                # "Điểm a, Khoản 1, Điều 9, 48/2024/QH15"
     content: Mapped[str] = mapped_column(Text)
@@ -52,3 +52,10 @@ class LegalChunk(Base):
     hierarchy_level: Mapped[int] = mapped_column(Integer)
 
     document: Mapped[LegalDocument] = relationship(back_populates="chunks")
+
+
+class LegalDocumentTaxScope(Base):
+    """Nhãn sắc thuế do người nhập dữ liệu xác minh; không suy ra từ tên văn bản."""
+    __tablename__ = "legal_document_tax_scopes"
+    doc_id: Mapped[int] = mapped_column(ForeignKey("legal_documents.id"), primary_key=True)
+    tax_type: Mapped[str] = mapped_column(String(20), primary_key=True)
