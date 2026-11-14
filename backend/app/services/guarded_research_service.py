@@ -4,6 +4,7 @@ Run backend with repository root on PYTHONPATH so ai_engine is importable.
 Callbacks are injected by server code, never request-body fields.
 """
 from ai_engine.guardrails import ResearchContext, run_guarded_research
+from ai_engine.guardrails.legal_metadata import normalize_clause_number
 
 
 def research_from_rows(question, rows, *, tax_period=None, material_facts=None,
@@ -12,7 +13,7 @@ def research_from_rows(question, rows, *, tax_period=None, material_facts=None,
         {"passage_id": str(chunk.id), "legal_identifier": chunk.document.doc_code,
          "text": chunk.content,
          "dieu": getattr(chunk, "article_number", None),
-         "khoan": str(chunk.clause_number) if getattr(chunk, "clause_number", 0) else None,
+         "khoan": normalize_clause_number(getattr(chunk, "clause_number", None)),
          "diem": getattr(chunk, "point_letter", None) or None,
          "doc_type": getattr(chunk.document, "doc_type", None),
          "effective_date": chunk.document.effective_date.isoformat() if getattr(chunk.document, "effective_date", None) else None,
