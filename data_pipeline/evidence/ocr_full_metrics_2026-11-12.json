@@ -1,0 +1,257 @@
+{
+  "ngay": "2026-11-12",
+  "cau_hinh": {
+    "engine": "tesseract 5 + tessdata_best vie",
+    "dpi": 150,
+    "binarize": "otsu",
+    "deskew": true,
+    "psm": 3,
+    "oem": 1,
+    "mode": "auto"
+  },
+  "luat": {
+    "luat-48-2024-qh15-gtgt": {
+      "ten": "Luật 48/2024/QH15 (GTGT)",
+      "sha256": "8be4caa345b42bce86386831da0bf4a9ed2bebbc54b471535c758431a5277569",
+      "trang": 20,
+      "nguon_trang": {
+        "text_layer": 19,
+        "tesseract": 1
+      },
+      "dieu_tim_thay": "18/18",
+      "dieu_thieu": [],
+      "chuong_nhan_dang": [
+        "I",
+        "II",
+        "III",
+        "IV"
+      ],
+      "khoan": 80,
+      "diem": 85,
+      "conf_tb": 89.93,
+      "conf_min_trang": 89.93,
+      "unicode_nfc_sach": true,
+      "ky_tu_la": [],
+      "so_lieu_trong_yeu": "15/15",
+      "so_lieu_thieu": [],
+      "trang_can_xem_lai": {
+        "20": [
+          "trang_cuối_(chữ_ký/con_dấu)"
+        ]
+      },
+      "so_dang_ngo": {}
+    },
+    "luat-67-2025-qh15-tndn": {
+      "ten": "Luật 67/2025/QH15 (TNDN)",
+      "sha256": "ae706468190afe8d111dd0fccf240e7a980eb002c5d0b5cb1cfe127d92f9c1cd",
+      "trang": 21,
+      "nguon_trang": {
+        "tesseract": 21
+      },
+      "dieu_tim_thay": "20/20",
+      "dieu_thieu": [],
+      "chuong_nhan_dang": [
+        "II",
+        "IV"
+      ],
+      "khoan": 78,
+      "diem": 96,
+      "conf_tb": 94.67,
+      "conf_min_trang": 92.69,
+      "unicode_nfc_sach": true,
+      "ky_tu_la": [
+        [
+          "©",
+          5
+        ],
+        [
+          "„",
+          2
+        ],
+        [
+          "®",
+          1
+        ],
+        [
+          "ð",
+          1
+        ],
+        [
+          "¡",
+          1
+        ]
+      ],
+      "so_lieu_trong_yeu": "19/20",
+      "so_lieu_thieu": [
+        "6.000 tỷ đồng"
+      ],
+      "trang_can_xem_lai": {
+        "1": [
+          "có_con_dấu_hoặc_chữ_ký_màu"
+        ],
+        "15": [
+          "số_có_dấu_phẩy_nghìn_đáng_ngờ"
+        ],
+        "21": [
+          "trang_cuối_(chữ_ký/con_dấu)"
+        ]
+      },
+      "so_dang_ngo": {
+        "15": [
+          "6,000"
+        ]
+      }
+    },
+    "luat-109-2025-qh15-tncn": {
+      "ten": "Luật 109/2025/QH15 (TNCN)",
+      "sha256": "b169757e9015d3618d4b81640fbeb26bae9498a45bd8560467c3a71ce1a1c560",
+      "trang": 15,
+      "nguon_trang": {
+        "tesseract": 15
+      },
+      "dieu_tim_thay": "29/29",
+      "dieu_thieu": [],
+      "chuong_nhan_dang": [
+        "II",
+        "I",
+        "IV"
+      ],
+      "khoan": 102,
+      "diem": 57,
+      "conf_tb": 95.01,
+      "conf_min_trang": 94.39,
+      "unicode_nfc_sach": true,
+      "ky_tu_la": [
+        [
+          "©",
+          1
+        ]
+      ],
+      "so_lieu_trong_yeu": "22/23",
+      "so_lieu_thieu": [
+        "Trần Thanh Mẫn"
+      ],
+      "trang_can_xem_lai": {
+        "15": [
+          "có_con_dấu_hoặc_chữ_ký_màu",
+          "trang_cuối_(chữ_ký/con_dấu)"
+        ]
+      },
+      "so_dang_ngo": {}
+    }
+  },
+  "scan_that_4_trang": {
+    "so_ky_tu_chuan": 8729,
+    "cer": 0.00584,
+    "cer_khong_dau": 0.00092,
+    "ky_tu_co_dau_dung": 0.98451,
+    "theo_trang": {
+      "luat-109-2025-qh15-tncn_p004": {
+        "cer": 0.00444,
+        "wer": 0.02032,
+        "ky_tu_co_dau_dung": 0.98874
+      },
+      "luat-109-2025-qh15-tncn_p010": {
+        "cer": 0.01241,
+        "wer": 0.05745,
+        "ky_tu_co_dau_dung": 0.95868
+      },
+      "luat-67-2025-qh15-tndn_p010": {
+        "cer": 0.00348,
+        "wer": 0.01584,
+        "ky_tu_co_dau_dung": 0.99788
+      },
+      "luat-67-2025-qh15-tndn_p015": {
+        "cer": 0.00314,
+        "wer": 0.01346,
+        "ky_tu_co_dau_dung": 0.99211
+      }
+    },
+    "luu_y": "Bản chuẩn là bản chép sơ bộ từ ảnh (do Claude), chưa có người rà soát; mẫu nhỏ (8.729 ký tự)."
+  },
+  "kiem_chung_doc_lap_scan_gia_tu_luat_48": {
+    "mo_ta": "5 trang Luật 48 (text layer làm chuẩn) làm nhiễu rồi OCR; không dùng để chọn cấu hình",
+    "nhe": {
+      "300dpi": {
+        "cer": 0.0036,
+        "dau_dung": 0.9849
+      },
+      "150dpi": {
+        "cer": 0.0034,
+        "dau_dung": 0.9895
+      }
+    },
+    "nang": {
+      "300dpi": {
+        "cer": 0.0116,
+        "dau_dung": 0.9569
+      },
+      "150dpi": {
+        "cer": 0.0081,
+        "dau_dung": 0.9745
+      }
+    }
+  },
+  "so_sanh_cau_hinh_tren_4_trang_that": [
+    {
+      "cau_hinh": "300 DPI + Otsu (ban đầu)",
+      "cer": 0.0104,
+      "dau_dung": 0.9587
+    },
+    {
+      "cau_hinh": "300 DPI, không nhị phân",
+      "cer": 0.0104,
+      "dau_dung": 0.9572
+    },
+    {
+      "cau_hinh": "300 DPI, không nhị phân, không xoay",
+      "cer": 0.0109,
+      "dau_dung": 0.9571
+    },
+    {
+      "cau_hinh": "400 DPI, không nhị phân",
+      "cer": 0.0099,
+      "dau_dung": 0.9607
+    },
+    {
+      "cau_hinh": "300 DPI + adaptive",
+      "cer": 0.0081,
+      "dau_dung": 0.9722
+    },
+    {
+      "cau_hinh": "250 DPI + adaptive",
+      "cer": 0.0073,
+      "dau_dung": 0.973
+    },
+    {
+      "cau_hinh": "200 DPI, không nhị phân",
+      "cer": 0.0071,
+      "dau_dung": 0.9716
+    },
+    {
+      "cau_hinh": "200 DPI + adaptive",
+      "cer": 0.0071,
+      "dau_dung": 0.9762
+    },
+    {
+      "cau_hinh": "120 DPI + adaptive",
+      "cer": 0.0092,
+      "dau_dung": 0.9843
+    },
+    {
+      "cau_hinh": "100 DPI + adaptive",
+      "cer": 0.011,
+      "dau_dung": 0.979
+    },
+    {
+      "cau_hinh": "150 DPI + adaptive",
+      "cer": 0.0072,
+      "dau_dung": 0.9843
+    },
+    {
+      "cau_hinh": "150 DPI + Otsu (CHỌN)",
+      "cer": 0.0055,
+      "dau_dung": 0.987
+    }
+  ]
+}
