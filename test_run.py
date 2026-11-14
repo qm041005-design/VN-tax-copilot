@@ -1,4 +1,5 @@
 import json
+from datetime import datetime
 
 from data_pipeline.parser.chunker import chunk_legal_document
 from data_pipeline.registry.hierarchy import get_hierarchy_level
@@ -81,6 +82,32 @@ for chunk in results:
         "LOI: Sai ma van ban trong citation"
     )
 
+# Kiem tra van ban chua toi ngay hieu luc -> giu CHUA_XAC_DINH
+future_chunks = chunk_legal_document(
+    text=sample_text,
+    doc_code="99/2026/QH15",
+    hierarchy_level=1,
+    metadata={"effective_date": datetime(2028, 1, 1), "as_of": datetime(2026, 11, 14)},
+)
+assert all(c["status"] == "CHUA_XAC_DINH" for c in future_chunks), (
+    "LOI: Van ban chua toi ngay hieu luc phai giu CHUA_XAC_DINH"
+)
+
+# Kiem tra van ban da qua ngay het hieu luc -> HET_HIEU_LUC
+expired_chunks = chunk_legal_document(
+    text=sample_text,
+    doc_code="10/2020/TT-BTC",
+    hierarchy_level=3,
+    metadata={
+        "effective_date": datetime(2020, 1, 1),
+        "expiry_date": datetime(2021, 12, 31),
+        "as_of": datetime(2026, 11, 14),
+    },
+)
+assert all(c["status"] == "HET_HIEU_LUC" for c in expired_chunks), (
+    "LOI: Van ban da qua ngay het han phai gan HET_HIEU_LUC"
+)
+
 print("\n========== KET QUA KIEM THU ==========")
 print("PASS: Nhan dien NGHI_DINH")
 print("PASS: UNKNOWN tra ve cap 5 an toan")
@@ -91,6 +118,8 @@ print("PASS: Tach dung diem a, b")
 print("PASS: Giu noi dung mo dau Dieu")
 print("PASS: Giu noi dung mo dau Khoan")
 print("PASS: Mac dinh status = CHUA_XAC_DINH khi thieu ngay hieu luc")
+print("PASS: Van ban chua toi ngay hieu luc giu CHUA_XAC_DINH")
+print("PASS: Van ban qua han hieu luc gan HET_HIEU_LUC")
 print("PASS: Luu dung trang nguon va citation_path")
 print("======================================")
 print("\nCHI TIET CAC DOAN TRICH:\n")

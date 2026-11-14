@@ -113,17 +113,65 @@ def test_chunker_empty_or_unstructured_text():
     assert chunk_legal_document("Văn bản chỉ có tiêu đề chung", "38/2019/QH14", hierarchy_level=1) == []
 
 
+def test_chunker_status_not_yet_effective():
+    """Trường hợp 1: Có effective_date nhưng chưa tới ngày có hiệu lực -> giữ CHUA_XAC_DINH."""
+    text = """
+Điều 3. Hiệu lực thi hành
+Luật này có hiệu lực thi hành từ ngày 01 tháng 01 năm 2028.
+"""
+    meta = {
+        "doc_type": "LUAT",
+        "effective_date": datetime(2028, 1, 1),
+        "as_of": datetime(2026, 11, 14),
+    }
+    chunks = chunk_legal_document(text, "99/2026/QH15", hierarchy_level=1, metadata=meta)
+
+    assert len(chunks) == 1
+    assert chunks[0]["status"] == "CHUA_XAC_DINH"
+
+
+def test_chunker_status_expired():
+    """Trường hợp 2: Có effective_date hợp lệ nhưng đã quá expiry_date -> HET_HIEU_LUC."""
+    text = """
+Điều 3. Hiệu lực thi hành
+Thông tư này áp dụng cho kỳ tính thuế năm 2020.
+"""
+    meta = {
+        "doc_type": "THONG_TU",
+        "effective_date": datetime(2020, 1, 1),
+        "expiry_date": datetime(2021, 12, 31),
+        "as_of": datetime(2026, 11, 14),
+    }
+    chunks = chunk_legal_document(text, "10/2020/TT-BTC", hierarchy_level=3, metadata=meta)
+
+    assert len(chunks) == 1
+    assert chunks[0]["status"] == "HET_HIEU_LUC"
+
+
 def test_chunker_enriched_metadata():
     """Kiểm tra bổ sung nguồn, trang, hiệu lực, phiên bản và trạng thái mặc định khi thiếu ngày hiệu lực."""
     text = """
 Điều 2. Đối tượng áp dụng
 Áp dụng đối với doanh nghiệp hoạt động tại Việt Nam.
 """
-    
+    # 1. Trường hợp chưa có effective_date và không truyền status -> CHUA_XAC_DINH
     chunks_no_date = chunk_legal_document(text, "99/2025/NĐ-CP", hierarchy_level=2, source_page=3)
     assert chunks_no_date[0]["status"] == "CHUA_XAC_DINH"
 
-    
+    # 2. Trường hợp đã tới ngày hiệu lực và chưa hết hạn -> tự động CON_HIEU_LUC
+    chunks_active = chunk_legal_document(
+        text,
+        "99/2025/NĐ-CP",
+        hierarchy_level=2,
+        source_page=3,
+        metadata={
+            "effective_date": datetime(2025, 1, 1),
+            "as_of": datetime(2026, 11, 14),
+        },
+    )
+    assert chunks_active[0]["status"] == "CON_HIEU_LUC"
+
+    # 3. Trường hợp truyền đầy đủ metadata tường minh
     eff_date = datetime(2026, 1, 1)
     meta = {
         "doc_type": "NGHI_DINH",

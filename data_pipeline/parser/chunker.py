@@ -1,4 +1,5 @@
 import re
+from datetime import date, datetime
 from typing import Any, Dict, List, Optional
 
 
@@ -10,13 +11,42 @@ def combine_context(*parts: Optional[str]) -> str:
     )
 
 
+def _to_datetime(value: Any) -> Optional[datetime]:
+    if value is None:
+        return None
+    if isinstance(value, datetime):
+        return value
+    if isinstance(value, date):
+        return datetime(value.year, value.month, value.day)
+    if isinstance(value, str) and value.strip():
+        try:
+            return datetime.fromisoformat(value.strip().replace("Z", "+00:00")).replace(tzinfo=None)
+        except ValueError:
+            return None
+    return None
+
+
 def _resolve_status(meta: Dict[str, Any]) -> str:
     explicit_status = meta.get("status")
     if explicit_status and str(explicit_status).strip():
         return str(explicit_status).strip()
-    if meta.get("effective_date"):
-        return "CON_HIEU_LUC"
-    return "CHUA_XAC_DINH"
+
+    eff_dt = _to_datetime(meta.get("effective_date"))
+    if eff_dt is None:
+        return "CHUA_XAC_DINH"
+
+    ref_dt = _to_datetime(meta.get("as_of")) or datetime.now()
+    exp_dt = _to_datetime(meta.get("expiry_date"))
+
+    # Chưa tới ngày có hiệu lực -> chưa đủ căn cứ áp dụng, giữ CHUA_XAC_DINH
+    if ref_dt < eff_dt:
+        return "CHUA_XAC_DINH"
+
+    # Đã quá ngày hết hiệu lực
+    if exp_dt is not None and ref_dt > exp_dt:
+        return "HET_HIEU_LUC"
+
+    return "CON_HIEU_LUC"
 
 
 def _build_metadata_fields(
@@ -90,7 +120,6 @@ def chunk_legal_document(
         clause_matches = list(clause_pattern.finditer(art_body))
 
         if clause_matches:
-            # Giữ nguyên đoạn mở đầu (preamble) của Điều trước Khoản đầu tiên
             art_intro = art_body[: clause_matches[0].start()].strip()
 
             for cl_match in clause_matches:
@@ -100,7 +129,6 @@ def chunk_legal_document(
                 point_matches = list(point_pattern.finditer(cl_content))
 
                 if point_matches:
-                    # Giữ nguyên đoạn mở đầu (preamble) của Khoản trước Điểm đầu tiên
                     clause_intro = cl_content[: point_matches[0].start()].strip()
 
                     for pt_match in point_matches:
