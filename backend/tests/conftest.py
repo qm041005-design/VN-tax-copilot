@@ -13,7 +13,7 @@ import os
 
 # Mặc định SQLite. Test trên PostgreSQL thật: đặt TEST_DATABASE_URL tới một DB RIÊNG cho test
 # (fixture xóa sạch bảng mỗi test – KHÔNG trỏ vào DB dev/prod). Xem README mục "Test trên PostgreSQL".
-os.environ["DATABASE_URL"] = os.environ.get("TEST_DATABASE_URL", "sqlite:///./test.db")  # TRƯỚC khi import app
+os.environ["DATABASE_URL"] = os.environ.get("TEST_DATABASE_URL") or "sqlite:///./test.db"  # TRƯỚC khi import app
 os.environ["APP_ENV"] = "dev"
 os.environ["CORS_ORIGINS"] = "http://localhost:3000"
 # Token khớp tests/helpers.py: token của <user> là "test-token-<user>-local"
@@ -21,6 +21,7 @@ os.environ["AUTH_TOKENS"] = "test-token-alice-local:alice:thtax,test-token-bob-l
 
 import pytest
 from fastapi.testclient import TestClient
+from sqlalchemy import MetaData
 
 from app.core.database import Base, engine
 from app.main import app
@@ -28,7 +29,11 @@ from app.main import app
 
 @pytest.fixture()
 def client():
-    Base.metadata.drop_all(bind=engine)
+    # Xóa MỌI bảng đang có trong DB test (kể cả bảng do nhánh khác / nhóm khác tạo, vd legal_document_amendments),
+    # không chỉ bảng backend biết -> chuyển nhánh không làm test lỗi vì khóa ngoại. Vì vậy DB test phải dùng riêng.
+    existing = MetaData()
+    existing.reflect(bind=engine)
+    existing.drop_all(bind=engine)
     Base.metadata.create_all(bind=engine)
     with TestClient(app) as c:  # TestClient giả lập trình duyệt gọi API, không cần mở cổng thật
         yield c

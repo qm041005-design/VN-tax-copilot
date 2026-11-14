@@ -21,19 +21,19 @@ def seeded(client):
     with SessionLocal() as db:
         law = LegalDocument(doc_code="48/2024/QH15", title="Luật Thuế giá trị gia tăng", doc_type="LUAT",
                             hierarchy_level=1, effective_date=datetime(2025, 7, 1), version="1.0",
-                            source_url="https://vbpl.vn/48-2024-qh15")
+                            source_url="https://vbpl.vn/48-2024-qh15", status="CON_HIEU_LUC")
         old = LegalDocument(doc_code="219/2013/TT-BTC", title="Thông tư hướng dẫn thuế GTGT", doc_type="THONG_TU",
                             hierarchy_level=3, effective_date=datetime(2014, 1, 1),
-                            expiry_date=datetime(2025, 7, 1), version="1.0")
+                            expiry_date=datetime(2025, 7, 1), version="1.0", status="HET_HIEU_LUC")
         db.add_all([law, old])
         db.flush()
-        c1 = LegalChunk(doc_id=law.id, article_number="9", article_title="Thuế suất", clause_number=1,
+        c1 = LegalChunk(doc_id=law.id, article_number="9", article_title="Thuế suất", clause_number="1",
                         point_letter="", citation_path="Khoản 1, Điều 9, 48/2024/QH15", hierarchy_level=1,
                         content="Khoản 1, Điều 9, 48/2024/QH15: Thuế suất 0% áp dụng đối với hàng hóa xuất khẩu.")
-        c2 = LegalChunk(doc_id=law.id, article_number="9", article_title="Thuế suất", clause_number=3,
+        c2 = LegalChunk(doc_id=law.id, article_number="9", article_title="Thuế suất", clause_number="3",
                         point_letter="a", citation_path="Điểm a, Khoản 3, Điều 9, 48/2024/QH15", hierarchy_level=1,
                         content="Điểm a, Khoản 3, Điều 9, 48/2024/QH15: Thuế suất 10% là mức phổ thông.")
-        c3 = LegalChunk(doc_id=old.id, article_number="11", clause_number=0, point_letter="",
+        c3 = LegalChunk(doc_id=old.id, article_number="11", clause_number="0", point_letter="",
                         citation_path="Điều 11, 219/2013/TT-BTC", hierarchy_level=3,
                         content="Điều 11, 219/2013/TT-BTC: Thuế suất 10% phổ thông (văn bản cũ).")
         db.add_all([c1, c2, c3])
@@ -165,3 +165,36 @@ def test_research_validation(client):
         assert client.post("/api/v1/research", json=bad, headers=A).status_code == 422
     missing = {"matter_id": "00000000-0000-0000-0000-000000000000", "question": "x"}
     assert client.post("/api/v1/research", json=missing, headers=A).status_code == 404
+
+
+# ------------------- ĐỒNG BỘ SCHEMA NHÁNH 05 (SCRUM-21) -------------------
+def test_schema_sync_clause_string_status_and_unknown_level(client, seeded):
+    """Khoản dạng chuỗi "2a", cột status ở cả 2 bảng, văn bản UNKNOWN cấp 5 (không kiểm thứ hạng tìm kiếm)."""
+    with SessionLocal() as db:
+        # Văn bản chưa rõ loại: không truyền doc_type/hierarchy_level/status -> dùng mặc định của nhóm 5
+        unk = LegalDocument(doc_code="126/2020/ND-CP", title="Văn bản chưa phân loại")
+        db.add(unk)
+        db.flush()
+        amended = LegalChunk(doc_id=unk.id, article_number="1a", clause_number="2a", point_letter="b",
+                             citation_path="Điểm b, Khoản 2a, Điều 1a, 126/2020/ND-CP",
+                             content="Điểm b, Khoản 2a, Điều 1a: thuế suất phổ thông (đoạn sửa đổi).")
+        db.add(amended)
+        # Một Khoản của Luật bị sửa đổi: trạng thái của đoạn ưu tiên hơn trạng thái cả văn bản
+        db.get(LegalChunk, int(seeded["export"])).status = "SUA_DOI_BO_SUNG"
+        db.commit()
+        unk_doc = db.get(LegalDocument, unk.id)
+        assert (unk_doc.doc_type, unk_doc.hierarchy_level, unk_doc.status) == ("UNKNOWN", 5, "CHUA_XAC_DINH")
+        assert db.get(LegalChunk, amended.id).hierarchy_level == 5
+        amended_id = str(amended.id)
+
+    hits = client.get("/api/v1/sources/search", params={"q": "thuế suất phổ thông"}, headers=A).json()
+    by_id = {h["source_id"]: h for h in hits}
+    # Chỉ kiểm dữ liệu trả về, không kiểm thứ hạng: thứ hạng do thuật toán tìm kiếm (từ khóa / BM25) quyết định
+    assert {seeded["standard"], seeded["old"], amended_id} <= set(by_id)
+    assert by_id[amended_id]["khoan"] == "2a" and by_id[amended_id]["dieu"] == "1a"
+    assert by_id[amended_id]["hierarchy_level"] == 5 and by_id[amended_id]["status"] == "CHUA_XAC_DINH"
+    assert by_id[seeded["standard"]]["status"] == "CON_HIEU_LUC"      # lấy từ văn bản
+    assert by_id[seeded["old"]]["status"] == "HET_HIEU_LUC"
+    assert by_id[seeded["old"]]["khoan"] is None                      # clause_number "0" = không có Khoản
+    assert by_id[seeded["export"]]["status"] == "SUA_DOI_BO_SUNG"     # trạng thái riêng của đoạn
+    assert client.get(f"/api/v1/sources/{amended_id}", headers=A).json()["khoan"] == "2a"
