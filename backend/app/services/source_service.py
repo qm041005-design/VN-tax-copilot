@@ -11,6 +11,7 @@ from sqlalchemy import case, select
 from sqlalchemy.orm import Session, contains_eager
 
 from app.models import LegalChunk, LegalDocument
+from app.models.legal_source import STATUS_UNKNOWN
 from app.schemas.source import SourceDetail, SourceHit
 
 MAX_TERMS = 20
@@ -62,10 +63,13 @@ def to_hit(chunk: LegalChunk) -> SourceHit:
     doc = chunk.document
     return SourceHit(
         source_id=str(chunk.id), title=doc.title, legal_identifier=doc.doc_code,
-        dieu=chunk.article_number, khoan=str(chunk.clause_number) if chunk.clause_number else None,
-        diem=chunk.point_letter or None, url=doc.source_url, citation_path=chunk.citation_path,
+        # clause_number là chuỗi ("1", "2a"); "0" hoặc rỗng = đoạn không thuộc Khoản nào
+        dieu=chunk.article_number, khoan=chunk.clause_number if chunk.clause_number not in (None, "", "0") else None,
+        diem=chunk.point_letter or None, url=chunk.source_url or doc.source_url, citation_path=chunk.citation_path,
         doc_type=doc.doc_type, hierarchy_level=chunk.hierarchy_level,
-        effective_date=doc.effective_date, expiry_date=doc.expiry_date,
+        # Trạng thái riêng của đoạn (vd 1 Khoản bị sửa đổi) ưu tiên hơn trạng thái cả văn bản
+        status=chunk.status if chunk.status and chunk.status != STATUS_UNKNOWN else doc.status or STATUS_UNKNOWN,
+        effective_date=chunk.effective_date or doc.effective_date, expiry_date=doc.expiry_date,
         snippet=chunk.content[:SNIPPET_LEN],
     )
 
