@@ -49,3 +49,8 @@ Dùng dữ liệu giả trong test. Kết quả chỉ giữ text đã che và s�
 Đây là baseline kỹ thuật, chưa phải chứng nhận đáp ứng đầy đủ yêu cầu bảo vệ dữ liệu. Regex có thể bỏ sót tên, địa chỉ, bảng lương, số được viết bằng chữ hoặc chia nhóm; chuỗi 10 chữ số có thể bị che dù là số liệu khác. MST doanh nghiệp cũng bị che theo chính sách thận trọng, cần BA xác nhận. Số điện thoại và MST trùng hình thức có thể nhận nhãn khác nhau nhưng vẫn được che.
 
 Chưa gắn vào endpoint: nhánh develop hiện chỉ có khung Backend. Chưa có mô hình đánh giá mức đủ căn cứ, Citation Validator, kiểm tra hiệu lực văn bản hay xử lý prompt injection. `evidence_available` chỉ cho phép bước sinh có điều kiện, không xác nhận tính đúng của câu trả lời cuối. Cần áp dụng lại redaction ở biên xuất/log nếu câu trả lời hoặc metadata khác có thể chứa dữ liệu cá nhân.
+
+
+## SCRUM-23
+
+Xem `docs/integration/SCRUM-23.md` cho pipeline mới, adapter sáu phần và bản vá endpoint. Hàm hiện tại sử dụng status draft/clarify/abstain.

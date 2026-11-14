@@ -30,5 +30,14 @@ def prepare_research(query: str, passages: Sequence[Mapping]) -> PreparedResearc
             if not isinstance(value, str):
                 raise TypeError(f"{key} must be a string")
             item[key] = redact_text(value).text
+        # Explicit scalar metadata whitelist for pinpoint prompts; no client metadata.
+        for key in ("dieu", "khoan", "diem", "doc_type", "effective_date", "expiry_date", "version", "source_page"):
+            value = passage.get(key)
+            if value is None:
+                item[key] = None
+            elif isinstance(value, (str, int)) and not isinstance(value, bool):
+                item[key] = redact_text(str(value)).text
+            else:
+                raise TypeError(f"{key} must be scalar text or integer")
         safe.append(item)
     return PreparedResearch(redact_text(query).text, tuple(safe))
