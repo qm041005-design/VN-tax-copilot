@@ -1,5 +1,7 @@
 # SCRUM-24 — sửa tích hợp backend
 
+> Bổ sung bước nhận dữ liệu parser và kiểm thử validation: [PARSER_IMPORT.md](PARSER_IMPORT.md). Hàm nhập nội bộ đã có; chưa chạy nhập văn bản thật hoặc kiểm thử PostgreSQL.
+
 Ngày 14/11/2026. Nhánh `codex/scrum-24-backend-fixes`, dựa trên backend `df45332`, guardrails An `8083a0e` và BM25 Thanh `28f9c8a`. Đây là code sửa bổ sung, không phải chứng nhận nghiệm thu doanh nghiệp.
 
 ## Hành vi đã thay đổi
