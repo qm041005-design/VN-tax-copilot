@@ -26,24 +26,50 @@ def _to_datetime(value: Any) -> Optional[datetime]:
     return None
 
 
+def _has_raw_value(value: Any) -> bool:
+    if value is None:
+        return False
+    if isinstance(value, str) and not value.strip():
+        return False
+    return True
+
+
 def _resolve_status(meta: Dict[str, Any]) -> str:
     explicit_status = meta.get("status")
     if explicit_status and str(explicit_status).strip():
         return str(explicit_status).strip()
 
-    eff_dt = _to_datetime(meta.get("effective_date"))
-    if eff_dt is None:
+    raw_eff = meta.get("effective_date")
+    if not _has_raw_value(raw_eff):
         return "CHUA_XAC_DINH"
 
-    ref_dt = _to_datetime(meta.get("as_of")) or datetime.now()
-    exp_dt = _to_datetime(meta.get("expiry_date"))
+    eff_dt = _to_datetime(raw_eff)
+    if eff_dt is None:
+        # effective_date có truyền nhưng sai định dạng (vd: "invalid") -> giữ CHUA_XAC_DINH
+        return "CHUA_XAC_DINH"
 
-    # Chưa tới ngày có hiệu lực -> chưa đủ căn cứ áp dụng, giữ CHUA_XAC_DINH
+    raw_as_of = meta.get("as_of")
+    if _has_raw_value(raw_as_of):
+        ref_dt = _to_datetime(raw_as_of)
+        if ref_dt is None:
+            return "CHUA_XAC_DINH"
+    else:
+        ref_dt = datetime.now()
+
+    raw_exp = meta.get("expiry_date")
+    exp_dt: Optional[datetime] = None
+    if _has_raw_value(raw_exp):
+        exp_dt = _to_datetime(raw_exp)
+        if exp_dt is None:
+            # expiry_date sai định dạng (vd: "invalid") -> không bỏ qua, giữ CHUA_XAC_DINH
+            return "CHUA_XAC_DINH"
+
+    # Chưa tới ngày có hiệu lực
     if ref_dt < eff_dt:
         return "CHUA_XAC_DINH"
 
-    # Đã quá ngày hết hiệu lực
-    if exp_dt is not None and ref_dt > exp_dt:
+    # expiry_date là ngày bắt đầu hết hiệu lực (>=)
+    if exp_dt is not None and ref_dt >= exp_dt:
         return "HET_HIEU_LUC"
 
     return "CON_HIEU_LUC"
@@ -83,7 +109,6 @@ def chunk_legal_document(
 
     base_meta = _build_metadata_fields(metadata, source_page, hierarchy_level)
 
-    # Hỗ trợ Điều 1, Điều 1a, Điều 12b, Điều 10đ...
     article_pattern = re.compile(
         r"^[ \t]*Điều[ \t]+(\d+[a-zA-ZđĐ]?)[ \t]*[.:][ \t]*(.*)$",
         re.MULTILINE | re.IGNORECASE,
@@ -93,7 +118,6 @@ def chunk_legal_document(
     if not articles:
         return chunks
 
-    # Hỗ trợ Khoản 1., Khoản 1a., Khoản 2b. (giữ nguyên cả phần chữ cái)
     clause_pattern = re.compile(
         r"^[ \t]*(\d+[a-zA-ZđĐ]?)\.[ \t]+"
         r"(.*?)(?=^[ \t]*\d+[a-zA-ZđĐ]?\.[ \t]+|\Z)",

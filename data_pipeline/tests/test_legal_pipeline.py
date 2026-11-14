@@ -148,17 +148,63 @@ Thông tư này áp dụng cho kỳ tính thuế năm 2020.
     assert chunks[0]["status"] == "HET_HIEU_LUC"
 
 
+def test_chunker_status_expired_on_exact_expiry_date():
+    """expiry_date là ngày bắt đầu hết hiệu lực: as_of == expiry_date (>=) -> HET_HIEU_LUC."""
+    text = """
+Điều 3. Hiệu lực thi hành
+Văn bản hết hiệu lực kể từ ngày 01/01/2026.
+"""
+    meta = {
+        "doc_type": "THONG_TU",
+        "effective_date": datetime(2020, 1, 1),
+        "expiry_date": datetime(2026, 1, 1),
+        "as_of": datetime(2026, 1, 1),
+    }
+    chunks = chunk_legal_document(text, "10/2020/TT-BTC", hierarchy_level=3, metadata=meta)
+
+    assert len(chunks) == 1
+    assert chunks[0]["status"] == "HET_HIEU_LUC"
+
+
+def test_chunker_status_invalid_date_strings():
+    """Ngày sai định dạng như 'invalid' phải giữ CHUA_XAC_DINH, không tự suy ra CON_HIEU_LUC."""
+    text = """
+Điều 3. Hiệu lực thi hành
+Nội dung kiểm thử định dạng ngày lỗi.
+"""
+    chunks_bad_exp = chunk_legal_document(
+        text,
+        "10/2020/TT-BTC",
+        hierarchy_level=3,
+        metadata={
+            "effective_date": "2020-01-01",
+            "expiry_date": "invalid",
+            "as_of": "2026-11-14",
+        },
+    )
+    assert chunks_bad_exp[0]["status"] == "CHUA_XAC_DINH"
+
+    chunks_bad_eff = chunk_legal_document(
+        text,
+        "10/2020/TT-BTC",
+        hierarchy_level=3,
+        metadata={
+            "effective_date": "invalid",
+            "as_of": "2026-11-14",
+        },
+    )
+    assert chunks_bad_eff[0]["status"] == "CHUA_XAC_DINH"
+
+
 def test_chunker_enriched_metadata():
     """Kiểm tra bổ sung nguồn, trang, hiệu lực, phiên bản và trạng thái mặc định khi thiếu ngày hiệu lực."""
     text = """
 Điều 2. Đối tượng áp dụng
 Áp dụng đối với doanh nghiệp hoạt động tại Việt Nam.
 """
-    # 1. Trường hợp chưa có effective_date và không truyền status -> CHUA_XAC_DINH
     chunks_no_date = chunk_legal_document(text, "99/2025/NĐ-CP", hierarchy_level=2, source_page=3)
     assert chunks_no_date[0]["status"] == "CHUA_XAC_DINH"
 
-    # 2. Trường hợp đã tới ngày hiệu lực và chưa hết hạn -> tự động CON_HIEU_LUC
     chunks_active = chunk_legal_document(
         text,
         "99/2025/NĐ-CP",
@@ -171,7 +217,6 @@ def test_chunker_enriched_metadata():
     )
     assert chunks_active[0]["status"] == "CON_HIEU_LUC"
 
-    # 3. Trường hợp truyền đầy đủ metadata tường minh
     eff_date = datetime(2026, 1, 1)
     meta = {
         "doc_type": "NGHI_DINH",
