@@ -1,0 +1,15 @@
+.git
+**/.env
+**/.env.*
+!**/.env.example
+**/.venv
+**/.review-venv
+**/__pycache__
+**/*.db
+**/node_modules
+**/.next
+data_pipeline/local_data
+team-review-*
+week3-integration
+backend-fixes
+.ocr-venv
