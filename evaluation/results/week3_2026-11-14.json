@@ -1,0 +1,1021 @@
+{
+  "suite_id": "week3-integration-v0.1",
+  "run_at": "2026-11-14T20:36:16.277431+07:00",
+  "executor": "Đặng Minh Quân (Codex hỗ trợ)",
+  "po_revision": {
+    "sha": "a886063d3b6f19401201b304b44100b928b1be5d",
+    "tracked_changes": true
+  },
+  "backend_revision": {
+    "sha": "028f4bf80574980eaed53eaf18f5d93cf48c4da6",
+    "tracked_changes": false
+  },
+  "dataset_sha256": "80a7684017673f441340552bcf9a6a3505b2ecd34bf7952c1997b5a336ea1ad6",
+  "scope": "Technical API/adapter checks on fresh SQLite; not legal acceptance or live UI",
+  "uses_real_legal_evidence": false,
+  "paid_provider_calls": 0,
+  "database": "new temporary SQLite; no demo/production database",
+  "cases": [
+    {
+      "case_id": "W3-001",
+      "scenario": "verified_evidence",
+      "execution": {
+        "status": "blocked",
+        "blockers": [
+          "No expert-reviewed evidence with real registry IDs/PDF pages bound to this case.",
+          "No real evidence assessor/generator configured; draft cannot be tested."
+        ],
+        "checks": {
+          "six_sections": true,
+          "matter_preserved": true,
+          "question_preserved": true,
+          "history_saved": true,
+          "no_auto_approval": true,
+          "no_answer_without_assessment": true,
+          "generator_not_called": true,
+          "no_legal_claims_on_refusal": true,
+          "prompt_uses_fulltext": true,
+          "docx_created": true
+        },
+        "actual_result": {
+          "history": {
+            "id": "f44f9179-8106-4147-b3dc-2e3205440147",
+            "matter_id": "1eab964f-c13d-4923-939b-2c5f86f67080",
+            "actor": "quan",
+            "question": "Doanh nghiệp mua hàng hóa có giá trị trên hóa đơn là 25 triệu đồng (đã bao gồm thuế GTGT), thanh toán bằng tiền mặt thì có được khấu trừ thuế GTGT đầu vào không?",
+            "tax_type": "VAT",
+            "tax_period": "2024",
+            "research_as_of": "2026-11-11",
+            "material_facts": "Hóa đơn mua hàng trị giá 25.000.000 VNĐ, thanh toán bằng tiền mặt, không có chứng từ thanh toán không dùng tiền mặt.",
+            "answer": null,
+            "citations": [],
+            "warnings": [
+              "Không tìm thấy căn cứ pháp lý phù hợp – hệ thống không đưa ra câu trả lời.",
+              "abstain: no_evidence",
+              "Chưa tìm thấy nguồn để trả lời có căn cứ.",
+              "Nguồn tìm thấy chưa xác minh đầy đủ hiệu lực, chuyển tiếp và khả năng áp dụng.",
+              "Bộ lọc sắc thuế chỉ tìm văn bản đã được gán nhãn; nguồn chưa phân loại bị loại."
+            ],
+            "review_status": "draft",
+            "answer_version": 1,
+            "created_at": "2026-11-14T13:36:17.574800"
+          },
+          "sources": [],
+          "research_result": {
+            "status": "abstain",
+            "sections": {
+              "issue": [],
+              "facts": [],
+              "authority": [],
+              "analysis": [],
+              "limitations": [],
+              "next_steps": []
+            },
+            "clarification_questions": [],
+            "warnings": [
+              "no_evidence",
+              "Chưa tìm thấy nguồn để trả lời có căn cứ."
+            ]
+          }
+        },
+        "history_reopened": [
+          {
+            "id": "f44f9179-8106-4147-b3dc-2e3205440147",
+            "matter_id": "1eab964f-c13d-4923-939b-2c5f86f67080",
+            "actor": "quan",
+            "question": "Doanh nghiệp mua hàng hóa có giá trị trên hóa đơn là 25 triệu đồng (đã bao gồm thuế GTGT), thanh toán bằng tiền mặt thì có được khấu trừ thuế GTGT đầu vào không?",
+            "tax_type": "VAT",
+            "tax_period": "2024",
+            "research_as_of": "2026-11-11",
+            "material_facts": "Hóa đơn mua hàng trị giá 25.000.000 VNĐ, thanh toán bằng tiền mặt, không có chứng từ thanh toán không dùng tiền mặt.",
+            "answer": null,
+            "citations": [],
+            "warnings": [
+              "Không tìm thấy căn cứ pháp lý phù hợp – hệ thống không đưa ra câu trả lời.",
+              "abstain: no_evidence",
+              "Chưa tìm thấy nguồn để trả lời có căn cứ.",
+              "Nguồn tìm thấy chưa xác minh đầy đủ hiệu lực, chuyển tiếp và khả năng áp dụng.",
+              "Bộ lọc sắc thuế chỉ tìm văn bản đã được gán nhãn; nguồn chưa phân loại bị loại."
+            ],
+            "review_status": "draft",
+            "answer_version": 1,
+            "created_at": "2026-11-14T13:36:17.574800"
+          }
+        ],
+        "source_details": [],
+        "docx_sha256": "579f615a9c9e89cd08793c9ad8b1bb5c877f84e6a839fe9b31c6fdadd7e07556"
+      },
+      "limitations": [
+        "Fixture-only technical run; no legal conclusions validated."
+      ]
+    },
+    {
+      "case_id": "W3-002",
+      "scenario": "verified_evidence",
+      "execution": {
+        "status": "blocked",
+        "blockers": [
+          "No expert-reviewed evidence with real registry IDs/PDF pages bound to this case.",
+          "No real evidence assessor/generator configured; draft cannot be tested."
+        ],
+        "checks": {
+          "six_sections": true,
+          "matter_preserved": true,
+          "question_preserved": true,
+          "history_saved": true,
+          "no_auto_approval": true,
+          "no_answer_without_assessment": true,
+          "generator_not_called": true,
+          "no_legal_claims_on_refusal": true,
+          "prompt_uses_fulltext": true,
+          "docx_created": true
+        },
+        "actual_result": {
+          "history": {
+            "id": "e84cc0be-1956-4a50-b444-ec1f3cfadeb2",
+            "matter_id": "43d7b3d1-eda9-46ab-80e4-a0012f34a8fa",
+            "actor": "quan",
+            "question": "Trong năm 2024, hàng hóa xuất khẩu thông thường có hợp đồng, tờ khai hải quan và chứng từ thanh toán qua ngân hàng có được áp dụng thuế suất GTGT 0% không?",
+            "tax_type": "VAT",
+            "tax_period": "2024",
+            "research_as_of": "2026-11-11",
+            "material_facts": "Hàng hóa xuất khẩu thông thường, tiêu dùng ngoài Việt Nam; đủ hợp đồng, tờ khai hải quan và chứng từ thanh toán qua ngân hàng; không thuộc ngoại lệ tại khoản 3 Điều 9.",
+            "answer": null,
+            "citations": [],
+            "warnings": [
+              "Không tìm thấy căn cứ pháp lý phù hợp – hệ thống không đưa ra câu trả lời.",
+              "abstain: no_evidence",
+              "Chưa tìm thấy nguồn để trả lời có căn cứ.",
+              "Nguồn tìm thấy chưa xác minh đầy đủ hiệu lực, chuyển tiếp và khả năng áp dụng.",
+              "Bộ lọc sắc thuế chỉ tìm văn bản đã được gán nhãn; nguồn chưa phân loại bị loại."
+            ],
+            "review_status": "draft",
+            "answer_version": 1,
+            "created_at": "2026-11-14T13:36:17.634040"
+          },
+          "sources": [],
+          "research_result": {
+            "status": "abstain",
+            "sections": {
+              "issue": [],
+              "facts": [],
+              "authority": [],
+              "analysis": [],
+              "limitations": [],
+              "next_steps": []
+            },
+            "clarification_questions": [],
+            "warnings": [
+              "no_evidence",
+              "Chưa tìm thấy nguồn để trả lời có căn cứ."
+            ]
+          }
+        },
+        "history_reopened": [
+          {
+            "id": "e84cc0be-1956-4a50-b444-ec1f3cfadeb2",
+            "matter_id": "43d7b3d1-eda9-46ab-80e4-a0012f34a8fa",
+            "actor": "quan",
+            "question": "Trong năm 2024, hàng hóa xuất khẩu thông thường có hợp đồng, tờ khai hải quan và chứng từ thanh toán qua ngân hàng có được áp dụng thuế suất GTGT 0% không?",
+            "tax_type": "VAT",
+            "tax_period": "2024",
+            "research_as_of": "2026-11-11",
+            "material_facts": "Hàng hóa xuất khẩu thông thường, tiêu dùng ngoài Việt Nam; đủ hợp đồng, tờ khai hải quan và chứng từ thanh toán qua ngân hàng; không thuộc ngoại lệ tại khoản 3 Điều 9.",
+            "answer": null,
+            "citations": [],
+            "warnings": [
+              "Không tìm thấy căn cứ pháp lý phù hợp – hệ thống không đưa ra câu trả lời.",
+              "abstain: no_evidence",
+              "Chưa tìm thấy nguồn để trả lời có căn cứ.",
+              "Nguồn tìm thấy chưa xác minh đầy đủ hiệu lực, chuyển tiếp và khả năng áp dụng.",
+              "Bộ lọc sắc thuế chỉ tìm văn bản đã được gán nhãn; nguồn chưa phân loại bị loại."
+            ],
+            "review_status": "draft",
+            "answer_version": 1,
+            "created_at": "2026-11-14T13:36:17.634040"
+          }
+        ],
+        "source_details": [],
+        "docx_sha256": "4942a5428401cac540fb2b4aa7726ebac6beb6076e5e53a707cc504331b9f9b5"
+      },
+      "limitations": [
+        "Fixture-only technical run; no legal conclusions validated."
+      ]
+    },
+    {
+      "case_id": "W3-003",
+      "scenario": "verified_evidence",
+      "execution": {
+        "status": "blocked",
+        "blockers": [
+          "No expert-reviewed evidence with real registry IDs/PDF pages bound to this case.",
+          "No real evidence assessor/generator configured; draft cannot be tested."
+        ],
+        "checks": {
+          "six_sections": true,
+          "matter_preserved": true,
+          "question_preserved": true,
+          "history_saved": true,
+          "no_auto_approval": true,
+          "no_answer_without_assessment": true,
+          "generator_not_called": true,
+          "no_legal_claims_on_refusal": true,
+          "prompt_uses_fulltext": true,
+          "docx_created": true
+        },
+        "actual_result": {
+          "history": {
+            "id": "4e94d301-0474-4157-a179-56d708e6ab38",
+            "matter_id": "e2e95d1a-8c01-4051-9603-e7d64a22c57e",
+            "actor": "quan",
+            "question": "Doanh nghiệp chi tiền trang phục cho người lao động bằng tiền mặt thì được tính vào chi phí được trừ tối đa là bao nhiêu?",
+            "tax_type": "CIT",
+            "tax_period": "2024",
+            "research_as_of": "2026-11-11",
+            "material_facts": "Doanh nghiệp chi trả tiền trang phục trực tiếp bằng tiền mặt cho người lao động, có quy chế tài chính và danh sách ký nhận.",
+            "answer": null,
+            "citations": [],
+            "warnings": [
+              "Không tìm thấy căn cứ pháp lý phù hợp – hệ thống không đưa ra câu trả lời.",
+              "abstain: no_evidence",
+              "Chưa tìm thấy nguồn để trả lời có căn cứ.",
+              "Nguồn tìm thấy chưa xác minh đầy đủ hiệu lực, chuyển tiếp và khả năng áp dụng.",
+              "Bộ lọc sắc thuế chỉ tìm văn bản đã được gán nhãn; nguồn chưa phân loại bị loại."
+            ],
+            "review_status": "draft",
+            "answer_version": 1,
+            "created_at": "2026-11-14T13:36:17.684607"
+          },
+          "sources": [],
+          "research_result": {
+            "status": "abstain",
+            "sections": {
+              "issue": [],
+              "facts": [],
+              "authority": [],
+              "analysis": [],
+              "limitations": [],
+              "next_steps": []
+            },
+            "clarification_questions": [],
+            "warnings": [
+              "no_evidence",
+              "Chưa tìm thấy nguồn để trả lời có căn cứ."
+            ]
+          }
+        },
+        "history_reopened": [
+          {
+            "id": "4e94d301-0474-4157-a179-56d708e6ab38",
+            "matter_id": "e2e95d1a-8c01-4051-9603-e7d64a22c57e",
+            "actor": "quan",
+            "question": "Doanh nghiệp chi tiền trang phục cho người lao động bằng tiền mặt thì được tính vào chi phí được trừ tối đa là bao nhiêu?",
+            "tax_type": "CIT",
+            "tax_period": "2024",
+            "research_as_of": "2026-11-11",
+            "material_facts": "Doanh nghiệp chi trả tiền trang phục trực tiếp bằng tiền mặt cho người lao động, có quy chế tài chính và danh sách ký nhận.",
+            "answer": null,
+            "citations": [],
+            "warnings": [
+              "Không tìm thấy căn cứ pháp lý phù hợp – hệ thống không đưa ra câu trả lời.",
+              "abstain: no_evidence",
+              "Chưa tìm thấy nguồn để trả lời có căn cứ.",
+              "Nguồn tìm thấy chưa xác minh đầy đủ hiệu lực, chuyển tiếp và khả năng áp dụng.",
+              "Bộ lọc sắc thuế chỉ tìm văn bản đã được gán nhãn; nguồn chưa phân loại bị loại."
+            ],
+            "review_status": "draft",
+            "answer_version": 1,
+            "created_at": "2026-11-14T13:36:17.684607"
+          }
+        ],
+        "source_details": [],
+        "docx_sha256": "c1925f64c5b566d9e88eb125132346976215723420a05da33725a27cad4421a9"
+      },
+      "limitations": [
+        "Fixture-only technical run; no legal conclusions validated."
+      ]
+    },
+    {
+      "case_id": "W3-004",
+      "scenario": "verified_evidence",
+      "execution": {
+        "status": "blocked",
+        "blockers": [
+          "No expert-reviewed evidence with real registry IDs/PDF pages bound to this case.",
+          "No real evidence assessor/generator configured; draft cannot be tested."
+        ],
+        "checks": {
+          "six_sections": true,
+          "matter_preserved": true,
+          "question_preserved": true,
+          "history_saved": true,
+          "no_auto_approval": true,
+          "no_answer_without_assessment": true,
+          "generator_not_called": true,
+          "no_legal_claims_on_refusal": true,
+          "prompt_uses_fulltext": true,
+          "docx_created": true
+        },
+        "actual_result": {
+          "history": {
+            "id": "c3e5409b-c223-4486-9199-24ef9f16805a",
+            "matter_id": "83d03ea2-b0ae-49b1-878e-6d32340b1381",
+            "actor": "quan",
+            "question": "Doanh nghiệp bị lỗ trong năm tính thuế thì được phép chuyển lỗ sang các năm sau tối đa trong thời gian bao nhiêu năm?",
+            "tax_type": "CIT",
+            "tax_period": "2024",
+            "research_as_of": "2026-11-11",
+            "material_facts": "Doanh nghiệp quyết toán năm có kết quả kinh doanh bị lỗ theo xác nhận của kiểm toán và tờ khai quyết toán thuế.",
+            "answer": null,
+            "citations": [],
+            "warnings": [
+              "Không tìm thấy căn cứ pháp lý phù hợp – hệ thống không đưa ra câu trả lời.",
+              "abstain: no_evidence",
+              "Chưa tìm thấy nguồn để trả lời có căn cứ.",
+              "Nguồn tìm thấy chưa xác minh đầy đủ hiệu lực, chuyển tiếp và khả năng áp dụng.",
+              "Bộ lọc sắc thuế chỉ tìm văn bản đã được gán nhãn; nguồn chưa phân loại bị loại."
+            ],
+            "review_status": "draft",
+            "answer_version": 1,
+            "created_at": "2026-11-14T13:36:17.733359"
+          },
+          "sources": [],
+          "research_result": {
+            "status": "abstain",
+            "sections": {
+              "issue": [],
+              "facts": [],
+              "authority": [],
+              "analysis": [],
+              "limitations": [],
+              "next_steps": []
+            },
+            "clarification_questions": [],
+            "warnings": [
+              "no_evidence",
+              "Chưa tìm thấy nguồn để trả lời có căn cứ."
+            ]
+          }
+        },
+        "history_reopened": [
+          {
+            "id": "c3e5409b-c223-4486-9199-24ef9f16805a",
+            "matter_id": "83d03ea2-b0ae-49b1-878e-6d32340b1381",
+            "actor": "quan",
+            "question": "Doanh nghiệp bị lỗ trong năm tính thuế thì được phép chuyển lỗ sang các năm sau tối đa trong thời gian bao nhiêu năm?",
+            "tax_type": "CIT",
+            "tax_period": "2024",
+            "research_as_of": "2026-11-11",
+            "material_facts": "Doanh nghiệp quyết toán năm có kết quả kinh doanh bị lỗ theo xác nhận của kiểm toán và tờ khai quyết toán thuế.",
+            "answer": null,
+            "citations": [],
+            "warnings": [
+              "Không tìm thấy căn cứ pháp lý phù hợp – hệ thống không đưa ra câu trả lời.",
+              "abstain: no_evidence",
+              "Chưa tìm thấy nguồn để trả lời có căn cứ.",
+              "Nguồn tìm thấy chưa xác minh đầy đủ hiệu lực, chuyển tiếp và khả năng áp dụng.",
+              "Bộ lọc sắc thuế chỉ tìm văn bản đã được gán nhãn; nguồn chưa phân loại bị loại."
+            ],
+            "review_status": "draft",
+            "answer_version": 1,
+            "created_at": "2026-11-14T13:36:17.733359"
+          }
+        ],
+        "source_details": [],
+        "docx_sha256": "a0f0b7c154eb93a0184b58aa387c265da83f6f1aa5a5c433e9ba29fe7ce7e742"
+      },
+      "limitations": [
+        "Fixture-only technical run; no legal conclusions validated."
+      ]
+    },
+    {
+      "case_id": "W3-005",
+      "scenario": "verified_evidence",
+      "execution": {
+        "status": "blocked",
+        "blockers": [
+          "No expert-reviewed evidence with real registry IDs/PDF pages bound to this case.",
+          "No real evidence assessor/generator configured; draft cannot be tested."
+        ],
+        "checks": {
+          "six_sections": true,
+          "matter_preserved": true,
+          "question_preserved": true,
+          "history_saved": true,
+          "no_auto_approval": true,
+          "no_answer_without_assessment": true,
+          "generator_not_called": true,
+          "no_legal_claims_on_refusal": true,
+          "prompt_uses_fulltext": true,
+          "docx_created": true
+        },
+        "actual_result": {
+          "history": {
+            "id": "db24de0e-e698-43ee-acda-ccc2cefa9a8d",
+            "matter_id": "f9c12da5-f2d6-4919-a0aa-d6125fe6473f",
+            "actor": "quan",
+            "question": "Năm 2024, cha đẻ chuyển nhượng bất động sản cho con đẻ, có giấy tờ chứng minh quan hệ, có được miễn thuế TNCN không?",
+            "tax_type": "PIT",
+            "tax_period": "2024",
+            "research_as_of": "2026-11-11",
+            "material_facts": "Chuyển nhượng giữa cha đẻ và con đẻ trong năm 2024; có giấy tờ chứng minh quan hệ hợp lệ.",
+            "answer": null,
+            "citations": [],
+            "warnings": [
+              "Không tìm thấy căn cứ pháp lý phù hợp – hệ thống không đưa ra câu trả lời.",
+              "abstain: no_evidence",
+              "Chưa tìm thấy nguồn để trả lời có căn cứ.",
+              "Nguồn tìm thấy chưa xác minh đầy đủ hiệu lực, chuyển tiếp và khả năng áp dụng.",
+              "Bộ lọc sắc thuế chỉ tìm văn bản đã được gán nhãn; nguồn chưa phân loại bị loại."
+            ],
+            "review_status": "draft",
+            "answer_version": 1,
+            "created_at": "2026-11-14T13:36:17.774191"
+          },
+          "sources": [],
+          "research_result": {
+            "status": "abstain",
+            "sections": {
+              "issue": [],
+              "facts": [],
+              "authority": [],
+              "analysis": [],
+              "limitations": [],
+              "next_steps": []
+            },
+            "clarification_questions": [],
+            "warnings": [
+              "no_evidence",
+              "Chưa tìm thấy nguồn để trả lời có căn cứ."
+            ]
+          }
+        },
+        "history_reopened": [
+          {
+            "id": "db24de0e-e698-43ee-acda-ccc2cefa9a8d",
+            "matter_id": "f9c12da5-f2d6-4919-a0aa-d6125fe6473f",
+            "actor": "quan",
+            "question": "Năm 2024, cha đẻ chuyển nhượng bất động sản cho con đẻ, có giấy tờ chứng minh quan hệ, có được miễn thuế TNCN không?",
+            "tax_type": "PIT",
+            "tax_period": "2024",
+            "research_as_of": "2026-11-11",
+            "material_facts": "Chuyển nhượng giữa cha đẻ và con đẻ trong năm 2024; có giấy tờ chứng minh quan hệ hợp lệ.",
+            "answer": null,
+            "citations": [],
+            "warnings": [
+              "Không tìm thấy căn cứ pháp lý phù hợp – hệ thống không đưa ra câu trả lời.",
+              "abstain: no_evidence",
+              "Chưa tìm thấy nguồn để trả lời có căn cứ.",
+              "Nguồn tìm thấy chưa xác minh đầy đủ hiệu lực, chuyển tiếp và khả năng áp dụng.",
+              "Bộ lọc sắc thuế chỉ tìm văn bản đã được gán nhãn; nguồn chưa phân loại bị loại."
+            ],
+            "review_status": "draft",
+            "answer_version": 1,
+            "created_at": "2026-11-14T13:36:17.774191"
+          }
+        ],
+        "source_details": [],
+        "docx_sha256": "463c7b211f4a634753b9b8efe3c9fb7abc8b40b888df384863d169eca8bb8f7c"
+      },
+      "limitations": [
+        "Fixture-only technical run; no legal conclusions validated."
+      ]
+    },
+    {
+      "case_id": "W3-006",
+      "scenario": "verified_evidence",
+      "execution": {
+        "status": "blocked",
+        "blockers": [
+          "No expert-reviewed evidence with real registry IDs/PDF pages bound to this case.",
+          "No real evidence assessor/generator configured; draft cannot be tested."
+        ],
+        "checks": {
+          "six_sections": true,
+          "matter_preserved": true,
+          "question_preserved": true,
+          "history_saved": true,
+          "no_auto_approval": true,
+          "no_answer_without_assessment": true,
+          "generator_not_called": true,
+          "no_legal_claims_on_refusal": true,
+          "prompt_uses_fulltext": true,
+          "docx_created": true
+        },
+        "actual_result": {
+          "history": {
+            "id": "fd07e34d-dc7f-4f9a-801b-2e22a2911ce8",
+            "matter_id": "31f3dd1b-f333-4f22-92d1-ee3abbef79a8",
+            "actor": "quan",
+            "question": "Người có mặt tại Việt Nam 200 ngày trong năm dương lịch 2024 có đáp ứng tiêu chí ngày để là cá nhân cư trú không?",
+            "tax_type": "PIT",
+            "tax_period": "2024",
+            "research_as_of": "2026-11-11",
+            "material_facts": "Có hồ sơ xuất nhập cảnh xác định 200 ngày có mặt tại Việt Nam năm 2024; chỉ xét tiêu chí nội luật, không yêu cầu phân tích hiệp định thuế.",
+            "answer": null,
+            "citations": [],
+            "warnings": [
+              "Không tìm thấy căn cứ pháp lý phù hợp – hệ thống không đưa ra câu trả lời.",
+              "abstain: no_evidence",
+              "Chưa tìm thấy nguồn để trả lời có căn cứ.",
+              "Nguồn tìm thấy chưa xác minh đầy đủ hiệu lực, chuyển tiếp và khả năng áp dụng.",
+              "Bộ lọc sắc thuế chỉ tìm văn bản đã được gán nhãn; nguồn chưa phân loại bị loại."
+            ],
+            "review_status": "draft",
+            "answer_version": 1,
+            "created_at": "2026-11-14T13:36:17.825013"
+          },
+          "sources": [],
+          "research_result": {
+            "status": "abstain",
+            "sections": {
+              "issue": [],
+              "facts": [],
+              "authority": [],
+              "analysis": [],
+              "limitations": [],
+              "next_steps": []
+            },
+            "clarification_questions": [],
+            "warnings": [
+              "no_evidence",
+              "Chưa tìm thấy nguồn để trả lời có căn cứ."
+            ]
+          }
+        },
+        "history_reopened": [
+          {
+            "id": "fd07e34d-dc7f-4f9a-801b-2e22a2911ce8",
+            "matter_id": "31f3dd1b-f333-4f22-92d1-ee3abbef79a8",
+            "actor": "quan",
+            "question": "Người có mặt tại Việt Nam 200 ngày trong năm dương lịch 2024 có đáp ứng tiêu chí ngày để là cá nhân cư trú không?",
+            "tax_type": "PIT",
+            "tax_period": "2024",
+            "research_as_of": "2026-11-11",
+            "material_facts": "Có hồ sơ xuất nhập cảnh xác định 200 ngày có mặt tại Việt Nam năm 2024; chỉ xét tiêu chí nội luật, không yêu cầu phân tích hiệp định thuế.",
+            "answer": null,
+            "citations": [],
+            "warnings": [
+              "Không tìm thấy căn cứ pháp lý phù hợp – hệ thống không đưa ra câu trả lời.",
+              "abstain: no_evidence",
+              "Chưa tìm thấy nguồn để trả lời có căn cứ.",
+              "Nguồn tìm thấy chưa xác minh đầy đủ hiệu lực, chuyển tiếp và khả năng áp dụng.",
+              "Bộ lọc sắc thuế chỉ tìm văn bản đã được gán nhãn; nguồn chưa phân loại bị loại."
+            ],
+            "review_status": "draft",
+            "answer_version": 1,
+            "created_at": "2026-11-14T13:36:17.825013"
+          }
+        ],
+        "source_details": [],
+        "docx_sha256": "cfad499cb8c125c37ff7077b675361c9c25ee61d143889ad991d4d1af62ec975"
+      },
+      "limitations": [
+        "Fixture-only technical run; no legal conclusions validated."
+      ]
+    },
+    {
+      "case_id": "W3-007",
+      "scenario": "missing_facts",
+      "execution": {
+        "status": "fail",
+        "blockers": [],
+        "checks": {
+          "six_sections": true,
+          "matter_preserved": true,
+          "question_preserved": true,
+          "history_saved": true,
+          "no_auto_approval": true,
+          "no_answer_without_assessment": true,
+          "generator_not_called": true,
+          "no_legal_claims_on_refusal": true,
+          "prompt_uses_fulltext": true,
+          "docx_created": true,
+          "expected_status": true,
+          "asks_goods_or_services": false,
+          "asks_tax_method": false
+        },
+        "actual_result": {
+          "history": {
+            "id": "6bc5ae7f-bbdb-44df-b504-7627a1b750e4",
+            "matter_id": "a411f949-5d45-45e4-8148-bc3b9ff11dd4",
+            "actor": "quan",
+            "question": "Mặt hàng của tôi đang chịu thuế GTGT 8% hay 10%?",
+            "tax_type": "VAT",
+            "tax_period": null,
+            "research_as_of": "2026-11-11",
+            "material_facts": null,
+            "answer": null,
+            "citations": [],
+            "warnings": [
+              "Không tìm thấy căn cứ pháp lý phù hợp – hệ thống không đưa ra câu trả lời.",
+              "clarify: missing_context",
+              "Bạn cần áp dụng cho kỳ thuế hoặc năm nào?",
+              "Vui lòng bổ sung tình huống, giao dịch và đối tượng áp dụng.",
+              "Nguồn tìm thấy chưa xác minh đầy đủ hiệu lực, chuyển tiếp và khả năng áp dụng.",
+              "Bộ lọc sắc thuế chỉ tìm văn bản đã được gán nhãn; nguồn chưa phân loại bị loại."
+            ],
+            "review_status": "draft",
+            "answer_version": 1,
+            "created_at": "2026-11-14T13:36:17.867909"
+          },
+          "sources": [],
+          "research_result": {
+            "status": "clarify",
+            "sections": {
+              "issue": [],
+              "facts": [],
+              "authority": [],
+              "analysis": [],
+              "limitations": [],
+              "next_steps": []
+            },
+            "clarification_questions": [
+              "Bạn cần áp dụng cho kỳ thuế hoặc năm nào?",
+              "Vui lòng bổ sung tình huống, giao dịch và đối tượng áp dụng."
+            ],
+            "warnings": [
+              "missing_context"
+            ]
+          }
+        },
+        "history_reopened": [
+          {
+            "id": "6bc5ae7f-bbdb-44df-b504-7627a1b750e4",
+            "matter_id": "a411f949-5d45-45e4-8148-bc3b9ff11dd4",
+            "actor": "quan",
+            "question": "Mặt hàng của tôi đang chịu thuế GTGT 8% hay 10%?",
+            "tax_type": "VAT",
+            "tax_period": null,
+            "research_as_of": "2026-11-11",
+            "material_facts": null,
+            "answer": null,
+            "citations": [],
+            "warnings": [
+              "Không tìm thấy căn cứ pháp lý phù hợp – hệ thống không đưa ra câu trả lời.",
+              "clarify: missing_context",
+              "Bạn cần áp dụng cho kỳ thuế hoặc năm nào?",
+              "Vui lòng bổ sung tình huống, giao dịch và đối tượng áp dụng.",
+              "Nguồn tìm thấy chưa xác minh đầy đủ hiệu lực, chuyển tiếp và khả năng áp dụng.",
+              "Bộ lọc sắc thuế chỉ tìm văn bản đã được gán nhãn; nguồn chưa phân loại bị loại."
+            ],
+            "review_status": "draft",
+            "answer_version": 1,
+            "created_at": "2026-11-14T13:36:17.867909"
+          }
+        ],
+        "source_details": [],
+        "docx_sha256": "cc0028513ec59c31bf0f3ba8992b7eb4d7e0b4738c727732bc9f35a0b31c7161"
+      },
+      "limitations": [
+        "Fixture-only technical run; no legal conclusions validated."
+      ]
+    },
+    {
+      "case_id": "W3-008",
+      "scenario": "missing_facts",
+      "execution": {
+        "status": "fail",
+        "blockers": [],
+        "checks": {
+          "six_sections": true,
+          "matter_preserved": true,
+          "question_preserved": true,
+          "history_saved": true,
+          "no_auto_approval": true,
+          "no_answer_without_assessment": true,
+          "generator_not_called": true,
+          "no_legal_claims_on_refusal": true,
+          "prompt_uses_fulltext": true,
+          "docx_created": true,
+          "expected_status": true,
+          "asks_presence_days": false,
+          "asks_residence": false
+        },
+        "actual_result": {
+          "history": {
+            "id": "1706e803-00d7-49ac-8010-9c8bc7ff20e4",
+            "matter_id": "a87d6acf-f8b8-45b5-9696-d78ad8c96350",
+            "actor": "quan",
+            "question": "Tôi làm việc cho công ty nước ngoài thì là cá nhân cư trú hay không cư trú?",
+            "tax_type": "PIT",
+            "tax_period": null,
+            "research_as_of": "2026-11-11",
+            "material_facts": null,
+            "answer": null,
+            "citations": [],
+            "warnings": [
+              "Không tìm thấy căn cứ pháp lý phù hợp – hệ thống không đưa ra câu trả lời.",
+              "clarify: missing_context",
+              "Bạn cần áp dụng cho kỳ thuế hoặc năm nào?",
+              "Vui lòng bổ sung tình huống, giao dịch và đối tượng áp dụng.",
+              "Nguồn tìm thấy chưa xác minh đầy đủ hiệu lực, chuyển tiếp và khả năng áp dụng.",
+              "Bộ lọc sắc thuế chỉ tìm văn bản đã được gán nhãn; nguồn chưa phân loại bị loại."
+            ],
+            "review_status": "draft",
+            "answer_version": 1,
+            "created_at": "2026-11-14T13:36:17.914819"
+          },
+          "sources": [],
+          "research_result": {
+            "status": "clarify",
+            "sections": {
+              "issue": [],
+              "facts": [],
+              "authority": [],
+              "analysis": [],
+              "limitations": [],
+              "next_steps": []
+            },
+            "clarification_questions": [
+              "Bạn cần áp dụng cho kỳ thuế hoặc năm nào?",
+              "Vui lòng bổ sung tình huống, giao dịch và đối tượng áp dụng."
+            ],
+            "warnings": [
+              "missing_context"
+            ]
+          }
+        },
+        "history_reopened": [
+          {
+            "id": "1706e803-00d7-49ac-8010-9c8bc7ff20e4",
+            "matter_id": "a87d6acf-f8b8-45b5-9696-d78ad8c96350",
+            "actor": "quan",
+            "question": "Tôi làm việc cho công ty nước ngoài thì là cá nhân cư trú hay không cư trú?",
+            "tax_type": "PIT",
+            "tax_period": null,
+            "research_as_of": "2026-11-11",
+            "material_facts": null,
+            "answer": null,
+            "citations": [],
+            "warnings": [
+              "Không tìm thấy căn cứ pháp lý phù hợp – hệ thống không đưa ra câu trả lời.",
+              "clarify: missing_context",
+              "Bạn cần áp dụng cho kỳ thuế hoặc năm nào?",
+              "Vui lòng bổ sung tình huống, giao dịch và đối tượng áp dụng.",
+              "Nguồn tìm thấy chưa xác minh đầy đủ hiệu lực, chuyển tiếp và khả năng áp dụng.",
+              "Bộ lọc sắc thuế chỉ tìm văn bản đã được gán nhãn; nguồn chưa phân loại bị loại."
+            ],
+            "review_status": "draft",
+            "answer_version": 1,
+            "created_at": "2026-11-14T13:36:17.914819"
+          }
+        ],
+        "source_details": [],
+        "docx_sha256": "8a7ff406b397f09368938ed6e21c7b143e478358c5925c3f96fad1648a4acbf3"
+      },
+      "limitations": [
+        "Fixture-only technical run; no legal conclusions validated."
+      ]
+    },
+    {
+      "case_id": "W3-009",
+      "scenario": "empty_retrieval",
+      "execution": {
+        "status": "pass",
+        "blockers": [],
+        "checks": {
+          "six_sections": true,
+          "matter_preserved": true,
+          "question_preserved": true,
+          "history_saved": true,
+          "no_auto_approval": true,
+          "no_answer_without_assessment": true,
+          "generator_not_called": true,
+          "no_legal_claims_on_refusal": true,
+          "prompt_uses_fulltext": true,
+          "docx_created": true,
+          "expected_status": true
+        },
+        "actual_result": {
+          "history": {
+            "id": "ba92cf0e-9fdc-4329-a62b-2afa914d2dc5",
+            "matter_id": "5a11668b-924e-4a88-ab73-d52f2b7f60de",
+            "actor": "quan",
+            "question": "Doanh nghiệp mua hàng hóa có giá trị trên hóa đơn là 25 triệu đồng (đã bao gồm thuế GTGT), thanh toán bằng tiền mặt thì có được khấu trừ thuế GTGT đầu vào không?",
+            "tax_type": "VAT",
+            "tax_period": "2024",
+            "research_as_of": "2026-11-11",
+            "material_facts": "Hóa đơn mua hàng trị giá 25.000.000 VNĐ, thanh toán bằng tiền mặt, không có chứng từ thanh toán không dùng tiền mặt.",
+            "answer": null,
+            "citations": [],
+            "warnings": [
+              "Không tìm thấy căn cứ pháp lý phù hợp – hệ thống không đưa ra câu trả lời.",
+              "abstain: no_evidence",
+              "Chưa tìm thấy nguồn để trả lời có căn cứ.",
+              "Nguồn tìm thấy chưa xác minh đầy đủ hiệu lực, chuyển tiếp và khả năng áp dụng.",
+              "Bộ lọc sắc thuế chỉ tìm văn bản đã được gán nhãn; nguồn chưa phân loại bị loại."
+            ],
+            "review_status": "draft",
+            "answer_version": 1,
+            "created_at": "2026-11-14T13:36:17.953378"
+          },
+          "sources": [],
+          "research_result": {
+            "status": "abstain",
+            "sections": {
+              "issue": [],
+              "facts": [],
+              "authority": [],
+              "analysis": [],
+              "limitations": [],
+              "next_steps": []
+            },
+            "clarification_questions": [],
+            "warnings": [
+              "no_evidence",
+              "Chưa tìm thấy nguồn để trả lời có căn cứ."
+            ]
+          }
+        },
+        "history_reopened": [
+          {
+            "id": "ba92cf0e-9fdc-4329-a62b-2afa914d2dc5",
+            "matter_id": "5a11668b-924e-4a88-ab73-d52f2b7f60de",
+            "actor": "quan",
+            "question": "Doanh nghiệp mua hàng hóa có giá trị trên hóa đơn là 25 triệu đồng (đã bao gồm thuế GTGT), thanh toán bằng tiền mặt thì có được khấu trừ thuế GTGT đầu vào không?",
+            "tax_type": "VAT",
+            "tax_period": "2024",
+            "research_as_of": "2026-11-11",
+            "material_facts": "Hóa đơn mua hàng trị giá 25.000.000 VNĐ, thanh toán bằng tiền mặt, không có chứng từ thanh toán không dùng tiền mặt.",
+            "answer": null,
+            "citations": [],
+            "warnings": [
+              "Không tìm thấy căn cứ pháp lý phù hợp – hệ thống không đưa ra câu trả lời.",
+              "abstain: no_evidence",
+              "Chưa tìm thấy nguồn để trả lời có căn cứ.",
+              "Nguồn tìm thấy chưa xác minh đầy đủ hiệu lực, chuyển tiếp và khả năng áp dụng.",
+              "Bộ lọc sắc thuế chỉ tìm văn bản đã được gán nhãn; nguồn chưa phân loại bị loại."
+            ],
+            "review_status": "draft",
+            "answer_version": 1,
+            "created_at": "2026-11-14T13:36:17.953378"
+          }
+        ],
+        "source_details": [],
+        "docx_sha256": "9f2febbf105662bd1cfa91e43ddbe74509d0e17411cda45051696eb5a141acc3"
+      },
+      "limitations": [
+        "Fixture-only technical run; no legal conclusions validated."
+      ]
+    },
+    {
+      "case_id": "W3-010",
+      "scenario": "unverified_applicability",
+      "execution": {
+        "status": "pass",
+        "blockers": [],
+        "checks": {
+          "six_sections": true,
+          "matter_preserved": true,
+          "question_preserved": true,
+          "history_saved": true,
+          "no_auto_approval": true,
+          "no_answer_without_assessment": true,
+          "generator_not_called": true,
+          "no_legal_claims_on_refusal": true,
+          "prompt_uses_fulltext": true,
+          "docx_created": true,
+          "expected_status": true,
+          "insufficient_assessor_exercised": true
+        },
+        "actual_result": {
+          "history": {
+            "id": "e0e3accc-c0c4-48ba-8fb1-13b422b0da20",
+            "matter_id": "ac053d3f-9914-435e-97cf-cc9834728b27",
+            "actor": "quan",
+            "question": "Doanh nghiệp bị lỗ trong năm tính thuế thì được phép chuyển lỗ sang các năm sau tối đa trong thời gian bao nhiêu năm?",
+            "tax_type": "CIT",
+            "tax_period": "2024",
+            "research_as_of": "2026-11-11",
+            "material_facts": "Doanh nghiệp quyết toán năm có kết quả kinh doanh bị lỗ theo xác nhận của kiểm toán và tờ khai quyết toán thuế.",
+            "answer": null,
+            "citations": [
+              {
+                "source_id": "1",
+                "title": "NOT A LEGAL SOURCE",
+                "legal_identifier": "W3-TECHNICAL-UNVERIFIED",
+                "dieu": "1",
+                "khoan": null,
+                "diem": null,
+                "url": "https://example.org/technical-fixture"
+              }
+            ],
+            "warnings": [
+              "abstain: insufficient_evidence",
+              "Chưa đủ căn cứ đã được đánh giá để trả lời. Vui lòng bổ sung thông tin hoặc chuyển chuyên gia thẩm định.",
+              "Nguồn tìm thấy chưa xác minh đầy đủ hiệu lực, chuyển tiếp và khả năng áp dụng.",
+              "Bộ lọc sắc thuế chỉ tìm văn bản đã được gán nhãn; nguồn chưa phân loại bị loại."
+            ],
+            "review_status": "draft",
+            "answer_version": 1,
+            "created_at": "2026-11-14T13:36:18.020590"
+          },
+          "sources": [
+            {
+              "source_id": "1",
+              "title": "NOT A LEGAL SOURCE",
+              "legal_identifier": "W3-TECHNICAL-UNVERIFIED",
+              "dieu": "1",
+              "khoan": null,
+              "diem": null,
+              "url": "https://example.org/technical-fixture",
+              "citation_path": "Technical fixture only",
+              "doc_type": "UNKNOWN",
+              "hierarchy_level": 5,
+              "effective_date": null,
+              "expiry_date": null,
+              "snippet": "Technical placeholder, not a tax rule."
+            }
+          ],
+          "research_result": {
+            "status": "abstain",
+            "sections": {
+              "issue": [],
+              "facts": [],
+              "authority": [],
+              "analysis": [],
+              "limitations": [],
+              "next_steps": []
+            },
+            "clarification_questions": [],
+            "warnings": [
+              "insufficient_evidence",
+              "Chưa đủ căn cứ đã được đánh giá để trả lời. Vui lòng bổ sung thông tin hoặc chuyển chuyên gia thẩm định."
+            ]
+          }
+        },
+        "history_reopened": [
+          {
+            "id": "e0e3accc-c0c4-48ba-8fb1-13b422b0da20",
+            "matter_id": "ac053d3f-9914-435e-97cf-cc9834728b27",
+            "actor": "quan",
+            "question": "Doanh nghiệp bị lỗ trong năm tính thuế thì được phép chuyển lỗ sang các năm sau tối đa trong thời gian bao nhiêu năm?",
+            "tax_type": "CIT",
+            "tax_period": "2024",
+            "research_as_of": "2026-11-11",
+            "material_facts": "Doanh nghiệp quyết toán năm có kết quả kinh doanh bị lỗ theo xác nhận của kiểm toán và tờ khai quyết toán thuế.",
+            "answer": null,
+            "citations": [
+              {
+                "source_id": "1",
+                "title": "NOT A LEGAL SOURCE",
+                "legal_identifier": "W3-TECHNICAL-UNVERIFIED",
+                "dieu": "1",
+                "khoan": null,
+                "diem": null,
+                "url": "https://example.org/technical-fixture"
+              }
+            ],
+            "warnings": [
+              "abstain: insufficient_evidence",
+              "Chưa đủ căn cứ đã được đánh giá để trả lời. Vui lòng bổ sung thông tin hoặc chuyển chuyên gia thẩm định.",
+              "Nguồn tìm thấy chưa xác minh đầy đủ hiệu lực, chuyển tiếp và khả năng áp dụng.",
+              "Bộ lọc sắc thuế chỉ tìm văn bản đã được gán nhãn; nguồn chưa phân loại bị loại."
+            ],
+            "review_status": "draft",
+            "answer_version": 1,
+            "created_at": "2026-11-14T13:36:18.020590"
+          }
+        ],
+        "source_details": [
+          {
+            "source_id": "1",
+            "title": "NOT A LEGAL SOURCE",
+            "legal_identifier": "W3-TECHNICAL-UNVERIFIED",
+            "dieu": "1",
+            "khoan": null,
+            "diem": null,
+            "url": "https://example.org/technical-fixture",
+            "citation_path": "Technical fixture only",
+            "doc_type": "UNKNOWN",
+            "hierarchy_level": 5,
+            "effective_date": null,
+            "expiry_date": null,
+            "snippet": "Technical placeholder, not a tax rule.",
+            "content": "Technical placeholder, not a tax rule.",
+            "article_title": null,
+            "issuer": null,
+            "version": "fixture-v1",
+            "source_page": 1
+          }
+        ],
+        "docx_sha256": "4a5e17fb72ef0a847fefaccd2ecaef18d5ded7150e5281c798ed90073c95f7dd"
+      },
+      "limitations": [
+        "Fixture-only technical run; no legal conclusions validated."
+      ]
+    }
+  ],
+  "po_file_sha256": {
+    "ai_engine/synthesis/backend_adapter.py": "877f8b78a56a87ead0522fa407025ead3e10bd471bd6f63a88a5eacf191b67a1",
+    "ai_engine/synthesis/prompt_templates.py": "a5e99534afb6992af359520314994035c1cf5866db27e6c7ed1c47aa094ccdc5",
+    "backend/app/services/export_service.py": "0f477f9f14fdbab12009301eaf82d7e901fcb1db706c310e5753cc602748a2a8",
+    "evaluation/run_week3_integration.py": "0e65cb4877e185e31c69989568568428a7146021d462e49a09edb888bf098db6"
+  },
+  "summary": {
+    "blocked": 6,
+    "fail": 2,
+    "pass": 2
+  }
+}

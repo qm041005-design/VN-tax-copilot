@@ -1,7 +1,7 @@
 {
   "fixture_only": true,
-  "contract_status": "proposed",
-  "note": "Dữ liệu giả lập để thảo luận cấu trúc, không phải căn cứ pháp lý; không đưa vào kho luật thật.",
+  "contract_status": "code_aligned_pending_team_confirmation",
+  "note": "Dữ liệu giả lập để thảo luận cấu trúc, không phải căn cứ pháp lý; không đưa vào kho luật thật. research_result nằm ở cấp gốc response PR #11; chưa lưu nguyên object trong history.",
   "research_request": {
     "matter_id": "11111111-1111-4111-8111-111111111111",
     "question": "Cần bổ sung những dữ kiện nào để nghiên cứu tình huống thuế GTGT này?",
@@ -49,24 +49,57 @@
   "export_sources_shape": {
     "42": {
       "document_number": "FIXTURE-001",
-      "article": "1a",
+      "article": "Điều 1a",
       "clause": null,
       "point": null,
       "source_url": "https://example.org/fixture-only.pdf",
-      "version_note": "Phiên bản lưu trữ fixture-v1; dữ liệu giả lập, chưa xác minh pháp lý."
+      "version_note": "Phiên bản lưu trữ fixture-v1; dữ liệu giả lập, chưa xác minh pháp lý.",
+      "source_page": 1
     }
   },
   "synthesis_result": {
     "status": "clarify",
     "sections": {
-      "issue": [{"text": "Cần làm rõ tình huống trước khi nghiên cứu.", "citation_ids": []}],
+      "issue": [],
       "facts": [],
       "authority": [],
       "analysis": [],
-      "limitations": [{"text": "Chưa có dữ kiện đầy đủ và chưa có nguồn pháp lý được xác minh.", "citation_ids": []}],
+      "limitations": [],
       "next_steps": []
     },
-    "clarification_questions": ["Giao dịch diễn ra khi nào và thuộc kỳ tính thuế nào?", "Nội dung giao dịch và đối tượng liên quan là gì?"],
-    "warnings": ["Ví dụ cấu trúc; chưa gọi AI hoặc kiểm chứng nghiệp vụ."]
+    "clarification_questions": [
+      "Giao dịch diễn ra khi nào và thuộc kỳ tính thuế nào?",
+      "Nội dung giao dịch và đối tượng liên quan là gì?"
+    ],
+    "warnings": [
+      "Ví dụ cấu trúc; chưa gọi AI hoặc kiểm chứng nghiệp vụ."
+    ]
+  },
+  "api_response_shape": {
+    "history": {
+      "matter_id": "11111111-1111-4111-8111-111111111111",
+      "review_status": "draft",
+      "answer": null,
+      "citations": []
+    },
+    "sources": [],
+    "research_result": {
+      "status": "clarify",
+      "sections": {
+        "issue": [],
+        "facts": [],
+        "authority": [],
+        "analysis": [],
+        "limitations": [],
+        "next_steps": []
+      },
+      "clarification_questions": [
+        "Giao dịch diễn ra khi nào và thuộc kỳ tính thuế nào?",
+        "Nội dung giao dịch và đối tượng liên quan là gì?"
+      ],
+      "warnings": [
+        "Ví dụ cấu trúc; chưa gọi AI hoặc kiểm chứng nghiệp vụ."
+      ]
+    }
   }
 }

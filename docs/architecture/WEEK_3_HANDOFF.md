@@ -1,6 +1,6 @@
 # Gói phối hợp tuần 3 — phần trưởng nhóm
 
-Trạng thái: sẵn sàng gửi nhóm góp ý; chưa có xác nhận của các thành viên. Phạm vi hiện tại chỉ là chuẩn bị quy ước, JSON mẫu và tình huống kiểm thử. Không merge hoặc thay code của thành viên trong bước này.
+Ngày cập nhật: 14/11/2026. Đã có adapter prompt/Word SCRUM-17 và lần chạy 10 ca kỹ thuật; chưa có xác nhận quy ước của các thành viên. PR #11 vẫn chờ review, chưa merge. Không thay code nhánh cá nhân của thành viên.
 
 ## 1. Mọi người đọc gì?
 
@@ -8,7 +8,7 @@ Trạng thái: sẵn sàng gửi nhóm góp ý; chưa có xác nhận của các
 2. [JSON mẫu](examples/week3_data_contract.json): minh họa kiểu dữ liệu. Toàn bộ nguồn trong mẫu là giả lập.
 3. [10 tình huống kiểm thử](../../evaluation/WEEK_3_INTEGRATION.md): cách chuẩn bị, chạy và ghi kết quả.
 
-Tiếp tục dùng API hiện tại của Luân để nối hồ sơ, tìm kiếm và xem nguồn. Không chờ tính năng sinh câu trả lời mới làm các phần này. Các mở rộng chưa có như history.research_result cần xác nhận trước khi triển khai.
+PR #11 tại `028f4bf` trả research_result ở cấp gốc của POST /research; chưa lưu nguyên object này vào lịch sử. Nhánh Luân mới `9b5a1d2` có schema bổ sung cần ghép có chọn lọc. Dùng đúng commit khi đối chiếu API, không coi hai bản tương đương.
 
 ## 2. Mỗi bạn cần phản hồi ngay
 
@@ -25,7 +25,7 @@ Mẫu phản hồi: “Module …; đồng ý các mục …; cần đổi mục
 
 ## 3. Làm song song thế nào?
 
-- Quân: hoàn thiện quy ước theo phản hồi, chuẩn bị adapter prompt/Word sau khi chốt.
+- Quân: đã thêm adapter prompt/Word và runner 10 ca; tiếp tục xử lý lỗi/phụ thuộc được ghi trong kết quả, chưa Done.
 - Duyên: sửa parser/registry theo dữ liệu đã thống nhất.
 - Thanh: làm tìm kiếm bằng passage mẫu, sau đó thay bằng dữ liệu Duyên.
 - Luân và Phước: nối API hồ sơ/tìm kiếm/xem nguồn/lịch sử hiện có; phối hợp về phần API mở rộng.
@@ -36,8 +36,12 @@ Mỗi bạn mở PR khi có phần chạy được, kèm commit, hướng dẫn 
 
 ## 4. Tin nhắn Quân có thể gửi nhóm
 
-> Mọi người ơi, mình đã chuẩn bị bản quy ước dữ liệu tuần 3 dựa trên API của Luân, kèm JSON mẫu và 10 tình huống kiểm thử. Duyên, Thanh, Luân, Phước xem giúp bảng ánh xạ; An và Đan xem phần kiểm tra căn cứ/trạng thái và bộ tình huống nhé. Mỗi bạn phản hồi trường nào đồng ý, trường nào chưa có hoặc cần đổi trước khi triển khai phần phụ thuộc. Những phần API hiện có vẫn tiếp tục làm song song. Khi có phần chạy được, mọi người mở PR và gửi hướng dẫn cùng kết quả test để mình kiểm tra dần. Tài liệu hiện là đề xuất chờ xác nhận, chưa phải toàn bộ chức năng đã được triển khai.
+> Mọi người ơi, mình đã cập nhật quy ước theo PR #11 và nhánh Luân mới, thêm adapter prompt/Word. Chạy 10 ca kỹ thuật được 6 blocked do thiếu nguồn đã duyệt/assessor, 2 fail vì câu hỏi làm rõ còn chung và 2 pass cho abstain bằng fixture. Luân/Duyên xem phần schema và migration; An xem câu hỏi làm rõ; Phước xem research_result và hướng nối tải Word. Các bạn phản hồi điểm đồng ý hoặc cần đổi giúp mình; chưa có xác nhận thì mình vẫn giữ trạng thái chờ. PR #11 chưa merge và SCRUM-17 chưa Done.
 
 ## 5. Việc để sau khi nhóm có đầu ra
 
-Quân sẽ cập nhật prompt/xuất Word, chạy bộ tình huống với kết quả thật và kiểm tra tích hợp. Bước chuẩn bị này không bao gồm triển khai các adapter, thay đổi API, gọi AI trả phí hoặc tổng hợp báo cáo tuần.
+Đã chạy 10 ca qua TestClient trên SQLite tạm với backend PR #11: **6 blocked, 2 fail, 2 pass kỹ thuật**. W3-001..006 thiếu nguồn đã duyệt/ID/trang và assessor/generator. W3-007..008 trả clarify nhưng chỉ hỏi chung, chưa hỏi đúng dữ kiện hàng hóa/phương pháp thuế hoặc cư trú. W3-009..010 kiểm tra abstain bằng test double/fixture biệt lập, không phải đánh giá pháp lý.
+
+Lệnh chạy, artifact và cách dùng adapter: [WEEK_3_INTEGRATION.md](../../evaluation/WEEK_3_INTEGRATION.md). Kết quả gồm response thật, lịch sử mở lại, các check và hash DOCX tạo trong bộ nhớ. Không có LLM trả phí hoặc báo cáo tuần được tạo.
+
+Phần tiếp theo cần phối hợp: đồng bộ schema/migration backend; câu hỏi làm rõ cụ thể; lưu research_result vào history; endpoint xuất Word và frontend gọi endpoint sau kiểm tra quyền. Chưa coi thư viện xuất bytes là tính năng tải Word end-to-end.

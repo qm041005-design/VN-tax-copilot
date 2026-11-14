@@ -1,6 +1,6 @@
 # Quy ước dữ liệu tích hợp tuần 3
 
-Ngày soạn: 13/11/2026. Phiên bản: 0.1 — **Đề xuất, chờ Duyên, Thanh, Luân, Phước và An xác nhận.**
+Ngày cập nhật: 14/11/2026. Phiên bản: 0.2 — **Đã đối chiếu code; các quyết định nghiệp vụ/API mở rộng vẫn chờ nhóm xác nhận.** Không coi kiểm tra code là sự đồng ý của thành viên.
 
 Điểm bắt đầu cho nhóm: [Hướng dẫn xác nhận và triển khai](WEEK_3_HANDOFF.md). Bộ tình huống: [Hướng dẫn kiểm thử](../../evaluation/WEEK_3_INTEGRATION.md). Đây là tài liệu kỹ thuật của Quân, không phải báo cáo tiến độ hoặc thông báo các task đã hoàn thành.
 
@@ -29,7 +29,7 @@ Base URL local: `http://localhost:8000/api/v1`.
 | POST /matters | Tạo hồ sơ; id là UUID |
 | GET /matters | Danh sách có items, total, limit, offset |
 | GET/PATCH/DELETE /matters/{id} | Xem/sửa/lưu trữ; DELETE không xóa vật lý |
-| POST /research | ResearchRequest → {history, sources}; hiện answer=null |
+| POST /research | PR #11 tại `028f4bf`: ResearchRequest → {history, sources, research_result}; chưa cấu hình assessor/generator nên clarify/abstain, answer=null |
 | GET /matters/{id}/history | Mảng lịch sử; tổng số ở header X-Total-Count |
 | GET /sources/search | Danh sách SourceHit, không có toàn văn content |
 | GET /sources/{source_id} | SourceDetail chứa content, version, source_page |
@@ -41,7 +41,7 @@ ResearchRequest giữ các trường sau:
 | matter_id | UUID, bắt buộc; kiểm tra quyền trên server |
 | question | Chuỗi không trắng, 1–2000 ký tự |
 | tax_type | VAT/CIT/PIT hoặc null; không tự mở rộng enum ở một module |
-| tax_period | Chuỗi tối đa 32 ký tự hoặc null; có thể lấy từ hồ sơ theo quy tắc backend |
+| tax_period | PR #11 nhận YYYY, YYYY-MM, YYYY-Q1..Q4 hoặc null; có thể lấy từ hồ sơ; dạng không hiểu trả 422 |
 | research_as_of | Ngày YYYY-MM-DD hoặc null |
 | material_facts | Chuỗi hoặc null |
 | doc_type | Chuỗi hoặc null; bộ lọc loại văn bản |
@@ -72,7 +72,7 @@ Các nhóm thuế quản lý/hóa đơn trong benchmark chưa phải enum API hi
 
 Quy tắc chuyển đổi:
 
-- `clause_number=0` và `point_letter=""` của registry là thiếu cấp trích dẫn: chuyển thành null, không ghi “Khoản 0”. Điều là chuỗi để giữ được `1a`.
+- `clause_number=0`, `"0"`, rỗng/null và `point_letter=""` là thiếu cấp trích dẫn: chuyển thành null, không ghi “Khoản 0”. Điều/Khoản là chuỗi để giữ được `1a`.
 - Dùng toàn văn `SourceDetail.content` để tạo `passage.text`. Không dùng snippet 300 ký tự làm toàn bộ bằng chứng.
 - `citation_ids` phải trỏ tới passage_id trong tập nguồn đã kiểm tra quyền và cung cấp cho lượt trả lời đó.
 - Khi nối benchmark của Đan, đối chiếu `required_evidence.acceptable_passage_ids` với chính các passage_id trong kết quả tìm kiếm. Ý nghĩa `required_evidence.source_id` cần Đan xác nhận, không mặc định nó có cùng nghĩa với source_id của API.
@@ -90,7 +90,9 @@ Quy tắc chuyển đổi:
 5. An kiểm tra phạm vi nguồn, dữ liệu nhạy cảm và căn cứ đủ hay thiếu. Chưa có đánh giá đủ căn cứ thì không tự cho phép sinh kết luận.
 6. Quân tạo prompt từ passage đầy đủ, kiểm tra đầu ra trước khi xuất; backend lưu kết quả và nguồn để frontend xem lại.
 
-**Hiện trạng cần nối:** source_service.py của Luân đang tìm từ khóa bằng SQL ILIKE, chưa gọi BM25 của Thanh. BM25 hiện giữ metadata nhưng chưa tự thực hiện kiểm soát quyền, sắc thuế hoặc hiệu lực. Không chỉ sửa tài liệu rồi coi việc kết nối đã xong.
+**Hiện trạng phân nhánh:** PR #11 tại `028f4bf` đã nối BM25 của Thanh, nhãn sắc thuế được gán rõ và lọc khoảng hiệu lực giao kỳ thuế; guardrails chạy sau kiểm tra quyền hồ sơ. Nhánh Luân tại `9b5a1d2` vẫn dùng SQL ILIKE nhưng đã đồng bộ thêm schema/status của Duyên. Hai bản chưa đồng bộ; không coi nhánh Luân đã có mọi tính năng của PR #11. BM25 không tự chứng minh căn cứ đủ hay hiệu lực pháp lý.
+
+Khi có kỳ thuế, PR #11 không dùng ngày nghiên cứu hiện tại để loại nguồn lịch sử. Tuy nhiên hiệu lực từng đoạn/sửa đổi/chuyển tiếp còn cần hoàn thiện. Bản Luân mới lọc ngày văn bản nhưng hiển thị ngày riêng của đoạn: đã tái hiện trả đoạn hiệu lực năm 2030 khi tìm tại 14/11/2026. Cần sửa trước khi coi bộ lọc cấp đoạn hoạt động đúng.
 
 Bộ lọc ngày hiện tại của Luân vẫn cho phép nguồn có effective_date=null đi qua. Những nguồn này chỉ là ứng viên có hiệu lực chưa xác định, không được hiển thị như đã xác minh đang áp dụng. expiry_date=null cũng không chứng minh chắc chắn chưa hết hiệu lực. Kiểm tra sửa đổi/hiệu lực từng điều khoản và chuyển tiếp còn cần bổ sung.
 
@@ -112,7 +114,7 @@ Giữ trạng thái nội bộ đang được prompt và exporter hỗ trợ:
 
 Kết quả tổng hợp giữ đủ sáu khóa: issue, facts, authority, analysis, limitations, next_steps. Mỗi phần là mảng {text, citation_ids}; kèm clarification_questions và warnings.
 
-**Đề xuất mở rộng, chưa có trong API:** thêm `history.research_result` nullable để lưu object có status, sections, clarification_questions, warnings. Giữ answer dạng chuỗi phục vụ tương thích nếu cần; không nhét JSON vào answer rồi yêu cầu frontend đoán định dạng. Luân phải cập nhật schema/lưu trữ và Phước cập nhật kiểu dữ liệu trước khi sử dụng trường mới.
+**Đã có trong response PR #11:** `research_result` ở cấp gốc của POST /research có status, sections, clarification_questions, warnings. **Chưa lưu trong lịch sử:** GET history không trả lại nguyên object sáu phần. Đề xuất bổ sung `history.research_result` nullable vẫn cần schema/migration và phối hợp frontend. Không tái dựng sáu phần từ answer hoặc citations. Adapter xuất Word mới yêu cầu response hiện tại có research_result; thiếu trường này thì báo lỗi rõ.
 
 Trong giai đoạn chưa tích hợp: answer=null và danh sách citations là nguồn tìm thấy, không phải các nguồn đã chứng minh hỗ trợ một câu trả lời AI.
 
@@ -120,7 +122,8 @@ Trong giai đoạn chưa tích hợp: answer=null và danh sách citations là n
 
 - Adapter xuất Word lấy metadata từ registry/backend, không dùng URL hoặc tên văn bản do AI tự tạo.
 - Exporter hiện yêu cầu document_number, article và source_url cho mỗi nguồn được trích dẫn. Thiếu các trường này thì chặn xuất bản nghiên cứu có trích dẫn đó và trả lỗi rõ; không điền dữ liệu giả để vượt kiểm tra.
-- Giữ nhãn “DỰ THẢO – CHƯA ĐƯỢC CHUYÊN GIA DUYỆT”. Có mã hồ sơ, sáu phần và danh sách nguồn; bổ sung trang/phiên bản sau khi chốt ánh xạ.
+- Giữ nhãn “DỰ THẢO – CHƯA ĐƯỢC CHUYÊN GIA DUYỆT”. Có mã hồ sơ, sáu phần và danh sách nguồn.
+- Adapter SCRUM-17 đã thêm trang PDF đếm từ 1 và nhãn phiên bản lưu trữ vào Word; draft thiếu trang/phiên bản/URL/số văn bản/Điều thì bị chặn. Phiên bản lưu trữ không phải chứng nhận hiệu lực hoặc chuyên gia duyệt.
 - Kiểm tra ID trích dẫn tồn tại chỉ là kiểm tra cấu trúc, không chứng minh đoạn nguồn hỗ trợ kết luận. An/QA và chuyên gia cần đánh giá riêng.
 - Token ví dụ trong tài liệu backend chỉ dành cho thử nghiệm. Không đưa token dùng chung hoặc bí mật vào bundle frontend; cần chốt cách cấp phiên đăng nhập trước khi host công khai.
 
@@ -150,7 +153,7 @@ Trong giai đoạn chưa tích hợp: answer=null và danh sách citations là n
 - [ ] Hồ sơ không được phép truy cập bị chặn; lịch sử còn sau khởi động lại.
 - [ ] JSON mẫu không được nhập nhầm vào bộ luật thật hoặc benchmark nghiệm thu.
 
-Các JSON trong `examples/week3_data_contract.json` chỉ minh họa cấu trúc, không phải văn bản luật hay kết quả kiểm thử pháp lý. Chưa có adapter thực thi được thêm bởi tài liệu này.
+Các JSON trong `examples/week3_data_contract.json` chỉ minh họa cấu trúc, không phải văn bản luật hay kết quả kiểm thử pháp lý. Adapter thực thi SCRUM-17 được mô tả ở mục 10; chưa có endpoint xuất Word hoặc nút frontend gọi adapter này.
 
 ## 9. Quy trình chốt phiên bản
 
@@ -158,3 +161,14 @@ Các JSON trong `examples/week3_data_contract.json` chỉ minh họa cấu trúc
 2. Các điểm chưa đồng thuận tiếp tục mang nhãn đề xuất. Không coi sự im lặng là xác nhận.
 3. Khi thống nhất, Quân cập nhật phiên bản tài liệu. Luân cập nhật API_CONTRACT.md và schema API cho thay đổi liên quan; Phước cập nhật kiểu dữ liệu tương ứng.
 4. Thay đổi phá vỡ tương thích phải thống nhất thời điểm chuyển đổi và người cập nhật các module phụ thuộc trước khi merge.
+
+## 10. Adapter SCRUM-17 và các phần còn chờ
+
+- `ai_engine/synthesis/backend_adapter.py`: `source_details_to_passages`, `build_backend_messages`, `build_guarded_messages`, `prepare_backend_export`.
+- `backend/app/services/export_service.py`: `export_backend_research_docx(response, details, matter_id=...)` trả DOCX bytes, không ghi file hay tự gọi API/LLM.
+- Caller kiểm tra quyền hồ sơ/nguồn và tải SourceDetail toàn văn trước. `allowed_source_ids` phải do server quyết định, không lấy whitelist từ body công khai. `build_backend_messages` chưa phải bước che dữ liệu; không gửi thẳng hồ sơ thô ra provider. Với generator của An, dùng `build_guarded_messages(safe_input)` sau redaction và evidence gate của guardrails.
+- Adapter Word kiểm tra đúng matter_id, metadata của SourceDetail khớp SourceHit và ID của draft nằm trong history.citations đã được backend chấp nhận. Đây là kiểm tra cấu trúc/nguồn, không xác minh nội dung kết luận.
+- clarify/abstain: xóa các phần có thể chứa kết luận, giữ câu hỏi/cảnh báo; không biến citations ứng viên thành khẳng định có căn cứ. Không suy status từ review_status.
+- Schema PR #11 còn thiếu cột so với Duyên/Luân, gồm status và metadata đoạn. Cần migration giữ dữ liệu và đồng bộ importer; không xóa bảng/volume để nâng cấp. Status parser không có nghĩa chuyên gia phê duyệt và không tự thay thế kiểm tra hiệu lực theo kỳ.
+- Quy báo có intake OCR và 33 test local, chưa push/đối chiếu thủ công. Chỉ ghi nhận thông tin cung cấp; chưa dùng làm bằng chứng pipeline đã nhập đủ 10 văn bản.
+- 17 test prompt/Word/adapter đạt; bộ 10 ca có kết quả riêng, không thay thế benchmark 250 hoặc chuyên gia duyệt. SCRUM-17 chưa Done.

@@ -23,7 +23,7 @@ def export_research_docx(result, sources, *, title='Báo cáo nghiên cứu thu�
     """Return a draft DOCX. sources maps passage_id to trusted citation metadata.
 
     Required source fields: document_number, article, source_url. Optional:
-    clause, point, version_note. Authorization and legal support verification
+    clause, point, version_note, source_page. Authorization and legal support verification
     belong to upstream services; this function verifies structural references.
     It never accepts an LLM-provided approval status.
     """
@@ -73,6 +73,9 @@ def export_research_docx(result, sources, *, title='Báo cáo nghiên cứu thu�
         for key in ('clause', 'point', 'version_note'):
             if source.get(key):
                 _text(source[key])
+        page = source.get('source_page')
+        if page is not None and (type(page) is not int or page < 1):
+            raise ValueError('source_page must be a positive PDF page number')
     doc = Document()
     section = doc.sections[0]
     section.page_width, section.page_height = Cm(21), Cm(29.7)
@@ -107,6 +110,8 @@ def export_research_docx(result, sources, *, title='Báo cáo nghiên cứu thu�
         s = sources[ref]
         p = doc.add_paragraph(f'[{numbers[ref]}] ' + ', '.join(s[k] for k in ('document_number', 'article', 'clause', 'point') if s.get(k)))
         doc.add_paragraph('Mã đoạn nguồn: ' + ref)
+        if s.get('source_page') is not None:
+            doc.add_paragraph('Trang PDF: ' + str(s['source_page']) + ' (đếm từ 1)')
         if s.get('version_note'):
             doc.add_paragraph(s['version_note'])
         p = doc.add_paragraph()
@@ -121,3 +126,11 @@ def export_research_docx(result, sources, *, title='Báo cáo nghiên cứu thu�
     stream = BytesIO()
     doc.save(stream)
     return stream.getvalue()
+
+
+def export_backend_research_docx(response, details, *, matter_id, title='Báo cáo nghiên cứu thuế'):
+    """Export the current authorized API result, never reconstruct history JSON."""
+    from ai_engine.synthesis.backend_adapter import prepare_backend_export
+
+    result, sources = prepare_backend_export(response, details, matter_id=matter_id)
+    return export_research_docx(result, sources, title=title, matter_id=matter_id)
