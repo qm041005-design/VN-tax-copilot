@@ -178,3 +178,17 @@ def test_annotate_keeps_status_and_labels_note_as_ai_preliminary(tmp_path):
     bad.write_text(json.dumps({"DOC1:99": "x"}), encoding="utf-8")
     with pytest.raises(KeyError):
         annotate(out / "intake_pages.json", bad, out, ev, manifest)
+
+
+def test_table_page_with_corrupt_number_cells_is_quarantined():
+    from data_pipeline.ocr.intake import corrupt_number_tokens
+    bad = "Tháng 1/2014 ọ 300 280 s0 20\nTháng 4/2014 3ô 350 410 ø0 18\nTháng 7/2014 350 250 260 T0 -340\nTháng 9 s0 350 s0 T0"
+    assert len(corrupt_number_tokens(bad)) >= 5
+    assert assess(ex(text=bad, conf=90.0), table=True, last_page=False)[0] == "quarantined_table_numbers"
+    # cùng văn bản nhưng không phải trang bảng thì không bị cách ly vì lý do này
+    assert assess(ex(text=bad, conf=90.0), table=False, last_page=False)[0] == "pending_human_review"
+
+
+def test_list_markers_are_not_corrupt_numbers():
+    from data_pipeline.ocr.intake import corrupt_number_tokens
+    assert corrupt_number_tokens("a) b.2) c2) d) 1) Điều 5. 1.000.000 đồng") == []

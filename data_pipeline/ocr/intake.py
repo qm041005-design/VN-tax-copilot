@@ -45,6 +45,8 @@ MIN_PAGES = 20
 LOW_CONF_QUARANTINE = 70.0   # như pilot.py
 LOW_CONF_FLAG = 80.0
 OCR_DPI = 150
+TABLE_BAD_TOKENS = 5          # trang bảng có >= 5 "ô số" lẫn chữ (vd. 3ô, s0, ø0) -> cách ly
+_MIXED_TOKEN = re.compile(r"^(?=.*\d)(?=.*[^\W\d_])\S{1,4}$")
 HERE = Path(__file__).resolve().parent
 EVIDENCE = HERE.parent / "evidence"
 GOLD_DIR = EVIDENCE / "gold_pages"
@@ -156,6 +158,19 @@ def extract_page(pdf: Path, page: int, engine: TesseractEngine, dpi: int = OCR_D
     return out
 
 
+def corrupt_number_tokens(text: str) -> list[str]:
+    """Token ngắn lẫn chữ và số (vd. `3ô`, `s0`, `ø0`): dấu hiệu OCR đọc sai ô số trong bảng.
+    Bỏ qua ký hiệu mục hợp lệ như `a)`, `2)`, `b.2)`."""
+    out = []
+    for tok in text.split():
+        t = tok.strip(".,;:()[]\"'")
+        if tok.rstrip(".,;:").endswith(")"):   # `a)`, `b.2)`, `c2)`: số thứ tự mục
+            continue
+        if _MIXED_TOKEN.match(t):
+            out.append(tok)
+    return out
+
+
 def assess(ex: dict, *, table: bool, last_page: bool) -> tuple[str, list[str]]:
     """Quy tắc chất lượng tự động -> (quality_status, cờ). Thứ tự ưu tiên: lỗi > rỗng > conf thấp > số > con dấu."""
     flags: list[str] = []
@@ -176,6 +191,9 @@ def assess(ex: dict, *, table: bool, last_page: bool) -> tuple[str, list[str]]:
         return "quarantined_unicode", flags
     if suspicious_numbers(text):
         return "quarantined_suspect_numbers", flags
+    if table and len(corrupt_number_tokens(text)) >= TABLE_BAD_TOKENS:
+        flags.append("ô_số_trong_bảng_nghi_sai")
+        return "quarantined_table_numbers", flags
     if ex["ink"] > STAMP_INK_PCT:
         return "quarantined_stamp_overlay", flags
     return "pending_human_review", flags

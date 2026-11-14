@@ -1,55 +1,227 @@
 [
   {
-    "source_id": "LUAT67_2025",
-    "legal_identifier": "67/2025/QH15",
+    "source_id": "TT219_2013",
+    "legal_identifier": "219/2013/TT-BTC",
+    "pdf_page": 69,
+    "quality_status": "quarantined_table_numbers",
+    "quality_flags": [
+      "bảng_chưa_tái_dựng_cấu_trúc",
+      "ô_số_trong_bảng_nghi_sai"
+    ],
+    "suspicious_numbers": [],
+    "extraction_method": "tesseract_vie",
+    "mean_ocr_confidence": 87.27,
+    "retry_attempts": [
+      {
+        "strategy": "bo_muc_mau",
+        "mean_ocr_confidence": 87.27,
+        "text_chars": 2023,
+        "text_sha256": "8a9e159917e0e9921a597b295522712889735e6b4242fa4b58d87b6d4da29ae9",
+        "suspicious_numbers": [],
+        "new_tokens_vs_primary": [],
+        "hint": "không_rõ_cải_thiện"
+      },
+      {
+        "strategy": "dpi200_adaptive",
+        "mean_ocr_confidence": 88.26,
+        "text_chars": 2017,
+        "text_sha256": "b8eb7b0b3820dbeaffef602bab96209a99c6e1ec01d1737160584f34d4e95092",
+        "suspicious_numbers": [],
+        "new_tokens_vs_primary": [
+          "Thuếđầura",
+          "S",
+          "Ø",
+          "3507",
+          "00",
+          "SỐ",
+          "110",
+          "T10",
+          "Ì",
+          "l110",
+          "đâu",
+          "Sang"
+        ],
+        "hint": "có_chữ_mới_cần_người_xác_nhận"
+      }
+    ],
+    "manual_notes": null,
+    "next_action": "xử lý lại hoặc gõ tay rồi đối chiếu"
+  },
+  {
+    "source_id": "TT111_2013",
+    "legal_identifier": "111/2013/TT-BTC",
+    "pdf_page": 40,
+    "quality_status": "quarantined_suspect_numbers",
+    "quality_flags": [],
+    "suspicious_numbers": [
+      "12,000"
+    ],
+    "extraction_method": "tesseract_vie",
+    "mean_ocr_confidence": 93.68,
+    "retry_attempts": [
+      {
+        "strategy": "bo_muc_mau",
+        "mean_ocr_confidence": 93.68,
+        "text_chars": 2788,
+        "text_sha256": "97d54c4e1252acc6d309f84ac854f7aa9a24772397f1ffcde2fed32ba464c81a",
+        "suspicious_numbers": [
+          "12,000"
+        ],
+        "new_tokens_vs_primary": [],
+        "hint": "không_rõ_cải_thiện"
+      },
+      {
+        "strategy": "dpi200_adaptive",
+        "mean_ocr_confidence": 93.64,
+        "text_chars": 2792,
+        "text_sha256": "23631f5b8a9ecdb769c81aa0ab9cd457e9e380bbc7c0074905728ba7a1c362ae",
+        "suspicious_numbers": [],
+        "new_tokens_vs_primary": [
+          "hỗ",
+          "mỉnh",
+          "suôt",
+          "q12",
+          "kế",
+          "Giá"
+        ],
+        "hint": "có_chữ_mới_cần_người_xác_nhận"
+      }
+    ],
+    "manual_notes": null,
+    "next_action": "xử lý lại hoặc gõ tay rồi đối chiếu"
+  },
+  {
+    "source_id": "TT96_2015",
+    "legal_identifier": "96/2015/TT-BTC",
     "pdf_page": 1,
     "quality_status": "quarantined_stamp_overlay",
     "quality_flags": [],
     "suspicious_numbers": [],
     "extraction_method": "tesseract_vie",
-    "mean_ocr_confidence": 92.69,
+    "mean_ocr_confidence": 88.72,
     "retry_attempts": [
       {
         "strategy": "bo_muc_mau",
-        "mean_ocr_confidence": 91.77,
-        "text_chars": 1832,
-        "text_sha256": "e694cd6135d403b3d1667988fe5c9b9c44ee1f52708b1fefd6e339b94f1f54aa",
+        "mean_ocr_confidence": 88.87,
+        "text_chars": 2087,
+        "text_sha256": "f8ed3076a7d1e621199f37161c921b400839c91e32475d7d6ef015aadbbc2e91",
         "suspicious_numbers": [],
-        "new_tokens_vs_primary": [
-          "ngtinchinhphu6i",
-          "GHINHPH",
-          "UV",
-          "NThO",
-          "gia",
-          "kệ",
-          "1607",
-          "2009",
-          "2820",
-          "207",
-          "GHÍMH",
-          "Hiền"
-        ],
-        "hint": "có_chữ_mới_cần_người_xác_nhận"
+        "new_tokens_vs_primary": [],
+        "hint": "không_rõ_cải_thiện"
       },
       {
         "strategy": "dpi200_adaptive",
-        "mean_ocr_confidence": 92.56,
-        "text_chars": 1903,
-        "text_sha256": "4c453ef453ecdec6c140ea5127cee014f7187e6d4ba29b90b73703bc76c4792b",
+        "mean_ocr_confidence": 89.66,
+        "text_chars": 2041,
+        "text_sha256": "9553435da4b00d17342365879d8f00244543b636a773c5b055c3de53ee68ec17",
         "suspicious_numbers": [],
         "new_tokens_vs_primary": [
+          "GB",
+          "hết",
+          "nh",
+          "VÃnđịmh",
+          "chuyển",
+          "TH",
+          "EA",
+          "cử",
+          "sưng",
+          "thị",
+          "nghiện",
+          "bố"
+        ],
+        "hint": "có_chữ_mới_cần_người_xác_nhận"
+      }
+    ],
+    "manual_notes": null,
+    "next_action": "xử lý lại hoặc gõ tay rồi đối chiếu"
+  },
+  {
+    "source_id": "TT26_2015",
+    "legal_identifier": "26/2015/TT-BTC",
+    "pdf_page": 1,
+    "quality_status": "quarantined_stamp_overlay",
+    "quality_flags": [],
+    "suspicious_numbers": [],
+    "extraction_method": "tesseract_vie",
+    "mean_ocr_confidence": 87.13,
+    "retry_attempts": [
+      {
+        "strategy": "bo_muc_mau",
+        "mean_ocr_confidence": 87.13,
+        "text_chars": 2008,
+        "text_sha256": "0570a2b520f8ac9ae3acaf13e617f445e873003b414db4a4770226880956c257",
+        "suspicious_numbers": [],
+        "new_tokens_vs_primary": [],
+        "hint": "không_rõ_cải_thiện"
+      },
+      {
+        "strategy": "dpi200_adaptive",
+        "mean_ocr_confidence": 87.29,
+        "text_chars": 2020,
+        "text_sha256": "2f06ad4e47cd08395c29b3f0aa8512697820de0b73f1434e67c0ff361a1e873e",
+        "suspicious_numbers": [],
+        "new_tokens_vs_primary": [
+          "phúc",
+          "TÌN",
+          "ĐIỆN",
           "TỬ",
-          "Email",
-          "thongdnchinhphufehinhphir",
-          "Cơ",
-          "VNThời",
-          "gian",
-          "đo",
-          "ĐẾN",
-          "E",
-          "TÌM",
-          "ĐỆN",
-          "ĐẾt"
+          "LVĂN",
+          "P",
+          "ũ2MHÊnCdủw",
+          "rtông",
+          "tư",
+          "ĐỂẾNYề",
+          "lv",
+          "Q6ay"
+        ],
+        "hint": "có_chữ_mới_cần_người_xác_nhận"
+      }
+    ],
+    "manual_notes": null,
+    "next_action": "xử lý lại hoặc gõ tay rồi đối chiếu"
+  },
+  {
+    "source_id": "TT26_2015",
+    "legal_identifier": "26/2015/TT-BTC",
+    "pdf_page": 36,
+    "quality_status": "quarantined_table_numbers",
+    "quality_flags": [
+      "bảng_chưa_tái_dựng_cấu_trúc",
+      "confidence_70_80",
+      "ô_số_trong_bảng_nghi_sai"
+    ],
+    "suspicious_numbers": [],
+    "extraction_method": "tesseract_vie",
+    "mean_ocr_confidence": 73.47,
+    "retry_attempts": [
+      {
+        "strategy": "bo_muc_mau",
+        "mean_ocr_confidence": 73.47,
+        "text_chars": 2635,
+        "text_sha256": "e7e6a779648aa269f494a6d6bcbd655c96c193220cc672e603c468ea92803324",
+        "suspicious_numbers": [],
+        "new_tokens_vs_primary": [],
+        "hint": "không_rõ_cải_thiện"
+      },
+      {
+        "strategy": "dpi200_adaptive",
+        "mean_ocr_confidence": 77.96,
+        "text_chars": 1911,
+        "text_sha256": "9a816e74d8ffecd2266d13e91a8f8e0c43124b1e3f1665c00c4a49128cfa16ca",
+        "suspicious_numbers": [],
+        "new_tokens_vs_primary": [
+          "HOÀ",
+          "Độc",
+          "Dành",
+          "giả",
+          "lăng",
+          "trữ",
+          "01",
+          "hy",
+          "làm",
+          "ọ",
+          "ar",
+          "285505"
         ],
         "hint": "có_chữ_mới_cần_người_xác_nhận"
       }
@@ -60,37 +232,55 @@
   {
     "source_id": "LUAT67_2025",
     "legal_identifier": "67/2025/QH15",
-    "pdf_page": 15,
-    "quality_status": "quarantined_suspect_numbers",
+    "pdf_page": 1,
+    "quality_status": "quarantined_stamp_overlay",
     "quality_flags": [],
-    "suspicious_numbers": [
-      "6,000"
-    ],
+    "suspicious_numbers": [],
     "extraction_method": "tesseract_vie",
-    "mean_ocr_confidence": 94.92,
+    "mean_ocr_confidence": 91.59,
     "retry_attempts": [
       {
         "strategy": "bo_muc_mau",
-        "mean_ocr_confidence": 94.92,
-        "text_chars": 2242,
-        "text_sha256": "9a02aebae0d95fb140338ecfa29586ec4b798506068ca2f8022a5df05f629f7a",
-        "suspicious_numbers": [
-          "6,000"
+        "mean_ocr_confidence": 91.41,
+        "text_chars": 1860,
+        "text_sha256": "95f6ba17e1a576bb5ef8f3bcafe6d2c0c7406eb1317da87e71c33e275e5d7e94",
+        "suspicious_numbers": [],
+        "new_tokens_vs_primary": [
+          "n",
+          "VẤN",
+          "PÌ",
+          "VNThời",
+          "ca",
+          "kặc",
+          "16072055",
+          "14",
+          "28",
+          "40",
+          "hữnn0"
         ],
-        "new_tokens_vs_primary": [],
-        "hint": "không_rõ_cải_thiện"
+        "hint": "có_chữ_mới_cần_người_xác_nhận"
       },
       {
         "strategy": "dpi200_adaptive",
-        "mean_ocr_confidence": 95.01,
-        "text_chars": 2244,
-        "text_sha256": "9103c7ebedb8224d22323de0ef4dd446e05ac2bf273478a6fa87824f81dc6b33",
+        "mean_ocr_confidence": 92.19,
+        "text_chars": 1914,
+        "text_sha256": "16af82a1980b4a9bd6d02a0fb4ea729b963695ab49ece9f87ee96e953cb04aa5",
         "suspicious_numbers": [],
         "new_tokens_vs_primary": [
-          "chỉ",
-          "tầng"
+          "TỬ",
+          "V",
+          "G",
+          "P",
+          "thongtinchinhphu",
+          "chinhphu",
+          "y",
+          "vn",
+          "Cơ",
+          "VNThời",
+          "gian",
+          "07"
         ],
-        "hint": "không_rõ_cải_thiện"
+        "hint": "có_chữ_mới_cần_người_xác_nhận"
       }
     ],
     "manual_notes": null,
@@ -106,21 +296,22 @@
     ],
     "suspicious_numbers": [],
     "extraction_method": "tesseract_vie",
-    "mean_ocr_confidence": 94.39,
+    "mean_ocr_confidence": 93.59,
     "retry_attempts": [
       {
         "strategy": "bo_muc_mau",
-        "mean_ocr_confidence": 94.88,
+        "mean_ocr_confidence": 93.74,
         "text_chars": 1200,
-        "text_sha256": "9200381c7ed5bdbac816e11c62a1c644d2be38f84fb415491f6b5be1f1513d80",
+        "text_sha256": "60b36922419c6a3f116083ddc23c7bea90d8ceaa95df2d96c4a2bfbe19fe83cf",
         "suspicious_numbers": [],
         "new_tokens_vs_primary": [
-          "sửa",
-          "khóa",
           "XE",
+          "Kỹ",
+          "202",
           "CHỦ",
-          "1JCH",
-          "QUÓC",
+          "3ICH",
+          "QUỐC",
+          "HỘI",
           "Trần",
           "Thanh",
           "Mẫn"
@@ -129,17 +320,78 @@
       },
       {
         "strategy": "dpi200_adaptive",
-        "mean_ocr_confidence": 94.35,
-        "text_chars": 1184,
-        "text_sha256": "b38aff066aaf4d30714bbe0a911c0f77dd83cf2b631f9f3e40b25e741e22f02d",
+        "mean_ocr_confidence": 93.7,
+        "text_chars": 1189,
+        "text_sha256": "294fed7e188bfd10fce39fa594faab478eef30e61fe10296c960815b596bb8bb",
         "suspicious_numbers": [],
         "new_tokens_vs_primary": [
-          "sửa",
-          "Mam",
-          "khóa",
+          "trủ",
+          "kể",
+          "Kỹ",
+          "thẳng",
           "CHỦ",
           "TỊCH",
-          "QUÓC"
+          "QUÓC",
+          "HỘI",
+          "HH"
+        ],
+        "hint": "có_chữ_mới_cần_người_xác_nhận"
+      }
+    ],
+    "manual_notes": null,
+    "next_action": "xử lý lại hoặc gõ tay rồi đối chiếu"
+  },
+  {
+    "source_id": "ND70_2025",
+    "legal_identifier": "70/2025/NĐ-CP",
+    "pdf_page": 1,
+    "quality_status": "quarantined_stamp_overlay",
+    "quality_flags": [],
+    "suspicious_numbers": [],
+    "extraction_method": "tesseract_vie",
+    "mean_ocr_confidence": 88.93,
+    "retry_attempts": [
+      {
+        "strategy": "bo_muc_mau",
+        "mean_ocr_confidence": 88.33,
+        "text_chars": 2064,
+        "text_sha256": "c9109e44a5695bcebe7f6a283d056efd49ae62faf87d744d4197b97d9c40e42c",
+        "suspicious_numbers": [],
+        "new_tokens_vs_primary": [
+          "Người",
+          "G",
+          "1ÌN",
+          "PHÙ",
+          "IEmail",
+          "t",
+          "hình",
+          "hpbuifchínhnhu",
+          "ạn",
+          "CH",
+          "GHINHPHU",
+          "VNlhời"
+        ],
+        "hint": "có_chữ_mới_cần_người_xác_nhận"
+      },
+      {
+        "strategy": "dpi200_adaptive",
+        "mean_ocr_confidence": 91.66,
+        "text_chars": 2102,
+        "text_sha256": "ad474e934a090233b73fb18c0d436cefa797614073f99974e92015d93fd3440f",
+        "suspicious_numbers": [],
+        "new_tokens_vs_primary": [
+          "Igười",
+          "TIN",
+          "Email",
+          "thongtinchinhphu",
+          "chinhphu",
+          "vn",
+          "CHINHPHU",
+          "V",
+          "NThời",
+          "gian",
+          "24",
+          "16"
         ],
         "hint": "có_chữ_mới_cần_người_xác_nhận"
       }

@@ -1,8 +1,7 @@
 {
-  "_ghi_chu": "Nhận xét SƠ BỘ do Claude (AI) đọc ảnh trang và so với OCR ngày 14/11/2026. Chưa phải đối chiếu thủ công của người; mọi trang vẫn chờ người xác nhận.",
-  "LUAT109_2025:8": "Bảng biểu thuế luỹ tiến (Điều 9): đúng đủ 5 hàng, 20 giá trị số (bậc, ngưỡng năm/tháng, thuế suất) khớp ảnh. Lỗi chữ: 'luỹ tiến'->'luỹ tiền', 'triệu'->'ưiệu', 'Chính phủ'->'Chính phú'. Cột chưa được tái dựng (text nối theo dòng).",
-  "LUAT109_2025:15": "Bản gốc mất tên người ký và 'CHỦ TỊCH' do con dấu đè. Thử lại 'bo_muc_mau' khôi phục 'Trần Thanh Mẫn'; 'dpi200_adaptive' khôi phục 'CHỦ TỊCH' (còn lỗi 'QUÓC', 'Mam'). Cần người xác nhận hoặc gõ tay khối chữ ký.",
-  "LUAT67_2025:1": "Phần thân đọc được ('Luật số: 67/2025/QH15', 'LUẬT'), nhưng đầu trang lẫn rác từ dấu ký số và dấu 'CÔNG VĂN ĐẾN' (vd. 'ngtinchinhphudz', 'CỔNG THÔNG TM ĐIỆN TỰ GHH PHỦ'). Thử lại không cải thiện. Đề xuất cắt vùng đầu trang trước OCR.",
-  "LUAT67_2025:15": "Bản gốc 150 DPI đọc '6.000 tỷ đồng' thành '6,000'. Thử lại 200 DPI + adaptive đọc đúng '6.000' (khớp ảnh). Nên dùng kết quả thử lại sau khi người xác nhận.",
-  "LUAT67_2025:21": "Tên người ký và ngày thông qua (14/6/2025) đúng; còn dòng rác '11109104,' từ dấu."
+  "_ghi_chu": "Nhận xét SƠ BỘ do Claude (AI) đọc ảnh trang và so với OCR ngày 14/11/2026 (chỉ các trang liệt kê dưới đây). Chưa phải đối chiếu thủ công của người; mọi trang vẫn chờ người xác nhận.",
+  "TT219_2013:69": "Bảng số liệu ví dụ GTGT (đơn vị triệu đồng): ô số bị đọc sai nhiều và mất dấu trừ. Vd. dòng 'Tháng 1/2014' ảnh là 0 | 300 | 280 | -20 | -20, OCR ra 'ọ 300 280 50 20'; 'Tháng 4/2014' ảnh 50|350|410|60|10, OCR '3ô 350 410 ø0 18'; nhiều ô '-n' thành 's0', 'T0', 'BT'. KHÔNG dùng số trong bảng này nếu chưa nhập lại thủ công. Thử lại 200 DPI + adaptive không cải thiện rõ.",
+  "TT26_2015:36": "Biểu mẫu Tờ khai 01/GTGT: mã chỉ tiêu bị đọc sai ([01]->'Íð1]', [02]->'l02]', [04]->'H4]', [08]->'66]'); cấu trúc bảng/cột chưa tái dựng. Không dùng text này để tra cứu theo mã chỉ tiêu; nên nhập tay hoặc dựng bảng riêng.",
+  "TT111_2013:40": "Số tiền '12,000.000 đồng/năm' phải là '12.000.000' (dấu phẩy thay dấu chấm; suy từ câu trước '24.000.000 đồng/năm' và mức trừ 1 triệu/tháng; chưa soi lại trên ảnh). Pipeline đã gắn cờ đúng. Thử lại 200 DPI + adaptive không còn số nghi nhưng thêm vài chữ mới, cần người xác nhận.",
+  "LUAT67_2025:15": "Trong lần chạy này '6.000 tỷ đồng' đọc đúng ngay (khác lần chạy trước bằng PyMuPDF đọc '6,000'): kết quả phụ thuộc cách dựng ảnh, nên cần chạy lại bằng PyMuPDF thật khi nghiệm thu."
 }

@@ -1,32 +1,28 @@
 {
-  "tong_trang_da_xu_ly": 21,
-  "van_ban_da_xu_ly": 3,
+  "tong_trang_da_xu_ly": 35,
+  "van_ban_da_xu_ly": 8,
   "van_ban_ky_vong": 10,
   "van_ban_thieu": [
-    "TT219_2013",
-    "TT111_2013",
-    "TT96_2015",
-    "TT26_2015",
     "ND123_2020",
-    "TT78_2014",
-    "ND70_2025"
+    "TT78_2014"
   ],
   "dat_toi_thieu_trang": true,
   "dat_du_10_van_ban": false,
-  "trang_scan": 14,
-  "trang_co_bang": 1,
+  "trang_scan": 32,
+  "trang_co_bang": 9,
   "theo_phuong_phap": {
-    "native_pdf": 6,
-    "tesseract_vie": 15
+    "native_pdf": 2,
+    "tesseract_vie": 33
   },
   "theo_trang_thai": {
-    "pending_human_review": 18,
-    "quarantined_stamp_overlay": 2,
-    "quarantined_suspect_numbers": 1
+    "pending_human_review": 27,
+    "quarantined_stamp_overlay": 5,
+    "quarantined_suspect_numbers": 1,
+    "quarantined_table_numbers": 2
   },
-  "hash_pdf_khop_manifest": 3,
-  "trang_loi_can_xu_ly_lai": 3,
+  "hash_pdf_khop_manifest": 8,
+  "trang_loi_can_xu_ly_lai": 8,
   "trang_moi_van_ban": 0,
   "nguoi_thuc_hien": "Nguyen Gia Quy",
-  "ngay": "2026-11-13T19:11:08+00:00"
+  "ngay": "2026-11-14T01:16:20+00:00"
 }
