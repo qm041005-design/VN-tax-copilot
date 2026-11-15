@@ -1,0 +1,44 @@
+--- a/backend/app/api/v1/research.py
++++ b/backend/app/api/v1/research.py
+@@ -16,6 +16,8 @@
+ from app.schemas.matter import HistoryCreate, HistoryOut
+ from app.schemas.source import ResearchRequest, ResearchResponse
+ from app.services import matter_service, source_service
++from app.services.guarded_research_service import research_from_rows
++from ai_engine.guardrails import redact_text
+ 
+ router = APIRouter(prefix="/research", tags=["Research (Tra cứu)"])
+ 
+@@ -27,15 +29,26 @@
+              summary="Tra cứu trong hồ sơ và lưu vào lịch sử")
+ def research(data: ResearchRequest, db: Session = Depends(get_db), user: CurrentUser = Depends(get_current_user)):
+     matter = _get_writable_or_error(db, user, data.matter_id)
+-    hits = [source_service.to_hit(c)
+-            for c, _ in source_service.search(db, data.question, data.doc_type, data.research_as_of, data.limit)]
+-    # shortcut: answer luôn null; nối pipeline AI (nhóm 6/7 + prompt nhóm 1) để sinh câu trả lời có trích dẫn.
++    # Preserve auth/tenant checks above. Source search is local to the server.
++    rows = source_service.search(db, data.question, data.doc_type, data.research_as_of, data.limit)
++    hits = [source_service.to_hit(c) for c, _ in rows]
++    result = research_from_rows(
++        data.question, rows,
++        tax_period=data.tax_period or matter.tax_period,
++        material_facts=data.material_facts,
++        # Inject trusted assessor/generator here once available. Defaults block AI.
++    )
++    warnings = [f"{result.status}: {result.reason}", result.message, *result.questions]
++    warnings = [w for w in warnings if w]
++    safe_facts = redact_text(data.material_facts).text if data.material_facts else None
+     history = matter_service.add_history(db, user, matter, HistoryCreate(
+-        question=data.question, tax_type=data.tax_type, tax_period=data.tax_period,
++        question=redact_text(data.question).text, tax_type=data.tax_type,
++        tax_period=redact_text(data.tax_period).text if data.tax_period else None,
+         research_as_of=data.research_as_of.isoformat() if data.research_as_of else None,
+-        material_facts=data.material_facts, answer=None,
++        material_facts=safe_facts, answer=result.answer,
+         citations=[h.model_dump(include={"source_id", "title", "legal_identifier", "dieu", "khoan", "diem", "url"})
+                    for h in hits],
+-        warnings=[NO_ANSWER_YET if hits else NO_SOURCE],
++        warnings=warnings,
+     ))
++    # Retrieved hits remain source candidates, not validated answer citations.
+     return ResearchResponse(history=HistoryOut.model_validate(history), sources=hits)

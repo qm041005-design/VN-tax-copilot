@@ -10,3 +10,4 @@ pydantic-settings==2.7.0      # đọc cấu hình từ biến môi trường / 
 # --- Kiểm thử ---
 pytest==8.3.4                 # chạy test
 httpx==0.28.1                 # TestClient của FastAPI cần thư viện này
+rank-bm25==0.2.2

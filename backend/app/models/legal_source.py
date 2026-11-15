@@ -75,3 +75,10 @@ class LegalChunk(Base):
     version: Mapped[str] = mapped_column(String(50), default="1.0")
 
     document: Mapped[LegalDocument] = relationship(back_populates="chunks")
+
+
+class LegalDocumentTaxScope(Base):
+    """Nhãn sắc thuế do người nhập dữ liệu xác minh; không suy ra từ tên văn bản."""
+    __tablename__ = "legal_document_tax_scopes"
+    doc_id: Mapped[int] = mapped_column(ForeignKey("legal_documents.id"), primary_key=True)
+    tax_type: Mapped[str] = mapped_column(String(20), primary_key=True)
