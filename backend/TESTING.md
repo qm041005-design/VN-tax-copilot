@@ -24,6 +24,7 @@ Set-ExecutionPolicy -Scope Process -ExecutionPolicy RemoteSigned
 pip install -r requirements.txt
 copy .env.example .env
 cd ..
+copy .env.example .env      # .env ở thư mục gốc cho docker compose
 ```
 
 ### 1b. Mỗi lần mở máy để test
@@ -31,10 +32,11 @@ Mở **Docker Desktop**, đợi báo *Running*, rồi đứng ở thư mục g�
 ```powershell
 git switch feature/08-backend-matter-services
 docker compose up -d db
-docker exec vn_tax_db psql -U vntax_admin -d vntax_copilot -c "CREATE DATABASE vntax_test"
+docker compose exec db psql -U vntax_admin -d vntax_copilot -c "CREATE DATABASE vntax_test"
 cd backend
 Set-ExecutionPolicy -Scope Process -ExecutionPolicy RemoteSigned
 .venv\Scripts\Activate.ps1
+$env:PYTHONPATH = ".."      # backend dùng ai_engine/ ở thư mục gốc
 ```
 ✅ Đạt khi: dòng lệnh có dạng `(.venv) PS ...\VN-tax-copilot\backend>` – có `(.venv)` ở đầu **và** kết thúc bằng `\backend>`.
 (Dòng `CREATE DATABASE` báo `already exists` là bình thường.)
@@ -52,7 +54,7 @@ Set-ExecutionPolicy -Scope Process -ExecutionPolicy RemoteSigned
 $env:TEST_DATABASE_URL="postgresql://vntax_admin:vntax_secret@localhost:5432/vntax_test"
 python -m pytest -v
 ```
-**Đạt khi:** dòng cuối là `45 passed` (hoặc `38 passed, 1 skipped` nếu máy không có thư mục `data_pipeline` của nhóm 5).
+**Đạt khi:** dòng cuối là `99 passed`. (Chạy từ thư mục gốc repo thì `176 passed` – gồm cả test guardrails, BM25, data_pipeline.)
 
 **Chứng minh đúng là Postgres (không phải SQLite):** tắt DB rồi chạy lại.
 ```powershell
@@ -64,7 +66,7 @@ python -m pytest -q
 docker compose start db
 python -m pytest -q
 ```
-**Đạt khi:** lại như lần đầu (`45 passed` hoặc `38 passed, 1 skipped`).
+**Đạt khi:** lại `99 passed`.
 
 Xong nhiệm vụ 1 thì gỡ biến: `Remove-Item Env:TEST_DATABASE_URL`
 
@@ -86,7 +88,7 @@ python -m uvicorn app.main:app --reload
 ```
 ② Mở **terminal thứ 2** (nút **+** trên khung terminal), nạp **1 đoạn luật demo** (nội dung tự đặt, không phải luật thật):
 ```powershell
-docker exec vn_tax_db psql -U vntax_admin -d vntax_copilot -c "INSERT INTO legal_documents (doc_code,title,doc_type,hierarchy_level,status,version,effective_date) VALUES ('DEMO-01','Văn bản mẫu (demo)','LUAT',1,'CON_HIEU_LUC','1.0','2025-07-01'); INSERT INTO legal_chunks (doc_id,article_number,clause_number,point_letter,citation_path,content,hierarchy_level,status,version) SELECT id,'9','3','a','Điểm a, Khoản 3, Điều 9, DEMO-01','Thuế suất 10% là mức phổ thông (nội dung demo).',1,'CON_HIEU_LUC','1.0' FROM legal_documents WHERE doc_code='DEMO-01';"
+docker compose exec db psql -U vntax_admin -d vntax_copilot -c "INSERT INTO legal_documents (doc_code,title,doc_type,hierarchy_level,status,version,effective_date) VALUES ('DEMO-01','Văn bản mẫu (demo)','LUAT',1,'CON_HIEU_LUC','1.0','2025-07-01'); INSERT INTO legal_chunks (doc_id,article_number,clause_number,point_letter,citation_path,content,hierarchy_level,status,version) SELECT id,'9','3','a','Điểm a, Khoản 3, Điều 9, DEMO-01','Thuế suất 10% là mức phổ thông (nội dung demo).',1,'CON_HIEU_LUC','1.0' FROM legal_documents WHERE doc_code='DEMO-01';"
 ```
 ③ Mở trình duyệt http://localhost:8000/docs → bấm **Authorize** (góc phải) → dán `dev-token-alice-0001` → **Authorize** → **Close**.
 
@@ -103,7 +105,7 @@ docker exec vn_tax_db psql -U vntax_admin -d vntax_copilot -c "INSERT INTO legal
 
 ⑤ Kiểm tra dữ liệu đã nằm trong Postgres (ở terminal thứ 2):
 ```powershell
-docker exec vn_tax_db psql -U vntax_admin -d vntax_copilot -c "SELECT question FROM research_history ORDER BY created_at DESC LIMIT 1;"
+docker compose exec db psql -U vntax_admin -d vntax_copilot -c "SELECT question FROM research_history ORDER BY created_at DESC LIMIT 1;"
 ```
 **Đạt khi:** in ra `thuế suất phổ thông`.
 
@@ -144,7 +146,7 @@ Phần này không có test tự động – phải đối chiếu bằng mắt 
 ## BƯỚC 3 – Dọn dẹp
 
 ```powershell
-docker exec vn_tax_db psql -U vntax_admin -d vntax_copilot -c "DELETE FROM legal_chunks WHERE citation_path LIKE '%DEMO-01'; DELETE FROM legal_documents WHERE doc_code='DEMO-01';"
+docker compose exec db psql -U vntax_admin -d vntax_copilot -c "DELETE FROM legal_chunks WHERE citation_path LIKE '%DEMO-01'; DELETE FROM legal_documents WHERE doc_code='DEMO-01';"
 ```
 - Tắt server: bấm **Ctrl+C** ở terminal đang chạy uvicorn.
 - Tắt DB: `cd ..` rồi `docker compose stop`.
@@ -156,6 +158,7 @@ docker exec vn_tax_db psql -U vntax_admin -d vntax_copilot -c "DELETE FROM legal
 | Lỗi | Cách sửa |
 |---|---|
 | `Fatal error in launcher: Unable to create process ...` | `.venv` tạo ở thư mục cũ rồi bị di chuyển → tạo lại: `deactivate`, `Remove-Item -Recurse -Force .venv`, rồi làm lại bước 1a (từ `python -m venv .venv`). Nếu xóa báo *Access is denied*: tắt hết server/test đang chạy (Ctrl+C) rồi xóa lại |
+| `No module named 'ai_engine'` | Chưa đặt `$env:PYTHONPATH = ".."` (bước 1b) |
 | `No module named fastapi` / `pytest` | Chưa kích hoạt `.venv` (đầu dòng không có `(.venv)`) → `.venv\Scripts\Activate.ps1` |
 | `file or directory not found: tests/` | (1) Đang đứng ở thư mục gốc `VN-tax-copilot` → `cd backend` rồi chạy lại. (2) Đang ở nhánh chưa có code backend → `git switch feature/08-backend-matter-services` (hoặc `develop` sau khi đã merge) |
 | Test báo `ERROR` hàng loạt, có dòng `Connection refused ... port 5432` | Container DB tắt hoặc đã bị xóa → `docker compose up -d db` (ở thư mục gốc; dữ liệu vẫn còn trong volume) |
@@ -173,6 +176,8 @@ docker exec vn_tax_db psql -U vntax_admin -d vntax_copilot -c "DELETE FROM legal
 | `tests/test_matters.py` | Tạo/xem/sửa/lưu trữ hồ sơ, lọc, phân trang, validate, cô lập tenant, lịch sử | 16 |
 | `tests/test_cors.py` | Frontend `localhost:3000` gọi được backend | 5 |
 | `tests/test_sources_research.py` | Token (401), quyền (404/409), tìm kiếm, xem nguồn, `/research`, schema mới của nhóm 5 (Khoản `"2a"`, `status`, cấp 5) | 17 |
+| `tests/test_legal_ingestion.py` | Nạp dữ liệu luật vào DB có kiểm tra (ngày sai, trùng mã, rollback) – do trưởng nhóm thêm | 38 |
+| `tests/test_integration_regressions.py` | Kỳ thuế, lọc sắc thuế, Khoản 1a, guardrails qua HTTP – do trưởng nhóm thêm | 16 |
 | `tests/test_data_pipeline_sync.py` | Code thật của nhóm 5 (parser + ORM) → DB → API backend. **Tự bỏ qua** nếu không có thư mục `data_pipeline` của nhóm 5 | 7 |
 | `tests/conftest.py`, `tests/helpers.py` | Thiết lập chung: DB test, token test | – |
 
@@ -186,5 +191,5 @@ Không đặt `TEST_DATABASE_URL` → test chạy trên SQLite (file `test.db`, 
 
 Khi nhóm 5 đổi schema (vì `create_all` không sửa bảng đã có): xóa 2 bảng luật rồi chạy lại server để tạo lại. Bảng hồ sơ / lịch sử không bị ảnh hưởng, nhưng **mất dữ liệu luật đã nạp**:
 ```powershell
-docker exec vn_tax_db psql -U vntax_admin -d vntax_copilot -c "DROP TABLE IF EXISTS legal_document_amendments, legal_chunks, legal_documents;"
+docker compose exec db psql -U vntax_admin -d vntax_copilot -c "DROP TABLE IF EXISTS legal_document_amendments, legal_chunks, legal_documents;"
 ```

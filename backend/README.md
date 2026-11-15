@@ -21,8 +21,9 @@ Mở PowerShell, đứng ở thư mục gốc repo `VN-tax-copilot`:
 
 ```powershell
 # 1. Bật PostgreSQL
+copy .env.example .env                    # chỉ lần đầu: cấu hình Docker ở thư mục gốc (POSTGRES_*, AUTH_TOKENS...)
 docker compose up -d db
-docker compose ps                         # thấy vn_tax_db ở trạng thái Up
+docker compose ps                         # thấy service db ở trạng thái Up (healthy)
 
 # 2. Cài môi trường Python (chỉ lần đầu)
 cd backend
@@ -33,20 +34,21 @@ pip install -r requirements.txt
 copy .env.example .env                    # đã có sẵn token thử nghiệm
 
 # 3. Chạy server
+$env:PYTHONPATH = ".."                   # backend dùng ai_engine/ (nhóm 6, 7) ở thư mục gốc
 python -m uvicorn app.main:app --reload
 ```
 
-Những lần sau chỉ cần: `docker compose up -d db` → `cd backend` → `.venv\Scripts\Activate.ps1` → `python -m uvicorn app.main:app --reload`.
+Những lần sau chỉ cần: `docker compose up -d db` → `cd backend` → `.venv\Scripts\Activate.ps1` → `$env:PYTHONPATH = ".."` → `python -m uvicorn app.main:app --reload`.
 
 > **Về thư mục `.venv`:** mỗi người tự tạo trên máy mình (lệnh `python -m venv .venv` ở bước 2), nó **không có trên GitHub**.
 > `.venv` gắn chặt với đường dẫn lúc tạo: nếu bạn **di chuyển / đổi tên thư mục dự án** thì phải tạo lại (xem mục 5, lỗi `Fatal error in launcher`).
 > Luôn gõ `python -m uvicorn`, `python -m pytest` (thay vì `uvicorn`, `pytest` trơn) để giảm lỗi này.
 
-**Cách khác – chạy cả backend bằng Docker** (không cần cài Python):
+**Cách khác – chạy bằng Docker** (không cần cài Python; cần file `.env` ở thư mục gốc):
 ```powershell
-docker compose up -d --build db backend
+docker compose up -d --build db backend     # chỉ backend
+docker compose up -d --build                # cả database, backend, frontend
 ```
-> Không chạy `docker compose up` trơn: `frontend/` chưa có Dockerfile nên sẽ lỗi ở bước build frontend.
 
 **Kiểm tra:**
 
@@ -88,7 +90,7 @@ Token thử nghiệm có sẵn trong `.env.example`:
 
 | Biến | Bắt buộc | Ý nghĩa |
 |---|---|---|
-| `DATABASE_URL` | Có | Chuỗi kết nối Postgres. Mặc định trỏ tới container `vn_tax_db` qua `localhost:5432` |
+| `DATABASE_URL` | Có | Chuỗi kết nối Postgres. Mặc định trỏ tới service `db` của docker-compose qua `localhost:5432` |
 | `AUTH_TOKENS` | Có | Danh sách `token:user_id:tenant_id`, ngăn cách bằng dấu phẩy, token ≥ 16 ký tự. Rỗng → mọi API trả 401. Sai định dạng → server không khởi động |
 | `CORS_ORIGINS` | Không | Địa chỉ frontend được gọi backend (mặc định `http://localhost:3000,http://127.0.0.1:3000`) |
 | `APP_ENV` | Không | `dev` / `staging` / `prod` |
@@ -113,6 +115,8 @@ Sửa `.env` xong phải tắt và chạy lại `uvicorn`. Khi chạy bằng Doc
 | `/health` báo `"database": false` | Docker chưa chạy hoặc chưa `docker compose up -d db` |
 | `Fatal error in launcher: Unable to create process using ...python.exe` | `.venv` được tạo ở thư mục cũ rồi bị di chuyển. Tạo lại (đứng ở `backend`): `deactivate` → `Remove-Item -Recurse -Force .venv` → `python -m venv .venv` → `.venv\Scripts\Activate.ps1` → `pip install -r requirements.txt`. Nếu báo *Access is denied* khi xóa: tắt mọi terminal đang chạy server/test rồi xóa lại |
 | `No module named fastapi` / `uvicorn` | Chưa kích hoạt `.venv` (đầu dòng lệnh không có `(.venv)`) hoặc chưa `pip install -r requirements.txt`. Trong VS Code: **Ctrl+Shift+P → Python: Select Interpreter** → chọn `backend\.venv\Scripts\python.exe` |
+| `No module named 'ai_engine'` | Chưa đặt `$env:PYTHONPATH = ".."` trước khi chạy server (backend cần thư mục `ai_engine/` ở gốc repo) |
+| `docker compose` báo `Thieu POSTGRES_USER trong .env` | Chưa có file `.env` ở thư mục gốc: `copy .env.example .env` (ở thư mục gốc, không phải `backend`) |
 | `Activate.ps1 ... running scripts is disabled` | Chạy `Set-ExecutionPolicy -Scope Process -ExecutionPolicy RemoteSigned` rồi kích hoạt lại |
 | `Could not open requirements file` / `ModuleNotFoundError: app` | Đứng sai thư mục, phải ở `VN-tax-copilot\backend` |
 | `port is already allocated` (5432) | Máy đang chạy Postgres khác, tắt nó đi |
@@ -120,7 +124,7 @@ Sửa `.env` xong phải tắt và chạy lại `uvicorn`. Khi chạy bằng Doc
 | Đổi cột trong model mà DB không đổi | `create_all` không sửa bảng đã có: `docker compose down -v` rồi `docker compose up -d db` (mất dữ liệu dev) |
 | Frontend báo **CORS error** | Frontend chạy ở địa chỉ khác `localhost:3000` → thêm địa chỉ đó vào `CORS_ORIGINS` |
 
-Xem dữ liệu trong DB: `docker exec -it vn_tax_db psql -U vntax_admin -d vntax_copilot`, gõ `\dt`, `SELECT title FROM matters;`, `\q` để thoát.
+Xem dữ liệu trong DB: `docker compose exec db psql -U vntax_admin -d vntax_copilot`, gõ `\dt`, `SELECT title FROM matters;`, `\q` để thoát.
 
 ---
 
