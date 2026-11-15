@@ -27,13 +27,20 @@ from app.core.database import Base, engine
 from app.main import app
 
 
-@pytest.fixture()
-def client():
+def _drop_every_table():
     # Xóa MỌI bảng đang có trong DB test (kể cả bảng do nhánh khác / nhóm khác tạo, vd legal_document_amendments),
     # không chỉ bảng backend biết -> chuyển nhánh không làm test lỗi vì khóa ngoại. Vì vậy DB test phải dùng riêng.
     existing = MetaData()
     existing.reflect(bind=engine)
     existing.drop_all(bind=engine)
+
+
+@pytest.fixture()
+def client():
+    _drop_every_table()
     Base.metadata.create_all(bind=engine)
     with TestClient(app) as c:  # TestClient giả lập trình duyệt gọi API, không cần mở cổng thật
         yield c
+    # Dọn cả SAU test: không để dữ liệu mẫu (vd văn bản 48/2024/QH15) lại cho bước sau dùng chung DB
+    # (CI chạy smoke_public_source.py ngay sau pytest trên cùng DB, gặp mã trùng sẽ dừng).
+    _drop_every_table()
