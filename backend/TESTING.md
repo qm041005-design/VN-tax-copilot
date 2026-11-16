@@ -54,7 +54,7 @@ $env:PYTHONPATH = ".."      # backend dùng ai_engine/ ở thư mục gốc
 $env:TEST_DATABASE_URL="postgresql://vntax_admin:vntax_secret@localhost:5432/vntax_test"
 python -m pytest -v
 ```
-**Đạt khi:** dòng cuối là `99 passed`. (Chạy từ thư mục gốc repo thì `176 passed` – gồm cả test guardrails, BM25, data_pipeline.)
+**Đạt khi:** dòng cuối là `101 passed`. (Chạy từ thư mục gốc repo thì `178 passed` – gồm cả test guardrails, BM25, data_pipeline. Không đặt `TEST_DATABASE_URL` thì có 1 test bỏ qua: test migration chỉ chạy trên PostgreSQL.)
 
 **Chứng minh đúng là Postgres (không phải SQLite):** tắt DB rồi chạy lại.
 ```powershell
@@ -66,7 +66,7 @@ python -m pytest -q
 docker compose start db
 python -m pytest -q
 ```
-**Đạt khi:** lại `99 passed`.
+**Đạt khi:** lại `101 passed`.
 
 Xong nhiệm vụ 1 thì gỡ biến: `Remove-Item Env:TEST_DATABASE_URL`
 
@@ -175,9 +175,10 @@ docker compose exec db psql -U vntax_admin -d vntax_copilot -c "DELETE FROM lega
 |---|---|---|
 | `tests/test_matters.py` | Tạo/xem/sửa/lưu trữ hồ sơ, lọc, phân trang, validate, cô lập tenant, lịch sử | 16 |
 | `tests/test_cors.py` | Frontend `localhost:3000` gọi được backend | 5 |
-| `tests/test_sources_research.py` | Token (401), quyền (404/409), tìm kiếm, xem nguồn, `/research`, schema mới của nhóm 5 (Khoản `"2a"`, `status`, cấp 5) | 17 |
+| `tests/test_sources_research.py` | Token (401), quyền (404/409), tìm kiếm, xem nguồn, `/research`, schema mới của nhóm 5 (Khoản `"2a"`, `status`, cấp 5), ngày hiệu lực riêng của đoạn luật | 18 |
 | `tests/test_legal_ingestion.py` | Nạp dữ liệu luật vào DB có kiểm tra (ngày sai, trùng mã, rollback) – do trưởng nhóm thêm | 38 |
 | `tests/test_integration_regressions.py` | Kỳ thuế, lọc sắc thuế, Khoản 1a, guardrails qua HTTP – do trưởng nhóm thêm | 16 |
+| `tests/test_migrations.py` | Nâng cấp DB cũ bằng `migrations/001` + `002`: không mất dữ liệu, schema khớp model (chỉ PostgreSQL) | 1 |
 | `tests/test_data_pipeline_sync.py` | Code thật của nhóm 5 (parser + ORM) → DB → API backend. **Tự bỏ qua** nếu không có thư mục `data_pipeline` của nhóm 5 | 7 |
 | `tests/conftest.py`, `tests/helpers.py` | Thiết lập chung: DB test, token test | – |
 
@@ -189,7 +190,16 @@ Không đặt `TEST_DATABASE_URL` → test chạy trên SQLite (file `test.db`, 
 
 ## Đổi schema bảng luật trên DB dev
 
-Khi nhóm 5 đổi schema (vì `create_all` không sửa bảng đã có): xóa 2 bảng luật rồi chạy lại server để tạo lại. Bảng hồ sơ / lịch sử không bị ảnh hưởng, nhưng **mất dữ liệu luật đã nạp**:
+`create_all` không sửa bảng đã có, nên DB tạo từ bản backend cũ phải nâng cấp.
+
+**Cách 1 – giữ dữ liệu (dùng cho DB đã nạp luật):** chạy migration theo thứ tự (ở thư mục gốc repo). Chạy lại nhiều lần vẫn an toàn:
 ```powershell
-docker compose exec db psql -U vntax_admin -d vntax_copilot -c "DROP TABLE IF EXISTS legal_document_amendments, legal_chunks, legal_documents;"
+Get-Content backend\migrations\001_clause_number_text.sql | docker compose exec -T db psql -U vntax_admin -d vntax_copilot
+Get-Content backend\migrations\002_legal_status_and_registry_columns.sql | docker compose exec -T db psql -U vntax_admin -d vntax_copilot
+```
+Test `tests/test_migrations.py` (chỉ chạy trên PostgreSQL) mô phỏng đúng việc này: DB schema cũ có dữ liệu → chạy 001 + 002 hai lần → so từng cột với model, kiểm tra dữ liệu cũ còn nguyên.
+
+**Cách 2 – xóa làm lại (mất dữ liệu luật đã nạp, bảng hồ sơ / lịch sử giữ nguyên):**
+```powershell
+docker compose exec db psql -U vntax_admin -d vntax_copilot -c "DROP TABLE IF EXISTS legal_document_tax_scopes, legal_document_amendments, legal_chunks, legal_documents;"
 ```

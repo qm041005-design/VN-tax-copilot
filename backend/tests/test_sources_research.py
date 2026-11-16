@@ -200,3 +200,38 @@ def test_schema_sync_clause_string_status_and_unknown_level(client, seeded):
     assert by_id[seeded["old"]]["khoan"] is None                      # clause_number "0" = không có Khoản
     assert by_id[seeded["export"]]["status"] == "SUA_DOI_BO_SUNG"     # trạng thái riêng của đoạn
     assert client.get(f"/api/v1/sources/{amended_id}", headers=A).json()["khoan"] == "2a"
+
+
+# --------------- NGÀY HIỆU LỰC RIÊNG CỦA ĐOẠN LUẬT (phản hồi review PR #2) ---------------
+def test_doan_luat_hieu_luc_rieng_nam_2030_khong_hien_khi_tra_cuu_2026(client):
+    """Văn bản hiệu lực từ 2025, nhưng 1 Khoản sửa đổi chỉ có hiệu lực từ 2030 -> tra cứu năm 2026 không thấy Khoản đó."""
+    with SessionLocal() as db:
+        doc = LegalDocument(doc_code="99/2025/QH15", title="Luật mẫu có Khoản sửa đổi", doc_type="LUAT",
+                            hierarchy_level=1, effective_date=datetime(2025, 1, 1), version="1.0")
+        db.add(doc)
+        db.flush()
+        hien_hanh = LegalChunk(doc_id=doc.id, article_number="5", clause_number="1", citation_path="Khoản 1, Điều 5",
+                               hierarchy_level=1, content="Khoản 1, Điều 5: thuế suất ưu đãi hiện hành 10%.")
+        ve_sau = LegalChunk(doc_id=doc.id, article_number="5", clause_number="1a", citation_path="Khoản 1a, Điều 5",
+                            hierarchy_level=1, effective_date=datetime(2030, 1, 1),
+                            content="Khoản 1a, Điều 5: thuế suất ưu đãi mới 5% áp dụng từ năm 2030.")
+        db.add_all([hien_hanh, ve_sau])
+        db.commit()
+        hien_hanh_id, ve_sau_id = str(hien_hanh.id), str(ve_sau.id)
+
+    def ids(**params):
+        r = client.get("/api/v1/sources/search", params={"q": "thuế suất ưu đãi", **params}, headers=A)
+        assert r.status_code == 200, r.text
+        return {h["source_id"] for h in r.json()}
+
+    assert ids(tax_period="2026") == {hien_hanh_id}                  # kỳ thuế 2026: bỏ Khoản hiệu lực 2030
+    assert ids(as_of="2026-06-30") == {hien_hanh_id}                 # ngày tra cứu 2026: cũng bỏ
+    assert ids(tax_period="2030") == {hien_hanh_id, ve_sau_id}       # kỳ 2030: có cả hai
+    assert ids() == {hien_hanh_id, ve_sau_id}                        # không lọc thời gian: có cả hai
+
+    # Qua API tra cứu (kỳ thuế lấy từ hồ sơ 2026): trích dẫn không chứa Khoản hiệu lực 2030
+    r = client.post("/api/v1/research", json={"matter_id": _matter(client), "question": "thuế suất ưu đãi"},
+                    headers=A)
+    assert r.status_code == 201, r.text
+    assert [s["source_id"] for s in r.json()["sources"]] == [hien_hanh_id]
+    assert ve_sau_id not in [c["source_id"] for c in r.json()["history"]["citations"]]

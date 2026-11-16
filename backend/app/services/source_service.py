@@ -48,7 +48,10 @@ def search(db: Session, q: str, doc_type: str | None = None, as_of: date | None 
             (LegalDocument.effective_date.is_(None)) |
             (LegalDocument.effective_date <= datetime.combine(end, time.max)),
             (LegalDocument.expiry_date.is_(None)) |
-            (LegalDocument.expiry_date > datetime.combine(start, time.min)))
+            (LegalDocument.expiry_date > datetime.combine(start, time.min)),
+            # Một Khoản/Điểm sửa đổi có thể có ngày hiệu lực riêng, muộn hơn văn bản chứa nó
+            (LegalChunk.effective_date.is_(None)) |
+            (LegalChunk.effective_date <= datetime.combine(end, time.max)))
     chunks = list(db.scalars(stmt.order_by(LegalChunk.id)).all())
     lookup = {str(c.id): c for c in chunks}
     hits = BM25Retriever([{"passage_id": str(c.id), "text": c.content,

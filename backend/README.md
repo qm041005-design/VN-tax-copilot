@@ -121,7 +121,7 @@ Sửa `.env` xong phải tắt và chạy lại `uvicorn`. Khi chạy bằng Doc
 | `Could not open requirements file` / `ModuleNotFoundError: app` | Đứng sai thư mục, phải ở `VN-tax-copilot\backend` |
 | `port is already allocated` (5432) | Máy đang chạy Postgres khác, tắt nó đi |
 | `port 8000 already in use` | Đã có server chạy (có thể là container `vn_tax_backend`): `docker compose stop backend` hoặc dùng `--port 8001` |
-| Đổi cột trong model mà DB không đổi | `create_all` không sửa bảng đã có: `docker compose down -v` rồi `docker compose up -d db` (mất dữ liệu dev) |
+| Đổi cột trong model mà DB không đổi | `create_all` không sửa bảng đã có. Bảng luật: chạy migration trong `backend/migrations/` (giữ dữ liệu, xem TESTING.md). Hoặc `docker compose down -v` rồi `docker compose up -d db` (mất hết dữ liệu dev) |
 | Frontend báo **CORS error** | Frontend chạy ở địa chỉ khác `localhost:3000` → thêm địa chỉ đó vào `CORS_ORIGINS` |
 
 Xem dữ liệu trong DB: `docker compose exec db psql -U vntax_admin -d vntax_copilot`, gõ `\dt`, `SELECT title FROM matters;`, `\q` để thoát.
