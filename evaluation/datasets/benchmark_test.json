@@ -1,0 +1,42 @@
+
+{
+  "benchmark_version": "1.0",
+  "cases": [
+    {
+      "case_id": "VN-TAX-001",
+      "question": "Câu hỏi kiểm thử giả lập số 1",
+      "category": "VAT",
+      "answerability": "answerable",
+      "required_evidence": [
+        {
+          "evidence_id": "E001",
+          "description": "Chứng cứ giả lập 1",
+          "acceptable_passage_ids": ["P001"]
+        },
+        {
+          "evidence_id": "E002",
+          "description": "Chứng cứ giả lập 2",
+          "acceptable_passage_ids": ["P002"]
+        }
+      ]
+    },
+    {
+      "case_id": "VN-TAX-002",
+      "question": "Câu hỏi kiểm thử giả lập số 2",
+      "category": "CIT",
+      "answerability": "answerable",
+      "required_evidence": [
+        {
+          "evidence_id": "E003",
+          "description": "Chứng cứ giả lập 3",
+          "acceptable_passage_ids": ["P003"]
+        },
+        {
+          "evidence_id": "E004",
+          "description": "Chứng cứ giả lập 4",
+          "acceptable_passage_ids": ["P004"]
+        }
+      ]
+    }
+  ]
+}
