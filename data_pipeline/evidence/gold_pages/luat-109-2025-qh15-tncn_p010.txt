@@ -1,0 +1,17 @@
+10
+2. Thu nhập tính thuế từ đầu tư vốn là tổng số các khoản thu nhập chịu thuế từ đầu tư vốn quy định tại khoản 3 Điều 3 của Luật này mà người nộp thuế nhận được theo từng lần phát sinh.
+3. Thời điểm xác định thu nhập tính thuế từ đầu tư vốn là thời điểm tổ chức, cá nhân trả thu nhập cho người nộp thuế hoặc thời điểm người nộp thuế nhận được thu nhập.
+4. Chính phủ quy định chi tiết Điều này.
+Điều 13. Thuế thu nhập cá nhân đối với thu nhập từ chuyển nhượng vốn
+1. Thuế thu nhập cá nhân đối với thu nhập từ chuyển nhượng vốn của cá nhân cư trú được xác định bằng thu nhập tính thuế nhân (x) với thuế suất 20% theo từng lần chuyển nhượng. Trong đó, thu nhập tính thuế từ chuyển nhượng vốn được xác định bằng giá chuyển nhượng trừ (-) đi giá mua và các khoản chi phí hợp lý liên quan đến việc tạo ra thu nhập từ chuyển nhượng vốn.
+Trường hợp không xác định giá mua và các chi phí liên quan đến việc chuyển nhượng vốn thì thuế thu nhập cá nhân được xác định bằng giá chuyển nhượng nhân (x) với thuế suất 2%.
+2. Thuế thu nhập cá nhân đối với thu nhập từ chuyển nhượng chứng khoán được xác định bằng giá chuyển nhượng nhân (x) với thuế suất 0,1% theo từng lần chuyển nhượng.
+3. Thời điểm xác định thu nhập tính thuế từ chuyển nhượng vốn là thời điểm giao dịch hoàn thành theo quy định của pháp luật.
+4. Chính phủ quy định chi tiết Điều này.
+Điều 14. Thuế thu nhập cá nhân đối với thu nhập từ chuyển nhượng bất động sản
+1. Thuế thu nhập cá nhân đối với thu nhập từ chuyển nhượng bất động sản của cá nhân cư trú được xác định bằng giá chuyển nhượng nhân (x) với thuế suất 2%.
+2. Thời điểm xác định thu nhập tính thuế từ chuyển nhượng bất động sản là thời điểm hợp đồng chuyển nhượng có hiệu lực theo quy định của pháp luật hoặc thời điểm đăng ký quyền sử dụng, quyền sở hữu bất động sản.
+3. Chính phủ quy định chi tiết Điều này.
+Điều 15. Thuế thu nhập cá nhân đối với thu nhập từ trúng thưởng
+1. Thuế thu nhập cá nhân đối với thu nhập từ trúng thưởng của cá nhân cư trú được xác định bằng thu nhập tính thuế nhân (x) với thuế suất 10%.
+2. Thu nhập tính thuế từ trúng thưởng là phần giá trị giải thưởng vượt trên 20 triệu đồng mà người nộp thuế nhận được theo từng lần trúng thưởng.
