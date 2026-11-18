@@ -4,7 +4,6 @@ app/services/source_service.py  –  TÌM KIẾM & XEM NGUỒN LUẬT (đọc b�
 Văn bản pháp luật là dữ liệu CÔNG KHAI, dùng chung mọi tenant -> không lọc theo tenant_id
 (nhưng endpoint vẫn bắt đăng nhập).
 """
-import re
 from datetime import date, datetime, time
 
 from sqlalchemy import select
@@ -14,15 +13,9 @@ from app.models import LegalChunk, LegalDocument, LegalDocumentTaxScope
 from app.models.legal_source import STATUS_UNKNOWN
 from app.schemas.source import SourceDetail, SourceHit
 from app.services.legal_metadata import clause_label, period_bounds
-from ai_engine.retrieval.bm25 import BM25Retriever
+from ai_engine.retrieval.bm25 import BM25Retriever, tokenize
 
-MAX_TERMS = 20
 SNIPPET_LEN = 300
-
-
-def _terms(q: str) -> list[str]:
-    """Tách câu hỏi thành từ (bỏ dấu câu, trùng lặp), tối đa MAX_TERMS từ."""
-    return list(dict.fromkeys(w.lower() for w in re.findall(r"\w+", q)))[:MAX_TERMS]
 
 
 def search(db: Session, q: str, doc_type: str | None = None, as_of: date | None = None,
@@ -33,7 +26,7 @@ def search(db: Session, q: str, doc_type: str | None = None, as_of: date | None 
     A tax period takes precedence over the research date. Unknown legal dates
     remain candidates for expert checking, never verified authorities.
     """
-    if not _terms(q):
+    if limit <= 0 or not tokenize(q):
         return []
     stmt = select(LegalChunk).join(LegalChunk.document).options(contains_eager(LegalChunk.document))
     if doc_type:
@@ -54,8 +47,12 @@ def search(db: Session, q: str, doc_type: str | None = None, as_of: date | None 
             (LegalChunk.effective_date <= datetime.combine(end, time.max)))
     chunks = list(db.scalars(stmt.order_by(LegalChunk.id)).all())
     lookup = {str(c.id): c for c in chunks}
-    hits = BM25Retriever([{"passage_id": str(c.id), "text": c.content,
-                           "legal_identifier": c.document.doc_code} for c in chunks]).search(q, limit)
+    passages = [
+        {"passage_id": str(c.id), "text": c.content, "article_title": c.article_title,
+         "legal_identifier": c.document.doc_code}
+        for c in chunks
+    ]
+    hits = BM25Retriever(passages).search(q, limit)
     return [(lookup[h["passage_id"]], h["score"]) for h in hits]
 
 
@@ -69,7 +66,9 @@ def to_hit(chunk: LegalChunk) -> SourceHit:
     return SourceHit(
         source_id=str(chunk.id), title=doc.title, legal_identifier=doc.doc_code,
         dieu=chunk.article_number, khoan=clause_label(chunk.clause_number),
-        diem=chunk.point_letter or None, url=chunk.source_url or doc.source_url, citation_path=chunk.citation_path,
+        diem=(chunk.point_letter or "").strip() or None,
+        url=chunk.source_url or doc.source_url, citation_path=chunk.citation_path,
+        source_page=chunk.source_page, version=doc.version,
         doc_type=doc.doc_type, hierarchy_level=chunk.hierarchy_level,
         # Trạng thái riêng của đoạn (vd 1 Khoản bị sửa đổi) ưu tiên hơn trạng thái cả văn bản
         status=chunk.status if chunk.status and chunk.status != STATUS_UNKNOWN else doc.status or STATUS_UNKNOWN,
@@ -81,4 +80,4 @@ def to_hit(chunk: LegalChunk) -> SourceHit:
 def to_detail(chunk: LegalChunk) -> SourceDetail:
     doc = chunk.document
     return SourceDetail(**to_hit(chunk).model_dump(), content=chunk.content, article_title=chunk.article_title,
-                        issuer=doc.issuer, version=doc.version, source_page=chunk.source_page)
+                        issuer=doc.issuer)

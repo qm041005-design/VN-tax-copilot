@@ -1,5 +1,7 @@
+import json
 from copy import deepcopy
 from datetime import date, datetime
+from pathlib import Path
 
 import pytest
 from pydantic import ValidationError
@@ -10,6 +12,9 @@ from app.models import LegalDocument, LegalChunk, LegalDocumentTaxScope
 from app.schemas.ingestion import ImportInput, legal_date
 from app.services.legal_ingestion_service import ingest_legal_document
 from app.services.source_service import search, to_detail
+from backend.scripts.export_bm25_retrieval import retrieve_benchmark
+from data_pipeline.parser.chunker import chunk_legal_document
+from tests.helpers import auth
 
 
 @pytest.fixture
@@ -42,6 +47,74 @@ def test_import_round_trip_and_exclusive_expiry(client, payload):
         assert search(db, "fixture_tax", as_of=date(2024, 12, 31))
         assert search(db, "fixture_tax", as_of=date(2025, 1, 1)) == []
         assert search(db, "fixture_tax", as_of=date(2026, 1, 1), tax_period="2024", tax_type="VAT")
+
+
+def test_public_excerpt_search_and_recall_share_passage_ids(client):
+    fixture = Path(__file__).parent / "fixtures" / "public_law_excerpt.json"
+    excerpt = json.loads(fixture.read_text(encoding="utf-8"))
+    document = {key: excerpt[key] for key in (
+        "doc_code", "title", "doc_type", "hierarchy_level", "source_url", "effective_date", "expiry_date"
+    )}
+    document["version"] = "pilot-excerpt-1"
+    chunks = chunk_legal_document(
+        excerpt["text"], document["doc_code"], document["hierarchy_level"], excerpt["pdf_page"], document
+    )
+    assert [chunk["article_number"] for chunk in chunks] == excerpt["expected_articles"]
+    with SessionLocal.begin() as db:
+        receipt = ingest_legal_document(db, {
+            "document": document, "chunks": chunks, "tax_types": ["VAT"], "as_of": "2026-11-14",
+        })
+
+    headers = auth("alice", "thtax")
+    response = client.get("/api/v1/sources/search", headers=headers, params={
+        "q": excerpt["query"], "tax_type": "VAT", "as_of": "2026-11-14",
+    })
+    assert response.status_code == 200
+    hits = response.json()
+    top = hits[0]
+    assert top["source_id"] == str(receipt.chunk_ids[0])
+    assert top["legal_identifier"] == document["doc_code"]
+    assert (top["dieu"], top["khoan"], top["diem"]) == ("1", None, None)
+    assert top["url"] == document["source_url"]
+    assert top["source_page"] == excerpt["pdf_page"]
+    assert top["version"] == document["version"]
+    assert top["effective_date"] is None and top["expiry_date"] is None
+    detail = client.get(f"/api/v1/sources/{top['source_id']}", headers=headers)
+    assert detail.json()["content"] == chunks[0]["content"]
+
+    with SessionLocal() as db:
+        results = retrieve_benchmark(db, {"cases": [
+            {"case_id": "PUBLIC-EXCERPT", "answerability": "answerable", "category": "VAT",
+             "question": excerpt["query"], "research_as_of": "2026-11-14"},
+        ]})
+    assert results == [{"case_id": "PUBLIC-EXCERPT", "retrieved_passage_ids": [hit["source_id"] for hit in hits]}]
+
+
+def test_recall_export_takes_top_ten_after_tax_and_period_filters(client, payload):
+    chunk = payload["chunks"][0]
+    payload["chunks"] = [dict(chunk, article_number=str(i), citation_path=f"Điều {i}") for i in range(1, 13)]
+    other = deepcopy(payload)
+    other["document"]["doc_code"] = "FIXTURE-CIT"
+    other["tax_types"] = ["CIT"]
+
+    with SessionLocal.begin() as db:
+        ingest_legal_document(db, other)
+        receipt = ingest_legal_document(db, payload)
+
+    case = {"case_id": "HISTORY", "answerability": "answerable", "category": "VAT",
+            "question": "fixture_tax", "tax_period": "2024", "research_as_of": "2026-11-14"}
+    expected_ids = [str(chunk_id) for chunk_id in receipt.chunk_ids[:10]]
+    response = client.get("/api/v1/sources/search", headers=auth("alice", "thtax"), params={
+        "q": case["question"], "tax_type": "VAT", "tax_period": "2024", "as_of": "2026-11-14",
+    })
+    assert response.status_code == 200
+    assert [hit["source_id"] for hit in response.json()] == expected_ids
+
+    with SessionLocal() as db:
+        results = retrieve_benchmark(db, {"cases": [case]})
+        assert results == [{"case_id": "HISTORY", "retrieved_passage_ids": expected_ids}]
+        case["tax_period"] = None
+        assert retrieve_benchmark(db, {"cases": [case]})[0]["retrieved_passage_ids"] == []
 
 
 @pytest.mark.parametrize("clause", [None, "", " ", 0, "0"])

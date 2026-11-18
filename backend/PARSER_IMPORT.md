@@ -24,6 +24,19 @@ with SessionLocal.begin() as db:
 
 Payload được kiểm tra toàn bộ trước khi thêm bản ghi. Lỗi validation phải được trả cho người nhập để sửa, không bắt lỗi rồi tiếp tục ghi các đoạn còn lại. Với lỗi SQL, caller rollback transaction trước khi dùng lại session.
 
+SCRUM-22 cung cấp hai lệnh dùng cùng database và cùng dịch vụ tìm kiếm của backend. Chạy trong container backend sau khi nạp JSON vào container, hoặc từ gốc repo với `PYTHONPATH=.;backend` trên Windows và `DATABASE_URL` trỏ tới DB của backend.
+
+```powershell
+python -m backend.scripts.import_legal_document --input /tmp/parser-output.json
+python -m backend.scripts.export_bm25_retrieval --benchmark /tmp/benchmark.json --output /tmp/bm25-retrieval.json
+```
+
+`parser-output.json` chứa `document`, `chunks`, `tax_types` và `as_of`. `chunks` là đầu ra `chunk_legal_document` từ các đoạn hoặc trang đã đối chiếu. Giữ toàn văn và số trang PDF đếm từ 1. Đoạn trải nhiều trang cần được parser ghép trước khi nhập. Lệnh nhập in `document_id` và `chunk_ids`.
+
+API mặc định trả 10 đoạn kèm nguồn, Điều/Khoản/Điểm, `source_page`, `version` và các mốc hiệu lực. Script Recall@10 ghi mảng `{case_id, retrieved_passage_ids}` bằng chính `source_id` của API, với cùng nhãn sắc thuế và bộ lọc kỳ/ngày. Nhóm QA dùng tệp này qua tham số `--retrieval` của `evaluation/metrics/recall_at_10.py`. Nhãn `acceptable_passage_ids` phải trỏ tới các ID trong cùng snapshot DB.
+
+Các nhóm `VAT/CIT/PIT` dùng nhãn đã được gán trong registry. `TAX_ADMIN/E_INVOICE` tìm theo nội dung vì enum API hiện chỉ có VAT/CIT/PIT. Script xuất giữ một snapshot nhất quán trong PostgreSQL bằng transaction chỉ đọc với mức cô lập REPEATABLE READ.
+
 ## Quy ước
 
 - Ngày hợp lệ: chuỗi YYYY-MM-DD, Python date hoặc datetime không timezone tại 00:00:00 (tương thích parser). Giá trị thiếu là null hoặc không gửi trường.

@@ -22,6 +22,8 @@ class SourceHit(Citation):
                         description="CHUA_XAC_DINH | CON_HIEU_LUC | HET_HIEU_LUC | SUA_DOI_BO_SUNG | BI_THAY_THE")
     effective_date: datetime | None = None
     expiry_date: datetime | None = None
+    source_page: int | None = Field(default=None, description="Số trang PDF đếm từ 1")
+    version: str | None = None
     snippet: str
 
 
@@ -30,8 +32,7 @@ class SourceDetail(SourceHit):
     content: str
     article_title: str | None = None
     issuer: str | None = None
-    version: str
-    source_page: int | None = None
+    version: str = Field(...)
 
 
 class ResearchRequest(BaseModel):
@@ -40,7 +41,9 @@ class ResearchRequest(BaseModel):
     question: str = Field(min_length=1, max_length=2000, examples=["Thuế suất GTGT phổ thông là bao nhiêu?"])
     tax_type: TaxType | None = None
     tax_period: str | None = Field(default=None, max_length=32)
-    research_as_of: date | None = Field(default=None, description="Chỉ lấy văn bản còn hiệu lực tại ngày này (YYYY-MM-DD)")
+    research_as_of: date | None = Field(
+        default=None, description="Lọc theo ngày tra cứu khi thiếu kỳ thuế. Giữ ngày chưa biết ở dạng null."
+    )
     material_facts: str | None = None
     doc_type: str | None = Field(default=None, max_length=50, examples=["LUAT"])
     limit: int = Field(default=10, ge=1, le=50)

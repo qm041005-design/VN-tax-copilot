@@ -20,7 +20,7 @@ router = APIRouter(prefix="/sources", tags=["Sources (Nguồn luật)"], depende
 
 @router.get("/search", response_model=list[SourceHit], summary="Tìm đoạn luật theo từ khóa")
 def search_sources(
-    q: str = Query(min_length=1, max_length=500, description="Từ khóa / câu hỏi"),
+    q: str = Query(min_length=1, max_length=2000, description="Từ khóa / câu hỏi"),
     doc_type: str | None = Query(default=None, max_length=50, description="LUAT | NGHI_DINH | THONG_TU | CONG_VAN"),
     as_of: date | None = Query(default=None, description="Chỉ lấy văn bản còn hiệu lực tại ngày này"),
     limit: int = Query(default=10, ge=1, le=50),

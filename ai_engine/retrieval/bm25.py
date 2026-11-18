@@ -16,7 +16,8 @@ class BM25Retriever:
         self.tokenized_passages = []
         for passage in self.passages:
             identifier = passage.get("legal_identifier") or ""
-            self.tokenized_passages.append(tokenize(f"{identifier} {passage['text']}"))
+            title = passage.get("article_title") or ""
+            self.tokenized_passages.append(tokenize(f"{identifier} {title} {passage['text']}"))
 
         self.index = (
             BM25Okapi(self.tokenized_passages) if any(self.tokenized_passages) else None

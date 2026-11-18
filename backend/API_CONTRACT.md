@@ -166,6 +166,8 @@ Trả mảng **SourceHit** xếp theo BM25; thứ hạng không xác định th�
   "status": "CON_HIEU_LUC",
   "effective_date": "2025-07-01T00:00:00",
   "expiry_date": null,
+  "source_page": 5,
+  "version": "1.0",
   "snippet": "300 ký tự đầu của đoạn luật..."
 }]
 ```
@@ -214,6 +216,7 @@ export interface SourceHit extends Citation {
   hierarchy_level: number;               // 1 Luật > 2 Nghị định > 3 Thông tư > 4 Công văn > 5 UNKNOWN
   status: "CHUA_XAC_DINH" | "CON_HIEU_LUC" | "HET_HIEU_LUC" | "SUA_DOI_BO_SUNG" | "BI_THAY_THE";
   effective_date: string | null; expiry_date: string | null;
+  source_page?: number | null; version?: string | null;
   snippet: string;
 }
 export interface SourceDetail extends SourceHit {
