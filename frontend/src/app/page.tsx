@@ -11,6 +11,74 @@ import {
   type TaxType,
 } from "@/services/api";
 
+type ResearchStatus = "draft" | "clarify" | "abstain";
+type ResearchBlock = { text: string; citation_ids?: string[] };
+type ResearchResult = {
+  status: ResearchStatus;
+  sections?: Record<string, ResearchBlock[]>;
+  clarification_questions?: string[];
+  warnings?: string[];
+};
+
+// Kiểu mở rộng để tương thích với API cũ và mới.
+type ResearchApiResponse = Awaited<ReturnType<typeof api.research>> & {
+  research_result?: ResearchResult | null;
+};
+type ResearchHistory = HistoryItem & {
+  research_result?: ResearchResult | null;
+};
+
+const sectionTitles: Record<string, string> = {
+  summary: "Tóm tắt", legal_basis: "Căn cứ pháp lý",
+  analysis: "Phân tích", conclusion: "Kết luận",
+  recommendation: "Kiến nghị", risks: "Rủi ro và lưu ý",
+};
+
+function ResearchPanel({ result, citations, onOpenCitation }: {
+  result: ResearchResult;
+  citations: Citation[];
+  onOpenCitation: (citation: Citation) => void;
+}) {
+  const statusLabels: Record<ResearchStatus, string> = {
+    draft: "Bản nháp AI — chưa thẩm định",
+    clarify: "Cần làm rõ thông tin",
+    abstain: "Chưa đủ căn cứ để trả lời",
+  };
+  return (
+    <div className="research-result" style={{ display: "grid", gap: 12 }}>
+      <strong role="status">{statusLabels[result.status]}</strong>
+      {Object.entries(result.sections ?? {}).map(([key, blocks]) => (
+        <section key={key} style={{ borderTop: "1px solid #e5e7eb", paddingTop: 10 }}>
+          <h3 style={{ fontSize: 15, marginBottom: 8 }}>{sectionTitles[key] ?? key.replaceAll("_", " ")}</h3>
+          {blocks.map((block, index) => (
+            <div key={index} style={{ marginBottom: 10 }}>
+              <p style={{ whiteSpace: "pre-wrap" }}>{block.text}</p>
+              {(block.citation_ids ?? []).map((citationId) => {
+                const citation = citations.find((c) =>
+                  String(c.source_id) === String(citationId) ||
+                  ("id" in c && String(c.id) === String(citationId))
+                );
+                return citation ? (
+                  <button key={citationId} type="button" className="citation-link"
+                    onClick={() => onOpenCitation(citation)}>
+                    {citationLabel(citation)} ↗
+                  </button>
+                ) : <small key={citationId} style={{ display: "block" }}>Mã trích dẫn: {citationId} (chưa đối chiếu được nguồn)</small>;
+              })}
+            </div>
+          ))}
+        </section>
+      ))}
+      {(result.clarification_questions ?? []).map((question, index) => (
+        <p key={`q-${index}`}>Cần làm rõ: {question}</p>
+      ))}
+      {(result.warnings ?? []).map((warning, index) => (
+        <p key={`w-${index}`} role="alert" style={{ color: "#b45309" }}>Cảnh báo: {warning}</p>
+      ))}
+    </div>
+  );
+}
+
 type Matter = {
   id: string;
   name: string;
@@ -75,6 +143,7 @@ export default function Home() {
 
   // Dữ liệu lịch sử được lưu ở backend và tách riêng cho từng hồ sơ.
   const [histories, setHistories] = useState<Record<string, HistoryItem[]>>({});
+  const [researchResults, setResearchResults] = useState<Record<string, ResearchResult | null>>({});
   const [historyLoadingId, setHistoryLoadingId] = useState<string | null>(null);
   const [historyErrors, setHistoryErrors] = useState<Record<string, string>>({});
   const [drafts, setDrafts] = useState<Record<string, string>>({});
@@ -166,7 +235,7 @@ export default function Home() {
   const selectedMatter = matters.find((item) => item.id === selectedId);
   const history = histories[selectedId] ?? [];
   const latestHistory = history[history.length - 1];
-  const draft = drafts[selectedId] ?? "";
+  const draft = drafts[selectedId || "__unselected__"] ?? "";
   const filteredMatters = useMemo(() => matters.filter((item) => {
     const lower = search.toLowerCase();
     return (item.name.toLowerCase().includes(lower) || item.company.toLowerCase().includes(lower)) &&
@@ -174,8 +243,10 @@ export default function Home() {
   }), [matters, search, taxFilter]);
 
   function setDraft(value: string) {
-    if (!selectedId) return;
-    setDrafts((current) => ({ ...current, [selectedId]: value }));
+    // Cho phép nhập nháp kể cả khi backend chưa tải được hồ sơ.
+    // Nháp khi chưa chọn hồ sơ được tách riêng để không lẫn vào hồ sơ thật.
+    const draftKey = selectedId || "__unselected__";
+    setDrafts((current) => ({ ...current, [draftKey]: value }));
   }
 
   async function createMatter() {
@@ -223,12 +294,13 @@ export default function Home() {
         taxFilter === "VAT" || taxFilter === "CIT" || taxFilter === "PIT"
           ? taxFilter : selectedMatter?.tax === "VAT" || selectedMatter?.tax === "CIT" || selectedMatter?.tax === "PIT"
             ? selectedMatter.tax : undefined;
-      const result = await api.research({
+      const result: ResearchApiResponse = await api.research({
         matter_id: matterId,
         question,
         ...(tax ? { tax_type: tax } : {}),
         tax_period: year,
       });
+      setResearchResults((current) => ({ ...current, [result.history.id]: result.research_result ?? null }));
       setHistories((current) => {
         const merged = new Map((current[matterId] ?? []).map((item) => [item.id, item]));
         merged.set(result.history.id, result.history);
@@ -241,7 +313,7 @@ export default function Home() {
         setSourceSearchError("");
         setSelectedCitation(result.sources[0] ?? result.history.citations[0] ?? null);
       }
-      setNotice("Đã lưu lượt tra cứu vào hồ sơ. Kết quả đang ở trạng thái bản nháp.");
+      setNotice("Đã lưu lượt tra cứu vào hồ sơ. Vui lòng kiểm tra trạng thái AI và thẩm định riêng.");
     } catch (error) {
       setSendErrors((current) => ({ ...current, [matterId]: getError(error) }));
     } finally {
@@ -542,7 +614,12 @@ export default function Home() {
                       VN Tax Copilot <span>{reviewLabel(item.review_status)}</span>
                     </div>
                     <div className="message-bubble">
-                      {item.answer?.trim() || "Backend chưa cung cấp câu trả lời AI cho lượt tra cứu này."}
+                      {(() => {
+                         const structured = researchResults[item.id] ?? (item as ResearchHistory).research_result;
+                         return structured ? (
+                           <ResearchPanel result={structured} citations={item.citations} onOpenCitation={openCitation} />
+                         ) : (item.answer?.trim() || "Backend chưa cung cấp câu trả lời AI cho lượt tra cứu này.");
+                       })()}
                     </div>
                     {item.warnings.length > 0 && (
                       <div className="highlight-note" style={{ marginTop: 8 }} role="status">
@@ -726,6 +803,7 @@ export default function Home() {
                   <div className="source-row"><span>Loại văn bản</span><strong>{sourceDetail.doc_type}</strong></div>
                   <div className="source-row"><span>Số hiệu</span><strong>{sourceDetail.legal_identifier ?? "—"}</strong></div>
                   <div className="source-row"><span>Phiên bản</span><strong>{sourceDetail.version}</strong></div>
+                   <div className="source-row"><span>Trang nguồn</span><strong>{("source_page" in sourceDetail ? String(sourceDetail.source_page ?? "Chưa xác định") : "Chưa xác định")}</strong></div>
                   <div className="source-row"><span>Hiệu lực từ</span><strong>{sourceDetail.effective_date?.slice(0, 10) ?? "Chưa rõ"}</strong></div>
                   <div className="source-row"><span>Hiệu lực đến</span><strong>{sourceDetail.expiry_date?.slice(0, 10) ?? "Chưa rõ"}</strong></div>
                   <div className="source-row"><span>Sắc thuế hồ sơ</span><strong>{selectedMatter?.tax ?? "—"}</strong></div>

@@ -7,6 +7,21 @@ const TOKEN = process.env.NEXT_PUBLIC_DEV_API_TOKEN;
 
 export type TaxType = "VAT" | "CIT" | "PIT";
 
+
+export type ResearchStatus = "draft" | "clarify" | "abstain";
+
+export interface ResearchResult {
+  status: ResearchStatus;
+  sections: Record<
+    string,
+    {
+      text: string;
+      citation_ids: string[];
+    }[]
+  >;
+  clarification_questions: string[];
+  warnings: string[];
+}
 export interface Matter {
   id: string;
   tenant_id: string;
@@ -83,6 +98,7 @@ export interface SourceDetail extends SourceHit {
 export interface ResearchResponse {
   history: HistoryItem;
   sources: SourceHit[];
+  research_result?: ResearchResult | null;
 }
 
 async function apiRequest<T>(
