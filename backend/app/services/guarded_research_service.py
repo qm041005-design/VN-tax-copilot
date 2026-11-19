@@ -16,7 +16,7 @@ def research_from_rows(question, rows, *, tax_period=None, material_facts=None,
          "khoan": clause_label(getattr(chunk, "clause_number", None)),
          "diem": getattr(chunk, "point_letter", None) or None,
          "doc_type": getattr(chunk.document, "doc_type", None),
-         "effective_date": chunk.document.effective_date.isoformat() if getattr(chunk.document, "effective_date", None) else None,
+         "effective_date": passage_effective_date(chunk),
          "expiry_date": chunk.document.expiry_date.isoformat() if getattr(chunk.document, "expiry_date", None) else None,
          "version": getattr(chunk.document, "version", None),
          "source_page": getattr(chunk, "source_page", None)}
@@ -26,3 +26,8 @@ def research_from_rows(question, rows, *, tax_period=None, material_facts=None,
         question, passages, ResearchContext(tax_period, material_facts),
         assess=assess, generate=generate,
     )
+
+
+def passage_effective_date(chunk):
+    value = getattr(chunk, "effective_date", None) or getattr(chunk.document, "effective_date", None)
+    return value.isoformat() if value else None

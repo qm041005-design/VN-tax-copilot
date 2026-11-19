@@ -17,6 +17,18 @@ from app.services.source_service import search
 FILTERABLE_TAX_TYPES = {tax_type.value for tax_type in TaxType}
 
 
+def benchmark_search_options(case: dict) -> dict:
+    category = case.get("category")
+    if category not in FILTERABLE_TAX_TYPES | {"TAX_ADMIN", "E_INVOICE", None}:
+        raise ValueError("category không hợp lệ.")
+    return {
+        "doc_type": case.get("doc_type"),
+        "as_of": legal_date(case.get("research_as_of")),
+        "tax_period": case.get("tax_period"),
+        "tax_type": category if category in FILTERABLE_TAX_TYPES else None,
+    }
+
+
 def retrieve_benchmark(db: Session, benchmark: dict) -> list[dict]:
     results = []
     for case in benchmark["cases"]:
@@ -24,15 +36,8 @@ def retrieve_benchmark(db: Session, benchmark: dict) -> list[dict]:
             continue
 
         case_id = case["case_id"]
-        category = case["category"]
         try:
-            rows = search(
-                db, case["question"],
-                as_of=legal_date(case.get("research_as_of")),
-                tax_period=case.get("tax_period"),
-                tax_type=category if category in FILTERABLE_TAX_TYPES else None,
-                limit=10,
-            )
+            rows = search(db, case["question"], limit=10, **benchmark_search_options(case))
         except ValueError as exc:
             raise ValueError(f"{case_id}: {exc}") from exc
 
