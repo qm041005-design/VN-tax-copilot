@@ -1,0 +1,23 @@
+{
+  "purpose": "Public source extraction smoke test, not approved legal answers",
+  "pdf_sha256": "8be4caa345b42bce86386831da0bf4a9ed2bebbc54b471535c758431a5277569",
+  "source_url": "https://vanban.chinhphu.vn/?pageid=27160&docid=212476",
+  "pdf_page": 1,
+  "printed_page": 77,
+  "doc_code": "48/2024/QH15",
+  "title": "Luật Thuế giá trị gia tăng",
+  "doc_type": "LUAT",
+  "hierarchy_level": 1,
+  "tax_type": "VAT",
+  "extraction_method": "native_pdf",
+  "text": "Điều 1. Phạm vi điều chỉnh\n    Luật này quy định về đối tượng chịu thuế, đối tượng không chịu thuế, người\nnộp thuế, căn cứ và phương pháp tính thuế, khấu trừ và hoàn thuế giá trị gia tăng.\n   Điều 2. Thuế giá trị gia tăng\n   Thuế giá trị gia tăng là thuế tính trên giá trị tăng thêm của hàng hóa, dịch vụ\nphát sinh trong quá trình từ sản xuất, lưu thông đến tiêu dùng.\n   Điều 3. Đối tượng chịu thuế\n   Hàng hóa, dịch vụ sử dụng cho sản xuất, kinh doanh và tiêu dùng ở Việt Nam\nlà đối tượng chịu thuế giá trị gia tăng, trừ các đối tượng quy định tại Điều 5 của\nLuật này.",
+  "expected_articles": [
+    "1",
+    "2",
+    "3"
+  ],
+  "query": "phạm vi điều chỉnh",
+  "effective_date": null,
+  "expiry_date": null,
+  "legal_review_status": "pending_expert_review"
+}
