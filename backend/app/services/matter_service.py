@@ -129,6 +129,7 @@ def add_history(db: Session, user: CurrentUser, matter: Matter, data: HistoryCre
         answer=data.answer,
         citations=[c.model_dump() for c in data.citations],  # object Citation -> dict để lưu JSON
         warnings=data.warnings,
+        research_result=data.research_result,
     )
     db.add(item)
     db.flush()

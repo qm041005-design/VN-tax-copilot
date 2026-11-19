@@ -119,6 +119,7 @@ class HistoryCreate(BaseModel):
     answer: str | None = None
     citations: list[Citation] = Field(default_factory=list)
     warnings: list[str] = Field(default_factory=list)
+    research_result: dict | None = None  # chỉ API /research điền (kết quả 6 phần của guardrails)
 
     @field_validator("question")
     @classmethod
@@ -144,6 +145,7 @@ class HistoryOut(BaseModel):
     answer: str | None
     citations: list[dict]
     warnings: list[str]
+    research_result: dict | None = None
     review_status: str
     answer_version: int
     created_at: datetime
