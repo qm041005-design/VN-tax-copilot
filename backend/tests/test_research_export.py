@@ -2,6 +2,7 @@
 tests/test_research_export.py  –  LƯU KẾT QUẢ 6 PHẦN VÀO LỊCH SỬ + XUẤT WORD (SCRUM-33)
 =====================================================================================
 1. POST /research lưu research_result; GET /matters/{id}/history trả lại khi mở hồ sơ.
+2. GET /matters/{id}/history/{hid}/export: kiểm tra quyền TRƯỚC khi xuất, dùng module Word của Quân.
 """
 import io
 from datetime import datetime
@@ -44,3 +45,54 @@ def test_ket_qua_6_phan_duoc_luu_va_tra_lai_khi_mo_ho_so(client, researched):
     # Mở lại hồ sơ: lịch sử trả đúng object đã lưu
     history = client.get(f"/api/v1/matters/{mid}/history", headers=A).json()
     assert history[0]["id"] == body["history"]["id"] and history[0]["research_result"] == saved
+
+
+def test_luot_tra_cuu_cu_khong_co_ket_qua_6_phan(client):
+    mid = client.post("/api/v1/matters", json={"title": "t", "client_name": "c"}, headers=A).json()["id"]
+    h = client.post(f"/api/v1/matters/{mid}/history", json={"question": "lưu tay"}, headers=A).json()
+    assert h["research_result"] is None
+    r = client.get(f"/api/v1/matters/{mid}/history/{h['id']}/export", headers=A)
+    assert r.status_code == 409                                   # không tự dựng lại kết quả
+
+
+def test_xuat_word(client, researched):
+    mid, body = researched
+    hid = body["history"]["id"]
+    r = client.get(f"/api/v1/matters/{mid}/history/{hid}/export", headers=A)
+    assert r.status_code == 200, r.text
+    assert r.headers["content-type"].startswith("application/vnd.openxmlformats-officedocument")
+    assert "attachment" in r.headers["content-disposition"]
+    text = "\n".join(p.text for p in Document(io.BytesIO(r.content)).paragraphs)
+    assert "Vấn đề pháp lý" in text                               # tiêu đề 1 trong 6 phần
+    with SessionLocal() as db:                                    # có ghi audit
+        assert db.query(AuditLog).filter_by(action="history.export_docx", resource_id=hid).count() == 1
+
+
+def test_xuat_word_kiem_tra_quyen_truoc(client, researched):
+    mid, body = researched
+    hid = body["history"]["id"]
+    url = f"/api/v1/matters/{mid}/history/{hid}/export"
+    assert client.get(url).status_code == 401                     # chưa đăng nhập
+    assert client.get(url, headers=B).status_code == 404          # tổ chức khác
+    other = client.post("/api/v1/matters", json={"title": "khác", "client_name": "c"}, headers=A).json()["id"]
+    assert client.get(f"/api/v1/matters/{other}/history/{hid}/export", headers=A).status_code == 404  # sai hồ sơ
+    with SessionLocal() as db:
+        assert db.query(AuditLog).filter_by(action="history.export_docx").count() == 0
+
+
+def test_xuat_word_khi_nguon_bi_xoa(client, researched):
+    mid, body = researched
+    with SessionLocal() as db:                                    # nguồn đã trích dẫn bị xóa khỏi kho
+        db.query(LegalChunk).delete()
+        db.commit()
+    r = client.get(f"/api/v1/matters/{mid}/history/{body['history']['id']}/export", headers=A)
+    assert r.status_code == 409 and "không còn trong kho" in r.json()["detail"]
+
+
+def test_xuat_word_khi_nguon_khong_co_link(client, researched):
+    mid, body = researched
+    with SessionLocal() as db:                                    # module Word bắt buộc link http(s)
+        db.query(LegalDocument).update({"source_url": None})
+        db.commit()
+    r = client.get(f"/api/v1/matters/{mid}/history/{body['history']['id']}/export", headers=A)
+    assert r.status_code == 422 and r.json()["detail"].startswith("Không xuất được báo cáo")

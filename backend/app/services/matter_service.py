@@ -147,3 +147,16 @@ def list_history(db: Session, user: CurrentUser, matter: Matter, limit: int, off
     total = db.scalar(select(func.count()).select_from(stmt.subquery())) or 0
     items = db.scalars(stmt.order_by(ResearchHistory.created_at.desc()).limit(limit).offset(offset)).all()
     return list(items), total
+
+
+def get_history(db: Session, user: CurrentUser, matter: Matter, history_id: uuid.UUID) -> ResearchHistory | None:
+    """1 lượt tra cứu của hồ sơ, CÓ lọc tenant. Không thuộc hồ sơ / khác tenant -> None (endpoint trả 404)."""
+    return db.scalar(select(ResearchHistory).where(
+        ResearchHistory.id == history_id, ResearchHistory.matter_id == matter.id,
+        ResearchHistory.tenant_id == user.tenant_id))
+
+
+def log_export(db: Session, user: CurrentUser, item: ResearchHistory) -> None:
+    """Ghi audit việc xuất báo cáo Word (RFP: log cả hành động xuất tài liệu)."""
+    _audit(db, user, "history.export_docx", "research_history", item.id, {"matter_id": str(item.matter_id)})
+    db.commit()
