@@ -27,7 +27,6 @@ def research_callbacks():
 router = APIRouter(prefix="/research", tags=["Research (Tra cứu)"])
 
 NO_SOURCE = "Không tìm thấy căn cứ pháp lý phù hợp – hệ thống không đưa ra câu trả lời."
-NO_ANSWER_YET = "Chưa có câu trả lời AI; danh sách trích dẫn là căn cứ tìm được, chuyên viên cần tự đối chiếu."
 
 
 @router.post("", response_model=ResearchResponse, status_code=status.HTTP_201_CREATED,
@@ -53,6 +52,7 @@ def research(data: ResearchRequest, db: Session = Depends(get_db), user: Current
     # Preserve candidate references in history for existing UI when no answer exists.
     # Once there is an answer, only keep its validated citation IDs.
     cited = [h for h in hits if h.source_id in result.citation_ids] if result.status == "draft" else hits
+    contract = to_contract(result)
     history = matter_service.add_history(db, user, matter, HistoryCreate(
         question=redact_text(data.question).text, tax_type=data.tax_type,
         tax_period=redact_text(period).text if period else None,
@@ -60,7 +60,7 @@ def research(data: ResearchRequest, db: Session = Depends(get_db), user: Current
         material_facts=redact_text(data.material_facts).text if data.material_facts else None, answer=result.answer,
         citations=[h.model_dump(include={"source_id", "title", "legal_identifier", "dieu", "khoan", "diem", "url"})
                    for h in cited],
-        warnings=warnings,
+        warnings=warnings, research_result=contract,
     ))
     return ResearchResponse(history=HistoryOut.model_validate(history), sources=hits,
-                            research_result=to_contract(result))
+                            research_result=contract)

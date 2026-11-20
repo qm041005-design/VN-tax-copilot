@@ -54,19 +54,24 @@ def _run_sql(sql: str):
 def old_db():
     _drop_every_table()
     _run_sql(OLD_SCHEMA)
+    # Bảng hồ sơ / lịch sử như bản cũ: chưa có cột research_result (003 thêm vào)
+    Base.metadata.create_all(engine, tables=[Base.metadata.tables[t] for t in
+                                             ("matters", "research_history", "audit_logs")])
+    _run_sql("ALTER TABLE research_history DROP COLUMN research_result;")
     yield
     _drop_every_table()
 
 
 def test_migration_nang_cap_db_cu_khong_mat_du_lieu(old_db):
-    assert [m.name for m in MIGRATIONS][:2] == ["001_clause_number_text.sql", "002_legal_status_and_registry_columns.sql"]
+    assert [m.name for m in MIGRATIONS] == ["001_clause_number_text.sql", "002_legal_status_and_registry_columns.sql",
+                                            "003_research_result.sql", "004_ocr_and_expert_review_status.sql"]
     for _ in range(2):  # chạy lại lần 2 không được lỗi
         for m in MIGRATIONS:
             _run_sql(m.read_text(encoding="utf-8"))
 
     # Schema sau migration khớp model hiện tại: đủ cột, đúng kiểu, đúng NULL
     insp = inspect(engine)
-    for table in ("legal_documents", "legal_chunks", "legal_document_tax_scopes"):
+    for table in ("legal_documents", "legal_chunks", "legal_document_tax_scopes", "research_history"):
         db_cols = {c["name"]: c for c in insp.get_columns(table)}
         for col in Base.metadata.tables[table].columns:
             assert col.name in db_cols, f"{table}.{col.name} chưa được migration thêm vào"
@@ -83,6 +88,9 @@ def test_migration_nang_cap_db_cu_khong_mat_du_lieu(old_db):
         assert {c.status for c in chunks.values()} == {"CHUA_XAC_DINH"}
         assert {c.version for c in chunks.values()} == {"1.0"}
         assert db.query(LegalDocument).one().status == "CHUA_XAC_DINH"
+        old_doc = db.query(LegalDocument).one()                  # 004: 2 trạng thái mới nhận mặc định
+        assert (old_doc.ocr_quality_status, old_doc.expert_review_status, old_doc.preamble) == ("RAW", "PENDING", None)
+        assert {(c.ocr_quality_status, c.expert_review_status) for c in chunks.values()} == {("RAW", "PENDING")}
 
         # Ghi mới bằng model hiện tại (có cột của nhóm 5) và tìm kiếm vẫn chạy
         doc = LegalDocument(doc_code="MOI-01", title="Văn bản mới", doc_type="NGHI_DINH", hierarchy_level=2,

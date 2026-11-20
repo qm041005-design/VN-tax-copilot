@@ -20,6 +20,7 @@ Bảng route:
     DELETE /matters/{id}            archive (xóa mềm)
     POST   /matters/{id}/history    lưu 1 lượt tra cứu      -> 201
     GET    /matters/{id}/history    xem lịch sử tra cứu (header X-Total-Count = tổng số)
+    GET    /matters/{id}/history/{history_id}/export   tải báo cáo Word (.docx) của 1 lượt tra cứu
 """
 import uuid
 
@@ -32,6 +33,9 @@ from app.models import MatterStatus
 from app.schemas.matter import (HistoryCreate, HistoryOut, MatterCreate, MatterList, MatterOut,
                                 MatterUpdate)
 from app.services import matter_service as svc
+from app.services import source_service
+from app.services.export_service import export_research_docx
+from ai_engine.synthesis.backend_adapter import prepare_backend_export
 
 # tags: gom nhóm các endpoint trên trang Swagger
 router = APIRouter(prefix="/matters", tags=["Matters (Hồ sơ vụ việc)"])
@@ -107,3 +111,37 @@ def list_history(matter_id: uuid.UUID, response: Response, limit: int = Query(de
     # Trả mảng thuần cho dễ dùng; tổng số bản ghi đặt ở header để frontend phân trang
     response.headers["X-Total-Count"] = str(total)
     return [HistoryOut.model_validate(i) for i in items]
+
+
+DOCX_MEDIA_TYPE = "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+
+
+@router.get("/{matter_id}/history/{history_id}/export", summary="Xuất báo cáo Word cho một lượt tra cứu",
+            response_class=Response, responses={200: {"content": {DOCX_MEDIA_TYPE: {}}}})
+def export_history_docx(matter_id: uuid.UUID, history_id: uuid.UUID, db: Session = Depends(get_db),
+                        user: CurrentUser = Depends(get_current_user)):
+    """
+    Kiểm tra quyền TRƯỚC khi xuất: hồ sơ khác tenant / lượt tra cứu không thuộc hồ sơ -> 404.
+    Dùng module của Quân: prepare_backend_export (đối chiếu kết quả 6 phần với nguyên văn nguồn)
+    -> export_research_docx. Lượt tra cứu chưa có kết quả 6 phần (lưu trước tính năng này) -> 409.
+    """
+    matter = _get_or_404(db, user, matter_id)
+    item = svc.get_history(db, user, matter, history_id)
+    if item is None:
+        raise HTTPException(status.HTTP_404_NOT_FOUND, "Không tìm thấy lượt tra cứu trong hồ sơ")
+    if not item.research_result:
+        raise HTTPException(status.HTTP_409_CONFLICT, "Lượt tra cứu chưa có kết quả 6 phần, hãy tra cứu lại để xuất")
+    chunks = [source_service.get_chunk(db, int(c["source_id"])) for c in item.citations]
+    if any(c is None for c in chunks):
+        raise HTTPException(status.HTTP_409_CONFLICT, "Nguồn luật được trích dẫn không còn trong kho")
+    history = HistoryOut.model_validate(item).model_dump(mode="json")
+    response = {"history": history, "sources": history["citations"], "research_result": item.research_result}
+    details = [source_service.to_detail(c).model_dump(mode="json") for c in chunks]
+    try:
+        result, sources = prepare_backend_export(response, details, matter_id=str(matter.id))
+        content = export_research_docx(result, sources, matter_id=str(matter.id))
+    except ValueError as exc:
+        raise HTTPException(status.HTTP_422_UNPROCESSABLE_ENTITY, f"Không xuất được báo cáo: {exc}") from exc
+    svc.log_export(db, user, item)
+    return Response(content, media_type=DOCX_MEDIA_TYPE,
+                    headers={"Content-Disposition": f'attachment; filename="bao-cao-{history_id}.docx"'})
