@@ -1,0 +1,19 @@
+
+[
+  {
+    "case_id": "VN-TAX-001",
+    "retrieved_passage_ids": [
+      "P001",
+      "P002",
+      "P010"
+    ]
+  },
+  {
+    "case_id": "VN-TAX-002",
+    "retrieved_passage_ids": [
+      "P003",
+      "P010",
+      "P011"
+    ]
+  }
+]
