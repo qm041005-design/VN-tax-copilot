@@ -1,4 +1,6 @@
 # Byte-compiled / optimized / DLL files
+.ocr-venv/
+data_pipeline/local_data/
 __pycache__/
 *.py[codz]
 *$py.class
@@ -223,9 +225,21 @@ test.db
 dev.db
 .env
 .venv/
-
-.venv/
-.env
 *.db
 __pycache__/
 .pytest_cache/
+
+# Generated Recall@10 reports
+evaluation/metrics/recall_report.json
+evaluation/metrics/test_output.json
+# Generated Recall@10 reports
+evaluation/metrics/recall_report.json
+evaluation/metrics/test_output.json
+
+# Local test evidence and database backups
+/artifacts/
+/backups/
+
+# Additional local Compose environment files
+.env.*
+!.env.example

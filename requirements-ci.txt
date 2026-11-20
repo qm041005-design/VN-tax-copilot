@@ -1,0 +1,6 @@
+# Integrated API, parser, OCR, PO and QA test dependencies.
+# Dense retrieval demos (fastembed / psycopg3) are outside this test suite.
+-r backend/requirements.txt
+-r data_pipeline/requirements.txt
+-r data_pipeline/ocr/requirements-eval.txt
+-r evaluation/metrics/requirements.txt
