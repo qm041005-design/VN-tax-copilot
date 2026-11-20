@@ -252,3 +252,91 @@ def test_models_schema_columns_and_metadata():
     assert {"original_doc_id", "amending_doc_id", "amendment_type", "effective_date"}.issubset(amend_cols)
     assert LegalChunk.__table__.columns["clause_number"].type.python_type is str
     assert LegalDocument.__table__.columns["status"].default.arg == "CHUA_XAC_DINH"
+
+
+@pytest.mark.skipif(not HAS_SQLALCHEMY, reason="SQLAlchemy chưa tải được trên môi trường này")
+def test_sync_ocr_pages_metadata_and_upsert():
+    """Kiểm tra đồng bộ siêu dữ liệu đa trang OCR, đoạn mở đầu, 3 trạng thái và Upsert vào DB."""
+    from sqlalchemy import create_engine
+    from sqlalchemy.orm import sessionmaker
+    from data_pipeline.parser.chunker import chunk_ocr_pages
+    from data_pipeline.registry.models import Base
+    from data_pipeline.registry.repository import sync_parsed_document
+
+    engine = create_engine("sqlite:///:memory:")
+    Base.metadata.create_all(engine)
+    SessionLocal = sessionmaker(bind=engine)
+    session = SessionLocal()
+
+    try:
+        ocr_pages = [
+            {
+                "page": 1,
+                "text": (
+                    "CHÍNH PHỦ\n"
+                    "Căn cứ Luật Quản lý thuế ngày 13 tháng 6 năm 2019;\n"
+                    "Điều 1a. Phạm vi điều chỉnh bổ sung\n"
+                    "1. Quy định chi tiết thi hành một số điều."
+                ),
+            },
+            {
+                "page": 2,
+                "text": (
+                    "2a. Bổ sung đối tượng áp dụng mới.\n"
+                    "Điều 16. Quyền của người nộp thuế\n"
+                    "1. Được hướng dẫn giải thích về thuế."
+                ),
+            },
+        ]
+
+        meta_v1 = {
+            "doc_code": "126/2020/NĐ-CP",
+            "title": "Nghị định quy định chi tiết Luật Quản lý thuế",
+            "doc_type": "NGHI_DINH",
+            "hierarchy_level": 2,
+            "effective_date": datetime(2020, 12, 5),
+            "as_of": datetime(2026, 11, 18),
+            "source_url": "https://vanban.chinhphu.vn/126-2020-nd-cp",
+            "version": "1.0",
+            "ocr_quality_status": "VERIFIED",
+            "expert_review_status": "PENDING",
+        }
+
+        chunks = chunk_ocr_pages(
+            pages=ocr_pages,
+            doc_code=meta_v1["doc_code"],
+            hierarchy_level=2,
+            metadata=meta_v1,
+        )
+
+        doc = sync_parsed_document(session, meta_v1, chunks)
+
+        assert "Căn cứ Luật Quản lý thuế" in doc.preamble
+        assert doc.source_url == "https://vanban.chinhphu.vn/126-2020-nd-cp"
+        assert doc.version == "1.0"
+        assert doc.total_pages == 2
+        assert doc.status == "CON_HIEU_LUC"
+        assert doc.ocr_quality_status == "VERIFIED"
+        assert doc.expert_review_status == "PENDING"
+
+        saved_chunks = session.query(LegalChunk).filter_by(doc_id=doc.id).all()
+        assert len(saved_chunks) == 3
+
+        c_1a_1 = next(c for c in saved_chunks if c.article_number == "1a" and c.clause_number == "1")
+        c_1a_2a = next(c for c in saved_chunks if c.article_number == "1a" and c.clause_number == "2a")
+        c_16_1 = next(c for c in saved_chunks if c.article_number == "16" and c.clause_number == "1")
+
+        assert c_1a_1.source_page == 1
+        assert c_1a_2a.source_page == 2
+        assert c_16_1.source_page == 2
+
+        meta_v2 = {**meta_v1, "version": "2.0", "expert_review_status": "APPROVED"}
+        updated_doc = sync_parsed_document(session, meta_v2, chunks)
+
+        assert session.query(LegalDocument).count() == 1
+        assert updated_doc.version == "2.0"
+        assert updated_doc.expert_review_status == "APPROVED"
+        assert session.query(LegalChunk).count() == 3
+    finally:
+        session.close()
+        engine.dispose()
