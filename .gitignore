@@ -235,3 +235,11 @@ evaluation/metrics/test_output.json
 # Generated Recall@10 reports
 evaluation/metrics/recall_report.json
 evaluation/metrics/test_output.json
+
+# Local test evidence and database backups
+/artifacts/
+/backups/
+
+# Additional local Compose environment files
+.env.*
+!.env.example

@@ -1,3 +1,5 @@
+> SCRUM-28: [Hướng dẫn tích hợp, CI và sao lưu/khôi phục database](docs/integration/SCRUM-28-RUNBOOK.md). Dùng hướng dẫn này cho nhánh tích hợp hiện tại.
+
 # 🇻🇳 Vietnam Tax Research Copilot with Citations (VN-tax-copilot)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)

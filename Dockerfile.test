@@ -1,0 +1,16 @@
+FROM python:3.12-slim-bookworm
+WORKDIR /workspace
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PYTHONPATH=/workspace:/workspace/backend
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    tesseract-ocr tesseract-ocr-vie tesseract-ocr-eng fonts-dejavu-core \
+    && rm -rf /var/lib/apt/lists/*
+COPY requirements-ci.txt ./
+COPY backend/requirements.txt backend/requirements.txt
+COPY data_pipeline/requirements.txt data_pipeline/requirements.txt
+COPY data_pipeline/ocr/requirements-eval.txt data_pipeline/ocr/requirements-eval.txt
+COPY evaluation/metrics/requirements.txt evaluation/metrics/requirements.txt
+RUN pip install --no-cache-dir -r requirements-ci.txt && pip check
+COPY . .
+CMD ["python", "scripts/ci.py"]

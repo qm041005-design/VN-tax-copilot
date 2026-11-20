@@ -4,10 +4,14 @@ on:
   pull_request:
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   backend:
-    name: Backend PostgreSQL and integration tests
+    name: PostgreSQL, PO, OCR and QA tests
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     services:
       postgres:
         image: pgvector/pgvector:pg16
@@ -22,36 +26,40 @@ jobs:
           --health-interval 5s --health-timeout 5s --health-retries 10
     env:
       TEST_DATABASE_URL: postgresql://ci_user:ci_password@localhost:5432/vntax_test
-      DATABASE_URL: postgresql://ci_user:ci_password@localhost:5432/vntax_test
-      AUTH_TOKENS: ci-smoke-token-0001:ci:thtax
-      SMOKE_API_TOKEN: ci-smoke-token-0001
-      PYTHONPATH: .:backend
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: python -m pip install -r backend/requirements.txt
-      - run: python -m pytest -q
-      - name: Public-source parser to PostgreSQL to HTTP API
+      - name: Install Vietnamese OCR and test fonts
         run: |
-          python -m uvicorn app.main:app --app-dir backend --host 127.0.0.1 --port 8000 > "$RUNNER_TEMP/api.log" 2>&1 &
-          api_pid=$!
-          trap 'kill "$api_pid"' EXIT
-          ready=0
-          for i in $(seq 1 30); do
-            if curl --fail --silent http://127.0.0.1:8000/health; then ready=1; break; fi
-            sleep 1
-          done
-          if [ "$ready" != 1 ]; then cat "$RUNNER_TEMP/api.log"; exit 1; fi
-          python backend/scripts/smoke_public_source.py --confirm-test-database vntax_test
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends tesseract-ocr tesseract-ocr-vie tesseract-ocr-eng fonts-dejavu-core
+      - name: Install integrated dependencies
+        run: |
+          python -m pip install -r requirements-ci.txt
+          python -m pip check
+      - name: Run all tests and public-source HTTP smoke
+        run: python scripts/ci.py
+      - name: Upload test results and API logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: integration-test-results
+          path: artifacts/
+          if-no-files-found: warn
 
   frontend:
     name: Frontend lint and build
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     defaults:
       run:
         working-directory: frontend
+    env:
+      NEXT_TELEMETRY_DISABLED: "1"
+      NEXT_PUBLIC_API_BASE_URL: http://localhost:8000/api/v1
+      NEXT_PUBLIC_DEV_API_TOKEN: ci-smoke-token-0001
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -60,3 +68,45 @@ jobs:
       - run: npm ci
       - run: npm run lint
       - run: npm run build
+
+  compose:
+    name: Docker Compose fresh install
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate demo and test Compose files
+        run: |
+          docker compose --env-file .env.example -p scrum28-ci config --quiet
+          docker compose -p scrum28-tests -f compose.test.yml config --quiet
+      - name: Build and wait for db, backend and frontend
+        run: docker compose --env-file .env.example -p scrum28-ci up -d --build --wait --wait-timeout 180
+      - name: Exercise demo backup, restore and repeated migration
+        run: |
+          docker compose --env-file .env.example -p scrum28-ci exec -T -e SMOKE_API_TOKEN=dev-token-alice-0001 backend python scripts/smoke_public_source.py --confirm-test-database vntax_copilot
+          docker compose --env-file .env.example -p scrum28-ci cp scripts/db-maintenance.sh db:/tmp/db-maintenance.sh
+          docker compose --env-file .env.example -p scrum28-ci exec -T db mkdir -p /tmp/migrations
+          docker compose --env-file .env.example -p scrum28-ci cp backend/migrations/. db:/tmp/migrations/
+          mkdir -p artifacts
+          docker compose --env-file .env.example -p scrum28-ci stop frontend backend
+          docker compose --env-file .env.example -p scrum28-ci exec -T db sh /tmp/db-maintenance.sh inspect > artifacts/before-restore.json
+          docker compose --env-file .env.example -p scrum28-ci exec -T db sh /tmp/db-maintenance.sh backup /tmp/demo.dump
+          docker compose --env-file .env.example -p scrum28-ci exec -T db sh /tmp/db-maintenance.sh restore /tmp/demo.dump vntax_restore_ci
+          docker compose --env-file .env.example -p scrum28-ci exec -T -e POSTGRES_DB=vntax_restore_ci db sh /tmp/db-maintenance.sh migrate /tmp/migrations
+          docker compose --env-file .env.example -p scrum28-ci exec -T -e POSTGRES_DB=vntax_restore_ci db sh /tmp/db-maintenance.sh migrate /tmp/migrations
+          docker compose --env-file .env.example -p scrum28-ci exec -T -e POSTGRES_DB=vntax_restore_ci db sh /tmp/db-maintenance.sh inspect > artifacts/after-restore.json
+          diff -u artifacts/before-restore.json artifacts/after-restore.json
+      - name: Capture service logs
+        if: always()
+        run: |
+          mkdir -p artifacts
+          docker compose --env-file .env.example -p scrum28-ci ps -a > artifacts/compose-status.txt
+          docker compose --env-file .env.example -p scrum28-ci logs --no-color > artifacts/compose.log 2>&1
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: compose-results
+          path: artifacts/
+      - name: Remove disposable CI stack
+        if: always()
+        run: docker compose --env-file .env.example -p scrum28-ci down -v
