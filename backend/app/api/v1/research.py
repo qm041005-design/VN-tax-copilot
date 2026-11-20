@@ -7,6 +7,8 @@ Luồng: kiểm tra quyền ghi hồ sơ -> tìm đoạn luật -> lưu 1 dòng 
 -> trả cả bản ghi lịch sử lẫn danh sách nguồn.
 Chưa nối LLM: answer = null. Không tìm thấy nguồn -> từ chối trả lời (abstention), ghi cảnh báo.
 """
+import json
+
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 
@@ -27,7 +29,6 @@ def research_callbacks():
 router = APIRouter(prefix="/research", tags=["Research (Tra cứu)"])
 
 NO_SOURCE = "Không tìm thấy căn cứ pháp lý phù hợp – hệ thống không đưa ra câu trả lời."
-NO_ANSWER_YET = "Chưa có câu trả lời AI; danh sách trích dẫn là căn cứ tìm được, chuyên viên cần tự đối chiếu."
 
 
 @router.post("", response_model=ResearchResponse, status_code=status.HTTP_201_CREATED,
@@ -44,7 +45,7 @@ def research(data: ResearchRequest, db: Session = Depends(get_db), user: Current
     hits = [source_service.to_hit(c) for c, _ in rows]
     assess, generate = callbacks
     result = research_from_rows(data.question, rows, tax_period=period, material_facts=data.material_facts,
-                                assess=assess, generate=generate)
+                                assess=assess, generate=generate, scenario=data.clarification_scenario, case_facts=data.case_facts)
     warnings = ([] if hits else [NO_SOURCE]) + [f"{result.status}: {result.reason}"]
     warnings += [w for w in (result.message, *result.questions) if w]
     warnings.append("Nguồn tìm thấy chưa xác minh đầy đủ hiệu lực, chuyển tiếp và khả năng áp dụng.")
@@ -53,14 +54,16 @@ def research(data: ResearchRequest, db: Session = Depends(get_db), user: Current
     # Preserve candidate references in history for existing UI when no answer exists.
     # Once there is an answer, only keep its validated citation IDs.
     cited = [h for h in hits if h.source_id in result.citation_ids] if result.status == "draft" else hits
+    contract = to_contract(result)
     history = matter_service.add_history(db, user, matter, HistoryCreate(
         question=redact_text(data.question).text, tax_type=data.tax_type,
         tax_period=redact_text(period).text if period else None,
         research_as_of=data.research_as_of.isoformat() if data.research_as_of else None,
-        material_facts=redact_text(data.material_facts).text if data.material_facts else None, answer=result.answer,
+        material_facts=redact_text((data.material_facts or "") + ("\n" + json.dumps(data.case_facts, ensure_ascii=False) if data.case_facts else "")).text or None, answer=result.answer,
         citations=[h.model_dump(include={"source_id", "title", "legal_identifier", "dieu", "khoan", "diem", "url"})
                    for h in cited],
-        warnings=warnings,
-    ))
+        warnings=warnings, research_result=contract,
+    ), guardrail_audit={"policy_version": "SCRUM-32-v1", "status": result.status, "reason": result.reason,
+                       "assessment_records": list(result.assessment_records)})
     return ResearchResponse(history=HistoryOut.model_validate(history), sources=hits,
-                            research_result=to_contract(result))
+                            research_result=contract)

@@ -108,6 +108,9 @@ class ResearchHistory(Base):
     #   {"source_id": "...", "legal_identifier": "48/2024/QH15", "dieu": "9", "khoan": "1", "diem": "a", "url": "..."}
     citations: Mapped[list] = mapped_column(JSON, default=list)
     warnings: Mapped[list] = mapped_column(JSON, default=list)  # cảnh báo (vd "công văn chỉ áp dụng cá biệt")
+    # Kết quả 6 phần của guardrails (status, sections, clarification_questions, warnings) – dùng khi mở lại hồ sơ
+    # và để xuất Word. NULL với lượt tra cứu lưu trước khi có tính năng này.
+    research_result: Mapped[dict | None] = mapped_column(JSON, nullable=True)
 
     review_status: Mapped[str] = mapped_column(String(16), default=ReviewStatus.DRAFT.value)
     answer_version: Mapped[int] = mapped_column(default=1)  # tăng khi có bản sửa (dành cho sprint sau)

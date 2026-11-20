@@ -46,6 +46,8 @@ def test_actual_response_carries_cors_headers_and_exposes_total_count(client):
     assert r.headers["access-control-allow-origin"] == ORIGIN
     # Không expose thì JS của frontend không đọc được X-Total-Count khi gọi khác origin
     assert "x-total-count" in r.headers["access-control-expose-headers"].lower()
+    # Tên file báo cáo Word nằm trong Content-Disposition
+    assert "content-disposition" in r.headers["access-control-expose-headers"].lower()
 
 
 def test_error_response_also_has_cors_headers(client):
