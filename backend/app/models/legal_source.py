@@ -17,8 +17,11 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 from app.core.database import Base
 
 # Trạng thái hiệu lực (giá trị cột `status` ở cả 2 bảng)
-LEGAL_STATUSES = ("CHUA_XAC_DINH", "CON_HIEU_LUC", "HET_HIEU_LUC", "SUA_DOI_BO_SUNG", "BI_THAY_THE")
+LEGAL_STATUSES = ("CHUA_XAC_DINH", "CON_HIEU_LUC", "HET_HIEU_LUC", "SUA_DOI_BO_SUNG", "CHUA_CO_HIEU_LUC", "BI_THAY_THE")
 STATUS_UNKNOWN = "CHUA_XAC_DINH"
+# 3 nhóm trạng thái tách bạch (nhóm 5, SCRUM-30): pháp lý = `status`; chất lượng OCR; chuyên gia duyệt
+OCR_QUALITY_STATUSES = ("RAW", "VERIFIED", "NEEDS_REVIEW")
+EXPERT_REVIEW_STATUSES = ("PENDING", "APPROVED", "REJECTED")
 
 
 def _utcnow_naive() -> datetime:
@@ -35,6 +38,7 @@ class LegalDocument(Base):
     doc_type: Mapped[str] = mapped_column(String(50), default="UNKNOWN", index=True)
     # 1 Luật > 2 Nghị định > 3 Thông tư > 4 Công văn > 5 Chưa xác định (UNKNOWN)
     hierarchy_level: Mapped[int] = mapped_column(Integer, default=5)
+    preamble: Mapped[str | None] = mapped_column(Text, nullable=True)  # căn cứ / mở đầu trước Điều 1
     issuer: Mapped[str | None] = mapped_column(String(200), nullable=True)
     source_url: Mapped[str | None] = mapped_column(String(1000), nullable=True)
     total_pages: Mapped[int | None] = mapped_column(Integer, nullable=True)
@@ -42,6 +46,8 @@ class LegalDocument(Base):
     effective_date: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)
     expiry_date: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)
     status: Mapped[str] = mapped_column(String(50), default=STATUS_UNKNOWN, index=True)
+    ocr_quality_status: Mapped[str] = mapped_column(String(50), default="RAW", index=True)
+    expert_review_status: Mapped[str] = mapped_column(String(50), default="PENDING", index=True)
     version: Mapped[str] = mapped_column(String(50), default="1.0")
     amends_doc_code: Mapped[str | None] = mapped_column(String(100), nullable=True, index=True)
     replaces_doc_code: Mapped[str | None] = mapped_column(String(100), nullable=True, index=True)
@@ -72,6 +78,8 @@ class LegalChunk(Base):
     hierarchy_level: Mapped[int] = mapped_column(Integer, default=5)
     effective_date: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)
     status: Mapped[str] = mapped_column(String(50), default=STATUS_UNKNOWN)
+    ocr_quality_status: Mapped[str] = mapped_column(String(50), default="RAW")
+    expert_review_status: Mapped[str] = mapped_column(String(50), default="PENDING")
     version: Mapped[str] = mapped_column(String(50), default="1.0")
 
     document: Mapped[LegalDocument] = relationship(back_populates="chunks")

@@ -8,6 +8,10 @@ from pydantic import BaseModel, ConfigDict, Field, field_validator, model_valida
 from app.services.legal_metadata import clause_label
 
 
+OcrStatus = Literal["RAW", "VERIFIED", "NEEDS_REVIEW"]
+ReviewStatus = Literal["PENDING", "APPROVED", "REJECTED"]
+
+
 def legal_date(value):
     """Legal calendar dates, not instants. Reject times/zones rather than truncate."""
     if value is None:
@@ -47,6 +51,9 @@ class DocumentInput(LegalDates):
     doc_type: Literal["LUAT", "NGHI_DINH", "THONG_TU", "CONG_VAN", "UNKNOWN"]
     hierarchy_level: int = Field(ge=1, le=5)
     issuer: str | None = Field(default=None, max_length=200)
+    preamble: str | None = None  # căn cứ / mở đầu trước Điều 1; parser lặp lại ở từng đoạn
+    ocr_quality_status: OcrStatus = "RAW"
+    expert_review_status: ReviewStatus = "PENDING"
     source_url: str | None = Field(default=None, max_length=1000)
     version: str = Field(default="1.0", min_length=1, max_length=50)
     amends_doc_code: str | None = Field(default=None, max_length=100)
@@ -77,6 +84,9 @@ class ChunkInput(LegalDates):
     amends_doc_code: str | None = None
     replaces_doc_code: str | None = None
     status: str | None = None
+    preamble: str | None = None
+    ocr_quality_status: OcrStatus | None = None  # chất lượng OCR theo trang của đoạn; thiếu -> lấy của văn bản
+    expert_review_status: ReviewStatus | None = None
 
     @field_validator("clause_number", mode="before")
     @classmethod
@@ -114,6 +124,15 @@ class ImportInput(BaseModel):
 
     @model_validator(mode="after")
     def consistent_metadata(self):
+        # Đoạn mở đầu là metadata cấp văn bản: parser lặp ở mọi đoạn ("" = không có) -> gom về văn bản, phải thống nhất
+        preambles = {c.preamble.strip() for c in self.chunks if c.preamble and c.preamble.strip()}
+        if self.document.preamble is None and len(preambles) == 1:
+            self.document.preamble = preambles.pop()
+        elif preambles - {(self.document.preamble or "").strip()}:
+            raise ValueError("preamble ở các đoạn không khớp văn bản.")
+        # Duyệt/từ chối là quyết định của chuyên gia trong hệ thống, không nhận qua file nạp
+        if {self.document.expert_review_status, *(c.expert_review_status for c in self.chunks)} - {None, "PENDING"}:
+            raise ValueError("expert_review_status chỉ nhận PENDING khi nạp; phê duyệt do chuyên gia ghi trong hệ thống.")
         expected = {"LUAT": 1, "NGHI_DINH": 2, "THONG_TU": 3, "CONG_VAN": 4, "UNKNOWN": 5}
         if expected[self.document.doc_type] != self.document.hierarchy_level:
             raise ValueError("Loại văn bản không khớp hierarchy_level.")

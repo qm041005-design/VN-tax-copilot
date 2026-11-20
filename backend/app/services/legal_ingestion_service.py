@@ -58,6 +58,9 @@ def ingest_legal_document(db: Session, payload: dict) -> ImportReceipt:
                          source_page=chunk.source_page, hierarchy_level=chunk.hierarchy_level)
         db.add(row)
         rows.append(row)
+    for chunk, row in zip(data.chunks, rows):  # SCRUM-30: trạng thái OCR/duyệt của từng đoạn
+        row.ocr_quality_status = chunk.ocr_quality_status or data.document.ocr_quality_status
+        row.expert_review_status = "PENDING"
     for tax_type in sorted(set(data.tax_types)):
         db.add(LegalDocumentTaxScope(doc_id=doc.id, tax_type=tax_type))
     db.flush()
