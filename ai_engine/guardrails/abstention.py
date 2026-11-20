@@ -12,6 +12,7 @@ class EvidenceAssessment:
     """
     passage_id: str | int
     sufficient: bool | None = None
+    reason_code: str = "not_assessed"
 
 
 @dataclass(frozen=True)

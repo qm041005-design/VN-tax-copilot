@@ -3,6 +3,7 @@ from dataclasses import dataclass
 from typing import Mapping, Sequence
 
 from .redaction import redact_text
+from .legal_metadata import normalize_clause_number
 
 
 @dataclass(frozen=True)
@@ -31,8 +32,10 @@ def prepare_research(query: str, passages: Sequence[Mapping]) -> PreparedResearc
                 raise TypeError(f"{key} must be a string")
             item[key] = redact_text(value).text
         # Explicit scalar metadata whitelist for pinpoint prompts; no client metadata.
-        for key in ("dieu", "khoan", "diem", "doc_type", "effective_date", "expiry_date", "version", "source_page"):
+        for key in ("dieu", "khoan", "diem", "doc_type", "effective_date", "expiry_date", "version", "source_page", "status", "document_effective_date", "document_version"):
             value = passage.get(key)
+            if key == "khoan":
+                value = normalize_clause_number(value)
             if value is None:
                 item[key] = None
             elif isinstance(value, (str, int)) and not isinstance(value, bool):
