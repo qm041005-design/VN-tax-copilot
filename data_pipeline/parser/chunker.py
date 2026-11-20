@@ -35,7 +35,7 @@ def _has_raw_value(value: Any) -> bool:
 
 
 def _resolve_status(meta: Dict[str, Any]) -> str:
-    explicit_status = meta.get("status")
+    explicit_status = meta.get("legal_status") or meta.get("status")
     if explicit_status and str(explicit_status).strip():
         return str(explicit_status).strip()
 
@@ -45,7 +45,6 @@ def _resolve_status(meta: Dict[str, Any]) -> str:
 
     eff_dt = _to_datetime(raw_eff)
     if eff_dt is None:
-        # effective_date có truyền nhưng sai định dạng (vd: "invalid") -> giữ CHUA_XAC_DINH
         return "CHUA_XAC_DINH"
 
     raw_as_of = meta.get("as_of")
@@ -61,24 +60,36 @@ def _resolve_status(meta: Dict[str, Any]) -> str:
     if _has_raw_value(raw_exp):
         exp_dt = _to_datetime(raw_exp)
         if exp_dt is None:
-            # expiry_date sai định dạng (vd: "invalid") -> không bỏ qua, giữ CHUA_XAC_DINH
             return "CHUA_XAC_DINH"
 
-    # Chưa tới ngày có hiệu lực
     if ref_dt < eff_dt:
         return "CHUA_XAC_DINH"
 
-    # expiry_date là ngày bắt đầu hết hiệu lực (>=)
     if exp_dt is not None and ref_dt >= exp_dt:
         return "HET_HIEU_LUC"
 
     return "CON_HIEU_LUC"
 
 
+def extract_preamble(text: str) -> str:
+    """Trích xuất đoạn mở đầu / căn cứ pháp lý nằm trước Điều đầu tiên."""
+    if not text or not text.strip():
+        return ""
+    first_art = re.search(
+        r"^[ \t]*Điều[ \t]+\d+[a-zA-ZđĐ]?[ \t]*[.:]",
+        text,
+        re.MULTILINE | re.IGNORECASE,
+    )
+    if not first_art:
+        return text.strip()
+    return text[: first_art.start()].strip()
+
+
 def _build_metadata_fields(
     metadata: Optional[Dict[str, Any]],
     source_page: Optional[int],
     hierarchy_level: int,
+    preamble: str = "",
 ) -> Dict[str, Any]:
     meta = metadata or {}
     return {
@@ -89,9 +100,12 @@ def _build_metadata_fields(
         "effective_date": meta.get("effective_date"),
         "expiry_date": meta.get("expiry_date"),
         "status": _resolve_status(meta),
+        "ocr_quality_status": meta.get("ocr_quality_status", "RAW"),
+        "expert_review_status": meta.get("expert_review_status", "PENDING"),
         "version": meta.get("version", "1.0"),
         "amends_doc_code": meta.get("amends_doc_code"),
         "replaces_doc_code": meta.get("replaces_doc_code"),
+        "preamble": preamble or meta.get("preamble", ""),
     }
 
 
@@ -107,7 +121,13 @@ def chunk_legal_document(
     if not text or not text.strip():
         return chunks
 
-    base_meta = _build_metadata_fields(metadata, source_page, hierarchy_level)
+    preamble_text = extract_preamble(text)
+    base_meta = _build_metadata_fields(
+        metadata,
+        source_page,
+        hierarchy_level,
+        preamble=preamble_text,
+    )
 
     article_pattern = re.compile(
         r"^[ \t]*Điều[ \t]+(\d+[a-zA-ZđĐ]?)[ \t]*[.:][ \t]*(.*)$",
@@ -243,5 +263,76 @@ def chunk_legal_document(
                         **base_meta,
                     }
                 )
+
+    return chunks
+
+
+def chunk_ocr_pages(
+    pages: List[Dict[str, Any]],
+    doc_code: str,
+    hierarchy_level: int = 5,
+    metadata: Optional[Dict[str, Any]] = None,
+) -> List[Dict[str, Any]]:
+    """
+    Chạy trình phân tích cú pháp trên các trang OCR đã được đối chiếu:
+    pages = [{"page": 1, "text": "..."}, {"page": 2, "text": "..."}]
+    Gán chính xác source_page cho từng chunk theo trang xuất hiện thực tế.
+    """
+    if not pages:
+        return []
+
+    sorted_pages = sorted(pages, key=lambda p: p["page"])
+    full_parts: List[str] = []
+    page_ranges: List[tuple[int, int, int]] = []
+    cursor = 0
+
+    for item in sorted_pages:
+        page_num = int(item["page"])
+        page_text = (item.get("text") or "").strip()
+        if not page_text:
+            continue
+        if full_parts:
+            full_parts.append("\n")
+            cursor += 1
+        start_idx = cursor
+        full_parts.append(page_text)
+        cursor += len(page_text)
+        page_ranges.append((start_idx, cursor, page_num))
+
+    combined_text = "".join(full_parts)
+    if not combined_text.strip():
+        return []
+
+    def _find_page_for_offset(offset: int) -> int:
+        for start_i, end_i, p_num in page_ranges:
+            if start_i <= offset <= end_i:
+                return p_num
+        return page_ranges[0][2]
+
+    chunks = chunk_legal_document(
+        text=combined_text,
+        doc_code=doc_code,
+        hierarchy_level=hierarchy_level,
+        source_page=page_ranges[0][2],
+        metadata=metadata,
+    )
+
+    search_cursor = 0
+    for ch in chunks:
+        art_marker = f"Điều {ch['article_number']}"
+        art_pos = combined_text.find(art_marker, search_cursor)
+        if art_pos == -1:
+            art_pos = combined_text.find(art_marker)
+
+        target_pos = art_pos
+        if art_pos != -1 and ch["clause_number"] != "0":
+            cl_marker = f"{ch['clause_number']}."
+            cl_pos = combined_text.find(cl_marker, art_pos)
+            if cl_pos != -1:
+                target_pos = cl_pos
+
+        if target_pos != -1:
+            ch["source_page"] = _find_page_for_offset(target_pos)
+            search_cursor = target_pos
 
     return chunks
