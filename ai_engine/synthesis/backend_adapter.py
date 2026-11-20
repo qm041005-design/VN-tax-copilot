@@ -56,7 +56,11 @@ def build_backend_messages(request, details, *, allowed_source_ids):
     return build_messages(request.get("question"), passages,
                           facts=request.get("material_facts") or "",
                           tax_period=request.get("tax_period"),
-                          research_as_of=request.get("research_as_of"))
+                          research_as_of=request.get("research_as_of"),
+                          transaction_date=request.get("transaction_date"),
+                          taxpayer_type=request.get("taxpayer_type"),
+                          clarification_scenario=request.get("clarification_scenario"),
+                          case_facts=request.get("case_facts"))
 
 
 def build_guarded_messages(safe_input):
@@ -67,6 +71,27 @@ def build_guarded_messages(safe_input):
     """
     return build_messages(safe_input.query, list(safe_input.passages),
                           facts=safe_input.material_facts, tax_period=safe_input.tax_period)
+
+
+def make_guarded_generator(complete):
+    """Adapt a server-owned complete(messages) callable to An's generator.
+
+    complete returns JSON text or a dict, not an SDK response envelope. Configure
+    provider/model/timeouts outside this module. Call through run_guarded_research
+    only: this adapter neither authorizes sources nor replaces the assessor.
+    Exceptions propagate to the guardrails' sanitized failure boundary.
+    """
+    if not callable(complete):
+        raise TypeError("complete must be callable")
+
+    def generate(safe_input):
+        from ai_engine.guardrails.contract import validate_output
+
+        messages = build_guarded_messages(safe_input)
+        allowed_ids = tuple(p['passage_id'] for p in safe_input.passages)
+        return validate_output(complete(messages), allowed_ids)
+
+    return generate
 
 
 def prepare_backend_export(response, details, *, matter_id):

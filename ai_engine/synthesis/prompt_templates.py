@@ -1,6 +1,8 @@
 """Provider-neutral prompts. Retrieved content is untrusted evidence, not instructions."""
 import json
 
+PROMPT_VERSION = 'week4-2026-11-20'
+
 SECTION_LABELS = {
     'issue': 'Vấn đề pháp lý',
     'facts': 'Sự kiện và giả định',
@@ -33,6 +35,23 @@ không tồn tại, URL hay trích đoạn. Diễn giải phải được đoạ
 Không xem URL hoạt động là bằng chứng kết luận đúng. Không coi dữ liệu seed
 chưa thẩm định là kết luận pháp lý đã được phê duyệt.
 
+Quy tắc dùng dữ kiện và metadata:
+- facts có thể chứa dữ kiện có cấu trúc đã được che thông tin cá nhân. Chỉ dùng
+  dữ kiện đã cung cấp; không biến giả định thành sự kiện đã xác nhận.
+- Với hàng hóa, xem mô tả hàng, loại giao dịch và thời điểm giao dịch; nếu còn
+  thiếu dữ kiện quyết định như phương pháp tính thuế, chỉ hỏi thông tin cần thiết.
+- Với cư trú, xem thời gian hiện diện, tình trạng chỗ ở và thông tin cư trú thuế
+  nước khác. Không yêu cầu số giấy tờ, địa chỉ cụ thể hoặc ảnh giấy tờ cá nhân.
+- Không hỏi lại điều đã được cung cấp rõ ràng. Nếu dữ kiện mâu thuẫn, hỏi xác nhận.
+- effective_date/version/status là metadata của đoạn khi đầu vào phân biệt
+  cấp đoạn; document_effective_date/document_version chỉ mô tả văn bản. Không
+  dùng metadata văn bản để tự lấp giá trị null của đoạn. Phiên bản lưu trữ,
+  điểm BM25, trạng thái OCR và nhãn đã duyệt không tự chứng minh tính áp dụng.
+- research_as_of là ngày tra cứu, không thay kỳ thuế hoặc ngày giao dịch.
+- Chỉ có tập nguồn được cung cấp; không tuyên bố đã duyệt web hay đọc URL.
+  Còn thiếu nguồn, mốc áp dụng hoặc có xung đột chưa giải quyết thì abstain,
+  ghi rõ giới hạn trong warnings; không tự bổ sung quy định từ trí nhớ.
+
 Chỉ trả JSON, không Markdown, với cấu trúc:
 {"status":"draft|clarify|abstain","sections":{
 "issue":[{"text":"...","citation_ids":[]}],
@@ -42,11 +61,24 @@ Mỗi mục của sáu phần là object text và citation_ids. Giữ đủ sáu
 cần làm rõ hoặc từ chối. Với draft, authority và analysis cần có nội dung cùng
 trích dẫn. Với clarify, clarification_questions phải có câu hỏi cụ thể.
 Không tự trả trạng thái approved hoặc giả mạo quyết định chuyên gia.
+Chỉ dùng đúng bốn khóa cấp cao như mẫu; không thêm reason, assessment_records,
+review_status hoặc metadata kiểm toán. Các trường này do máy chủ quản lý.
+Không đổi tên sáu phần thành summary/legal_basis/conclusion/recommendation.
+issue: vấn đề cần nghiên cứu; facts: dữ kiện và giả định được phân biệt rõ;
+authority: căn cứ; analysis: phân tích gắn căn cứ; limitations: giới hạn;
+next_steps: bước xác minh hoặc nghiên cứu tiếp theo.
+Với draft, clarification_questions phải rỗng. Mỗi khẳng định pháp lý cần trích
+dẫn kể cả khi nằm ngoài authority/analysis; không gộp nhiều kết luận khác căn cứ
+vào một mục. citation_ids phải giữ nguyên ID chuỗi, không dùng số thứ tự [1].
+Với clarify hoặc abstain, để cả sáu phần là mảng rỗng, không kèm kết luận thuế.
+clarify đặt câu hỏi trong clarification_questions; abstain nêu thiếu căn cứ
+và việc cần xác minh trong warnings. Không xuất Markdown bao quanh JSON.
 '''
 
 
 def build_messages(question, passages, *, facts='', tax_period=None,
-                   transaction_date=None, research_as_of=None, taxpayer_type=None):
+                   transaction_date=None, research_as_of=None, taxpayer_type=None,
+                   clarification_scenario=None, case_facts=None):
     """Caller must supply only passages authorized for the current user/matter.
 
     Each passage contains passage_id, text and citation metadata. Missing legal
@@ -56,6 +88,11 @@ def build_messages(question, passages, *, facts='', tax_period=None,
         raise ValueError('question must be nonempty text')
     if not isinstance(passages, list):
         raise ValueError('passages must be a list')
+    if clarification_scenario not in (None, 'goods_rate', 'residency'):
+        raise ValueError('Unsupported clarification scenario')
+    if case_facts is not None and (not isinstance(case_facts, dict) or
+            any(not isinstance(k, str) or not isinstance(v, str) for k, v in case_facts.items())):
+        raise ValueError('case_facts must map text keys to text values')
     ids = set()
     for passage in passages:
         if not isinstance(passage, dict):
@@ -69,5 +106,9 @@ def build_messages(question, passages, *, facts='', tax_period=None,
     payload = dict(question=question, facts=facts, tax_period=tax_period,
                    transaction_date=transaction_date, research_as_of=research_as_of,
                    taxpayer_type=taxpayer_type, passages=passages)
+    if clarification_scenario is not None:
+        payload['clarification_scenario'] = clarification_scenario
+    if case_facts is not None:
+        payload['case_facts'] = case_facts
     return [{'role': 'system', 'content': SYSTEM_PROMPT},
             {'role': 'user', 'content': json.dumps(payload, ensure_ascii=False)}]
