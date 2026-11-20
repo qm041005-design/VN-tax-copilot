@@ -292,7 +292,8 @@ Văn bản chưa rõ ngày hiệu lực **không** bị loại (để chuyên vi
 ```
 
 - `hierarchy_level`: 1 Luật > 2 Nghị định > 3 Thông tư > 4 Công văn > 5 Chưa xác định.
-- `status`: `CHUA_XAC_DINH` \| `CON_HIEU_LUC` \| `HET_HIEU_LUC` \| `SUA_DOI_BO_SUNG` \| `BI_THAY_THE`.
+- `status` (trạng thái pháp lý): `CHUA_XAC_DINH` \| `CON_HIEU_LUC` \| `HET_HIEU_LUC` \| `SUA_DOI_BO_SUNG` \| `CHUA_CO_HIEU_LUC` \| `BI_THAY_THE`.
+- Trạng thái chất lượng OCR và chuyên gia duyệt của nguồn được lưu trong DB nhưng **chưa trả qua API**.
 
 ### 3.11 Nguyên văn đoạn luật – `GET /sources/{source_id}` → 200 `SourceDetail`
 
@@ -370,6 +371,7 @@ export interface ResearchResponse { history: HistoryItem; sources: SourceHit[]; 
 | Tra cứu không ra nguồn dù có văn bản | Văn bản chưa gán nhãn sắc thuế (`tax_types` khi nạp) | Dữ liệu (Duyên) |
 | `status` nguồn luôn `CHUA_XAC_DINH` | Importer chưa ghi trạng thái hiệu lực vào DB | Backend + Dữ liệu |
 | `review_status` luôn `draft` | Chưa có API phê duyệt | Sprint sau |
+| Chưa có `clarification_scenario`, `case_facts` trong `POST /research` | Nằm ở nhánh SCRUM-32 của An, chưa merge. Khi merge sẽ cập nhật mục 3.6 | AI (An) |
 
 ## 6. Khi muốn đổi hợp đồng
 

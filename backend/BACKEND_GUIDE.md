@@ -56,7 +56,7 @@ backend/
 │       ├── matters.py               #   hồ sơ, lịch sử, xuất Word
 │       ├── research.py              #   tra cứu
 │       └── sources.py               #   nguồn luật
-├── migrations/                      # SQL nâng cấp DB cũ (001, 002, 003)
+├── migrations/                      # SQL nâng cấp DB cũ (001 → 004)
 ├── scripts/                         # import_legal_document, export_bm25_retrieval, smoke_public_source
 ├── tests/                           # pytest
 ├── evidence/                        # Bằng chứng smoke test trên PostgreSQL (của Quân)
@@ -93,11 +93,11 @@ PostgreSQL
 | `matters` | Backend | `id`, `tenant_id`, `title`, `client_name`, `tax_types`, `tax_period`, `status` (`active`/`archived`) |
 | `research_history` | Backend | `question`, `material_facts`, `answer`, `citations`, `warnings`, **`research_result`** (6 phần), `review_status` |
 | `audit_logs` | Backend | Chỉ thêm: `actor`, `action` (`matter.create`, `history.create`, `history.export_docx`…), `resource_id` |
-| `legal_documents` | Importer (dữ liệu của Duyên) | `doc_code`, `doc_type`, `hierarchy_level`, `effective_date`, `expiry_date`, `status`, `version`, `source_url` |
-| `legal_chunks` | Importer | Điều/Khoản/Điểm, `citation_path`, `content`, `source_page`, `effective_date` riêng của đoạn |
+| `legal_documents` | Importer (dữ liệu của Duyên) | `doc_code`, `doc_type`, `hierarchy_level`, `effective_date`, `expiry_date`, `version`, `source_url`, `preamble` (căn cứ / mở đầu), 3 trạng thái: `status` (pháp lý), `ocr_quality_status` (`RAW`/`VERIFIED`/`NEEDS_REVIEW`), `expert_review_status` (`PENDING`/`APPROVED`/`REJECTED`) |
+| `legal_chunks` | Importer | Điều/Khoản/Điểm, `citation_path`, `content`, `source_page`, `effective_date` riêng của đoạn, `ocr_quality_status`, `expert_review_status` |
 | `legal_document_tax_scopes` | Importer | Nhãn sắc thuế của văn bản (`VAT`/`CIT`/`PIT`) |
 
-Bảng tự tạo khi server khởi động (`create_all`), nhưng `create_all` **không sửa** bảng đã có. DB cũ → chạy `migrations/001` → `002` → `003` (xem `HUONG_DAN_TEST.md`). Đổi cột trong model thì phải thêm file migration mới và cập nhật `tests/test_migrations.py`.
+Bảng tự tạo khi server khởi động (`create_all`), nhưng `create_all` **không sửa** bảng đã có. DB cũ → chạy `migrations/001` → `004` (xem `HUONG_DAN_TEST.md`). Đổi cột trong model thì phải thêm file migration mới và cập nhật `tests/test_migrations.py`.
 
 ## 6. Xác thực và quyền
 
@@ -130,7 +130,7 @@ Bảng tự tạo khi server khởi động (`create_all`), nhưng `create_all` 
 | Nhóm | Nối ở đâu | Trạng thái |
 |---|---|---|
 | Frontend (Phước) | API trong `API_CONTRACT.md` | Đã nối hồ sơ, tra cứu, lịch sử, nguồn. **Chưa** nối xuất Word (nút hiện tạo `.txt`), chưa gửi `material_facts` |
-| Dữ liệu (Duyên) | `scripts/import_legal_document.py` | Chạy được. Chưa lưu `status` và metadata cấp đoạn (intro, ngày hiệu lực, phiên bản, URL) – chờ chốt định nghĩa |
+| Dữ liệu (Duyên) | `scripts/import_legal_document.py` | Nhận đủ metadata parser SCRUM-30: `preamble`, trạng thái OCR, trạng thái duyệt (importer chỉ nhận `PENDING`; phê duyệt do chuyên gia). Model khớp registry, kiểm bằng `tests/test_data_pipeline_sync.py`. Lưu metadata cấp đoạn (intro, ngày hiệu lực, URL) nằm ở nhánh SCRUM-31 của Thanh |
 | Retrieval (Thanh) | `ai_engine/retrieval` qua `source_service.search` | BM25 đã dùng |
 | Guardrails (An) | `ai_engine/guardrails` qua `guarded_research_service` | Đã nối. Chưa có `assess`/`generate` nên kết quả luôn `clarify`/`abstain`. Metadata cấp đoạn chờ thống nhất |
 | Export (Quân) | `export_service.py` + `ai_engine/synthesis/backend_adapter.py` | Đã nối vào API xuất Word |

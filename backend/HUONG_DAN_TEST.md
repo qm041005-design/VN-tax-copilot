@@ -9,8 +9,8 @@ Mỗi task có **test tự động** (chạy ở bước 6) và **bước kiểm
 
 | Task SCRUM-33 | Trạng thái | Test tự động chứng minh | Kiểm tra tay |
 |---|---|---|---|
-| 1. Hoàn tất review `f3fa3a2` (migration + hiệu lực) | ✅ Đã sửa, chờ Quân xác nhận | `test_migrations.py::test_migration_nang_cap_db_cu_khong_mat_du_lieu` (DB cũ nâng cấp qua 001→002→003, không mất dữ liệu)<br>`test_sources_research.py::test_doan_luat_hieu_luc_rieng_nam_2030_khong_hien_khi_tra_cuu_2026` (lọc ngày hiệu lực của từng đoạn) | Mục "Gặp lỗi": 3 lệnh migration |
-| 2. Phối hợp Duyên (importer), An (metadata guardrails) | ⏳ Chờ Duyên, An chốt định nghĩa | `test_legal_ingestion.py` (importer hiện tại: kiểm tra dữ liệu, không ghi đè, rollback khi lỗi) | Bước 2: nạp luật qua importer |
+| 1. Hoàn tất review `f3fa3a2` (migration + hiệu lực) | ✅ Đã sửa, chờ Quân xác nhận | `test_migrations.py::test_migration_nang_cap_db_cu_khong_mat_du_lieu` (DB cũ nâng cấp qua 001→004, không mất dữ liệu)<br>`test_sources_research.py::test_doan_luat_hieu_luc_rieng_nam_2030_khong_hien_khi_tra_cuu_2026` (lọc ngày hiệu lực của từng đoạn) | Mục "Gặp lỗi": 4 lệnh migration |
+| 2. Phối hợp Duyên (importer), An (metadata guardrails) | ✅ Phần Duyên: backend nhận đủ metadata mới. Phần An: đã review, An tự nối metadata cấp đoạn (nhánh SCRUM-32) | `test_data_pipeline_sync.py` (model backend khớp từng cột với registry của Duyên)<br>`test_ocr_review_status.py` (importer lưu `preamble`, trạng thái OCR, trạng thái duyệt; không nhận phê duyệt qua file nạp)<br>`test_migrations.py` (migration 004)<br>`test_legal_ingestion.py` (kiểm tra dữ liệu, không ghi đè, rollback khi lỗi) | Bước 2: nạp luật qua importer |
 | 3. Lưu kết quả 6 phần vào lịch sử, trả lại khi mở hồ sơ | ✅ | `test_research_export.py::test_ket_qua_6_phan_duoc_luu_va_tra_lai_khi_mo_ho_so`<br>`test_research_export.py::test_luot_tra_cuu_cu_khong_co_ket_qua_6_phan` | Bước 3, dòng 4 (F5 vẫn còn) |
 | 4. Endpoint xuất Word nối module Quân, kiểm tra quyền trước khi xuất | ✅ (backend) | `test_research_export.py::test_xuat_word` (ra file .docx đủ 6 phần + audit)<br>`::test_xuat_word_kiem_tra_quyen_truoc` (401, 404 tổ chức khác, 404 sai hồ sơ, không ghi audit)<br>`::test_xuat_word_khi_nguon_bi_xoa` (409)<br>`::test_xuat_word_khi_nguon_khong_co_link` (422)<br>`test_cors.py::test_actual_response_carries_cors_headers_and_exposes_total_count` (frontend đọc được tên file) | Bước 4 và 5 |
 | 5. Cập nhật API contract, test, mô tả PR | ✅ | Toàn bộ bộ test (bước 6) | `API_CONTRACT.md`, file này, mô tả PR |
@@ -58,6 +58,8 @@ npm run dev
 ```
 
 Đúng khi: http://localhost:8000/health có `"database": true` và http://localhost:3000 hiện danh sách hồ sơ.
+
+> ⚠️ **Đã có DB từ trước** (máy đã chạy backend bản cũ) mà vừa `git pull`: chạy 4 lệnh migration ở cuối file **một lần** trước khi test. Không chạy thì tra cứu báo lỗi `column ... does not exist`. Máy mới tạo DB lần đầu thì không cần.
 
 ## Bước 2 – Nạp luật mẫu ⚠️ đừng bỏ qua
 
@@ -133,7 +135,7 @@ $env:TEST_DATABASE_URL = "postgresql://vntax_admin:vntax_secret@localhost:5432/v
 python -m pytest -q
 ```
 
-Đúng khi: `109 passed` trên PostgreSQL. Không đặt `TEST_DATABASE_URL` thì chạy trên SQLite: `108 passed, 1 skipped` (test migration chỉ chạy trên PostgreSQL).
+Đúng khi: `113 passed` trên PostgreSQL. Không đặt `TEST_DATABASE_URL` thì chạy trên SQLite: `112 passed, 1 skipped` (test migration chỉ chạy trên PostgreSQL).
 Lần đầu chưa có DB test: `docker compose exec db psql -U vntax_admin -d vntax_copilot -c "CREATE DATABASE vntax_test"`.
 ⚠️ **Không** trỏ `TEST_DATABASE_URL` vào `vntax_copilot` – test xóa sạch bảng.
 
@@ -158,11 +160,12 @@ Tắt backend/frontend: `Ctrl+C`. Tắt DB: `docker compose stop`.
 | `No module named 'ai_engine'` hoặc `'app'` | Chưa gõ `$env:PYTHONPATH = ".."`, hoặc không đứng trong thư mục `backend` |
 | `docker compose` báo thiếu `POSTGRES_USER` | Chưa có `.env` ở thư mục gốc → bước 0 |
 | Lỗi kết nối Docker / `dockerDesktopLinuxEngine` | Docker Desktop chưa bật |
-| `column ... does not exist` | DB tạo từ bản cũ → chạy 3 lệnh migration bên dưới |
+| `column ... does not exist` | DB tạo từ bản cũ → chạy 4 lệnh migration bên dưới |
 
 Migration (từ thư mục gốc, chạy lại nhiều lần vẫn an toàn, không mất dữ liệu):
 ```powershell
 Get-Content backend\migrations\001_clause_number_text.sql | docker compose exec -T db psql -U vntax_admin -d vntax_copilot
 Get-Content backend\migrations\002_legal_status_and_registry_columns.sql | docker compose exec -T db psql -U vntax_admin -d vntax_copilot
 Get-Content backend\migrations\003_research_result.sql | docker compose exec -T db psql -U vntax_admin -d vntax_copilot
+Get-Content backend\migrations\004_ocr_and_expert_review_status.sql | docker compose exec -T db psql -U vntax_admin -d vntax_copilot
 ```
