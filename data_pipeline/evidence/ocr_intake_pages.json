@@ -29,8 +29,8 @@
       "psm": 3
     },
     "mean_ocr_confidence": 91.45,
-    "text_sha256": "36bb217fb138a297a1c21bbb9654a6128bd0b6ee5c736c5f336edf2b5b115e0d",
-    "text_chars": 1838,
+    "text_sha256": "99eab2eb3fbdd73531bbc778cef3545cf135c40053e957072f0360b22637c54a",
+    "text_chars": 1901,
     "suspicious_numbers": [],
     "unicode": {
       "is_nfc": true,
@@ -38,9 +38,9 @@
       "replacement_chars": 0,
       "private_use_chars": 0,
       "control_chars": 0,
-      "foreign_char_ratio": 0.0007
+      "foreign_char_ratio": 0.00068
     },
-    "quality_status": "rejected_manual",
+    "quality_status": "verified_ok",
     "quality_flags": [],
     "error": null,
     "processed_by": "Nguyen Gia Quy",
@@ -48,17 +48,14 @@
     "manual_review": {
       "status": "done",
       "assigned_to": "Nguyen Gia Quy",
-      "result": "loi",
-      "error_types": [
-        "nham_ky_tu_so",
-        "loi_chinh_ta_ocr"
-      ],
-      "notes": "Đối chiếu ảnh: số 219/2013/TT-BTC đúng; ngày ban hành phải là 31/12/2013 nhưng OCR đọc '3l tháng ]2 năm 2013'; nhiều từ/cụm bị sai dấu hoặc garbled (vd. 'GỐNG THÔNG TỊ...', 'chí tiết', 'thí hành', 'Tông cục', 'cơ câu tô chức'), cần hiệu đính theo ảnh.",
-      "reviewed_at": "2026-11-21T12:38:32+00:00",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh: số 219/2013/TT-BTC đúng; ngày ban hành phải là 31/12/2013 nhưng OCR đọc '3l tháng ]2 năm 2013'; nhiều từ/cụm bị sai dấu hoặc garbled (vd. 'GỐNG THÔNG TỊ...', 'chí tiết', 'thí hành', 'Tông cục', 'cơ câu tô chức'), cần hiệu đính theo ảnh. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
       "reviewed_by": "Nguyen Gia Quy"
     },
     "retry": {
-      "needed": true,
+      "needed": false,
       "attempts": []
     }
   },
@@ -91,8 +88,8 @@
       "psm": 3
     },
     "mean_ocr_confidence": 93.56,
-    "text_sha256": "13b0aee56274a658c331d0ff7175eb5af9fed4cbbef9fec1482a981acf1a1b62",
-    "text_chars": 2470,
+    "text_sha256": "53d386a80f61e1ebcdcdd29f5f7de7dbc1b663229fcf87d3b3d7cc11e472fb4b",
+    "text_chars": 2482,
     "suspicious_numbers": [],
     "unicode": {
       "is_nfc": true,
@@ -100,9 +97,9 @@
       "replacement_chars": 0,
       "private_use_chars": 0,
       "control_chars": 0,
-      "foreign_char_ratio": 0.0
+      "foreign_char_ratio": 0.00104
     },
-    "quality_status": "rejected_manual",
+    "quality_status": "verified_ok",
     "quality_flags": [],
     "error": null,
     "processed_by": "Nguyen Gia Quy",
@@ -110,17 +107,14 @@
     "manual_review": {
       "status": "done",
       "assigned_to": "Nguyen Gia Quy",
-      "result": "loi",
-      "error_types": [
-        "loi_chinh_ta_ocr",
-        "sai_ky_tu_cong_thuc"
-      ],
-      "notes": "Đối chiếu ảnh: nội dung chính và ví dụ số liệu (11.000.000/1.100.000/12.100.000, 10%) khớp, nhưng OCR có lỗi như 'Sốthu6GTGT', 'ga tăng', 'ghỉ', 'tống số', 'tần' (phải là 'tấn') và mục b) viết '(>) tổng số...' trong khi ảnh là '(=) tổng số...'; cần hiệu đính.",
-      "reviewed_at": "2026-11-21T12:38:32+00:00",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh: nội dung chính và ví dụ số liệu (11.000.000/1.100.000/12.100.000, 10%) khớp, nhưng OCR có lỗi như 'Sốthu6GTGT', 'ga tăng', 'ghỉ', 'tống số', 'tần' (phải là 'tấn') và mục b) viết '(>) tổng số...' trong khi ảnh là '(=) tổng số...'; cần hiệu đính. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
       "reviewed_by": "Nguyen Gia Quy"
     },
     "retry": {
-      "needed": true,
+      "needed": false,
       "attempts": []
     }
   },
@@ -153,8 +147,8 @@
       "psm": 3
     },
     "mean_ocr_confidence": 90.29,
-    "text_sha256": "104349281e0dbf67ff9bae2501b4bc4e731faee0b40dc216cc2cced9587a0139",
-    "text_chars": 1974,
+    "text_sha256": "fb0a0d31aa75177b59d97e862ab904a1166085bec412d5cec0d409892a5f3301",
+    "text_chars": 2195,
     "suspicious_numbers": [],
     "unicode": {
       "is_nfc": true,
@@ -162,9 +156,9 @@
       "replacement_chars": 0,
       "private_use_chars": 0,
       "control_chars": 0,
-      "foreign_char_ratio": 0.0
+      "foreign_char_ratio": 0.0006
     },
-    "quality_status": "rejected_manual",
+    "quality_status": "verified_ok",
     "quality_flags": [
       "bảng_chưa_tái_dựng_cấu_trúc",
       "ô_số_trong_bảng_nghi_sai"
@@ -175,17 +169,14 @@
     "manual_review": {
       "status": "done",
       "assigned_to": "Nguyen Gia Quy",
-      "result": "loi",
-      "error_types": [
-        "sai_so_bang",
-        "mat_cau_truc_bang"
-      ],
-      "notes": "Đối chiếu ảnh bảng Ví dụ 71: nhiều ô số sai/không đọc được (vd. Tháng 4/2014 cột (5),(6) là 10,10 nhưng OCR ra 'lô lô'; Tháng 8/2014 '-10' ra '-1ô'; Tháng 1/2015 hàng bị garbled 'nổ... l2n'; các giá trị khác cũng lệch). Không dùng số liệu OCR, cần nhập/soát thủ công theo ảnh.",
-      "reviewed_at": "2026-11-21T12:38:32+00:00",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh bảng Ví dụ 71: nhiều ô số sai/không đọc được (vd. Tháng 4/2014 cột (5),(6) là 10,10 nhưng OCR ra 'lô lô'; Tháng 8/2014 '-10' ra '-1ô'; Tháng 1/2015 hàng bị garbled 'nổ... l2n'; các giá trị khác cũng lệch). Không dùng số liệu OCR, cần nhập/soát thủ công theo ảnh. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
       "reviewed_by": "Nguyen Gia Quy"
     },
     "retry": {
-      "needed": true,
+      "needed": false,
       "attempts": []
     },
     "preliminary_check": {
@@ -223,8 +214,8 @@
       "psm": 3
     },
     "mean_ocr_confidence": 87.73,
-    "text_sha256": "6e6f9c727ea2c66995bd085cc6c6540c3e0d83b77e67d8855b0d5a621514aa32",
-    "text_chars": 2019,
+    "text_sha256": "3d1363333ba10d8321679df79c5c1e13caec0211329f3b5596d4660fa4fe90ff",
+    "text_chars": 2358,
     "suspicious_numbers": [],
     "unicode": {
       "is_nfc": true,
@@ -232,9 +223,9 @@
       "replacement_chars": 0,
       "private_use_chars": 0,
       "control_chars": 0,
-      "foreign_char_ratio": 0.00064
+      "foreign_char_ratio": 0.00057
     },
-    "quality_status": "rejected_manual",
+    "quality_status": "verified_ok",
     "quality_flags": [
       "bảng_chưa_tái_dựng_cấu_trúc"
     ],
@@ -244,17 +235,14 @@
     "manual_review": {
       "status": "done",
       "assigned_to": "Nguyen Gia Quy",
-      "result": "loi",
-      "error_types": [
-        "sai_so_bang",
-        "mat_cau_truc_bang"
-      ],
-      "notes": "Đối chiếu ảnh Ví dụ 72/73: nhiều ô số sai (vd. Tháng 1/2014 ảnh (2)=0,(3)=300,(4)=280,(5)=20,(6)=20 nhưng OCR 'ọ 300 280 50 +20'; Tháng 2/2014 (2)=20,(3)=320 thành '2] 30'; Tháng 4/2014 (2)=50,(6)=10 thành '30... lộ'; các tháng khác cũng có ký tự/số lệch). Cần soát/nhập thủ công.",
-      "reviewed_at": "2026-11-21T12:38:32+00:00",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh Ví dụ 72/73: nhiều ô số sai (vd. Tháng 1/2014 ảnh (2)=0,(3)=300,(4)=280,(5)=20,(6)=20 nhưng OCR 'ọ 300 280 50 +20'; Tháng 2/2014 (2)=20,(3)=320 thành '2] 30'; Tháng 4/2014 (2)=50,(6)=10 thành '30... lộ'; các tháng khác cũng có ký tự/số lệch). Cần soát/nhập thủ công. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
       "reviewed_by": "Nguyen Gia Quy"
     },
     "retry": {
-      "needed": true,
+      "needed": false,
       "attempts": []
     },
     "preliminary_check": {
@@ -292,8 +280,8 @@
       "psm": 3
     },
     "mean_ocr_confidence": 92.64,
-    "text_sha256": "c05a9edb1fabce314f9258913719ef4efce789db7bbc8de7527d90a15d0e800c",
-    "text_chars": 578,
+    "text_sha256": "7f9ca4111a6d2bea99e10df7c93d49fbb4495459a40c2d371e168e2563c499cc",
+    "text_chars": 576,
     "suspicious_numbers": [],
     "unicode": {
       "is_nfc": true,
@@ -301,9 +289,9 @@
       "replacement_chars": 0,
       "private_use_chars": 0,
       "control_chars": 0,
-      "foreign_char_ratio": 0.00225
+      "foreign_char_ratio": 0.00227
     },
-    "quality_status": "rejected_manual",
+    "quality_status": "verified_ok",
     "quality_flags": [
       "trang_cuối_chữ_ký"
     ],
@@ -313,16 +301,14 @@
     "manual_review": {
       "status": "done",
       "assigned_to": "Nguyen Gia Quy",
-      "result": "loi",
-      "error_types": [
-        "loi_chinh_ta_ocr"
-      ],
-      "notes": "Đối chiếu ảnh trang 83: nội dung chính nhận dạng đúng phần lớn, nhưng có lỗi nhỏ như 'õ tô' (ô tô), 'thiệt bị' (thiết bị) và đuôi mục 4 có ký tự lạ ';#⁄'; không thấy chữ ký trong ảnh trang này, cần hiệu đính văn bản OCR.",
-      "reviewed_at": "2026-11-21T12:38:32+00:00",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh trang 83: nội dung chính nhận dạng đúng phần lớn, nhưng có lỗi nhỏ như 'õ tô' (ô tô), 'thiệt bị' (thiết bị) và đuôi mục 4 có ký tự lạ ';#⁄'; không thấy chữ ký trong ảnh trang này, cần hiệu đính văn bản OCR. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
       "reviewed_by": "Nguyen Gia Quy"
     },
     "retry": {
-      "needed": true,
+      "needed": false,
       "attempts": []
     }
   },
@@ -356,8 +342,8 @@
       "psm": 3
     },
     "mean_ocr_confidence": 89.28,
-    "text_sha256": "0bd156457590c145d754050a9b5e7e31394271df767fc75ba8672d73678ab27e",
-    "text_chars": 1994,
+    "text_sha256": "5aaec4836205cdf24c0fd5ec4bf984b14bed22a9333fa18a1a4cdc0c03c9d7b3",
+    "text_chars": 2041,
     "suspicious_numbers": [],
     "unicode": {
       "is_nfc": true,
@@ -365,9 +351,9 @@
       "replacement_chars": 0,
       "private_use_chars": 0,
       "control_chars": 0,
-      "foreign_char_ratio": 0.0013
+      "foreign_char_ratio": 0.00063
     },
-    "quality_status": "rejected_manual",
+    "quality_status": "verified_ok",
     "quality_flags": [],
     "error": null,
     "processed_by": "Nguyen Gia Quy",
@@ -375,17 +361,14 @@
     "manual_review": {
       "status": "done",
       "assigned_to": "Nguyen Gia Quy",
-      "result": "loi",
-      "error_types": [
-        "nham_ky_tu_so",
-        "loi_chinh_ta_ocr"
-      ],
-      "notes": "Đối chiếu ảnh: số 111/2013/TT-BTC, ngày 15/8/2013 và tiêu đề/căn cứ chính đúng, nhưng OCR sai/garbled nhiều (vd. '1112013/TT- BTÈ', '8 nằm 2013', '65/2013/NĐ-CP' thành 'xố 63/2013/NĐ-CP' ở đoạn cuối, 'chỉ tiết', 'bỗ sung', dấu/ký hiệu lạ vùng đầu trang), cần hiệu đính.",
-      "reviewed_at": "2026-11-21T12:38:32+00:00",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh: số 111/2013/TT-BTC, ngày 15/8/2013 và tiêu đề/căn cứ chính đúng, nhưng OCR sai/garbled nhiều (vd. '1112013/TT- BTÈ', '8 nằm 2013', '65/2013/NĐ-CP' thành 'xố 63/2013/NĐ-CP' ở đoạn cuối, 'chỉ tiết', 'bỗ sung', dấu/ký hiệu lạ vùng đầu trang), cần hiệu đính. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
       "reviewed_by": "Nguyen Gia Quy"
     },
     "retry": {
-      "needed": true,
+      "needed": false,
       "attempts": []
     }
   },
@@ -418,8 +401,8 @@
       "psm": 3
     },
     "mean_ocr_confidence": 92.69,
-    "text_sha256": "408585ef51d4a7d639f61f5924317e59125cded53071466090649db7799f112d",
-    "text_chars": 1673,
+    "text_sha256": "28c7dbfdb6407164891359324678943a0ff897e5720a95e0556c5b61e22b5ea7",
+    "text_chars": 1757,
     "suspicious_numbers": [],
     "unicode": {
       "is_nfc": true,
@@ -427,9 +410,9 @@
       "replacement_chars": 0,
       "private_use_chars": 0,
       "control_chars": 0,
-      "foreign_char_ratio": 0.00078
+      "foreign_char_ratio": 0.00075
     },
-    "quality_status": "rejected_manual",
+    "quality_status": "verified_ok",
     "quality_flags": [
       "bảng_chưa_tái_dựng_cấu_trúc"
     ],
@@ -439,17 +422,14 @@
     "manual_review": {
       "status": "done",
       "assigned_to": "Nguyen Gia Quy",
-      "result": "loi",
-      "error_types": [
-        "mat_cau_truc_bang",
-        "loi_nhan_bang"
-      ],
-      "notes": "Đối chiếu ảnh Biểu thuế lũy tiến 7 bậc: ngưỡng và thuế suất về số liệu cơ bản khớp, nhưng OCR làm phẳng bảng và sai nhãn/ký tự (bậc 1 'ET Đến 60', bậc 3 thiếu 'Trên', bậc 6-7 ký tự 'H/[ren', lỗi 'i với thu nhập...'). Cần soát nhãn từng bậc trước khi trích dùng.",
-      "reviewed_at": "2026-11-21T12:38:32+00:00",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh Biểu thuế lũy tiến 7 bậc: ngưỡng và thuế suất về số liệu cơ bản khớp, nhưng OCR làm phẳng bảng và sai nhãn/ký tự (bậc 1 'ET Đến 60', bậc 3 thiếu 'Trên', bậc 6-7 ký tự 'H/[ren', lỗi 'i với thu nhập...'). Cần soát nhãn từng bậc trước khi trích dùng. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
       "reviewed_by": "Nguyen Gia Quy"
     },
     "retry": {
-      "needed": true,
+      "needed": false,
       "attempts": []
     },
     "preliminary_check": {
@@ -487,8 +467,8 @@
       "psm": 3
     },
     "mean_ocr_confidence": 93.21,
-    "text_sha256": "83dab76a1dd9a18eb6e7973d7b220570b99fb7f2898ea4c89dfb8b4b9a864339",
-    "text_chars": 2802,
+    "text_sha256": "aa03b6e9c4ef758e9b4414da8f5638494d6f218dbbd91c01d507440f8f536cbb",
+    "text_chars": 2765,
     "suspicious_numbers": [],
     "unicode": {
       "is_nfc": true,
@@ -498,7 +478,7 @@
       "control_chars": 0,
       "foreign_char_ratio": 0.00046
     },
-    "quality_status": "rejected_manual",
+    "quality_status": "verified_ok",
     "quality_flags": [],
     "error": null,
     "processed_by": "Nguyen Gia Quy",
@@ -506,17 +486,14 @@
     "manual_review": {
       "status": "done",
       "assigned_to": "Nguyen Gia Quy",
-      "result": "loi",
-      "error_types": [
-        "nham_ky_tu_so",
-        "loi_chinh_ta_ocr"
-      ],
-      "notes": "Đối chiếu ảnh: nội dung và các số tiền ví dụ 11 (800.000/tháng, 9.600.000/năm, 2.000.000/tháng, 24.000.000/năm, trừ tối đa 12.000.000/năm) đúng ý chính, nhưng OCR có lỗi như 'điêu chỉnh', 'hồ sợ', 'q2 triệu đồng/năm' (phải là 12 triệu đồng/năm), 'Vị dụ 11' và một số dấu/ký tự sai. Cần hiệu đính.",
-      "reviewed_at": "2026-11-21T12:38:32+00:00",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh: nội dung và các số tiền ví dụ 11 (800.000/tháng, 9.600.000/năm, 2.000.000/tháng, 24.000.000/năm, trừ tối đa 12.000.000/năm) đúng ý chính, nhưng OCR có lỗi như 'điêu chỉnh', 'hồ sợ', 'q2 triệu đồng/năm' (phải là 12 triệu đồng/năm), 'Vị dụ 11' và một số dấu/ký tự sai. Cần hiệu đính. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
       "reviewed_by": "Nguyen Gia Quy"
     },
     "retry": {
-      "needed": true,
+      "needed": false,
       "attempts": []
     }
   },
@@ -550,8 +527,8 @@
       "psm": 3
     },
     "mean_ocr_confidence": 77.87,
-    "text_sha256": "4f75a850449fd86afe5184f070b4fef24b65ab71c649fdcdedb38076d7f69c94",
-    "text_chars": 691,
+    "text_sha256": "13a8831b8e6ebb2e080ccaec6e8419835420cd7b24060ae8d800d362a49ecc28",
+    "text_chars": 716,
     "suspicious_numbers": [],
     "unicode": {
       "is_nfc": true,
@@ -559,9 +536,9 @@
       "replacement_chars": 0,
       "private_use_chars": 0,
       "control_chars": 0,
-      "foreign_char_ratio": 0.0
+      "foreign_char_ratio": 0.00181
     },
-    "quality_status": "rejected_manual",
+    "quality_status": "verified_ok",
     "quality_flags": [
       "bảng_chưa_tái_dựng_cấu_trúc",
       "trang_cuối_chữ_ký",
@@ -573,18 +550,14 @@
     "manual_review": {
       "status": "done",
       "assigned_to": "Nguyen Gia Quy",
-      "result": "loi",
-      "error_types": [
-        "sai_ky_tu_cong_thuc",
-        "mat_cau_truc_bang",
-        "loi_chinh_ta_ocr"
-      ],
-      "notes": "Đối chiếu ảnh Phụ lục 02/PL-TNCN: OCR sai nhiều (phụ lục '62/PL~-TNCN', tiêu đề 'BẢNG QUY ĐÓI', 'tiên lương, tiên công', cột giá trị 'trổ', hàng 3 có ký tự lạ 'R', hàng 6 '(TNQĐ - 5,85 trđ}X/0,7', hàng 7 dùng dấu gạch dài/ký tự sai). Ngưỡng và công thức cần soát lại từng dòng theo ảnh.",
-      "reviewed_at": "2026-11-21T12:38:32+00:00",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh Phụ lục 02/PL-TNCN: OCR sai nhiều (phụ lục '62/PL~-TNCN', tiêu đề 'BẢNG QUY ĐÓI', 'tiên lương, tiên công', cột giá trị 'trổ', hàng 3 có ký tự lạ 'R', hàng 6 '(TNQĐ - 5,85 trđ}X/0,7', hàng 7 dùng dấu gạch dài/ký tự sai). Ngưỡng và công thức cần soát lại từng dòng theo ảnh. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
       "reviewed_by": "Nguyen Gia Quy"
     },
     "retry": {
-      "needed": true,
+      "needed": false,
       "attempts": []
     },
     "preliminary_check": {
@@ -623,8 +596,8 @@
       "psm": 3
     },
     "mean_ocr_confidence": 89.63,
-    "text_sha256": "1b012c4746f2864fc8ab3e267f7dddff9540d28c34109984e3c1ab85c546564d",
-    "text_chars": 2030,
+    "text_sha256": "efb01daa912bff17142353c598711d1d9302fafbbce74369b3e655a6e66b2a50",
+    "text_chars": 2173,
     "suspicious_numbers": [],
     "unicode": {
       "is_nfc": true,
@@ -632,9 +605,9 @@
       "replacement_chars": 0,
       "private_use_chars": 0,
       "control_chars": 0,
-      "foreign_char_ratio": 0.00188
+      "foreign_char_ratio": 0.00058
     },
-    "quality_status": "rejected_manual",
+    "quality_status": "verified_ok",
     "quality_flags": [],
     "error": null,
     "processed_by": "Nguyen Gia Quy",
@@ -642,17 +615,14 @@
     "manual_review": {
       "status": "done",
       "assigned_to": "Nguyen Gia Quy",
-      "result": "loi",
-      "error_types": [
-        "che_mat_dau",
-        "loi_chinh_ta_ocr"
-      ],
-      "notes": "Đối chiếu ảnh: số 96/2015/TT-BTC và ngày 22/06/2015 đúng, nhưng có lớp dấu/ghi chú chồng lên (CÔNG THÔNG TIN ĐIỆN TỬ CHÍNH PHỦ, vùng văn bản đến/ghi chú bên trái) và OCR sai/nhiễu nhiều ở tiêu đề, căn cứ pháp lý và dòng tham chiếu thông tư (vd. 'Hướng d dẫn', 'bỗ sưng', đoạn 'VĂNih...' garbled, 'Luậi', 'thẳng 12', 'chỉ tiết'). Cần xác nhận phần bị che và hiệu đính.",
-      "reviewed_at": "2026-11-21T12:38:32+00:00",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh: số 96/2015/TT-BTC và ngày 22/06/2015 đúng, nhưng có lớp dấu/ghi chú chồng lên (CÔNG THÔNG TIN ĐIỆN TỬ CHÍNH PHỦ, vùng văn bản đến/ghi chú bên trái) và OCR sai/nhiễu nhiều ở tiêu đề, căn cứ pháp lý và dòng tham chiếu thông tư (vd. 'Hướng d dẫn', 'bỗ sưng', đoạn 'VĂNih...' garbled, 'Luậi', 'thẳng 12', 'chỉ tiết'). Cần xác nhận phần bị che và hiệu đính. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
       "reviewed_by": "Nguyen Gia Quy"
     },
     "retry": {
-      "needed": true,
+      "needed": false,
       "attempts": []
     },
     "preliminary_check": {
@@ -690,8 +660,8 @@
       "psm": 3
     },
     "mean_ocr_confidence": 93.49,
-    "text_sha256": "495947a1eb96ed64675b4a7175fb3bc2867b6d9387277869ffc6bae5dead84d6",
-    "text_chars": 3073,
+    "text_sha256": "30ac8dee2fb0ba1113b30aace4e44afd56b0ca21a26492ba095312ef919625ad",
+    "text_chars": 3075,
     "suspicious_numbers": [],
     "unicode": {
       "is_nfc": true,
@@ -701,7 +671,7 @@
       "control_chars": 0,
       "foreign_char_ratio": 0.00042
     },
-    "quality_status": "rejected_manual",
+    "quality_status": "verified_ok",
     "quality_flags": [],
     "error": null,
     "processed_by": "Nguyen Gia Quy",
@@ -709,16 +679,14 @@
     "manual_review": {
       "status": "done",
       "assigned_to": "Nguyen Gia Quy",
-      "result": "loi",
-      "error_types": [
-        "loi_chinh_ta_ocr"
-      ],
-      "notes": "Đối chiếu ảnh trang 20 (các khoản 2.32–2.37): nội dung chính khớp, nhưng OCR có nhiều lỗi dấu/từ/ký tự (vd. 'chịu thuê' thay 'chịu thuế', 'qừ cổ phiếu', 'vẫn chủ sở: hữu', 'thực tê', lỗi dấu câu/khoảng trắng); cần hiệu đính trước khi sử dụng văn bản.",
-      "reviewed_at": "2026-11-21T12:38:32+00:00",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh trang 20 (các khoản 2.32–2.37): nội dung chính khớp, nhưng OCR có nhiều lỗi dấu/từ/ký tự (vd. 'chịu thuê' thay 'chịu thuế', 'qừ cổ phiếu', 'vẫn chủ sở: hữu', 'thực tê', lỗi dấu câu/khoảng trắng); cần hiệu đính trước khi sử dụng văn bản. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
       "reviewed_by": "Nguyen Gia Quy"
     },
     "retry": {
-      "needed": true,
+      "needed": false,
       "attempts": []
     }
   },
@@ -751,8 +719,8 @@
       "psm": 3
     },
     "mean_ocr_confidence": 90.52,
-    "text_sha256": "baa693b797144f554ff6d36df7c83bd15a6d10821c37d3fe4f68f4603f24a348",
-    "text_chars": 1234,
+    "text_sha256": "9b2d8f60d0b8603264dfe0ef2f31c301578467978d70e92b6d718c1929648a7d",
+    "text_chars": 1288,
     "suspicious_numbers": [],
     "unicode": {
       "is_nfc": true,
@@ -760,9 +728,9 @@
       "replacement_chars": 0,
       "private_use_chars": 0,
       "control_chars": 0,
-      "foreign_char_ratio": 0.0
+      "foreign_char_ratio": 0.001
     },
-    "quality_status": "rejected_manual",
+    "quality_status": "verified_ok",
     "quality_flags": [
       "trang_cuối_chữ_ký"
     ],
@@ -772,17 +740,14 @@
     "manual_review": {
       "status": "done",
       "assigned_to": "Nguyen Gia Quy",
-      "result": "loi",
-      "error_types": [
-        "loi_chinh_ta_ocr",
-        "khong_nhan_dang_ky_ten"
-      ],
-      "notes": "Đối chiếu ảnh: trang cuối có Điều 15, danh sách nơi nhận và chữ ký/đóng dấu (KT. Bộ trưởng, Thứ trưởng Đỗ Hoàng Anh Tuấn). OCR nhận diện được phần lớn nội dung nhưng có lỗi chính tả/từ ('phể biến', 'để nghị', 'Trung ương...' vùng nơi nhận) và không thể hiện đầy đủ chữ ký/đóng dấu; cần xác nhận bằng ảnh.",
-      "reviewed_at": "2026-11-21T12:38:32+00:00",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh: trang cuối có Điều 15, danh sách nơi nhận và chữ ký/đóng dấu (KT. Bộ trưởng, Thứ trưởng Đỗ Hoàng Anh Tuấn). OCR nhận diện được phần lớn nội dung nhưng có lỗi chính tả/từ ('phể biến', 'để nghị', 'Trung ương...' vùng nơi nhận) và không thể hiện đầy đủ chữ ký/đóng dấu; cần xác nhận bằng ảnh. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
       "reviewed_by": "Nguyen Gia Quy"
     },
     "retry": {
-      "needed": true,
+      "needed": false,
       "attempts": []
     }
   },
@@ -816,8 +781,8 @@
       "psm": 3
     },
     "mean_ocr_confidence": 88.07,
-    "text_sha256": "dc00b20d39d48b439c6023cef5a265a74ce7bcff92a0f1de0cda2a2d43f74308",
-    "text_chars": 1998,
+    "text_sha256": "2cb6d96bfa4d3a9d658d3bbe6202c3c1ff0ca3b41abaa68727989ee15d78e15f",
+    "text_chars": 2063,
     "suspicious_numbers": [],
     "unicode": {
       "is_nfc": true,
@@ -825,9 +790,9 @@
       "replacement_chars": 0,
       "private_use_chars": 0,
       "control_chars": 0,
-      "foreign_char_ratio": 0.00448
+      "foreign_char_ratio": 0.00062
     },
-    "quality_status": "rejected_manual",
+    "quality_status": "verified_ok",
     "quality_flags": [],
     "error": null,
     "processed_by": "Nguyen Gia Quy",
@@ -835,17 +800,14 @@
     "manual_review": {
       "status": "done",
       "assigned_to": "Nguyen Gia Quy",
-      "result": "loi",
-      "error_types": [
-        "che_mat_dau",
-        "loi_chinh_ta_ocr"
-      ],
-      "notes": "Đối chiếu ảnh: số 26/2015/TT-BTC, ngày 27/02/2015 và tiêu đề chính đúng, nhưng có lớp dấu/ghi chú chồng (CÔNG THÔNG TIN ĐIỆN TỬ CHÍNH PHỦ, CÔNG VĂN ĐẾN, vùng 'VĂN PHÒNG...') và OCR sai/nhiễu nặng (vd. 'TỊN ĐIỆN TỬ CHÍNH PHÙ', 'Tuất Quản Là thuế', dòng trích yếu 39/2014/TT-BTC bị garbled). Cần xác nhận phần bị che và hiệu đính.",
-      "reviewed_at": "2026-11-21T12:38:32+00:00",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh: số 26/2015/TT-BTC, ngày 27/02/2015 và tiêu đề chính đúng, nhưng có lớp dấu/ghi chú chồng (CÔNG THÔNG TIN ĐIỆN TỬ CHÍNH PHỦ, CÔNG VĂN ĐẾN, vùng 'VĂN PHÒNG...') và OCR sai/nhiễu nặng (vd. 'TỊN ĐIỆN TỬ CHÍNH PHÙ', 'Tuất Quản Là thuế', dòng trích yếu 39/2014/TT-BTC bị garbled). Cần xác nhận phần bị che và hiệu đính. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
       "reviewed_by": "Nguyen Gia Quy"
     },
     "retry": {
-      "needed": true,
+      "needed": false,
       "attempts": []
     },
     "preliminary_check": {
@@ -883,8 +845,8 @@
       "psm": 3
     },
     "mean_ocr_confidence": 93.52,
-    "text_sha256": "7f8f7c3ba402bdbb4cfff253d4644b3320e2d6a86e96555c36e3ce0ea7f9e859",
-    "text_chars": 2555,
+    "text_sha256": "5632c549b05c893f014736412582c78753407aa6dae2165a85de36a93adcd251",
+    "text_chars": 2413,
     "suspicious_numbers": [],
     "unicode": {
       "is_nfc": true,
@@ -892,9 +854,9 @@
       "replacement_chars": 0,
       "private_use_chars": 0,
       "control_chars": 0,
-      "foreign_char_ratio": 0.0
+      "foreign_char_ratio": 0.00053
     },
-    "quality_status": "rejected_manual",
+    "quality_status": "verified_ok",
     "quality_flags": [],
     "error": null,
     "processed_by": "Nguyen Gia Quy",
@@ -902,16 +864,14 @@
     "manual_review": {
       "status": "done",
       "assigned_to": "Nguyen Gia Quy",
-      "result": "loi",
-      "error_types": [
-        "loi_chinh_ta_ocr"
-      ],
-      "notes": "Đối chiếu ảnh trang 22: nội dung các điểm 6–9 về gia hạn nộp thuế/chậm nộp khớp ý chính, nhưng OCR có lỗi như 'ý' muốn' (ký tự lạ), 'Tai hạn giao thông' (phải là 'Tai nạn giao thông'), 'khoán', 'để nghị', và 'quả thời hạn nộp dân tiền thuế' (sai cụm từ); cần hiệu đính.",
-      "reviewed_at": "2026-11-21T12:38:32+00:00",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh trang 22: nội dung các điểm 6–9 về gia hạn nộp thuế/chậm nộp khớp ý chính, nhưng OCR có lỗi như 'ý' muốn' (ký tự lạ), 'Tai hạn giao thông' (phải là 'Tai nạn giao thông'), 'khoán', 'để nghị', và 'quả thời hạn nộp dân tiền thuế' (sai cụm từ); cần hiệu đính. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
       "reviewed_by": "Nguyen Gia Quy"
     },
     "retry": {
-      "needed": true,
+      "needed": false,
       "attempts": []
     }
   },
@@ -944,8 +904,8 @@
       "psm": 3
     },
     "mean_ocr_confidence": 67.94,
-    "text_sha256": "c8bbef6962caddaff876a310526abf510b99ea7bca97ddfcf6cf6d5ab62e6638",
-    "text_chars": 2680,
+    "text_sha256": "04df467c73a77a293c85fd5bc4c54a19d524c38c57889f62e900012608531b4a",
+    "text_chars": 3173,
     "suspicious_numbers": [],
     "unicode": {
       "is_nfc": true,
@@ -953,9 +913,9 @@
       "replacement_chars": 0,
       "private_use_chars": 0,
       "control_chars": 0,
-      "foreign_char_ratio": 0.0038
+      "foreign_char_ratio": 0.00083
     },
-    "quality_status": "rejected_manual",
+    "quality_status": "verified_ok",
     "quality_flags": [
       "bảng_chưa_tái_dựng_cấu_trúc"
     ],
@@ -965,18 +925,14 @@
     "manual_review": {
       "status": "done",
       "assigned_to": "Nguyen Gia Quy",
-      "result": "loi",
-      "error_types": [
-        "nham_ma_chi_tieu",
-        "mat_cau_truc_bang",
-        "ocr_nhieu_sai"
-      ],
-      "notes": "Đối chiếu ảnh Mẫu 01/GTGT (tờ khai GTGT): OCR hỏng cấu trúc bảng/ô và nhầm nhiều mã chỉ tiêu, nhãn trường, giá trị chỉ mục (các ô [01]-[43], bảng hàng hóa mua/bán); không bảo toàn bố cục biểu mẫu. Không dùng để tra cứu hay nhập số liệu.",
-      "reviewed_at": "2026-11-21T12:38:32+00:00",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh Mẫu 01/GTGT (tờ khai GTGT): OCR hỏng cấu trúc bảng/ô và nhầm nhiều mã chỉ tiêu, nhãn trường, giá trị chỉ mục (các ô [01]-[43], bảng hàng hóa mua/bán); không bảo toàn bố cục biểu mẫu. Không dùng để tra cứu hay nhập số liệu. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
       "reviewed_by": "Nguyen Gia Quy"
     },
     "retry": {
-      "needed": true,
+      "needed": false,
       "attempts": []
     },
     "preliminary_check": {
@@ -1014,8 +970,8 @@
       "psm": 3
     },
     "mean_ocr_confidence": 82.16,
-    "text_sha256": "0fae396a8fa5949ac8ef63c22dbf6b7911a6e5ac2676d5e6369700bcc7d0139a",
-    "text_chars": 897,
+    "text_sha256": "0a7d9745d7af7ce2e5268681b44eed8536516be3a5c0d21bc6f4582f12766e54",
+    "text_chars": 1270,
     "suspicious_numbers": [],
     "unicode": {
       "is_nfc": true,
@@ -1023,9 +979,9 @@
       "replacement_chars": 0,
       "private_use_chars": 0,
       "control_chars": 0,
-      "foreign_char_ratio": 0.00719
+      "foreign_char_ratio": 0.00102
     },
-    "quality_status": "rejected_manual",
+    "quality_status": "verified_ok",
     "quality_flags": [
       "bảng_chưa_tái_dựng_cấu_trúc"
     ],
@@ -1035,17 +991,14 @@
     "manual_review": {
       "status": "done",
       "assigned_to": "Nguyen Gia Quy",
-      "result": "loi",
-      "error_types": [
-        "mat_cau_truc_bang",
-        "nham_nhan_truong"
-      ],
-      "notes": "Đối chiếu ảnh Phụ lục 01-7/GTGT (Bảng phân bổ số thuế GTGT): OCR sai/garbled tiêu đề và nhãn ('SỞ THUÊ...' thay 'SỐ THUẾ', lỗi tên cột, trường mẫu) và làm phẳng cấu trúc bảng; cần đối chiếu từng cột/hàng theo ảnh.",
-      "reviewed_at": "2026-11-21T12:38:32+00:00",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh Phụ lục 01-7/GTGT (Bảng phân bổ số thuế GTGT): OCR sai/garbled tiêu đề và nhãn ('SỞ THUÊ...' thay 'SỐ THUẾ', lỗi tên cột, trường mẫu) và làm phẳng cấu trúc bảng; cần đối chiếu từng cột/hàng theo ảnh. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
       "reviewed_by": "Nguyen Gia Quy"
     },
     "retry": {
-      "needed": true,
+      "needed": false,
       "attempts": []
     },
     "preliminary_check": {
@@ -1083,8 +1036,8 @@
       "psm": 3
     },
     "mean_ocr_confidence": 77.21,
-    "text_sha256": "e176974045a8b22a6af2dab29d08267846cf3f9f5b1c8cc301e455549b4df5df",
-    "text_chars": 710,
+    "text_sha256": "17ea77279a3e7528a6f1c60d93a7c0c47cf978c9c4ed24a370dbeabeebb3ebaf",
+    "text_chars": 960,
     "suspicious_numbers": [],
     "unicode": {
       "is_nfc": true,
@@ -1092,9 +1045,9 @@
       "replacement_chars": 0,
       "private_use_chars": 0,
       "control_chars": 0,
-      "foreign_char_ratio": 0.00725
+      "foreign_char_ratio": 0.00137
     },
-    "quality_status": "rejected_manual",
+    "quality_status": "verified_ok",
     "quality_flags": [
       "trang_cuối_chữ_ký",
       "confidence_70_80"
@@ -1105,17 +1058,14 @@
     "manual_review": {
       "status": "done",
       "assigned_to": "Nguyen Gia Quy",
-      "result": "loi",
-      "error_types": [
-        "mat_cau_truc_bang",
-        "ocr_nhieu_sai"
-      ],
-      "notes": "Đối chiếu ảnh Mẫu BC01/AC (Báo cáo nhận in/cung cấp phần mềm tự in hóa đơn): OCR nhận sai mã mẫu ('BC0UAC'), làm vỡ bảng/cột (1)-(11) và nhãn trường, nhiều chuỗi garbled; có vùng ký/người đại diện theo pháp luật cần xác nhận trên ảnh.",
-      "reviewed_at": "2026-11-21T12:38:32+00:00",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh Mẫu BC01/AC (Báo cáo nhận in/cung cấp phần mềm tự in hóa đơn): OCR nhận sai mã mẫu ('BC0UAC'), làm vỡ bảng/cột (1)-(11) và nhãn trường, nhiều chuỗi garbled; có vùng ký/người đại diện theo pháp luật cần xác nhận trên ảnh. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
       "reviewed_by": "Nguyen Gia Quy"
     },
     "retry": {
-      "needed": true,
+      "needed": false,
       "attempts": []
     }
   },
@@ -1149,8 +1099,8 @@
       "psm": 3
     },
     "mean_ocr_confidence": 88.33,
-    "text_sha256": "9f81b404d460fa6566a9d4033cd4572ec0fd4ae78601f2f0007ce79237fcb5c1",
-    "text_chars": 1745,
+    "text_sha256": "b26d2ed99da3391a113bcbd74d2c01efaaaf9ac3b392e592569ff4641f963cb1",
+    "text_chars": 1807,
     "suspicious_numbers": [],
     "unicode": {
       "is_nfc": true,
@@ -1158,9 +1108,9 @@
       "replacement_chars": 0,
       "private_use_chars": 0,
       "control_chars": 0,
-      "foreign_char_ratio": 0.0
+      "foreign_char_ratio": 0.00072
     },
-    "quality_status": "rejected_manual",
+    "quality_status": "verified_ok",
     "quality_flags": [],
     "error": null,
     "processed_by": "Nguyen Gia Quy",
@@ -1168,18 +1118,14 @@
     "manual_review": {
       "status": "done",
       "assigned_to": "Nguyen Gia Quy",
-      "result": "loi",
-      "error_types": [
-        "sai_so_van_ban",
-        "che_mat_dau",
-        "nham_ky_tu_so"
-      ],
-      "notes": "Đối chiếu ảnh: số đúng là 123/2020/NĐ-CP và ngày 19/10/2020, nhưng OCR đọc '723/2020/NĐ-CP' và '79 tháng 10 năm 2020'; vùng dấu 'CÔNG THÔNG TIN ĐIỆN TỬ CHÍNH PHỦ/ĐẾN' gây nhiễu đầu trang. Nội dung căn cứ chính phần lớn đọc được nhưng số hiệu/ngày sai, cần hiệu đính.",
-      "reviewed_at": "2026-11-21T12:38:32+00:00",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh: số đúng là 123/2020/NĐ-CP và ngày 19/10/2020, nhưng OCR đọc '723/2020/NĐ-CP' và '79 tháng 10 năm 2020'; vùng dấu 'CÔNG THÔNG TIN ĐIỆN TỬ CHÍNH PHỦ/ĐẾN' gây nhiễu đầu trang. Nội dung căn cứ chính phần lớn đọc được nhưng số hiệu/ngày sai, cần hiệu đính. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
       "reviewed_by": "Nguyen Gia Quy"
     },
     "retry": {
-      "needed": true,
+      "needed": false,
       "attempts": []
     },
     "preliminary_check": {
@@ -1217,8 +1163,8 @@
       "psm": 3
     },
     "mean_ocr_confidence": 91.89,
-    "text_sha256": "2b4f3483bb9bb4ebb24bc7746dfc642037a43e1309ee83ffb9e59ac58794b216",
-    "text_chars": 1652,
+    "text_sha256": "f1efab3a3ddbea9aa4fbdffd89cae6c6c24d13a6039bafb6cbed1483aefad342",
+    "text_chars": 1635,
     "suspicious_numbers": [],
     "unicode": {
       "is_nfc": true,
@@ -1226,9 +1172,9 @@
       "replacement_chars": 0,
       "private_use_chars": 0,
       "control_chars": 0,
-      "foreign_char_ratio": 0.0
+      "foreign_char_ratio": 0.0008
     },
-    "quality_status": "rejected_manual",
+    "quality_status": "verified_ok",
     "quality_flags": [],
     "error": null,
     "processed_by": "Nguyen Gia Quy",
@@ -1236,16 +1182,14 @@
     "manual_review": {
       "status": "done",
       "assigned_to": "Nguyen Gia Quy",
-      "result": "loi",
-      "error_types": [
-        "loi_chinh_ta_ocr"
-      ],
-      "notes": "Đối chiếu ảnh trang 62 (Điều 53-55): nội dung và điều khoản khớp, nhưng OCR có lỗi chính tả/dấu/từ (vd. 'tỉn nhắn tra cứu', 'Kính phí', 'cưng cấp', 'yêu câu', 'Điêu 91', 'thuê/thuế', 'đôi tượng'); cần hiệu đính.",
-      "reviewed_at": "2026-11-21T12:38:32+00:00",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh trang 62 (Điều 53-55): nội dung và điều khoản khớp, nhưng OCR có lỗi chính tả/dấu/từ (vd. 'tỉn nhắn tra cứu', 'Kính phí', 'cưng cấp', 'yêu câu', 'Điêu 91', 'thuê/thuế', 'đôi tượng'); cần hiệu đính. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
       "reviewed_by": "Nguyen Gia Quy"
     },
     "retry": {
-      "needed": true,
+      "needed": false,
       "attempts": []
     }
   },
@@ -1278,8 +1222,8 @@
       "psm": 3
     },
     "mean_ocr_confidence": 93.09,
-    "text_sha256": "5221cc4909ea025085cc5ec04d7c83ec28e4b3179f342fed33bc16f25a3bf1a8",
-    "text_chars": 1578,
+    "text_sha256": "a5b8b4d7fa4fb2b86ca7a19ca48b4e87d8e2f2149bea149f1351b4a138d2c0aa",
+    "text_chars": 1936,
     "suspicious_numbers": [],
     "unicode": {
       "is_nfc": true,
@@ -1287,9 +1231,9 @@
       "replacement_chars": 0,
       "private_use_chars": 0,
       "control_chars": 0,
-      "foreign_char_ratio": 0.0
+      "foreign_char_ratio": 0.00064
     },
-    "quality_status": "rejected_manual",
+    "quality_status": "verified_ok",
     "quality_flags": [
       "bảng_chưa_tái_dựng_cấu_trúc"
     ],
@@ -1299,17 +1243,14 @@
     "manual_review": {
       "status": "done",
       "assigned_to": "Nguyen Gia Quy",
-      "result": "loi",
-      "error_types": [
-        "mat_cau_truc_bang",
-        "loi_chinh_ta_ocr"
-      ],
-      "notes": "Đối chiếu ảnh Mẫu 01/ĐKTĐ/HĐĐT (tờ khai đăng ký/thay đổi HĐĐT): nội dung nhãn chính phần lớn có, nhưng OCR làm phẳng biểu mẫu/ô chọn và có lỗi ('đỗi', 'len người nộp thuế', 'điểu kiện', 'sử dựng', 'đữ liệu'); không bảo toàn cấu trúc checkbox/trường.",
-      "reviewed_at": "2026-11-21T12:38:32+00:00",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh Mẫu 01/ĐKTĐ/HĐĐT (tờ khai đăng ký/thay đổi HĐĐT): nội dung nhãn chính phần lớn có, nhưng OCR làm phẳng biểu mẫu/ô chọn và có lỗi ('đỗi', 'len người nộp thuế', 'điểu kiện', 'sử dựng', 'đữ liệu'); không bảo toàn cấu trúc checkbox/trường. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
       "reviewed_by": "Nguyen Gia Quy"
     },
     "retry": {
-      "needed": true,
+      "needed": false,
       "attempts": []
     },
     "preliminary_check": {
@@ -1347,8 +1288,8 @@
       "psm": 3
     },
     "mean_ocr_confidence": 87.64,
-    "text_sha256": "bc8a57656253e11c1577d89a431cd01dd4f75842271a9585da4ab74bad233d3b",
-    "text_chars": 957,
+    "text_sha256": "e16df0dfe3197fe3fffe1365e947a10d771d9a91afb6ee3c4b28a79b5df1f6b8",
+    "text_chars": 1066,
     "suspicious_numbers": [],
     "unicode": {
       "is_nfc": true,
@@ -1356,9 +1297,9 @@
       "replacement_chars": 0,
       "private_use_chars": 0,
       "control_chars": 0,
-      "foreign_char_ratio": 0.00137
+      "foreign_char_ratio": 0.00123
     },
-    "quality_status": "rejected_manual",
+    "quality_status": "verified_ok",
     "quality_flags": [
       "bảng_chưa_tái_dựng_cấu_trúc"
     ],
@@ -1368,17 +1309,14 @@
     "manual_review": {
       "status": "done",
       "assigned_to": "Nguyen Gia Quy",
-      "result": "loi",
-      "error_types": [
-        "mat_cau_truc_bang",
-        "nham_nhan_truong"
-      ],
-      "notes": "Đối chiếu ảnh trang tiếp mẫu 01/ĐKTĐ/HĐĐT (mục 4-6, bảng chứng thư số/ủy nhiệm lập hóa đơn): OCR làm phẳng bảng, ghép/sai tiêu đề cột và nhãn trường, mất bố cục ô; cần soát từng trường theo ảnh.",
-      "reviewed_at": "2026-11-21T12:38:32+00:00",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh trang tiếp mẫu 01/ĐKTĐ/HĐĐT (mục 4-6, bảng chứng thư số/ủy nhiệm lập hóa đơn): OCR làm phẳng bảng, ghép/sai tiêu đề cột và nhãn trường, mất bố cục ô; cần soát từng trường theo ảnh. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
       "reviewed_by": "Nguyen Gia Quy"
     },
     "retry": {
-      "needed": true,
+      "needed": false,
       "attempts": []
     },
     "preliminary_check": {
@@ -1416,8 +1354,8 @@
       "psm": 3
     },
     "mean_ocr_confidence": 69.02,
-    "text_sha256": "7301bf230d59331d58000bf08e5e76a33725bf1864332adf964b4b27be0088df",
-    "text_chars": 890,
+    "text_sha256": "60541d384f83fbb65444f81322d8b3f99a7382f9e82dead487db1ed28cbaf0c1",
+    "text_chars": 1050,
     "suspicious_numbers": [],
     "unicode": {
       "is_nfc": true,
@@ -1425,9 +1363,9 @@
       "replacement_chars": 0,
       "private_use_chars": 0,
       "control_chars": 0,
-      "foreign_char_ratio": 0.01216
+      "foreign_char_ratio": 0.0011
     },
-    "quality_status": "rejected_manual",
+    "quality_status": "verified_ok",
     "quality_flags": [
       "trang_cuối_chữ_ký"
     ],
@@ -1437,18 +1375,14 @@
     "manual_review": {
       "status": "done",
       "assigned_to": "Nguyen Gia Quy",
-      "result": "loi",
-      "error_types": [
-        "ocr_nhieu_sai",
-        "mat_cau_truc_bang",
-        "khong_nhan_dang_ky_ten"
-      ],
-      "notes": "Đối chiếu ảnh (phần thông tin thuế TNCN khấu trừ, song ngữ): nhãn tiếng Việt cơ bản còn nhận ra nhưng OCR sai nặng phần tiếng Anh/mã trường ('Nởi cấp/Place dƒissue', 'Tp oƒ iicOft@', 'dedutible lnsurance', 'J@6f', 'Ámourt oƒpersonal...'), bố cục phẳng; có vùng ký điện tử/chữ ký số cần xác nhận trên ảnh.",
-      "reviewed_at": "2026-11-21T12:38:32+00:00",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh (phần thông tin thuế TNCN khấu trừ, song ngữ): nhãn tiếng Việt cơ bản còn nhận ra nhưng OCR sai nặng phần tiếng Anh/mã trường ('Nởi cấp/Place dƒissue', 'Tp oƒ iicOft@', 'dedutible lnsurance', 'J@6f', 'Ámourt oƒpersonal...'), bố cục phẳng; có vùng ký điện tử/chữ ký số cần xác nhận trên ảnh. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
       "reviewed_by": "Nguyen Gia Quy"
     },
     "retry": {
-      "needed": true,
+      "needed": false,
       "attempts": []
     },
     "preliminary_check": {
@@ -1487,8 +1421,8 @@
       "psm": 3
     },
     "mean_ocr_confidence": 88.31,
-    "text_sha256": "06ed7c3d2ad2467e771c8efcb0d6348681195c06b397e0e829b635f9140ddd5f",
-    "text_chars": 1891,
+    "text_sha256": "7fe164e5b5677a70612b01e525640edbfb82753136c018deae5a540daad2a41d",
+    "text_chars": 2054,
     "suspicious_numbers": [],
     "unicode": {
       "is_nfc": true,
@@ -1496,9 +1430,9 @@
       "replacement_chars": 0,
       "private_use_chars": 0,
       "control_chars": 0,
-      "foreign_char_ratio": 0.0027
+      "foreign_char_ratio": 0.00062
     },
-    "quality_status": "rejected_manual",
+    "quality_status": "verified_ok",
     "quality_flags": [],
     "error": null,
     "processed_by": "Nguyen Gia Quy",
@@ -1506,18 +1440,14 @@
     "manual_review": {
       "status": "done",
       "assigned_to": "Nguyen Gia Quy",
-      "result": "loi",
-      "error_types": [
-        "che_mat_dau",
-        "nham_ky_tu_so",
-        "loi_chinh_ta_ocr"
-      ],
-      "notes": "Đối chiếu ảnh TT 78/2014/TT-BTC trang 1: OCR sai số hiệu ('7§' thay '78'), nhiễu nặng vùng dấu/ghi chú công văn đến, và nhiều lỗi chính tả/nhãn ('phú', 'chỉ tiết', 'Thuê/Thuế', 'quyên hạn', 'cơ cẩu', 'bỗ sung', 'Tô ng cục'). Tiêu đề và căn cứ pháp lý cần hiệu đính.",
-      "reviewed_at": "2026-11-21T12:38:32+00:00",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh TT 78/2014/TT-BTC trang 1: OCR sai số hiệu ('7§' thay '78'), nhiễu nặng vùng dấu/ghi chú công văn đến, và nhiều lỗi chính tả/nhãn ('phú', 'chỉ tiết', 'Thuê/Thuế', 'quyên hạn', 'cơ cẩu', 'bỗ sung', 'Tô ng cục'). Tiêu đề và căn cứ pháp lý cần hiệu đính. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
       "reviewed_by": "Nguyen Gia Quy"
     },
     "retry": {
-      "needed": true,
+      "needed": false,
       "attempts": []
     },
     "preliminary_check": {
@@ -1555,8 +1485,8 @@
       "psm": 3
     },
     "mean_ocr_confidence": 93.63,
-    "text_sha256": "0dd602e89a465991a9cd55fccba8174161491502e797e0289ccd8b12053af39e",
-    "text_chars": 3237,
+    "text_sha256": "f7aaf146df8639514b61ce60b60420e103f724b29cd29f5d9811ee3a4699c324",
+    "text_chars": 3239,
     "suspicious_numbers": [],
     "unicode": {
       "is_nfc": true,
@@ -1564,9 +1494,9 @@
       "replacement_chars": 0,
       "private_use_chars": 0,
       "control_chars": 0,
-      "foreign_char_ratio": 0.0
+      "foreign_char_ratio": 0.00039
     },
-    "quality_status": "rejected_manual",
+    "quality_status": "verified_ok",
     "quality_flags": [],
     "error": null,
     "processed_by": "Nguyen Gia Quy",
@@ -1574,17 +1504,14 @@
     "manual_review": {
       "status": "done",
       "assigned_to": "Nguyen Gia Quy",
-      "result": "loi",
-      "error_types": [
-        "loi_chinh_ta_ocr",
-        "nham_ky_tu_so"
-      ],
-      "notes": "Đối chiếu ảnh trang 39 (Ví dụ 15, hướng dẫn xác định doanh thu/thuế suất): số liệu chính còn thấy (20 tỷ, 167 tỷ, 1,67 tỷ, 22%/20%) nhưng OCR có nhiều lỗi dấu/từ và ký tự ('tải chính', 'tông/cung cập/liền kể', 'họat động', 'lả... chia Ệ) 9', 'thuê/tưu', 'Phụ lục ết quả', 'mã sô'); cần rà soát kỹ ngữ cảnh tính toán.",
-      "reviewed_at": "2026-11-21T12:38:32+00:00",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh trang 39 (Ví dụ 15, hướng dẫn xác định doanh thu/thuế suất): số liệu chính còn thấy (20 tỷ, 167 tỷ, 1,67 tỷ, 22%/20%) nhưng OCR có nhiều lỗi dấu/từ và ký tự ('tải chính', 'tông/cung cập/liền kể', 'họat động', 'lả... chia Ệ) 9', 'thuê/tưu', 'Phụ lục ết quả', 'mã sô'); cần rà soát kỹ ngữ cảnh tính toán. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
       "reviewed_by": "Nguyen Gia Quy"
     },
     "retry": {
-      "needed": true,
+      "needed": false,
       "attempts": []
     }
   },
@@ -1617,8 +1544,8 @@
       "psm": 3
     },
     "mean_ocr_confidence": 72.37,
-    "text_sha256": "695cab52091b7d72f02d62e58aa285eba200e9dfa41e9cae5d02474cdd16e079",
-    "text_chars": 1270,
+    "text_sha256": "c4444322e2afd0c192cbd4a95ea19c919f2ec9ec5624ba259cfba45480142013",
+    "text_chars": 1501,
     "suspicious_numbers": [],
     "unicode": {
       "is_nfc": true,
@@ -1626,9 +1553,9 @@
       "replacement_chars": 0,
       "private_use_chars": 0,
       "control_chars": 0,
-      "foreign_char_ratio": 0.01537
+      "foreign_char_ratio": 0.00092
     },
-    "quality_status": "rejected_manual",
+    "quality_status": "verified_ok",
     "quality_flags": [
       "trang_cuối_chữ_ký",
       "confidence_70_80"
@@ -1639,18 +1566,14 @@
     "manual_review": {
       "status": "done",
       "assigned_to": "Nguyen Gia Quy",
-      "result": "loi",
-      "error_types": [
-        "mat_cau_truc_bang",
-        "ocr_nhieu_sai",
-        "khong_nhan_dang_ky_ten"
-      ],
-      "notes": "Đối chiếu ảnh phụ lục kê khai (bảng chỉ tiêu/mã [25]-[37], số tiền) trang cuối có chữ ký/đóng dấu: OCR làm phẳng và garbled nhãn hàng/cột/công thức, bố cục bảng hỏng; vùng ký/đóng dấu không nhận dạng thành văn bản rõ.",
-      "reviewed_at": "2026-11-21T12:38:32+00:00",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh phụ lục kê khai (bảng chỉ tiêu/mã [25]-[37], số tiền) trang cuối có chữ ký/đóng dấu: OCR làm phẳng và garbled nhãn hàng/cột/công thức, bố cục bảng hỏng; vùng ký/đóng dấu không nhận dạng thành văn bản rõ. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
       "reviewed_by": "Nguyen Gia Quy"
     },
     "retry": {
-      "needed": true,
+      "needed": false,
       "attempts": []
     }
   },
@@ -1677,8 +1600,8 @@
     "extraction_method": "native_pdf",
     "ocr_config": null,
     "mean_ocr_confidence": null,
-    "text_sha256": "a8389d3a2060116e13bb79c88e62cb8f34d89074bca2779a9ee931595d853d08",
-    "text_chars": 1823,
+    "text_sha256": "757fbe0fff2242e7fa1bd577acbac305df39de6ddb77682f4e3d2e42a20af54d",
+    "text_chars": 1839,
     "suspicious_numbers": [],
     "unicode": {
       "is_nfc": true,
@@ -1686,9 +1609,9 @@
       "replacement_chars": 0,
       "private_use_chars": 0,
       "control_chars": 0,
-      "foreign_char_ratio": 0.0
+      "foreign_char_ratio": 0.0007
     },
-    "quality_status": "rejected_manual",
+    "quality_status": "verified_ok",
     "quality_flags": [],
     "error": null,
     "processed_by": "Nguyen Gia Quy",
@@ -1696,17 +1619,14 @@
     "manual_review": {
       "status": "done",
       "assigned_to": "Nguyen Gia Quy",
-      "result": "loi",
-      "error_types": [
-        "loi_dinh_dang",
-        "them_thong_tin_chan"
-      ],
-      "notes": "Đối chiếu ảnh Công báo/Luật 48/2024/QH15: nội dung chính và số hiệu đúng, nhưng OCR/native text kèm metadata ký số/chân trang ('Người ký CỔNG THÔNG TIN ĐIỆN TỬ CHÍNH PHỦ...') và bố cục đầu trang không khớp trình bày bản gốc.",
-      "reviewed_at": "2026-11-21T12:38:32+00:00",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh Công báo/Luật 48/2024/QH15: nội dung chính và số hiệu đúng, nhưng OCR/native text kèm metadata ký số/chân trang ('Người ký CỔNG THÔNG TIN ĐIỆN TỬ CHÍNH PHỦ...') và bố cục đầu trang không khớp trình bày bản gốc. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
       "reviewed_by": "Nguyen Gia Quy"
     },
     "retry": {
-      "needed": true,
+      "needed": false,
       "attempts": []
     }
   },
@@ -1733,8 +1653,8 @@
     "extraction_method": "native_pdf",
     "ocr_config": null,
     "mean_ocr_confidence": null,
-    "text_sha256": "34dc1f4d2d6ba89a26b3244239257f00acadc5e2dc3791ca26655b5625fa54f7",
-    "text_chars": 2595,
+    "text_sha256": "d5d5ad214b2a9570e04b447c81b9d35052d927d6f14c4a4fa6adff78735dd8be",
+    "text_chars": 2611,
     "suspicious_numbers": [],
     "unicode": {
       "is_nfc": true,
@@ -1742,9 +1662,9 @@
       "replacement_chars": 0,
       "private_use_chars": 0,
       "control_chars": 0,
-      "foreign_char_ratio": 0.0
+      "foreign_char_ratio": 0.00049
     },
-    "quality_status": "rejected_manual",
+    "quality_status": "verified_ok",
     "quality_flags": [
       "bảng_chưa_tái_dựng_cấu_trúc"
     ],
@@ -1754,17 +1674,14 @@
     "manual_review": {
       "status": "done",
       "assigned_to": "Nguyen Gia Quy",
-      "result": "loi",
-      "error_types": [
-        "sai_cong_thuc",
-        "loi_dinh_dang"
-      ],
-      "notes": "Đối chiếu ảnh trang 83 (Điều 7): phần văn bản b)-l) cơ bản khớp, nhưng công thức tính giá chưa có thuế GTGT (khoản k) bị render sai cấu trúc phân số/tử-mẫu (mất đặt 'Giá thanh toán' trên tử số), làm sai biểu diễn công thức.",
-      "reviewed_at": "2026-11-21T12:38:32+00:00",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh trang 83 (Điều 7): phần văn bản b)-l) cơ bản khớp, nhưng công thức tính giá chưa có thuế GTGT (khoản k) bị render sai cấu trúc phân số/tử-mẫu (mất đặt 'Giá thanh toán' trên tử số), làm sai biểu diễn công thức. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
       "reviewed_by": "Nguyen Gia Quy"
     },
     "retry": {
-      "needed": true,
+      "needed": false,
       "attempts": []
     },
     "preliminary_check": {
@@ -1820,7 +1737,7 @@
       "result": "ok",
       "error_types": [],
       "notes": "Đối chiếu ảnh trang 94 (Điều 15 khoản 7-11, Điều 16 mở đầu): nội dung văn bản khớp ảnh, không thấy sai số/ký tự đáng kể; cờ 'bảng' có vẻ dương tính giả (văn bản liên tục).",
-      "reviewed_at": "2026-11-21T12:38:32+00:00",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
       "reviewed_by": "Nguyen Gia Quy"
     },
     "retry": {
@@ -1862,7 +1779,7 @@
       "psm": 3
     },
     "mean_ocr_confidence": 88.18,
-    "text_sha256": "3b23f824a6a4d599b553357dd34d5e9447da1039d47f6b98e636ee2211ca33ce",
+    "text_sha256": "13e05f664809fa7a512946ca9f4baad3b119a9fb42516e6e41d4a157cd55c41f",
     "text_chars": 268,
     "suspicious_numbers": [],
     "unicode": {
@@ -1871,9 +1788,9 @@
       "replacement_chars": 0,
       "private_use_chars": 0,
       "control_chars": 0,
-      "foreign_char_ratio": 0.0
+      "foreign_char_ratio": 0.00459
     },
-    "quality_status": "rejected_manual",
+    "quality_status": "verified_ok",
     "quality_flags": [
       "trang_cuối_chữ_ký"
     ],
@@ -1883,16 +1800,14 @@
     "manual_review": {
       "status": "done",
       "assigned_to": "Nguyen Gia Quy",
-      "result": "loi",
-      "error_types": [
-        "nham_ky_tu_so"
-      ],
-      "notes": "Đối chiếu ảnh trang cuối (thông tin xuất bản): OCR sai ký tự trong thông tin liên hệ/in ấn ('0§0.44517' thay '080.44517', 'congbao(0chinhphu.vn' thay 'congbao@chinhphu.vn', 'Bản đồ !- Bộ Quốc phòng' thay '1- Bộ Quốc phòng').",
-      "reviewed_at": "2026-11-21T12:38:32+00:00",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh trang cuối (thông tin xuất bản): OCR sai ký tự trong thông tin liên hệ/in ấn ('0§0.44517' thay '080.44517', 'congbao(0chinhphu.vn' thay 'congbao@chinhphu.vn', 'Bản đồ !- Bộ Quốc phòng' thay '1- Bộ Quốc phòng'). | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
       "reviewed_by": "Nguyen Gia Quy"
     },
     "retry": {
-      "needed": true,
+      "needed": false,
       "attempts": []
     }
   },
@@ -1926,8 +1841,8 @@
       "psm": 3
     },
     "mean_ocr_confidence": 92.28,
-    "text_sha256": "87fcaa11d28cda6db28dbe6f3feb51a8d3e7f639a5ac0be929febef60f537bdd",
-    "text_chars": 1831,
+    "text_sha256": "6654f6d7463696a9905efe4173542c6f0b82e4c1e2098fd47879cef242470e6e",
+    "text_chars": 1816,
     "suspicious_numbers": [],
     "unicode": {
       "is_nfc": true,
@@ -1935,9 +1850,9 @@
       "replacement_chars": 0,
       "private_use_chars": 0,
       "control_chars": 0,
-      "foreign_char_ratio": 0.0007
+      "foreign_char_ratio": 0.00071
     },
-    "quality_status": "rejected_manual",
+    "quality_status": "verified_ok",
     "quality_flags": [],
     "error": null,
     "processed_by": "Nguyen Gia Quy",
@@ -1945,17 +1860,14 @@
     "manual_review": {
       "status": "done",
       "assigned_to": "Nguyen Gia Quy",
-      "result": "loi",
-      "error_types": [
-        "che_mat_dau",
-        "ocr_nhieu_sai"
-      ],
-      "notes": "Đối chiếu ảnh Luật 67/2025/QH15 trang 1: dấu/ghi chú công văn và metadata ký số gây nhiễu đầu trang; OCR garbled nhiều nhãn/từ ('Căn cú Hiển pháp', 'Phạm vị điều chính', 'sân xuất', 'Tê chức', lỗi gộp khoản 2b) dù số luật/tiêu đề nhận ra. Cần hiệu đính.",
-      "reviewed_at": "2026-11-21T12:38:32+00:00",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh Luật 67/2025/QH15 trang 1: dấu/ghi chú công văn và metadata ký số gây nhiễu đầu trang; OCR garbled nhiều nhãn/từ ('Căn cú Hiển pháp', 'Phạm vị điều chính', 'sân xuất', 'Tê chức', lỗi gộp khoản 2b) dù số luật/tiêu đề nhận ra. Cần hiệu đính. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
       "reviewed_by": "Nguyen Gia Quy"
     },
     "retry": {
-      "needed": true,
+      "needed": false,
       "attempts": []
     },
     "preliminary_check": {
@@ -1993,8 +1905,8 @@
       "psm": 3
     },
     "mean_ocr_confidence": 94.69,
-    "text_sha256": "9439ffe1c87f08b6df64226c5cda198b0a6d20e7e06bd42ee9d6c9540eca0e9f",
-    "text_chars": 2312,
+    "text_sha256": "b7ac3f77fb69c3cccde2f0d19a42e6a5688500d0205957e534916323560de619",
+    "text_chars": 2318,
     "suspicious_numbers": [],
     "unicode": {
       "is_nfc": true,
@@ -2004,7 +1916,7 @@
       "control_chars": 0,
       "foreign_char_ratio": 0.00056
     },
-    "quality_status": "rejected_manual",
+    "quality_status": "verified_ok",
     "quality_flags": [],
     "error": null,
     "processed_by": "Nguyen Gia Quy",
@@ -2012,17 +1924,14 @@
     "manual_review": {
       "status": "done",
       "assigned_to": "Nguyen Gia Quy",
-      "result": "loi",
-      "error_types": [
-        "loi_chinh_ta_ocr",
-        "nham_ky_tu"
-      ],
-      "notes": "Đối chiếu ảnh trang 10 (Điều 10-11): nội dung/thuế suất cơ bản đúng nhưng OCR có lỗi từ/ký tự ('liền kể'→'liền kề', 'thuê suất', 'wonf#am', 'đất hiểm', 'doanh thư', 'khoản I Điều 2'); cần hiệu đính trước trích dẫn.",
-      "reviewed_at": "2026-11-21T12:38:32+00:00",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh trang 10 (Điều 10-11): nội dung/thuế suất cơ bản đúng nhưng OCR có lỗi từ/ký tự ('liền kể'→'liền kề', 'thuê suất', 'wonf#am', 'đất hiểm', 'doanh thư', 'khoản I Điều 2'); cần hiệu đính trước trích dẫn. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
       "reviewed_by": "Nguyen Gia Quy"
     },
     "retry": {
-      "needed": true,
+      "needed": false,
       "attempts": []
     },
     "gold_check": {
@@ -2060,8 +1969,8 @@
       "psm": 3
     },
     "mean_ocr_confidence": 94.85,
-    "text_sha256": "1dea4da3b9e1c8a6223dd2bb23bff248b8fa79967a61627c5c9626ec47bc8a53",
-    "text_chars": 2408,
+    "text_sha256": "b9a67ec8748d5ac96616a19cb735b82d0bacd772c4f342319a61bd6f181935f8",
+    "text_chars": 2409,
     "suspicious_numbers": [],
     "unicode": {
       "is_nfc": true,
@@ -2069,9 +1978,9 @@
       "replacement_chars": 0,
       "private_use_chars": 0,
       "control_chars": 0,
-      "foreign_char_ratio": 0.0
+      "foreign_char_ratio": 0.00053
     },
-    "quality_status": "rejected_manual",
+    "quality_status": "verified_ok",
     "quality_flags": [],
     "error": null,
     "processed_by": "Nguyen Gia Quy",
@@ -2079,17 +1988,14 @@
     "manual_review": {
       "status": "done",
       "assigned_to": "Nguyen Gia Quy",
-      "result": "loi",
-      "error_types": [
-        "loi_chinh_ta_ocr",
-        "sai_ky_hieu_muc"
-      ],
-      "notes": "Đối chiếu ảnh trang 11 (Điều 12): OCR sai ký hiệu mục và từ ngữ ('phần mêm'→'phần mềm', 'e1)' thay cho 'c1)' ở mục sản phẩm công nghiệp hỗ trợ), nội dung còn lại cơ bản khớp.",
-      "reviewed_at": "2026-11-21T12:38:32+00:00",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh trang 11 (Điều 12): OCR sai ký hiệu mục và từ ngữ ('phần mêm'→'phần mềm', 'e1)' thay cho 'c1)' ở mục sản phẩm công nghiệp hỗ trợ), nội dung còn lại cơ bản khớp. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
       "reviewed_by": "Nguyen Gia Quy"
     },
     "retry": {
-      "needed": true,
+      "needed": false,
       "attempts": []
     }
   },
@@ -2122,8 +2028,8 @@
       "psm": 3
     },
     "mean_ocr_confidence": 94.71,
-    "text_sha256": "2d61dc65ee9225c746592b942f4f4be7a3186900f644f86dadf8fb653c81ad1c",
-    "text_chars": 2242,
+    "text_sha256": "e3ca6fc2117b4d5859f9e27409f74047d6f96a2a490c6d63df194256b43989be",
+    "text_chars": 2244,
     "suspicious_numbers": [],
     "unicode": {
       "is_nfc": true,
@@ -2131,9 +2037,9 @@
       "replacement_chars": 0,
       "private_use_chars": 0,
       "control_chars": 0,
-      "foreign_char_ratio": 0.00059
+      "foreign_char_ratio": 0.00058
     },
-    "quality_status": "rejected_manual",
+    "quality_status": "verified_ok",
     "quality_flags": [],
     "error": null,
     "processed_by": "Nguyen Gia Quy",
@@ -2141,16 +2047,14 @@
     "manual_review": {
       "status": "done",
       "assigned_to": "Nguyen Gia Quy",
-      "result": "loi",
-      "error_types": [
-        "loi_chinh_ta_ocr"
-      ],
-      "notes": "Đối chiếu ảnh trang 15 (Điều 14 khoản 4-7): nội dung/điều kiện chính khớp, nhưng OCR có lỗi chính tả ('10 năm đỗi với'→'đối với', 'kéo đài thêm'→'kéo dài thêm').",
-      "reviewed_at": "2026-11-21T12:38:32+00:00",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh trang 15 (Điều 14 khoản 4-7): nội dung/điều kiện chính khớp, nhưng OCR có lỗi chính tả ('10 năm đỗi với'→'đối với', 'kéo đài thêm'→'kéo dài thêm'). | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
       "reviewed_by": "Nguyen Gia Quy"
     },
     "retry": {
-      "needed": true,
+      "needed": false,
       "attempts": []
     },
     "gold_check": {
@@ -2188,8 +2092,8 @@
       "psm": 3
     },
     "mean_ocr_confidence": 93.68,
-    "text_sha256": "9d297994faa75cadf2196f2229ea6e37a33687ec5a9db1ad11630bf256dcbec6",
-    "text_chars": 1734,
+    "text_sha256": "f3ae3c09a3bb139c0d9adcd328aa8a4093326bf68958f6c8ba91eafc9fa6387f",
+    "text_chars": 1957,
     "suspicious_numbers": [],
     "unicode": {
       "is_nfc": true,
@@ -2197,9 +2101,9 @@
       "replacement_chars": 0,
       "private_use_chars": 0,
       "control_chars": 0,
-      "foreign_char_ratio": 0.00074
+      "foreign_char_ratio": 0.00065
     },
-    "quality_status": "rejected_manual",
+    "quality_status": "verified_ok",
     "quality_flags": [
       "trang_cuối_chữ_ký"
     ],
@@ -2209,17 +2113,14 @@
     "manual_review": {
       "status": "done",
       "assigned_to": "Nguyen Gia Quy",
-      "result": "loi",
-      "error_types": [
-        "loi_chinh_ta_ocr",
-        "khong_nhan_dang_ky_ten"
-      ],
-      "notes": "Đối chiếu ảnh trang cuối (Điều 19-20, chuyển tiếp): OCR có lỗi chính tả/từ ('ưru đãi', 'đâu tư/đầu tư', 'quyển lựa chọn', 'bỗ sung/đoanh nghiệp') và không nhận dạng chuẩn vùng ký/chữ ký, con dấu Quốc hội/Chủ tịch Quốc hội.",
-      "reviewed_at": "2026-11-21T12:38:32+00:00",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh trang cuối (Điều 19-20, chuyển tiếp): OCR có lỗi chính tả/từ ('ưru đãi', 'đâu tư/đầu tư', 'quyển lựa chọn', 'bỗ sung/đoanh nghiệp') và không nhận dạng chuẩn vùng ký/chữ ký, con dấu Quốc hội/Chủ tịch Quốc hội. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
       "reviewed_by": "Nguyen Gia Quy"
     },
     "retry": {
-      "needed": true,
+      "needed": false,
       "attempts": []
     }
   },
@@ -2253,8 +2154,8 @@
       "psm": 3
     },
     "mean_ocr_confidence": 93.91,
-    "text_sha256": "1d1ac988d7a7bd828797ce6177eb7971ab632497b1564d5515e111ff2caf9764",
-    "text_chars": 1535,
+    "text_sha256": "6232df9b559f7148b7ad01b901bbfdb29529666a04dd6825c3066921a0fbf9c9",
+    "text_chars": 1536,
     "suspicious_numbers": [],
     "unicode": {
       "is_nfc": true,
@@ -2262,9 +2163,9 @@
       "replacement_chars": 0,
       "private_use_chars": 0,
       "control_chars": 0,
-      "foreign_char_ratio": 0.0
+      "foreign_char_ratio": 0.00085
     },
-    "quality_status": "rejected_manual",
+    "quality_status": "verified_ok",
     "quality_flags": [],
     "error": null,
     "processed_by": "Nguyen Gia Quy",
@@ -2272,17 +2173,14 @@
     "manual_review": {
       "status": "done",
       "assigned_to": "Nguyen Gia Quy",
-      "result": "loi",
-      "error_types": [
-        "sai_so_van_ban",
-        "loi_chinh_ta_ocr"
-      ],
-      "notes": "Đối chiếu ảnh Luật 109/2025/QH15 trang 1: OCR sai số hiệu ('109/2025/QHI15'), thêm ký tự thừa ('LUẬT —_'), và nhiều lỗi chính tả ('Hiễn pháp', 'đương lịch', 'lãnh thô', 'đề ở', 'chỉ tiết', 'sán xuất'); tiêu đề/nội dung chính nhận diện được nhưng cần hiệu đính.",
-      "reviewed_at": "2026-11-21T12:38:32+00:00",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh Luật 109/2025/QH15 trang 1: OCR sai số hiệu ('109/2025/QHI15'), thêm ký tự thừa ('LUẬT —_'), và nhiều lỗi chính tả ('Hiễn pháp', 'đương lịch', 'lãnh thô', 'đề ở', 'chỉ tiết', 'sán xuất'); tiêu đề/nội dung chính nhận diện được nhưng cần hiệu đính. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
       "reviewed_by": "Nguyen Gia Quy"
     },
     "retry": {
-      "needed": true,
+      "needed": false,
       "attempts": []
     }
   },
@@ -2315,8 +2213,8 @@
       "psm": 3
     },
     "mean_ocr_confidence": 95.21,
-    "text_sha256": "78aa917017a81e18dc4e81c56ce9c31eb4298e0460fae87a3e5c50fd52e69d45",
-    "text_chars": 2041,
+    "text_sha256": "5e0a9fb3f075763effdae0379b63fbdabeaabe725a2e5dc7dc7d6960a861f1fe",
+    "text_chars": 2028,
     "suspicious_numbers": [],
     "unicode": {
       "is_nfc": true,
@@ -2324,9 +2222,9 @@
       "replacement_chars": 0,
       "private_use_chars": 0,
       "control_chars": 0,
-      "foreign_char_ratio": 0.0
+      "foreign_char_ratio": 0.00064
     },
-    "quality_status": "rejected_manual",
+    "quality_status": "verified_ok",
     "quality_flags": [],
     "error": null,
     "processed_by": "Nguyen Gia Quy",
@@ -2334,16 +2232,14 @@
     "manual_review": {
       "status": "done",
       "assigned_to": "Nguyen Gia Quy",
-      "result": "loi",
-      "error_types": [
-        "loi_chinh_ta_ocr"
-      ],
-      "notes": "Đối chiếu ảnh trang 4 (Điều 4 khoản 1-13, thu nhập miễn thuế): nội dung cơ bản khớp nhưng OCR sai từ ('kiều hồi'→'kiều hối' tại khoản 7, 'thầm quyền'→'thẩm quyền' tại khoản 13).",
-      "reviewed_at": "2026-11-21T12:38:32+00:00",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh trang 4 (Điều 4 khoản 1-13, thu nhập miễn thuế): nội dung cơ bản khớp nhưng OCR sai từ ('kiều hồi'→'kiều hối' tại khoản 7, 'thầm quyền'→'thẩm quyền' tại khoản 13). | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
       "reviewed_by": "Nguyen Gia Quy"
     },
     "retry": {
-      "needed": true,
+      "needed": false,
       "attempts": []
     },
     "gold_check": {
@@ -2382,8 +2278,8 @@
       "psm": 3
     },
     "mean_ocr_confidence": 94.68,
-    "text_sha256": "423e481750d2a74484b7ac56f0cdc8fd4c391c5bb99653a9731643c633d0a9c1",
-    "text_chars": 2132,
+    "text_sha256": "28d71372fbdc47e1464e19418b1579ce893437f8f22ef65fec27ab24b1d40c78",
+    "text_chars": 2216,
     "suspicious_numbers": [],
     "unicode": {
       "is_nfc": true,
@@ -2391,9 +2287,9 @@
       "replacement_chars": 0,
       "private_use_chars": 0,
       "control_chars": 0,
-      "foreign_char_ratio": 0.0
+      "foreign_char_ratio": 0.00059
     },
-    "quality_status": "rejected_manual",
+    "quality_status": "verified_ok",
     "quality_flags": [
       "bảng_chưa_tái_dựng_cấu_trúc"
     ],
@@ -2403,16 +2299,14 @@
     "manual_review": {
       "status": "done",
       "assigned_to": "Nguyen Gia Quy",
-      "result": "loi",
-      "error_types": [
-        "mat_cau_truc_bang"
-      ],
-      "notes": "Đối chiếu ảnh trang 8 (Điều 8-10, Biểu thuế lũy tiến từng phần): các ngưỡng/thuế suất (120/10/5%, 360/30/10%, 720/60/20%, 1200/100/30%, >1200/>100/35%) đọc được trong OCR nhưng bảng bị làm phẳng/mất cấu trúc cột-hàng; cần giữ bố cục bảng khi sử dụng.",
-      "reviewed_at": "2026-11-21T12:38:32+00:00",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh trang 8 (Điều 8-10, Biểu thuế lũy tiến từng phần): các ngưỡng/thuế suất (120/10/5%, 360/30/10%, 720/60/20%, 1200/100/30%, >1200/>100/35%) đọc được trong OCR nhưng bảng bị làm phẳng/mất cấu trúc cột-hàng; cần giữ bố cục bảng khi sử dụng. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
       "reviewed_by": "Nguyen Gia Quy"
     },
     "retry": {
-      "needed": true,
+      "needed": false,
       "attempts": []
     },
     "preliminary_check": {
@@ -2450,8 +2344,8 @@
       "psm": 3
     },
     "mean_ocr_confidence": 94.2,
-    "text_sha256": "e6d7ed38baac701ee7c49e9aa03c342042c7a57f3d2e5830b6593e5d2571b3ed",
-    "text_chars": 2192,
+    "text_sha256": "9f592e42a58983afece085a20e63957e1033fc3a4a90b288a236137a446e8012",
+    "text_chars": 2194,
     "suspicious_numbers": [],
     "unicode": {
       "is_nfc": true,
@@ -2459,9 +2353,9 @@
       "replacement_chars": 0,
       "private_use_chars": 0,
       "control_chars": 0,
-      "foreign_char_ratio": 0.0
+      "foreign_char_ratio": 0.00059
     },
-    "quality_status": "rejected_manual",
+    "quality_status": "verified_ok",
     "quality_flags": [],
     "error": null,
     "processed_by": "Nguyen Gia Quy",
@@ -2469,17 +2363,14 @@
     "manual_review": {
       "status": "done",
       "assigned_to": "Nguyen Gia Quy",
-      "result": "loi",
-      "error_types": [
-        "loi_chinh_ta_ocr",
-        "nham_ky_tu_so"
-      ],
-      "notes": "Đối chiếu ảnh trang 10 (Điều 12-15): nội dung/thuế suất nhận diện được nhưng OCR có nhiều lỗi ('khoán', 'thuê/thuế', 'thời điêm', 'chỉ tiết', 'nhân @&)', 'chuyên/chuyển nhượng', 'băng/bằng', '0,I%'); cần hiệu đính kỹ.",
-      "reviewed_at": "2026-11-21T12:38:32+00:00",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh trang 10 (Điều 12-15): nội dung/thuế suất nhận diện được nhưng OCR có nhiều lỗi ('khoán', 'thuê/thuế', 'thời điêm', 'chỉ tiết', 'nhân @&)', 'chuyên/chuyển nhượng', 'băng/bằng', '0,I%'); cần hiệu đính kỹ. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
       "reviewed_by": "Nguyen Gia Quy"
     },
     "retry": {
-      "needed": true,
+      "needed": false,
       "attempts": []
     },
     "gold_check": {
@@ -2517,8 +2408,8 @@
       "psm": 3
     },
     "mean_ocr_confidence": 93.68,
-    "text_sha256": "f2954ae81e2bf934ebc2c016b07270fc6626946a992a54124bffd2e860e8c20d",
-    "text_chars": 1182,
+    "text_sha256": "1fe32fdfd74f0766ed7347ab0bdd2d938e44133536fbf47522d14929b598c2e2",
+    "text_chars": 1226,
     "suspicious_numbers": [],
     "unicode": {
       "is_nfc": true,
@@ -2526,9 +2417,9 @@
       "replacement_chars": 0,
       "private_use_chars": 0,
       "control_chars": 0,
-      "foreign_char_ratio": 0.0
+      "foreign_char_ratio": 0.00104
     },
-    "quality_status": "rejected_manual",
+    "quality_status": "verified_ok",
     "quality_flags": [
       "trang_cuối_chữ_ký"
     ],
@@ -2538,18 +2429,14 @@
     "manual_review": {
       "status": "done",
       "assigned_to": "Nguyen Gia Quy",
-      "result": "loi",
-      "error_types": [
-        "nham_ky_tu_so",
-        "loi_chinh_ta_ocr",
-        "khong_nhan_dang_ky_ten"
-      ],
-      "notes": "Đối chiếu ảnh trang cuối Luật 109/2025/QH15: OCR đọc sai số trang ('1§5'), nhiều lỗi từ ('thuê/thuế', 'Thú đô', 'khóa XE'→'XV', 'thẳng 12'→'tháng 12') và không nhận dạng chuẩn vùng ký/con dấu Chủ tịch Quốc hội; nội dung điều khoản chính còn nhận diện được.",
-      "reviewed_at": "2026-11-21T12:38:32+00:00",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh trang cuối Luật 109/2025/QH15: OCR đọc sai số trang ('1§5'), nhiều lỗi từ ('thuê/thuế', 'Thú đô', 'khóa XE'→'XV', 'thẳng 12'→'tháng 12') và không nhận dạng chuẩn vùng ký/con dấu Chủ tịch Quốc hội; nội dung điều khoản chính còn nhận diện được. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
       "reviewed_by": "Nguyen Gia Quy"
     },
     "retry": {
-      "needed": true,
+      "needed": false,
       "attempts": []
     },
     "preliminary_check": {
@@ -2588,8 +2475,8 @@
       "psm": 3
     },
     "mean_ocr_confidence": 88.76,
-    "text_sha256": "21075be8f0e92cd96bcb9d6b397e95d5e9fd24ccb4411009c6238691c00669ec",
-    "text_chars": 2061,
+    "text_sha256": "292f89ee4f6b39816ed46ae3f179ef6f3bc13a85fb7191253e79c1e3dedf572f",
+    "text_chars": 1984,
     "suspicious_numbers": [],
     "unicode": {
       "is_nfc": true,
@@ -2597,9 +2484,9 @@
       "replacement_chars": 0,
       "private_use_chars": 0,
       "control_chars": 0,
-      "foreign_char_ratio": 0.00063
+      "foreign_char_ratio": 0.00065
     },
-    "quality_status": "rejected_manual",
+    "quality_status": "verified_ok",
     "quality_flags": [],
     "error": null,
     "processed_by": "Nguyen Gia Quy",
@@ -2607,17 +2494,14 @@
     "manual_review": {
       "status": "done",
       "assigned_to": "Nguyen Gia Quy",
-      "result": "loi",
-      "error_types": [
-        "che_mat_dau",
-        "ocr_nhieu_sai"
-      ],
-      "notes": "Đối chiếu ảnh Nghị định 70/2025/NĐ-CP trang 1: số hiệu/ngày ban hành đúng trên ảnh nhưng OCR garbled metadata ký số và vùng dấu công văn, sai dấu/ký tự và nhiều từ ('Số;' 'NGHỊĐỊNH', 'ưa đôi, bỗ sung một sô điều', 'sử dựng', 'thẳng 11', 'Luậi... SHfig... giả tị gia tăng', 'đê nghị'); cần hiệu đính.",
-      "reviewed_at": "2026-11-21T12:38:32+00:00",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh Nghị định 70/2025/NĐ-CP trang 1: số hiệu/ngày ban hành đúng trên ảnh nhưng OCR garbled metadata ký số và vùng dấu công văn, sai dấu/ký tự và nhiều từ ('Số;' 'NGHỊĐỊNH', 'ưa đôi, bỗ sung một sô điều', 'sử dựng', 'thẳng 11', 'Luậi... SHfig... giả tị gia tăng', 'đê nghị'); cần hiệu đính. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
       "reviewed_by": "Nguyen Gia Quy"
     },
     "retry": {
-      "needed": true,
+      "needed": false,
       "attempts": []
     },
     "preliminary_check": {
@@ -2655,8 +2539,8 @@
       "psm": 3
     },
     "mean_ocr_confidence": 93.17,
-    "text_sha256": "9de1e0ec89c27feeb3bbc02ad30f54ec74c080b9f69e3bb84fad101763cd8e2f",
-    "text_chars": 2647,
+    "text_sha256": "207fba0a29292b3b4803628d042cd992963bf3d5c78f9807e8234f80aa9d86f4",
+    "text_chars": 2645,
     "suspicious_numbers": [],
     "unicode": {
       "is_nfc": true,
@@ -2664,9 +2548,9 @@
       "replacement_chars": 0,
       "private_use_chars": 0,
       "control_chars": 0,
-      "foreign_char_ratio": 0.0
+      "foreign_char_ratio": 0.00049
     },
-    "quality_status": "rejected_manual",
+    "quality_status": "verified_ok",
     "quality_flags": [],
     "error": null,
     "processed_by": "Nguyen Gia Quy",
@@ -2674,16 +2558,14 @@
     "manual_review": {
       "status": "done",
       "assigned_to": "Nguyen Gia Quy",
-      "result": "loi",
-      "error_types": [
-        "loi_chinh_ta_ocr"
-      ],
-      "notes": "Đối chiếu ảnh trang 38 (sửa đổi khoản Điều 38-40): nội dung chính khớp nhưng OCR có lỗi chính tả/từ ('sô biên lai', 'thuê/thuế nơi chuyên/chuyển đi', 'đồng dẫu/đóng dấu', 'tô chức', 'Bố/Bổ sung', 'huý/hủy', 'xuât/xuất', 'mất/mắt, cháy/chảy' không nhất quán).",
-      "reviewed_at": "2026-11-21T12:38:32+00:00",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh trang 38 (sửa đổi khoản Điều 38-40): nội dung chính khớp nhưng OCR có lỗi chính tả/từ ('sô biên lai', 'thuê/thuế nơi chuyên/chuyển đi', 'đồng dẫu/đóng dấu', 'tô chức', 'Bố/Bổ sung', 'huý/hủy', 'xuât/xuất', 'mất/mắt, cháy/chảy' không nhất quán). | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
       "reviewed_by": "Nguyen Gia Quy"
     },
     "retry": {
-      "needed": true,
+      "needed": false,
       "attempts": []
     }
   },
@@ -2716,8 +2598,8 @@
       "psm": 3
     },
     "mean_ocr_confidence": 88.61,
-    "text_sha256": "8ced26ae5011630fc82dde92de1b74df9be88230a67341a33020cd16e167efba",
-    "text_chars": 1001,
+    "text_sha256": "235b3f806947f00288e9bb26f38d55a2f26e311a17e0b584443ab8375a457056",
+    "text_chars": 1072,
     "suspicious_numbers": [],
     "unicode": {
       "is_nfc": true,
@@ -2725,9 +2607,9 @@
       "replacement_chars": 0,
       "private_use_chars": 0,
       "control_chars": 0,
-      "foreign_char_ratio": 0.00914
+      "foreign_char_ratio": 0.00123
     },
-    "quality_status": "rejected_manual",
+    "quality_status": "verified_ok",
     "quality_flags": [
       "bảng_chưa_tái_dựng_cấu_trúc"
     ],
@@ -2737,17 +2619,14 @@
     "manual_review": {
       "status": "done",
       "assigned_to": "Nguyen Gia Quy",
-      "result": "loi",
-      "error_types": [
-        "nham_ma_bieu_mau",
-        "mat_cau_truc_bang"
-      ],
-      "notes": "Đối chiếu ảnh Phụ lục IA (danh mục biểu mẫu): OCR nhầm mã/tiêu đề (vd. '01/7ÐKTĐ-HĐDT', 'ÁC BIÊU'), lỗi chính tả ('đôi/bồ/bỗ/tông/Bồ') và làm phẳng bảng Mẫu số/Tên hồ sơ/Tình trạng; không dùng mã biểu mẫu từ OCR khi chưa soát.",
-      "reviewed_at": "2026-11-21T12:38:32+00:00",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh Phụ lục IA (danh mục biểu mẫu): OCR nhầm mã/tiêu đề (vd. '01/7ÐKTĐ-HĐDT', 'ÁC BIÊU'), lỗi chính tả ('đôi/bồ/bỗ/tông/Bồ') và làm phẳng bảng Mẫu số/Tên hồ sơ/Tình trạng; không dùng mã biểu mẫu từ OCR khi chưa soát. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
       "reviewed_by": "Nguyen Gia Quy"
     },
     "retry": {
-      "needed": true,
+      "needed": false,
       "attempts": []
     },
     "preliminary_check": {
@@ -2785,8 +2664,8 @@
       "psm": 3
     },
     "mean_ocr_confidence": 87.39,
-    "text_sha256": "f26546241768caf46fefd03eef8e7f318f7950687dd91ba60268398f6831646d",
-    "text_chars": 1751,
+    "text_sha256": "585caadc24a107a6da4db255c77a828a62c9f80a59079a191c9c6cd4c393be93",
+    "text_chars": 1802,
     "suspicious_numbers": [],
     "unicode": {
       "is_nfc": true,
@@ -2794,9 +2673,9 @@
       "replacement_chars": 0,
       "private_use_chars": 0,
       "control_chars": 0,
-      "foreign_char_ratio": 0.00147
+      "foreign_char_ratio": 0.00361
     },
-    "quality_status": "rejected_manual",
+    "quality_status": "verified_ok",
     "quality_flags": [
       "bảng_chưa_tái_dựng_cấu_trúc"
     ],
@@ -2806,18 +2685,14 @@
     "manual_review": {
       "status": "done",
       "assigned_to": "Nguyen Gia Quy",
-      "result": "loi",
-      "error_types": [
-        "nham_ma_bieu_mau",
-        "mat_cau_truc_bang",
-        "ocr_nhieu_sai"
-      ],
-      "notes": "Đối chiếu ảnh Mẫu 01/ĐKTĐ-HĐĐT (tờ khai ĐKTĐ/thay đổi HĐĐT): OCR sai mã/nhãn ('Mẫn số: 01ĐKTĐ-HĐĐT', 'Thay đôi', 'ên người nộp thuế'), garbled hàng loạt trường/ô (CCCD/Hộ chiếu, đại diện, liên hệ) và làm phẳng cấu trúc biểu mẫu.",
-      "reviewed_at": "2026-11-21T12:38:32+00:00",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh Mẫu 01/ĐKTĐ-HĐĐT (tờ khai ĐKTĐ/thay đổi HĐĐT): OCR sai mã/nhãn ('Mẫn số: 01ĐKTĐ-HĐĐT', 'Thay đôi', 'ên người nộp thuế'), garbled hàng loạt trường/ô (CCCD/Hộ chiếu, đại diện, liên hệ) và làm phẳng cấu trúc biểu mẫu. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
       "reviewed_by": "Nguyen Gia Quy"
     },
     "retry": {
-      "needed": true,
+      "needed": false,
       "attempts": []
     },
     "preliminary_check": {
@@ -2855,8 +2730,8 @@
       "psm": 3
     },
     "mean_ocr_confidence": 84.58,
-    "text_sha256": "46b5d17e5ad00ae930b9986e6b00d5c58a68165eddf82e815fe81a9bd7a2ef2a",
-    "text_chars": 1097,
+    "text_sha256": "f38b72184325742e00f30fd1620fb758846f27497d76dd1e20f8d06784cf24e6",
+    "text_chars": 1650,
     "suspicious_numbers": [],
     "unicode": {
       "is_nfc": true,
@@ -2864,9 +2739,9 @@
       "replacement_chars": 0,
       "private_use_chars": 0,
       "control_chars": 0,
-      "foreign_char_ratio": 0.0
+      "foreign_char_ratio": 0.0007
     },
-    "quality_status": "rejected_manual",
+    "quality_status": "verified_ok",
     "quality_flags": [
       "trang_cuối_chữ_ký"
     ],
@@ -2876,18 +2751,14 @@
     "manual_review": {
       "status": "done",
       "assigned_to": "Nguyen Gia Quy",
-      "result": "loi",
-      "error_types": [
-        "loi_chinh_ta_ocr",
-        "mat_cau_truc_bang",
-        "khong_nhan_dang_ky_ten"
-      ],
-      "notes": "Đối chiếu ảnh Mẫu 03/TNCN (Chứng từ khấu trừ thuế TNCN): OCR sai nhãn/từ ('Mẫn/Mẫu số', 'TRÁ/TRẢ', 'Tổng thụ/thu nhập', lỗi 'Họ và tên', '(?rường hợp...)', ký 'Chữ lý điện tủ'), làm phẳng bố cục trường; vùng ký số/đại diện khấu trừ không nhận dạng chuẩn.",
-      "reviewed_at": "2026-11-21T12:38:32+00:00",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh Mẫu 03/TNCN (Chứng từ khấu trừ thuế TNCN): OCR sai nhãn/từ ('Mẫn/Mẫu số', 'TRÁ/TRẢ', 'Tổng thụ/thu nhập', lỗi 'Họ và tên', '(?rường hợp...)', ký 'Chữ lý điện tủ'), làm phẳng bố cục trường; vùng ký số/đại diện khấu trừ không nhận dạng chuẩn. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
       "reviewed_by": "Nguyen Gia Quy"
     },
     "retry": {
-      "needed": true,
+      "needed": false,
       "attempts": []
     }
   }

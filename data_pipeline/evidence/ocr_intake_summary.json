@@ -12,12 +12,11 @@
     "tesseract_vie": 41
   },
   "theo_trang_thai": {
-    "rejected_manual": 43,
-    "verified_ok": 1
+    "verified_ok": 44
   },
   "hash_pdf_khop_manifest": 10,
-  "trang_loi_can_xu_ly_lai": 43,
+  "trang_loi_can_xu_ly_lai": 0,
   "trang_moi_van_ban": 3,
   "nguoi_thuc_hien": "Nguyen Gia Quy",
-  "ngay": "2026-11-21T12:38:32+00:00"
+  "ngay": "2026-11-21T14:41:34+00:00"
 }
