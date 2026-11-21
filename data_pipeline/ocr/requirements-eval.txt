@@ -1,0 +1,6 @@
+# Bổ sung cho data_pipeline/requirements.txt (đã có PyMuPDF, pytesseract, Pillow)
+opencv-python-headless>=4.8
+numpy>=1.26
+rapidfuzz>=3.0
+pytest>=7
+# Tuỳ chọn (engine thứ hai, chưa kiểm thử): paddlepaddle, paddleocr

@@ -1,0 +1,22 @@
+{
+  "tong_trang_da_xu_ly": 44,
+  "van_ban_da_xu_ly": 10,
+  "van_ban_ky_vong": 10,
+  "van_ban_thieu": [],
+  "dat_toi_thieu_trang": true,
+  "dat_du_10_van_ban": true,
+  "trang_scan": 40,
+  "trang_co_bang": 13,
+  "theo_phuong_phap": {
+    "native_pdf": 3,
+    "tesseract_vie": 41
+  },
+  "theo_trang_thai": {
+    "verified_ok": 44
+  },
+  "hash_pdf_khop_manifest": 10,
+  "trang_loi_can_xu_ly_lai": 0,
+  "trang_moi_van_ban": 3,
+  "nguoi_thuc_hien": "Nguyen Gia Quy",
+  "ngay": "2026-11-21T14:41:34+00:00"
+}
