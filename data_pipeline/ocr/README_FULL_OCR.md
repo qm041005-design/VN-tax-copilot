@@ -35,6 +35,8 @@ python -m data_pipeline.ocr.intake run              # >= 20 trang; ghi data_pipe
 python -m data_pipeline.ocr.intake annotate --notes <json>        # (tuỳ chọn) ghi chú sơ bộ
 python -m data_pipeline.ocr.intake apply-review --csv <phiếu đã điền>   # nạp kết quả đối chiếu thủ công
 ```
-Đối chiếu thủ công: mở `local_data/intake/review/index.html` (ảnh trang cạnh text), điền `ket_qua` (`ok`/`loi`), `loai_loi`, `ghi_chu`
-trong `ocr_intake_manual_review.csv`. `pending_human_review` = **chưa ai đối chiếu**, không phải "đạt".
-Báo cáo: `data_pipeline/evidence/ocr_intake_report_2026-11-14.md`.
+Đối chiếu thủ công: mở `local_data/intake/review/index.html` (ảnh trang cạnh text), điền `nguoi_doi_chieu`,
+`ket_qua` (`ok`/`loi`), `loai_loi`, `ghi_chu` trong `ocr_intake_manual_review.csv`. Khi nạp phiếu,
+hệ thống ghi `thoi_diem_doi_chieu`/`reviewed_at` theo giờ UTC. Không thể dùng phiếu để xác nhận PDF sai hash manifest.
+`pending_human_review` = **chưa ai đối chiếu**, không phải "đạt".
+Báo cáo lần chạy mới nhất: `data_pipeline/evidence/ocr_intake_report_2026-11-20.md`.

@@ -331,7 +331,9 @@ def csv_rows(records: list[dict]) -> list[dict]:
                      "ly_do_chon": "; ".join(r["selection_reasons"]), "phuong_phap": r["extraction_method"],
                      "trang_thai_tu_dong": r["quality_status"], "co_bao": "; ".join(r["quality_flags"]),
                      "nhan_xet_so_bo_AI": (r.get("preliminary_check") or {}).get("note", ""),
-                     "nguoi_doi_chieu": mr["assigned_to"], "ket_qua": mr["result"] or "",
+                     "nguoi_doi_chieu": mr.get("reviewed_by") or mr.get("assigned_to") or "",
+                     "thoi_diem_doi_chieu": mr.get("reviewed_at") or "",
+                     "ket_qua": mr["result"] or "",
                      "loai_loi": "; ".join(mr["error_types"]), "ghi_chu": mr["notes"] or ""})
     return rows
 
@@ -377,9 +379,16 @@ def finalize(records, expected, present, quota, min_pages, out_dir, evidence_dir
     return summary
 
 
+def previous_quota(out_dir: Path) -> int:
+    summary_path = out_dir / "ocr_intake_summary.json"
+    if not summary_path.exists():
+        return 0
+    return json.loads(summary_path.read_text("utf-8")).get("trang_moi_van_ban", 0)
+
+
 def apply_review(records_path: Path, csv_path: Path, out_dir: Path, evidence_dir: Path | None,
                  manifest_path: Path = EVIDENCE / "ocr_pilot_manifest.json") -> dict:
-    """Nạp kết quả đối chiếu thủ công: ok -> verified_ok; loi -> rejected_manual + hàng đợi xử lý lại."""
+    """Nạp kết quả đối chiếu có người chịu trách nhiệm; không thể xác nhận nguồn sai hash."""
     records = json.loads(records_path.read_text("utf-8"))
     idx = {(r["source_id"], int(r["pdf_page"])): r for r in records}
     with open(csv_path, encoding="utf-8-sig", newline="") as fh:
@@ -390,17 +399,22 @@ def apply_review(records_path: Path, csv_path: Path, out_dir: Path, evidence_dir
             if res not in ("ok", "loi"):
                 raise ValueError(f"ket_qua chỉ nhận 'ok' hoặc 'loi', gặp {res!r} ở {row['source_id']} p{row['pdf_page']}")
             r = idx[(row["source_id"], int(row["pdf_page"]))]
-            r["manual_review"] |= {"status": "done", "result": res, "reviewed_at": now(),
+            reviewer = (row.get("nguoi_doi_chieu") or "").strip()
+            if not reviewer:
+                raise ValueError(f"nguoi_doi_chieu là bắt buộc ở {row['source_id']} p{row['pdf_page']}")
+            if not r.get("sha256_verified", False):
+                raise ValueError(f"Không thể xác nhận trang từ PDF sai hash manifest: {row['source_id']} p{row['pdf_page']}")
+            r["manual_review"] |= {"status": "done", "result": res, "reviewed_by": reviewer, "reviewed_at": now(),
                                    "error_types": [e.strip() for e in (row.get("loai_loi") or "").split(";") if e.strip()],
                                    "notes": row.get("ghi_chu") or None}
             r["quality_status"] = "verified_ok" if res == "ok" else "rejected_manual"
             r["retry"]["needed"] = res == "loi" or (r["retry"]["needed"] and res != "ok")
     expected = [d["source_id"] for d in json.loads(manifest_path.read_text("utf-8"))]
     present = sorted({r["source_id"] for r in records})
-    return finalize(records, expected, present, 0, MIN_PAGES, out_dir, evidence_dir)
+    return finalize(records, expected, present, previous_quota(out_dir), MIN_PAGES, out_dir, evidence_dir)
 
 
-PRELIM_BY = "Claude (AI) - sơ bộ, KHÔNG phải đối chiếu thủ công của người"
+PRELIM_BY = "AI assistant (Copilot SDK in VS Code) - sơ bộ, KHÔNG phải đối chiếu thủ công của người"
 
 
 def annotate(records_path: Path, notes_path: Path, out_dir: Path, evidence_dir: Path | None,
@@ -416,7 +430,7 @@ def annotate(records_path: Path, notes_path: Path, out_dir: Path, evidence_dir: 
         idx[key]["preliminary_check"] = {"by": PRELIM_BY, "note": note, "at": now()}
     expected = [d["source_id"] for d in json.loads(manifest_path.read_text("utf-8"))]
     present = sorted({r["source_id"] for r in records})
-    return finalize(records, expected, present, 0, MIN_PAGES, out_dir, evidence_dir)
+    return finalize(records, expected, present, previous_quota(out_dir), MIN_PAGES, out_dir, evidence_dir)
 
 
 def main(argv=None) -> int:

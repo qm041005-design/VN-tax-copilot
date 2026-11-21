@@ -1,6 +1,8 @@
 """Hồi quy: trang scan có text layer lẻ (chữ ký số) KHÔNG được coi là 'đã có text'.
 Lỗi thật gặp trên Luật 67/2025/QH15 (bản scan Kodak + dấu ký số của Cổng TTĐT Chính phủ)."""
+import os
 import shutil
+from pathlib import Path
 
 import fitz
 import pytest
@@ -16,12 +18,21 @@ def _has_vie() -> bool:
 
 
 pytestmark = pytest.mark.skipif(not _has_vie(), reason="cần Tesseract + gói ngôn ngữ 'vie' (đặt TESSDATA_PREFIX nếu cần)")
-FONT = "/usr/share/fonts/truetype/dejavu/DejaVuSerif.ttf"
+def _test_font(size):
+    candidates = (
+        Path(ImageFont.__file__).resolve().parent / "fonts" / "DejaVuSans.ttf",
+        Path(os.environ.get("WINDIR", "C:\\Windows")) / "Fonts" / "arial.ttf",
+        Path("/usr/share/fonts/truetype/dejavu/DejaVuSerif.ttf"),
+    )
+    for candidate in candidates:
+        if candidate.is_file():
+            return ImageFont.truetype(str(candidate), size)
+    pytest.skip("cần phông TrueType hỗ trợ tiếng Việt")
 
 
 def _make(tmp_path):
     img = Image.new("L", (1654, 2339), 255)
-    ImageDraw.Draw(img).text((150, 200), "Điều 1. Phạm vi điều chỉnh", font=ImageFont.truetype(FONT, 40), fill=0)
+    ImageDraw.Draw(img).text((150, 200), "Điều 1. Phạm vi điều chỉnh", font=_test_font(40), fill=0)
     png = tmp_path / "p.png"
     img.save(png)
     doc = fitz.open()

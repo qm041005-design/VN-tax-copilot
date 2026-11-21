@@ -135,18 +135,51 @@ def test_apply_review_roundtrip(tmp_path):
     _, out, ev = do_run(tmp_path, pdf_dir, manifest)
     sheet = out / "ocr_intake_manual_review.csv"
     rows = list(csv.DictReader(open(sheet, encoding="utf-8-sig")))
-    assert rows[0]["nguoi_doi_chieu"] == "Nguyen Gia Quy" and rows[0]["ket_qua"] == ""
+    assert rows[0]["nguoi_doi_chieu"] == OPERATOR and rows[0]["thoi_diem_doi_chieu"] == "" and rows[0]["ket_qua"] == ""
     rows[0]["ket_qua"] = "ok"
-    rows[1].update(ket_qua="loi", loai_loi="rơi_dấu_thanh", ghi_chu="thuế→thuê")
+    rows[0]["nguoi_doi_chieu"] = "Reviewer Test"
+    rows[1].update(ket_qua="loi", nguoi_doi_chieu="Reviewer Test",
+                   loai_loi="rơi_dấu_thanh", ghi_chu="thuế→thuê")
     with open(sheet, "w", newline="", encoding="utf-8-sig") as fh:
         w = csv.DictWriter(fh, fieldnames=rows[0].keys())
         w.writeheader(), w.writerows(rows)
     summary = apply_review(out / "intake_pages.json", sheet, out, ev, manifest)
-    st = {r["pdf_page"]: r["quality_status"] for r in json.loads((ev / "ocr_intake_pages.json").read_text("utf-8"))}
+    reviewed = json.loads((ev / "ocr_intake_pages.json").read_text("utf-8"))
+    st = {r["pdf_page"]: r["quality_status"] for r in reviewed}
     assert st == {1: "verified_ok", 2: "rejected_manual", 3: "pending_human_review"}
+    assert reviewed[0]["manual_review"]["reviewed_by"] == "Reviewer Test"
+    assert reviewed[0]["manual_review"]["reviewed_at"]
+    assert reviewed[0]["manual_review"]["result"] == "ok"
     queue = json.loads((ev / "ocr_intake_retry_queue.json").read_text("utf-8"))
     assert [q["pdf_page"] for q in queue] == [2] and queue[0]["manual_notes"] == "thuế→thuê"
-    assert summary["trang_loi_can_xu_ly_lai"] == 1
+    assert summary["trang_loi_can_xu_ly_lai"] == 1 and summary["trang_moi_van_ban"] == 20
+
+
+def test_apply_review_requires_reviewer(tmp_path):
+    pdf_dir, manifest = setup(tmp_path, pages=2)
+    _, out, ev = do_run(tmp_path, pdf_dir, manifest)
+    sheet = out / "ocr_intake_manual_review.csv"
+    rows = list(csv.DictReader(open(sheet, encoding="utf-8-sig")))
+    rows[0]["ket_qua"] = "ok"
+    rows[0]["nguoi_doi_chieu"] = ""
+    with open(sheet, "w", newline="", encoding="utf-8-sig") as fh:
+        w = csv.DictWriter(fh, fieldnames=rows[0].keys())
+        w.writeheader(), w.writerows(rows)
+    with pytest.raises(ValueError, match="nguoi_doi_chieu"):
+        apply_review(out / "intake_pages.json", sheet, out, ev, manifest)
+
+
+def test_apply_review_cannot_verify_hash_mismatch(tmp_path):
+    pdf_dir, manifest = setup(tmp_path, pages=2, wrong_hash=True)
+    _, out, ev = do_run(tmp_path, pdf_dir, manifest)
+    sheet = out / "ocr_intake_manual_review.csv"
+    rows = list(csv.DictReader(open(sheet, encoding="utf-8-sig")))
+    rows[0].update(ket_qua="ok", nguoi_doi_chieu="Reviewer Test")
+    with open(sheet, "w", newline="", encoding="utf-8-sig") as fh:
+        w = csv.DictWriter(fh, fieldnames=rows[0].keys())
+        w.writeheader(), w.writerows(rows)
+    with pytest.raises(ValueError, match="sai hash manifest"):
+        apply_review(out / "intake_pages.json", sheet, out, ev, manifest)
 
 
 def test_apply_review_rejects_invalid_value(tmp_path):
@@ -155,6 +188,7 @@ def test_apply_review_rejects_invalid_value(tmp_path):
     sheet = out / "ocr_intake_manual_review.csv"
     rows = list(csv.DictReader(open(sheet, encoding="utf-8-sig")))
     rows[0]["ket_qua"] = "tạm ổn"
+    rows[0]["nguoi_doi_chieu"] = "Reviewer Test"
     with open(sheet, "w", newline="", encoding="utf-8-sig") as fh:
         w = csv.DictWriter(fh, fieldnames=rows[0].keys())
         w.writeheader(), w.writerows(rows)
@@ -167,10 +201,11 @@ def test_annotate_keeps_status_and_labels_note_as_ai_preliminary(tmp_path):
     _, out, ev = do_run(tmp_path, pdf_dir, manifest)
     notes = tmp_path / "notes.json"
     notes.write_text(json.dumps({"_ghi_chu": "bỏ qua", "DOC1:2": "đúng số liệu, sai dấu 1 chỗ"}), encoding="utf-8")
-    annotate(out / "intake_pages.json", notes, out, ev, manifest)
+    summary = annotate(out / "intake_pages.json", notes, out, ev, manifest)
     recs = {r["pdf_page"]: r for r in json.loads((ev / "ocr_intake_pages.json").read_text("utf-8"))}
     assert recs[2]["quality_status"] == "pending_human_review"          # nhận xét AI không đổi trạng thái
     assert "KHÔNG phải đối chiếu thủ công" in recs[2]["preliminary_check"]["by"]
+    assert summary["trang_moi_van_ban"] == 20
     assert recs[2]["manual_review"]["result"] is None and "preliminary_check" not in recs[1]
     rows = list(csv.DictReader(open(ev / "ocr_intake_manual_review.csv", encoding="utf-8-sig")))
     assert rows[1]["nhan_xet_so_bo_AI"] == "đúng số liệu, sai dấu 1 chỗ" and rows[1]["ket_qua"] == ""

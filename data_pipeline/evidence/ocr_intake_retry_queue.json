@@ -2,401 +2,607 @@
   {
     "source_id": "TT219_2013",
     "legal_identifier": "219/2013/TT-BTC",
-    "pdf_page": 69,
-    "quality_status": "quarantined_table_numbers",
+    "pdf_page": 1,
+    "quality_status": "rejected_manual",
+    "quality_flags": [],
+    "suspicious_numbers": [],
+    "extraction_method": "tesseract_vie",
+    "mean_ocr_confidence": 91.45,
+    "retry_attempts": [],
+    "manual_notes": "Đối chiếu ảnh: số 219/2013/TT-BTC đúng; ngày ban hành phải là 31/12/2013 nhưng OCR đọc '3l tháng ]2 năm 2013'; nhiều từ/cụm bị sai dấu hoặc garbled (vd. 'GỐNG THÔNG TỊ...', 'chí tiết', 'thí hành', 'Tông cục', 'cơ câu tô chức'), cần hiệu đính theo ảnh.",
+    "next_action": "xử lý lại hoặc gõ tay rồi đối chiếu"
+  },
+  {
+    "source_id": "TT219_2013",
+    "legal_identifier": "219/2013/TT-BTC",
+    "pdf_page": 42,
+    "quality_status": "rejected_manual",
+    "quality_flags": [],
+    "suspicious_numbers": [],
+    "extraction_method": "tesseract_vie",
+    "mean_ocr_confidence": 93.56,
+    "retry_attempts": [],
+    "manual_notes": "Đối chiếu ảnh: nội dung chính và ví dụ số liệu (11.000.000/1.100.000/12.100.000, 10%) khớp, nhưng OCR có lỗi như 'Sốthu6GTGT', 'ga tăng', 'ghỉ', 'tống số', 'tần' (phải là 'tấn') và mục b) viết '(>) tổng số...' trong khi ảnh là '(=) tổng số...'; cần hiệu đính.",
+    "next_action": "xử lý lại hoặc gõ tay rồi đối chiếu"
+  },
+  {
+    "source_id": "TT219_2013",
+    "legal_identifier": "219/2013/TT-BTC",
+    "pdf_page": 68,
+    "quality_status": "rejected_manual",
     "quality_flags": [
       "bảng_chưa_tái_dựng_cấu_trúc",
       "ô_số_trong_bảng_nghi_sai"
     ],
     "suspicious_numbers": [],
     "extraction_method": "tesseract_vie",
-    "mean_ocr_confidence": 87.27,
-    "retry_attempts": [
-      {
-        "strategy": "bo_muc_mau",
-        "mean_ocr_confidence": 87.27,
-        "text_chars": 2023,
-        "text_sha256": "8a9e159917e0e9921a597b295522712889735e6b4242fa4b58d87b6d4da29ae9",
-        "suspicious_numbers": [],
-        "new_tokens_vs_primary": [],
-        "hint": "không_rõ_cải_thiện"
-      },
-      {
-        "strategy": "dpi200_adaptive",
-        "mean_ocr_confidence": 88.26,
-        "text_chars": 2017,
-        "text_sha256": "b8eb7b0b3820dbeaffef602bab96209a99c6e1ec01d1737160584f34d4e95092",
-        "suspicious_numbers": [],
-        "new_tokens_vs_primary": [
-          "Thuếđầura",
-          "S",
-          "Ø",
-          "3507",
-          "00",
-          "SỐ",
-          "110",
-          "T10",
-          "Ì",
-          "l110",
-          "đâu",
-          "Sang"
-        ],
-        "hint": "có_chữ_mới_cần_người_xác_nhận"
-      }
+    "mean_ocr_confidence": 90.29,
+    "retry_attempts": [],
+    "manual_notes": "Đối chiếu ảnh bảng Ví dụ 71: nhiều ô số sai/không đọc được (vd. Tháng 4/2014 cột (5),(6) là 10,10 nhưng OCR ra 'lô lô'; Tháng 8/2014 '-10' ra '-1ô'; Tháng 1/2015 hàng bị garbled 'nổ... l2n'; các giá trị khác cũng lệch). Không dùng số liệu OCR, cần nhập/soát thủ công theo ảnh.",
+    "next_action": "xử lý lại hoặc gõ tay rồi đối chiếu"
+  },
+  {
+    "source_id": "TT219_2013",
+    "legal_identifier": "219/2013/TT-BTC",
+    "pdf_page": 69,
+    "quality_status": "rejected_manual",
+    "quality_flags": [
+      "bảng_chưa_tái_dựng_cấu_trúc"
     ],
-    "manual_notes": null,
+    "suspicious_numbers": [],
+    "extraction_method": "tesseract_vie",
+    "mean_ocr_confidence": 87.73,
+    "retry_attempts": [],
+    "manual_notes": "Đối chiếu ảnh Ví dụ 72/73: nhiều ô số sai (vd. Tháng 1/2014 ảnh (2)=0,(3)=300,(4)=280,(5)=20,(6)=20 nhưng OCR 'ọ 300 280 50 +20'; Tháng 2/2014 (2)=20,(3)=320 thành '2] 30'; Tháng 4/2014 (2)=50,(6)=10 thành '30... lộ'; các tháng khác cũng có ký tự/số lệch). Cần soát/nhập thủ công.",
+    "next_action": "xử lý lại hoặc gõ tay rồi đối chiếu"
+  },
+  {
+    "source_id": "TT219_2013",
+    "legal_identifier": "219/2013/TT-BTC",
+    "pdf_page": 83,
+    "quality_status": "rejected_manual",
+    "quality_flags": [
+      "trang_cuối_chữ_ký"
+    ],
+    "suspicious_numbers": [],
+    "extraction_method": "tesseract_vie",
+    "mean_ocr_confidence": 92.64,
+    "retry_attempts": [],
+    "manual_notes": "Đối chiếu ảnh trang 83: nội dung chính nhận dạng đúng phần lớn, nhưng có lỗi nhỏ như 'õ tô' (ô tô), 'thiệt bị' (thiết bị) và đuôi mục 4 có ký tự lạ ';#⁄'; không thấy chữ ký trong ảnh trang này, cần hiệu đính văn bản OCR.",
+    "next_action": "xử lý lại hoặc gõ tay rồi đối chiếu"
+  },
+  {
+    "source_id": "TT111_2013",
+    "legal_identifier": "111/2013/TT-BTC",
+    "pdf_page": 1,
+    "quality_status": "rejected_manual",
+    "quality_flags": [],
+    "suspicious_numbers": [],
+    "extraction_method": "tesseract_vie",
+    "mean_ocr_confidence": 89.28,
+    "retry_attempts": [],
+    "manual_notes": "Đối chiếu ảnh: số 111/2013/TT-BTC, ngày 15/8/2013 và tiêu đề/căn cứ chính đúng, nhưng OCR sai/garbled nhiều (vd. '1112013/TT- BTÈ', '8 nằm 2013', '65/2013/NĐ-CP' thành 'xố 63/2013/NĐ-CP' ở đoạn cuối, 'chỉ tiết', 'bỗ sung', dấu/ký hiệu lạ vùng đầu trang), cần hiệu đính.",
+    "next_action": "xử lý lại hoặc gõ tay rồi đối chiếu"
+  },
+  {
+    "source_id": "TT111_2013",
+    "legal_identifier": "111/2013/TT-BTC",
+    "pdf_page": 21,
+    "quality_status": "rejected_manual",
+    "quality_flags": [
+      "bảng_chưa_tái_dựng_cấu_trúc"
+    ],
+    "suspicious_numbers": [],
+    "extraction_method": "tesseract_vie",
+    "mean_ocr_confidence": 92.69,
+    "retry_attempts": [],
+    "manual_notes": "Đối chiếu ảnh Biểu thuế lũy tiến 7 bậc: ngưỡng và thuế suất về số liệu cơ bản khớp, nhưng OCR làm phẳng bảng và sai nhãn/ký tự (bậc 1 'ET Đến 60', bậc 3 thiếu 'Trên', bậc 6-7 ký tự 'H/[ren', lỗi 'i với thu nhập...'). Cần soát nhãn từng bậc trước khi trích dùng.",
     "next_action": "xử lý lại hoặc gõ tay rồi đối chiếu"
   },
   {
     "source_id": "TT111_2013",
     "legal_identifier": "111/2013/TT-BTC",
     "pdf_page": 40,
-    "quality_status": "quarantined_suspect_numbers",
+    "quality_status": "rejected_manual",
     "quality_flags": [],
-    "suspicious_numbers": [
-      "12,000"
-    ],
+    "suspicious_numbers": [],
     "extraction_method": "tesseract_vie",
-    "mean_ocr_confidence": 93.68,
-    "retry_attempts": [
-      {
-        "strategy": "bo_muc_mau",
-        "mean_ocr_confidence": 93.68,
-        "text_chars": 2788,
-        "text_sha256": "97d54c4e1252acc6d309f84ac854f7aa9a24772397f1ffcde2fed32ba464c81a",
-        "suspicious_numbers": [
-          "12,000"
-        ],
-        "new_tokens_vs_primary": [],
-        "hint": "không_rõ_cải_thiện"
-      },
-      {
-        "strategy": "dpi200_adaptive",
-        "mean_ocr_confidence": 93.64,
-        "text_chars": 2792,
-        "text_sha256": "23631f5b8a9ecdb769c81aa0ab9cd457e9e380bbc7c0074905728ba7a1c362ae",
-        "suspicious_numbers": [],
-        "new_tokens_vs_primary": [
-          "hỗ",
-          "mỉnh",
-          "suôt",
-          "q12",
-          "kế",
-          "Giá"
-        ],
-        "hint": "có_chữ_mới_cần_người_xác_nhận"
-      }
+    "mean_ocr_confidence": 93.21,
+    "retry_attempts": [],
+    "manual_notes": "Đối chiếu ảnh: nội dung và các số tiền ví dụ 11 (800.000/tháng, 9.600.000/năm, 2.000.000/tháng, 24.000.000/năm, trừ tối đa 12.000.000/năm) đúng ý chính, nhưng OCR có lỗi như 'điêu chỉnh', 'hồ sợ', 'q2 triệu đồng/năm' (phải là 12 triệu đồng/năm), 'Vị dụ 11' và một số dấu/ký tự sai. Cần hiệu đính.",
+    "next_action": "xử lý lại hoặc gõ tay rồi đối chiếu"
+  },
+  {
+    "source_id": "TT111_2013",
+    "legal_identifier": "111/2013/TT-BTC",
+    "pdf_page": 78,
+    "quality_status": "rejected_manual",
+    "quality_flags": [
+      "bảng_chưa_tái_dựng_cấu_trúc",
+      "trang_cuối_chữ_ký",
+      "confidence_70_80"
     ],
-    "manual_notes": null,
+    "suspicious_numbers": [],
+    "extraction_method": "tesseract_vie",
+    "mean_ocr_confidence": 77.87,
+    "retry_attempts": [],
+    "manual_notes": "Đối chiếu ảnh Phụ lục 02/PL-TNCN: OCR sai nhiều (phụ lục '62/PL~-TNCN', tiêu đề 'BẢNG QUY ĐÓI', 'tiên lương, tiên công', cột giá trị 'trổ', hàng 3 có ký tự lạ 'R', hàng 6 '(TNQĐ - 5,85 trđ}X/0,7', hàng 7 dùng dấu gạch dài/ký tự sai). Ngưỡng và công thức cần soát lại từng dòng theo ảnh.",
     "next_action": "xử lý lại hoặc gõ tay rồi đối chiếu"
   },
   {
     "source_id": "TT96_2015",
     "legal_identifier": "96/2015/TT-BTC",
     "pdf_page": 1,
-    "quality_status": "quarantined_stamp_overlay",
+    "quality_status": "rejected_manual",
     "quality_flags": [],
     "suspicious_numbers": [],
     "extraction_method": "tesseract_vie",
-    "mean_ocr_confidence": 88.72,
-    "retry_attempts": [
-      {
-        "strategy": "bo_muc_mau",
-        "mean_ocr_confidence": 88.87,
-        "text_chars": 2087,
-        "text_sha256": "f8ed3076a7d1e621199f37161c921b400839c91e32475d7d6ef015aadbbc2e91",
-        "suspicious_numbers": [],
-        "new_tokens_vs_primary": [],
-        "hint": "không_rõ_cải_thiện"
-      },
-      {
-        "strategy": "dpi200_adaptive",
-        "mean_ocr_confidence": 89.66,
-        "text_chars": 2041,
-        "text_sha256": "9553435da4b00d17342365879d8f00244543b636a773c5b055c3de53ee68ec17",
-        "suspicious_numbers": [],
-        "new_tokens_vs_primary": [
-          "GB",
-          "hết",
-          "nh",
-          "VÃnđịmh",
-          "chuyển",
-          "TH",
-          "EA",
-          "cử",
-          "sưng",
-          "thị",
-          "nghiện",
-          "bố"
-        ],
-        "hint": "có_chữ_mới_cần_người_xác_nhận"
-      }
+    "mean_ocr_confidence": 89.63,
+    "retry_attempts": [],
+    "manual_notes": "Đối chiếu ảnh: số 96/2015/TT-BTC và ngày 22/06/2015 đúng, nhưng có lớp dấu/ghi chú chồng lên (CÔNG THÔNG TIN ĐIỆN TỬ CHÍNH PHỦ, vùng văn bản đến/ghi chú bên trái) và OCR sai/nhiễu nhiều ở tiêu đề, căn cứ pháp lý và dòng tham chiếu thông tư (vd. 'Hướng d dẫn', 'bỗ sưng', đoạn 'VĂNih...' garbled, 'Luậi', 'thẳng 12', 'chỉ tiết'). Cần xác nhận phần bị che và hiệu đính.",
+    "next_action": "xử lý lại hoặc gõ tay rồi đối chiếu"
+  },
+  {
+    "source_id": "TT96_2015",
+    "legal_identifier": "96/2015/TT-BTC",
+    "pdf_page": 20,
+    "quality_status": "rejected_manual",
+    "quality_flags": [],
+    "suspicious_numbers": [],
+    "extraction_method": "tesseract_vie",
+    "mean_ocr_confidence": 93.49,
+    "retry_attempts": [],
+    "manual_notes": "Đối chiếu ảnh trang 20 (các khoản 2.32–2.37): nội dung chính khớp, nhưng OCR có nhiều lỗi dấu/từ/ký tự (vd. 'chịu thuê' thay 'chịu thuế', 'qừ cổ phiếu', 'vẫn chủ sở: hữu', 'thực tê', lỗi dấu câu/khoảng trắng); cần hiệu đính trước khi sử dụng văn bản.",
+    "next_action": "xử lý lại hoặc gõ tay rồi đối chiếu"
+  },
+  {
+    "source_id": "TT96_2015",
+    "legal_identifier": "96/2015/TT-BTC",
+    "pdf_page": 38,
+    "quality_status": "rejected_manual",
+    "quality_flags": [
+      "trang_cuối_chữ_ký"
     ],
-    "manual_notes": null,
+    "suspicious_numbers": [],
+    "extraction_method": "tesseract_vie",
+    "mean_ocr_confidence": 90.52,
+    "retry_attempts": [],
+    "manual_notes": "Đối chiếu ảnh: trang cuối có Điều 15, danh sách nơi nhận và chữ ký/đóng dấu (KT. Bộ trưởng, Thứ trưởng Đỗ Hoàng Anh Tuấn). OCR nhận diện được phần lớn nội dung nhưng có lỗi chính tả/từ ('phể biến', 'để nghị', 'Trung ương...' vùng nơi nhận) và không thể hiện đầy đủ chữ ký/đóng dấu; cần xác nhận bằng ảnh.",
     "next_action": "xử lý lại hoặc gõ tay rồi đối chiếu"
   },
   {
     "source_id": "TT26_2015",
     "legal_identifier": "26/2015/TT-BTC",
     "pdf_page": 1,
-    "quality_status": "quarantined_stamp_overlay",
+    "quality_status": "rejected_manual",
     "quality_flags": [],
     "suspicious_numbers": [],
     "extraction_method": "tesseract_vie",
-    "mean_ocr_confidence": 87.13,
-    "retry_attempts": [
-      {
-        "strategy": "bo_muc_mau",
-        "mean_ocr_confidence": 87.13,
-        "text_chars": 2008,
-        "text_sha256": "0570a2b520f8ac9ae3acaf13e617f445e873003b414db4a4770226880956c257",
-        "suspicious_numbers": [],
-        "new_tokens_vs_primary": [],
-        "hint": "không_rõ_cải_thiện"
-      },
-      {
-        "strategy": "dpi200_adaptive",
-        "mean_ocr_confidence": 87.29,
-        "text_chars": 2020,
-        "text_sha256": "2f06ad4e47cd08395c29b3f0aa8512697820de0b73f1434e67c0ff361a1e873e",
-        "suspicious_numbers": [],
-        "new_tokens_vs_primary": [
-          "phúc",
-          "TÌN",
-          "ĐIỆN",
-          "TỬ",
-          "LVĂN",
-          "P",
-          "ũ2MHÊnCdủw",
-          "rtông",
-          "tư",
-          "ĐỂẾNYề",
-          "lv",
-          "Q6ay"
-        ],
-        "hint": "có_chữ_mới_cần_người_xác_nhận"
-      }
-    ],
-    "manual_notes": null,
+    "mean_ocr_confidence": 88.07,
+    "retry_attempts": [],
+    "manual_notes": "Đối chiếu ảnh: số 26/2015/TT-BTC, ngày 27/02/2015 và tiêu đề chính đúng, nhưng có lớp dấu/ghi chú chồng (CÔNG THÔNG TIN ĐIỆN TỬ CHÍNH PHỦ, CÔNG VĂN ĐẾN, vùng 'VĂN PHÒNG...') và OCR sai/nhiễu nặng (vd. 'TỊN ĐIỆN TỬ CHÍNH PHÙ', 'Tuất Quản Là thuế', dòng trích yếu 39/2014/TT-BTC bị garbled). Cần xác nhận phần bị che và hiệu đính.",
+    "next_action": "xử lý lại hoặc gõ tay rồi đối chiếu"
+  },
+  {
+    "source_id": "TT26_2015",
+    "legal_identifier": "26/2015/TT-BTC",
+    "pdf_page": 22,
+    "quality_status": "rejected_manual",
+    "quality_flags": [],
+    "suspicious_numbers": [],
+    "extraction_method": "tesseract_vie",
+    "mean_ocr_confidence": 93.52,
+    "retry_attempts": [],
+    "manual_notes": "Đối chiếu ảnh trang 22: nội dung các điểm 6–9 về gia hạn nộp thuế/chậm nộp khớp ý chính, nhưng OCR có lỗi như 'ý' muốn' (ký tự lạ), 'Tai hạn giao thông' (phải là 'Tai nạn giao thông'), 'khoán', 'để nghị', và 'quả thời hạn nộp dân tiền thuế' (sai cụm từ); cần hiệu đính.",
     "next_action": "xử lý lại hoặc gõ tay rồi đối chiếu"
   },
   {
     "source_id": "TT26_2015",
     "legal_identifier": "26/2015/TT-BTC",
     "pdf_page": 36,
-    "quality_status": "quarantined_table_numbers",
+    "quality_status": "rejected_manual",
     "quality_flags": [
-      "bảng_chưa_tái_dựng_cấu_trúc",
-      "confidence_70_80",
-      "ô_số_trong_bảng_nghi_sai"
+      "bảng_chưa_tái_dựng_cấu_trúc"
     ],
     "suspicious_numbers": [],
     "extraction_method": "tesseract_vie",
-    "mean_ocr_confidence": 73.47,
-    "retry_attempts": [
-      {
-        "strategy": "bo_muc_mau",
-        "mean_ocr_confidence": 73.47,
-        "text_chars": 2635,
-        "text_sha256": "e7e6a779648aa269f494a6d6bcbd655c96c193220cc672e603c468ea92803324",
-        "suspicious_numbers": [],
-        "new_tokens_vs_primary": [],
-        "hint": "không_rõ_cải_thiện"
-      },
-      {
-        "strategy": "dpi200_adaptive",
-        "mean_ocr_confidence": 77.96,
-        "text_chars": 1911,
-        "text_sha256": "9a816e74d8ffecd2266d13e91a8f8e0c43124b1e3f1665c00c4a49128cfa16ca",
-        "suspicious_numbers": [],
-        "new_tokens_vs_primary": [
-          "HOÀ",
-          "Độc",
-          "Dành",
-          "giả",
-          "lăng",
-          "trữ",
-          "01",
-          "hy",
-          "làm",
-          "ọ",
-          "ar",
-          "285505"
-        ],
-        "hint": "có_chữ_mới_cần_người_xác_nhận"
-      }
+    "mean_ocr_confidence": 67.94,
+    "retry_attempts": [],
+    "manual_notes": "Đối chiếu ảnh Mẫu 01/GTGT (tờ khai GTGT): OCR hỏng cấu trúc bảng/ô và nhầm nhiều mã chỉ tiêu, nhãn trường, giá trị chỉ mục (các ô [01]-[43], bảng hàng hóa mua/bán); không bảo toàn bố cục biểu mẫu. Không dùng để tra cứu hay nhập số liệu.",
+    "next_action": "xử lý lại hoặc gõ tay rồi đối chiếu"
+  },
+  {
+    "source_id": "TT26_2015",
+    "legal_identifier": "26/2015/TT-BTC",
+    "pdf_page": 37,
+    "quality_status": "rejected_manual",
+    "quality_flags": [
+      "bảng_chưa_tái_dựng_cấu_trúc"
     ],
-    "manual_notes": null,
+    "suspicious_numbers": [],
+    "extraction_method": "tesseract_vie",
+    "mean_ocr_confidence": 82.16,
+    "retry_attempts": [],
+    "manual_notes": "Đối chiếu ảnh Phụ lục 01-7/GTGT (Bảng phân bổ số thuế GTGT): OCR sai/garbled tiêu đề và nhãn ('SỞ THUÊ...' thay 'SỐ THUẾ', lỗi tên cột, trường mẫu) và làm phẳng cấu trúc bảng; cần đối chiếu từng cột/hàng theo ảnh.",
+    "next_action": "xử lý lại hoặc gõ tay rồi đối chiếu"
+  },
+  {
+    "source_id": "TT26_2015",
+    "legal_identifier": "26/2015/TT-BTC",
+    "pdf_page": 43,
+    "quality_status": "rejected_manual",
+    "quality_flags": [
+      "trang_cuối_chữ_ký",
+      "confidence_70_80"
+    ],
+    "suspicious_numbers": [],
+    "extraction_method": "tesseract_vie",
+    "mean_ocr_confidence": 77.21,
+    "retry_attempts": [],
+    "manual_notes": "Đối chiếu ảnh Mẫu BC01/AC (Báo cáo nhận in/cung cấp phần mềm tự in hóa đơn): OCR nhận sai mã mẫu ('BC0UAC'), làm vỡ bảng/cột (1)-(11) và nhãn trường, nhiều chuỗi garbled; có vùng ký/người đại diện theo pháp luật cần xác nhận trên ảnh.",
+    "next_action": "xử lý lại hoặc gõ tay rồi đối chiếu"
+  },
+  {
+    "source_id": "ND123_2020",
+    "legal_identifier": "123/2020/NĐ-CP",
+    "pdf_page": 1,
+    "quality_status": "rejected_manual",
+    "quality_flags": [],
+    "suspicious_numbers": [],
+    "extraction_method": "tesseract_vie",
+    "mean_ocr_confidence": 88.33,
+    "retry_attempts": [],
+    "manual_notes": "Đối chiếu ảnh: số đúng là 123/2020/NĐ-CP và ngày 19/10/2020, nhưng OCR đọc '723/2020/NĐ-CP' và '79 tháng 10 năm 2020'; vùng dấu 'CÔNG THÔNG TIN ĐIỆN TỬ CHÍNH PHỦ/ĐẾN' gây nhiễu đầu trang. Nội dung căn cứ chính phần lớn đọc được nhưng số hiệu/ngày sai, cần hiệu đính.",
+    "next_action": "xử lý lại hoặc gõ tay rồi đối chiếu"
+  },
+  {
+    "source_id": "ND123_2020",
+    "legal_identifier": "123/2020/NĐ-CP",
+    "pdf_page": 62,
+    "quality_status": "rejected_manual",
+    "quality_flags": [],
+    "suspicious_numbers": [],
+    "extraction_method": "tesseract_vie",
+    "mean_ocr_confidence": 91.89,
+    "retry_attempts": [],
+    "manual_notes": "Đối chiếu ảnh trang 62 (Điều 53-55): nội dung và điều khoản khớp, nhưng OCR có lỗi chính tả/dấu/từ (vd. 'tỉn nhắn tra cứu', 'Kính phí', 'cưng cấp', 'yêu câu', 'Điêu 91', 'thuê/thuế', 'đôi tượng'); cần hiệu đính.",
+    "next_action": "xử lý lại hoặc gõ tay rồi đối chiếu"
+  },
+  {
+    "source_id": "ND123_2020",
+    "legal_identifier": "123/2020/NĐ-CP",
+    "pdf_page": 70,
+    "quality_status": "rejected_manual",
+    "quality_flags": [
+      "bảng_chưa_tái_dựng_cấu_trúc"
+    ],
+    "suspicious_numbers": [],
+    "extraction_method": "tesseract_vie",
+    "mean_ocr_confidence": 93.09,
+    "retry_attempts": [],
+    "manual_notes": "Đối chiếu ảnh Mẫu 01/ĐKTĐ/HĐĐT (tờ khai đăng ký/thay đổi HĐĐT): nội dung nhãn chính phần lớn có, nhưng OCR làm phẳng biểu mẫu/ô chọn và có lỗi ('đỗi', 'len người nộp thuế', 'điểu kiện', 'sử dựng', 'đữ liệu'); không bảo toàn cấu trúc checkbox/trường.",
+    "next_action": "xử lý lại hoặc gõ tay rồi đối chiếu"
+  },
+  {
+    "source_id": "ND123_2020",
+    "legal_identifier": "123/2020/NĐ-CP",
+    "pdf_page": 71,
+    "quality_status": "rejected_manual",
+    "quality_flags": [
+      "bảng_chưa_tái_dựng_cấu_trúc"
+    ],
+    "suspicious_numbers": [],
+    "extraction_method": "tesseract_vie",
+    "mean_ocr_confidence": 87.64,
+    "retry_attempts": [],
+    "manual_notes": "Đối chiếu ảnh trang tiếp mẫu 01/ĐKTĐ/HĐĐT (mục 4-6, bảng chứng thư số/ủy nhiệm lập hóa đơn): OCR làm phẳng bảng, ghép/sai tiêu đề cột và nhãn trường, mất bố cục ô; cần soát từng trường theo ảnh.",
+    "next_action": "xử lý lại hoặc gõ tay rồi đối chiếu"
+  },
+  {
+    "source_id": "ND123_2020",
+    "legal_identifier": "123/2020/NĐ-CP",
+    "pdf_page": 123,
+    "quality_status": "rejected_manual",
+    "quality_flags": [
+      "trang_cuối_chữ_ký"
+    ],
+    "suspicious_numbers": [],
+    "extraction_method": "tesseract_vie",
+    "mean_ocr_confidence": 69.02,
+    "retry_attempts": [],
+    "manual_notes": "Đối chiếu ảnh (phần thông tin thuế TNCN khấu trừ, song ngữ): nhãn tiếng Việt cơ bản còn nhận ra nhưng OCR sai nặng phần tiếng Anh/mã trường ('Nởi cấp/Place dƒissue', 'Tp oƒ iicOft@', 'dedutible lnsurance', 'J@6f', 'Ámourt oƒpersonal...'), bố cục phẳng; có vùng ký điện tử/chữ ký số cần xác nhận trên ảnh.",
+    "next_action": "xử lý lại hoặc gõ tay rồi đối chiếu"
+  },
+  {
+    "source_id": "TT78_2014",
+    "legal_identifier": "78/2014/TT-BTC",
+    "pdf_page": 1,
+    "quality_status": "rejected_manual",
+    "quality_flags": [],
+    "suspicious_numbers": [],
+    "extraction_method": "tesseract_vie",
+    "mean_ocr_confidence": 88.31,
+    "retry_attempts": [],
+    "manual_notes": "Đối chiếu ảnh TT 78/2014/TT-BTC trang 1: OCR sai số hiệu ('7§' thay '78'), nhiễu nặng vùng dấu/ghi chú công văn đến, và nhiều lỗi chính tả/nhãn ('phú', 'chỉ tiết', 'Thuê/Thuế', 'quyên hạn', 'cơ cẩu', 'bỗ sung', 'Tô ng cục'). Tiêu đề và căn cứ pháp lý cần hiệu đính.",
+    "next_action": "xử lý lại hoặc gõ tay rồi đối chiếu"
+  },
+  {
+    "source_id": "TT78_2014",
+    "legal_identifier": "78/2014/TT-BTC",
+    "pdf_page": 39,
+    "quality_status": "rejected_manual",
+    "quality_flags": [],
+    "suspicious_numbers": [],
+    "extraction_method": "tesseract_vie",
+    "mean_ocr_confidence": 93.63,
+    "retry_attempts": [],
+    "manual_notes": "Đối chiếu ảnh trang 39 (Ví dụ 15, hướng dẫn xác định doanh thu/thuế suất): số liệu chính còn thấy (20 tỷ, 167 tỷ, 1,67 tỷ, 22%/20%) nhưng OCR có nhiều lỗi dấu/từ và ký tự ('tải chính', 'tông/cung cập/liền kể', 'họat động', 'lả... chia Ệ) 9', 'thuê/tưu', 'Phụ lục ết quả', 'mã sô'); cần rà soát kỹ ngữ cảnh tính toán.",
+    "next_action": "xử lý lại hoặc gõ tay rồi đối chiếu"
+  },
+  {
+    "source_id": "TT78_2014",
+    "legal_identifier": "78/2014/TT-BTC",
+    "pdf_page": 76,
+    "quality_status": "rejected_manual",
+    "quality_flags": [
+      "trang_cuối_chữ_ký",
+      "confidence_70_80"
+    ],
+    "suspicious_numbers": [],
+    "extraction_method": "tesseract_vie",
+    "mean_ocr_confidence": 72.37,
+    "retry_attempts": [],
+    "manual_notes": "Đối chiếu ảnh phụ lục kê khai (bảng chỉ tiêu/mã [25]-[37], số tiền) trang cuối có chữ ký/đóng dấu: OCR làm phẳng và garbled nhãn hàng/cột/công thức, bố cục bảng hỏng; vùng ký/đóng dấu không nhận dạng thành văn bản rõ.",
+    "next_action": "xử lý lại hoặc gõ tay rồi đối chiếu"
+  },
+  {
+    "source_id": "LUAT48_2024",
+    "legal_identifier": "48/2024/QH15",
+    "pdf_page": 1,
+    "quality_status": "rejected_manual",
+    "quality_flags": [],
+    "suspicious_numbers": [],
+    "extraction_method": "native_pdf",
+    "mean_ocr_confidence": null,
+    "retry_attempts": [],
+    "manual_notes": "Đối chiếu ảnh Công báo/Luật 48/2024/QH15: nội dung chính và số hiệu đúng, nhưng OCR/native text kèm metadata ký số/chân trang ('Người ký CỔNG THÔNG TIN ĐIỆN TỬ CHÍNH PHỦ...') và bố cục đầu trang không khớp trình bày bản gốc.",
+    "next_action": "xử lý lại hoặc gõ tay rồi đối chiếu"
+  },
+  {
+    "source_id": "LUAT48_2024",
+    "legal_identifier": "48/2024/QH15",
+    "pdf_page": 7,
+    "quality_status": "rejected_manual",
+    "quality_flags": [
+      "bảng_chưa_tái_dựng_cấu_trúc"
+    ],
+    "suspicious_numbers": [],
+    "extraction_method": "native_pdf",
+    "mean_ocr_confidence": null,
+    "retry_attempts": [],
+    "manual_notes": "Đối chiếu ảnh trang 83 (Điều 7): phần văn bản b)-l) cơ bản khớp, nhưng công thức tính giá chưa có thuế GTGT (khoản k) bị render sai cấu trúc phân số/tử-mẫu (mất đặt 'Giá thanh toán' trên tử số), làm sai biểu diễn công thức.",
+    "next_action": "xử lý lại hoặc gõ tay rồi đối chiếu"
+  },
+  {
+    "source_id": "LUAT48_2024",
+    "legal_identifier": "48/2024/QH15",
+    "pdf_page": 20,
+    "quality_status": "rejected_manual",
+    "quality_flags": [
+      "trang_cuối_chữ_ký"
+    ],
+    "suspicious_numbers": [],
+    "extraction_method": "tesseract_vie",
+    "mean_ocr_confidence": 88.18,
+    "retry_attempts": [],
+    "manual_notes": "Đối chiếu ảnh trang cuối (thông tin xuất bản): OCR sai ký tự trong thông tin liên hệ/in ấn ('0§0.44517' thay '080.44517', 'congbao(0chinhphu.vn' thay 'congbao@chinhphu.vn', 'Bản đồ !- Bộ Quốc phòng' thay '1- Bộ Quốc phòng').",
     "next_action": "xử lý lại hoặc gõ tay rồi đối chiếu"
   },
   {
     "source_id": "LUAT67_2025",
     "legal_identifier": "67/2025/QH15",
     "pdf_page": 1,
-    "quality_status": "quarantined_stamp_overlay",
+    "quality_status": "rejected_manual",
     "quality_flags": [],
     "suspicious_numbers": [],
     "extraction_method": "tesseract_vie",
-    "mean_ocr_confidence": 91.59,
-    "retry_attempts": [
-      {
-        "strategy": "bo_muc_mau",
-        "mean_ocr_confidence": 91.41,
-        "text_chars": 1860,
-        "text_sha256": "95f6ba17e1a576bb5ef8f3bcafe6d2c0c7406eb1317da87e71c33e275e5d7e94",
-        "suspicious_numbers": [],
-        "new_tokens_vs_primary": [
-          "n",
-          "VẤN",
-          "PÌ",
-          "VNThời",
-          "ca",
-          "kặc",
-          "16072055",
-          "14",
-          "28",
-          "40",
-          "hữnn0"
-        ],
-        "hint": "có_chữ_mới_cần_người_xác_nhận"
-      },
-      {
-        "strategy": "dpi200_adaptive",
-        "mean_ocr_confidence": 92.19,
-        "text_chars": 1914,
-        "text_sha256": "16af82a1980b4a9bd6d02a0fb4ea729b963695ab49ece9f87ee96e953cb04aa5",
-        "suspicious_numbers": [],
-        "new_tokens_vs_primary": [
-          "TỬ",
-          "V",
-          "G",
-          "P",
-          "thongtinchinhphu",
-          "chinhphu",
-          "y",
-          "vn",
-          "Cơ",
-          "VNThời",
-          "gian",
-          "07"
-        ],
-        "hint": "có_chữ_mới_cần_người_xác_nhận"
-      }
+    "mean_ocr_confidence": 92.28,
+    "retry_attempts": [],
+    "manual_notes": "Đối chiếu ảnh Luật 67/2025/QH15 trang 1: dấu/ghi chú công văn và metadata ký số gây nhiễu đầu trang; OCR garbled nhiều nhãn/từ ('Căn cú Hiển pháp', 'Phạm vị điều chính', 'sân xuất', 'Tê chức', lỗi gộp khoản 2b) dù số luật/tiêu đề nhận ra. Cần hiệu đính.",
+    "next_action": "xử lý lại hoặc gõ tay rồi đối chiếu"
+  },
+  {
+    "source_id": "LUAT67_2025",
+    "legal_identifier": "67/2025/QH15",
+    "pdf_page": 10,
+    "quality_status": "rejected_manual",
+    "quality_flags": [],
+    "suspicious_numbers": [],
+    "extraction_method": "tesseract_vie",
+    "mean_ocr_confidence": 94.69,
+    "retry_attempts": [],
+    "manual_notes": "Đối chiếu ảnh trang 10 (Điều 10-11): nội dung/thuế suất cơ bản đúng nhưng OCR có lỗi từ/ký tự ('liền kể'→'liền kề', 'thuê suất', 'wonf#am', 'đất hiểm', 'doanh thư', 'khoản I Điều 2'); cần hiệu đính trước trích dẫn.",
+    "next_action": "xử lý lại hoặc gõ tay rồi đối chiếu"
+  },
+  {
+    "source_id": "LUAT67_2025",
+    "legal_identifier": "67/2025/QH15",
+    "pdf_page": 11,
+    "quality_status": "rejected_manual",
+    "quality_flags": [],
+    "suspicious_numbers": [],
+    "extraction_method": "tesseract_vie",
+    "mean_ocr_confidence": 94.85,
+    "retry_attempts": [],
+    "manual_notes": "Đối chiếu ảnh trang 11 (Điều 12): OCR sai ký hiệu mục và từ ngữ ('phần mêm'→'phần mềm', 'e1)' thay cho 'c1)' ở mục sản phẩm công nghiệp hỗ trợ), nội dung còn lại cơ bản khớp.",
+    "next_action": "xử lý lại hoặc gõ tay rồi đối chiếu"
+  },
+  {
+    "source_id": "LUAT67_2025",
+    "legal_identifier": "67/2025/QH15",
+    "pdf_page": 15,
+    "quality_status": "rejected_manual",
+    "quality_flags": [],
+    "suspicious_numbers": [],
+    "extraction_method": "tesseract_vie",
+    "mean_ocr_confidence": 94.71,
+    "retry_attempts": [],
+    "manual_notes": "Đối chiếu ảnh trang 15 (Điều 14 khoản 4-7): nội dung/điều kiện chính khớp, nhưng OCR có lỗi chính tả ('10 năm đỗi với'→'đối với', 'kéo đài thêm'→'kéo dài thêm').",
+    "next_action": "xử lý lại hoặc gõ tay rồi đối chiếu"
+  },
+  {
+    "source_id": "LUAT67_2025",
+    "legal_identifier": "67/2025/QH15",
+    "pdf_page": 21,
+    "quality_status": "rejected_manual",
+    "quality_flags": [
+      "trang_cuối_chữ_ký"
     ],
-    "manual_notes": null,
+    "suspicious_numbers": [],
+    "extraction_method": "tesseract_vie",
+    "mean_ocr_confidence": 93.68,
+    "retry_attempts": [],
+    "manual_notes": "Đối chiếu ảnh trang cuối (Điều 19-20, chuyển tiếp): OCR có lỗi chính tả/từ ('ưru đãi', 'đâu tư/đầu tư', 'quyển lựa chọn', 'bỗ sung/đoanh nghiệp') và không nhận dạng chuẩn vùng ký/chữ ký, con dấu Quốc hội/Chủ tịch Quốc hội.",
+    "next_action": "xử lý lại hoặc gõ tay rồi đối chiếu"
+  },
+  {
+    "source_id": "LUAT109_2025",
+    "legal_identifier": "109/2025/QH15",
+    "pdf_page": 1,
+    "quality_status": "rejected_manual",
+    "quality_flags": [],
+    "suspicious_numbers": [],
+    "extraction_method": "tesseract_vie",
+    "mean_ocr_confidence": 93.91,
+    "retry_attempts": [],
+    "manual_notes": "Đối chiếu ảnh Luật 109/2025/QH15 trang 1: OCR sai số hiệu ('109/2025/QHI15'), thêm ký tự thừa ('LUẬT —_'), và nhiều lỗi chính tả ('Hiễn pháp', 'đương lịch', 'lãnh thô', 'đề ở', 'chỉ tiết', 'sán xuất'); tiêu đề/nội dung chính nhận diện được nhưng cần hiệu đính.",
+    "next_action": "xử lý lại hoặc gõ tay rồi đối chiếu"
+  },
+  {
+    "source_id": "LUAT109_2025",
+    "legal_identifier": "109/2025/QH15",
+    "pdf_page": 4,
+    "quality_status": "rejected_manual",
+    "quality_flags": [],
+    "suspicious_numbers": [],
+    "extraction_method": "tesseract_vie",
+    "mean_ocr_confidence": 95.21,
+    "retry_attempts": [],
+    "manual_notes": "Đối chiếu ảnh trang 4 (Điều 4 khoản 1-13, thu nhập miễn thuế): nội dung cơ bản khớp nhưng OCR sai từ ('kiều hồi'→'kiều hối' tại khoản 7, 'thầm quyền'→'thẩm quyền' tại khoản 13).",
+    "next_action": "xử lý lại hoặc gõ tay rồi đối chiếu"
+  },
+  {
+    "source_id": "LUAT109_2025",
+    "legal_identifier": "109/2025/QH15",
+    "pdf_page": 8,
+    "quality_status": "rejected_manual",
+    "quality_flags": [
+      "bảng_chưa_tái_dựng_cấu_trúc"
+    ],
+    "suspicious_numbers": [],
+    "extraction_method": "tesseract_vie",
+    "mean_ocr_confidence": 94.68,
+    "retry_attempts": [],
+    "manual_notes": "Đối chiếu ảnh trang 8 (Điều 8-10, Biểu thuế lũy tiến từng phần): các ngưỡng/thuế suất (120/10/5%, 360/30/10%, 720/60/20%, 1200/100/30%, >1200/>100/35%) đọc được trong OCR nhưng bảng bị làm phẳng/mất cấu trúc cột-hàng; cần giữ bố cục bảng khi sử dụng.",
+    "next_action": "xử lý lại hoặc gõ tay rồi đối chiếu"
+  },
+  {
+    "source_id": "LUAT109_2025",
+    "legal_identifier": "109/2025/QH15",
+    "pdf_page": 10,
+    "quality_status": "rejected_manual",
+    "quality_flags": [],
+    "suspicious_numbers": [],
+    "extraction_method": "tesseract_vie",
+    "mean_ocr_confidence": 94.2,
+    "retry_attempts": [],
+    "manual_notes": "Đối chiếu ảnh trang 10 (Điều 12-15): nội dung/thuế suất nhận diện được nhưng OCR có nhiều lỗi ('khoán', 'thuê/thuế', 'thời điêm', 'chỉ tiết', 'nhân @&)', 'chuyên/chuyển nhượng', 'băng/bằng', '0,I%'); cần hiệu đính kỹ.",
     "next_action": "xử lý lại hoặc gõ tay rồi đối chiếu"
   },
   {
     "source_id": "LUAT109_2025",
     "legal_identifier": "109/2025/QH15",
     "pdf_page": 15,
-    "quality_status": "quarantined_stamp_overlay",
+    "quality_status": "rejected_manual",
     "quality_flags": [
       "trang_cuối_chữ_ký"
     ],
     "suspicious_numbers": [],
     "extraction_method": "tesseract_vie",
-    "mean_ocr_confidence": 93.59,
-    "retry_attempts": [
-      {
-        "strategy": "bo_muc_mau",
-        "mean_ocr_confidence": 93.74,
-        "text_chars": 1200,
-        "text_sha256": "60b36922419c6a3f116083ddc23c7bea90d8ceaa95df2d96c4a2bfbe19fe83cf",
-        "suspicious_numbers": [],
-        "new_tokens_vs_primary": [
-          "XE",
-          "Kỹ",
-          "202",
-          "CHỦ",
-          "3ICH",
-          "QUỐC",
-          "HỘI",
-          "Trần",
-          "Thanh",
-          "Mẫn"
-        ],
-        "hint": "có_chữ_mới_cần_người_xác_nhận"
-      },
-      {
-        "strategy": "dpi200_adaptive",
-        "mean_ocr_confidence": 93.7,
-        "text_chars": 1189,
-        "text_sha256": "294fed7e188bfd10fce39fa594faab478eef30e61fe10296c960815b596bb8bb",
-        "suspicious_numbers": [],
-        "new_tokens_vs_primary": [
-          "trủ",
-          "kể",
-          "Kỹ",
-          "thẳng",
-          "CHỦ",
-          "TỊCH",
-          "QUÓC",
-          "HỘI",
-          "HH"
-        ],
-        "hint": "có_chữ_mới_cần_người_xác_nhận"
-      }
-    ],
-    "manual_notes": null,
+    "mean_ocr_confidence": 93.68,
+    "retry_attempts": [],
+    "manual_notes": "Đối chiếu ảnh trang cuối Luật 109/2025/QH15: OCR đọc sai số trang ('1§5'), nhiều lỗi từ ('thuê/thuế', 'Thú đô', 'khóa XE'→'XV', 'thẳng 12'→'tháng 12') và không nhận dạng chuẩn vùng ký/con dấu Chủ tịch Quốc hội; nội dung điều khoản chính còn nhận diện được.",
     "next_action": "xử lý lại hoặc gõ tay rồi đối chiếu"
   },
   {
     "source_id": "ND70_2025",
     "legal_identifier": "70/2025/NĐ-CP",
     "pdf_page": 1,
-    "quality_status": "quarantined_stamp_overlay",
+    "quality_status": "rejected_manual",
     "quality_flags": [],
     "suspicious_numbers": [],
     "extraction_method": "tesseract_vie",
-    "mean_ocr_confidence": 88.93,
-    "retry_attempts": [
-      {
-        "strategy": "bo_muc_mau",
-        "mean_ocr_confidence": 88.33,
-        "text_chars": 2064,
-        "text_sha256": "c9109e44a5695bcebe7f6a283d056efd49ae62faf87d744d4197b97d9c40e42c",
-        "suspicious_numbers": [],
-        "new_tokens_vs_primary": [
-          "Người",
-          "G",
-          "1ÌN",
-          "PHÙ",
-          "IEmail",
-          "t",
-          "hình",
-          "hpbuifchínhnhu",
-          "ạn",
-          "CH",
-          "GHINHPHU",
-          "VNlhời"
-        ],
-        "hint": "có_chữ_mới_cần_người_xác_nhận"
-      },
-      {
-        "strategy": "dpi200_adaptive",
-        "mean_ocr_confidence": 91.66,
-        "text_chars": 2102,
-        "text_sha256": "ad474e934a090233b73fb18c0d436cefa797614073f99974e92015d93fd3440f",
-        "suspicious_numbers": [],
-        "new_tokens_vs_primary": [
-          "Igười",
-          "TIN",
-          "Email",
-          "thongtinchinhphu",
-          "chinhphu",
-          "vn",
-          "CHINHPHU",
-          "V",
-          "NThời",
-          "gian",
-          "24",
-          "16"
-        ],
-        "hint": "có_chữ_mới_cần_người_xác_nhận"
-      }
+    "mean_ocr_confidence": 88.76,
+    "retry_attempts": [],
+    "manual_notes": "Đối chiếu ảnh Nghị định 70/2025/NĐ-CP trang 1: số hiệu/ngày ban hành đúng trên ảnh nhưng OCR garbled metadata ký số và vùng dấu công văn, sai dấu/ký tự và nhiều từ ('Số;' 'NGHỊĐỊNH', 'ưa đôi, bỗ sung một sô điều', 'sử dựng', 'thẳng 11', 'Luậi... SHfig... giả tị gia tăng', 'đê nghị'); cần hiệu đính.",
+    "next_action": "xử lý lại hoặc gõ tay rồi đối chiếu"
+  },
+  {
+    "source_id": "ND70_2025",
+    "legal_identifier": "70/2025/NĐ-CP",
+    "pdf_page": 38,
+    "quality_status": "rejected_manual",
+    "quality_flags": [],
+    "suspicious_numbers": [],
+    "extraction_method": "tesseract_vie",
+    "mean_ocr_confidence": 93.17,
+    "retry_attempts": [],
+    "manual_notes": "Đối chiếu ảnh trang 38 (sửa đổi khoản Điều 38-40): nội dung chính khớp nhưng OCR có lỗi chính tả/từ ('sô biên lai', 'thuê/thuế nơi chuyên/chuyển đi', 'đồng dẫu/đóng dấu', 'tô chức', 'Bố/Bổ sung', 'huý/hủy', 'xuât/xuất', 'mất/mắt, cháy/chảy' không nhất quán).",
+    "next_action": "xử lý lại hoặc gõ tay rồi đối chiếu"
+  },
+  {
+    "source_id": "ND70_2025",
+    "legal_identifier": "70/2025/NĐ-CP",
+    "pdf_page": 46,
+    "quality_status": "rejected_manual",
+    "quality_flags": [
+      "bảng_chưa_tái_dựng_cấu_trúc"
     ],
-    "manual_notes": null,
+    "suspicious_numbers": [],
+    "extraction_method": "tesseract_vie",
+    "mean_ocr_confidence": 88.61,
+    "retry_attempts": [],
+    "manual_notes": "Đối chiếu ảnh Phụ lục IA (danh mục biểu mẫu): OCR nhầm mã/tiêu đề (vd. '01/7ÐKTĐ-HĐDT', 'ÁC BIÊU'), lỗi chính tả ('đôi/bồ/bỗ/tông/Bồ') và làm phẳng bảng Mẫu số/Tên hồ sơ/Tình trạng; không dùng mã biểu mẫu từ OCR khi chưa soát.",
+    "next_action": "xử lý lại hoặc gõ tay rồi đối chiếu"
+  },
+  {
+    "source_id": "ND70_2025",
+    "legal_identifier": "70/2025/NĐ-CP",
+    "pdf_page": 47,
+    "quality_status": "rejected_manual",
+    "quality_flags": [
+      "bảng_chưa_tái_dựng_cấu_trúc"
+    ],
+    "suspicious_numbers": [],
+    "extraction_method": "tesseract_vie",
+    "mean_ocr_confidence": 87.39,
+    "retry_attempts": [],
+    "manual_notes": "Đối chiếu ảnh Mẫu 01/ĐKTĐ-HĐĐT (tờ khai ĐKTĐ/thay đổi HĐĐT): OCR sai mã/nhãn ('Mẫn số: 01ĐKTĐ-HĐĐT', 'Thay đôi', 'ên người nộp thuế'), garbled hàng loạt trường/ô (CCCD/Hộ chiếu, đại diện, liên hệ) và làm phẳng cấu trúc biểu mẫu.",
+    "next_action": "xử lý lại hoặc gõ tay rồi đối chiếu"
+  },
+  {
+    "source_id": "ND70_2025",
+    "legal_identifier": "70/2025/NĐ-CP",
+    "pdf_page": 74,
+    "quality_status": "rejected_manual",
+    "quality_flags": [
+      "trang_cuối_chữ_ký"
+    ],
+    "suspicious_numbers": [],
+    "extraction_method": "tesseract_vie",
+    "mean_ocr_confidence": 84.58,
+    "retry_attempts": [],
+    "manual_notes": "Đối chiếu ảnh Mẫu 03/TNCN (Chứng từ khấu trừ thuế TNCN): OCR sai nhãn/từ ('Mẫn/Mẫu số', 'TRÁ/TRẢ', 'Tổng thụ/thu nhập', lỗi 'Họ và tên', '(?rường hợp...)', ký 'Chữ lý điện tủ'), làm phẳng bố cục trường; vùng ký số/đại diện khấu trừ không nhận dạng chuẩn.",
     "next_action": "xử lý lại hoặc gõ tay rồi đối chiếu"
   }
 ]
