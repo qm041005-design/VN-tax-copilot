@@ -1,0 +1,2765 @@
+[
+  {
+    "source_id": "TT219_2013",
+    "legal_identifier": "219/2013/TT-BTC",
+    "official_url": "https://vanban.chinhphu.vn/?pageid=27160&docid=172570",
+    "download_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2014/02/tt-219.pdf",
+    "retrieved_at": "2026-11-11T20:45:53.576379+00:00",
+    "pdf_file": "TT219_2013.pdf",
+    "pdf_sha256": "4b0a41e0d3600f66592b1b29349891c6e82eca2491f254cf448dffb5b5048490",
+    "pdf_sha256_manifest": "4b0a41e0d3600f66592b1b29349891c6e82eca2491f254cf448dffb5b5048490",
+    "sha256_verified": true,
+    "total_pages": 83,
+    "pdf_page": 1,
+    "selection_reasons": [
+      "trang_scan",
+      "trang_đầu"
+    ],
+    "page_features": {
+      "scanned": true,
+      "table": false,
+      "colored_ink_pct": 0.0
+    },
+    "extraction_method": "tesseract_vie",
+    "ocr_config": {
+      "engine": "tesseract",
+      "lang": "vie",
+      "dpi": 150,
+      "binarize": "otsu",
+      "psm": 3
+    },
+    "mean_ocr_confidence": 91.45,
+    "text_sha256": "99eab2eb3fbdd73531bbc778cef3545cf135c40053e957072f0360b22637c54a",
+    "text_chars": 1901,
+    "suspicious_numbers": [],
+    "unicode": {
+      "is_nfc": true,
+      "combining_marks": 0,
+      "replacement_chars": 0,
+      "private_use_chars": 0,
+      "control_chars": 0,
+      "foreign_char_ratio": 0.00068
+    },
+    "quality_status": "verified_ok",
+    "quality_flags": [],
+    "error": null,
+    "processed_by": "Nguyen Gia Quy",
+    "processed_at": "2026-11-20T09:24:48+00:00",
+    "manual_review": {
+      "status": "done",
+      "assigned_to": "Nguyen Gia Quy",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh: số 219/2013/TT-BTC đúng; ngày ban hành phải là 31/12/2013 nhưng OCR đọc '3l tháng ]2 năm 2013'; nhiều từ/cụm bị sai dấu hoặc garbled (vd. 'GỐNG THÔNG TỊ...', 'chí tiết', 'thí hành', 'Tông cục', 'cơ câu tô chức'), cần hiệu đính theo ảnh. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
+      "reviewed_by": "Nguyen Gia Quy"
+    },
+    "retry": {
+      "needed": false,
+      "attempts": []
+    }
+  },
+  {
+    "source_id": "TT219_2013",
+    "legal_identifier": "219/2013/TT-BTC",
+    "official_url": "https://vanban.chinhphu.vn/?pageid=27160&docid=172570",
+    "download_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2014/02/tt-219.pdf",
+    "retrieved_at": "2026-11-11T20:45:53.576379+00:00",
+    "pdf_file": "TT219_2013.pdf",
+    "pdf_sha256": "4b0a41e0d3600f66592b1b29349891c6e82eca2491f254cf448dffb5b5048490",
+    "pdf_sha256_manifest": "4b0a41e0d3600f66592b1b29349891c6e82eca2491f254cf448dffb5b5048490",
+    "sha256_verified": true,
+    "total_pages": 83,
+    "pdf_page": 42,
+    "selection_reasons": [
+      "trang_scan"
+    ],
+    "page_features": {
+      "scanned": true,
+      "table": false,
+      "colored_ink_pct": 0.0
+    },
+    "extraction_method": "tesseract_vie",
+    "ocr_config": {
+      "engine": "tesseract",
+      "lang": "vie",
+      "dpi": 150,
+      "binarize": "otsu",
+      "psm": 3
+    },
+    "mean_ocr_confidence": 93.56,
+    "text_sha256": "53d386a80f61e1ebcdcdd29f5f7de7dbc1b663229fcf87d3b3d7cc11e472fb4b",
+    "text_chars": 2482,
+    "suspicious_numbers": [],
+    "unicode": {
+      "is_nfc": true,
+      "combining_marks": 0,
+      "replacement_chars": 0,
+      "private_use_chars": 0,
+      "control_chars": 0,
+      "foreign_char_ratio": 0.00104
+    },
+    "quality_status": "verified_ok",
+    "quality_flags": [],
+    "error": null,
+    "processed_by": "Nguyen Gia Quy",
+    "processed_at": "2026-11-20T09:24:49+00:00",
+    "manual_review": {
+      "status": "done",
+      "assigned_to": "Nguyen Gia Quy",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh: nội dung chính và ví dụ số liệu (11.000.000/1.100.000/12.100.000, 10%) khớp, nhưng OCR có lỗi như 'Sốthu6GTGT', 'ga tăng', 'ghỉ', 'tống số', 'tần' (phải là 'tấn') và mục b) viết '(>) tổng số...' trong khi ảnh là '(=) tổng số...'; cần hiệu đính. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
+      "reviewed_by": "Nguyen Gia Quy"
+    },
+    "retry": {
+      "needed": false,
+      "attempts": []
+    }
+  },
+  {
+    "source_id": "TT219_2013",
+    "legal_identifier": "219/2013/TT-BTC",
+    "official_url": "https://vanban.chinhphu.vn/?pageid=27160&docid=172570",
+    "download_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2014/02/tt-219.pdf",
+    "retrieved_at": "2026-11-11T20:45:53.576379+00:00",
+    "pdf_file": "TT219_2013.pdf",
+    "pdf_sha256": "4b0a41e0d3600f66592b1b29349891c6e82eca2491f254cf448dffb5b5048490",
+    "pdf_sha256_manifest": "4b0a41e0d3600f66592b1b29349891c6e82eca2491f254cf448dffb5b5048490",
+    "sha256_verified": true,
+    "total_pages": 83,
+    "pdf_page": 68,
+    "selection_reasons": [
+      "trang_có_bảng"
+    ],
+    "page_features": {
+      "scanned": true,
+      "table": true,
+      "colored_ink_pct": 0.0
+    },
+    "extraction_method": "tesseract_vie",
+    "ocr_config": {
+      "engine": "tesseract",
+      "lang": "vie",
+      "dpi": 150,
+      "binarize": "otsu",
+      "psm": 3
+    },
+    "mean_ocr_confidence": 90.29,
+    "text_sha256": "fb0a0d31aa75177b59d97e862ab904a1166085bec412d5cec0d409892a5f3301",
+    "text_chars": 2195,
+    "suspicious_numbers": [],
+    "unicode": {
+      "is_nfc": true,
+      "combining_marks": 0,
+      "replacement_chars": 0,
+      "private_use_chars": 0,
+      "control_chars": 0,
+      "foreign_char_ratio": 0.0006
+    },
+    "quality_status": "verified_ok",
+    "quality_flags": [
+      "bảng_chưa_tái_dựng_cấu_trúc",
+      "ô_số_trong_bảng_nghi_sai"
+    ],
+    "error": null,
+    "processed_by": "Nguyen Gia Quy",
+    "processed_at": "2026-11-20T09:24:50+00:00",
+    "manual_review": {
+      "status": "done",
+      "assigned_to": "Nguyen Gia Quy",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh bảng Ví dụ 71: nhiều ô số sai/không đọc được (vd. Tháng 4/2014 cột (5),(6) là 10,10 nhưng OCR ra 'lô lô'; Tháng 8/2014 '-10' ra '-1ô'; Tháng 1/2015 hàng bị garbled 'nổ... l2n'; các giá trị khác cũng lệch). Không dùng số liệu OCR, cần nhập/soát thủ công theo ảnh. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
+      "reviewed_by": "Nguyen Gia Quy"
+    },
+    "retry": {
+      "needed": false,
+      "attempts": []
+    },
+    "preliminary_check": {
+      "by": "AI assistant (Copilot SDK in VS Code) - sơ bộ, KHÔNG phải đối chiếu thủ công của người",
+      "note": "AI xem sơ bộ: Bảng trong ảnh có các ô số bị OCR đọc sai; ví dụ dòng Tháng 4/2014 ảnh ghi 10 và 10, OCR đọc thành 'lô' và 'lô'. Các số âm và số ở các dòng khác cũng bị nhầm. Không dùng số liệu OCR này.",
+      "at": "2026-11-20T15:15:25+00:00"
+    }
+  },
+  {
+    "source_id": "TT219_2013",
+    "legal_identifier": "219/2013/TT-BTC",
+    "official_url": "https://vanban.chinhphu.vn/?pageid=27160&docid=172570",
+    "download_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2014/02/tt-219.pdf",
+    "retrieved_at": "2026-11-11T20:45:53.576379+00:00",
+    "pdf_file": "TT219_2013.pdf",
+    "pdf_sha256": "4b0a41e0d3600f66592b1b29349891c6e82eca2491f254cf448dffb5b5048490",
+    "pdf_sha256_manifest": "4b0a41e0d3600f66592b1b29349891c6e82eca2491f254cf448dffb5b5048490",
+    "sha256_verified": true,
+    "total_pages": 83,
+    "pdf_page": 69,
+    "selection_reasons": [
+      "trang_có_bảng"
+    ],
+    "page_features": {
+      "scanned": true,
+      "table": true,
+      "colored_ink_pct": 0.0
+    },
+    "extraction_method": "tesseract_vie",
+    "ocr_config": {
+      "engine": "tesseract",
+      "lang": "vie",
+      "dpi": 150,
+      "binarize": "otsu",
+      "psm": 3
+    },
+    "mean_ocr_confidence": 87.73,
+    "text_sha256": "3d1363333ba10d8321679df79c5c1e13caec0211329f3b5596d4660fa4fe90ff",
+    "text_chars": 2358,
+    "suspicious_numbers": [],
+    "unicode": {
+      "is_nfc": true,
+      "combining_marks": 0,
+      "replacement_chars": 0,
+      "private_use_chars": 0,
+      "control_chars": 0,
+      "foreign_char_ratio": 0.00057
+    },
+    "quality_status": "verified_ok",
+    "quality_flags": [
+      "bảng_chưa_tái_dựng_cấu_trúc"
+    ],
+    "error": null,
+    "processed_by": "Nguyen Gia Quy",
+    "processed_at": "2026-11-20T09:24:52+00:00",
+    "manual_review": {
+      "status": "done",
+      "assigned_to": "Nguyen Gia Quy",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh Ví dụ 72/73: nhiều ô số sai (vd. Tháng 1/2014 ảnh (2)=0,(3)=300,(4)=280,(5)=20,(6)=20 nhưng OCR 'ọ 300 280 50 +20'; Tháng 2/2014 (2)=20,(3)=320 thành '2] 30'; Tháng 4/2014 (2)=50,(6)=10 thành '30... lộ'; các tháng khác cũng có ký tự/số lệch). Cần soát/nhập thủ công. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
+      "reviewed_by": "Nguyen Gia Quy"
+    },
+    "retry": {
+      "needed": false,
+      "attempts": []
+    },
+    "preliminary_check": {
+      "by": "AI assistant (Copilot SDK in VS Code) - sơ bộ, KHÔNG phải đối chiếu thủ công của người",
+      "note": "AI xem sơ bộ: Nhiều ô số trong bảng khác ảnh; ví dụ dòng Tháng 1/2014 ảnh ghi -20, -20 nhưng OCR đọc 50, +20; dòng Tháng 4/2014 OCR đọc 30 thay vì 50 và ký tự 'lộ' thay số 10. Cần đối chiếu/nhập lại bảng.",
+      "at": "2026-11-20T15:15:25+00:00"
+    }
+  },
+  {
+    "source_id": "TT219_2013",
+    "legal_identifier": "219/2013/TT-BTC",
+    "official_url": "https://vanban.chinhphu.vn/?pageid=27160&docid=172570",
+    "download_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2014/02/tt-219.pdf",
+    "retrieved_at": "2026-11-11T20:45:53.576379+00:00",
+    "pdf_file": "TT219_2013.pdf",
+    "pdf_sha256": "4b0a41e0d3600f66592b1b29349891c6e82eca2491f254cf448dffb5b5048490",
+    "pdf_sha256_manifest": "4b0a41e0d3600f66592b1b29349891c6e82eca2491f254cf448dffb5b5048490",
+    "sha256_verified": true,
+    "total_pages": 83,
+    "pdf_page": 83,
+    "selection_reasons": [
+      "trang_cuối"
+    ],
+    "page_features": {
+      "scanned": true,
+      "table": false,
+      "colored_ink_pct": 0.0
+    },
+    "extraction_method": "tesseract_vie",
+    "ocr_config": {
+      "engine": "tesseract",
+      "lang": "vie",
+      "dpi": 150,
+      "binarize": "otsu",
+      "psm": 3
+    },
+    "mean_ocr_confidence": 92.64,
+    "text_sha256": "7f9ca4111a6d2bea99e10df7c93d49fbb4495459a40c2d371e168e2563c499cc",
+    "text_chars": 576,
+    "suspicious_numbers": [],
+    "unicode": {
+      "is_nfc": true,
+      "combining_marks": 0,
+      "replacement_chars": 0,
+      "private_use_chars": 0,
+      "control_chars": 0,
+      "foreign_char_ratio": 0.00227
+    },
+    "quality_status": "verified_ok",
+    "quality_flags": [
+      "trang_cuối_chữ_ký"
+    ],
+    "error": null,
+    "processed_by": "Nguyen Gia Quy",
+    "processed_at": "2026-11-20T09:24:52+00:00",
+    "manual_review": {
+      "status": "done",
+      "assigned_to": "Nguyen Gia Quy",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh trang 83: nội dung chính nhận dạng đúng phần lớn, nhưng có lỗi nhỏ như 'õ tô' (ô tô), 'thiệt bị' (thiết bị) và đuôi mục 4 có ký tự lạ ';#⁄'; không thấy chữ ký trong ảnh trang này, cần hiệu đính văn bản OCR. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
+      "reviewed_by": "Nguyen Gia Quy"
+    },
+    "retry": {
+      "needed": false,
+      "attempts": []
+    }
+  },
+  {
+    "source_id": "TT111_2013",
+    "legal_identifier": "111/2013/TT-BTC",
+    "official_url": "https://vanban.chinhphu.vn/?pageid=27160&docid=169566",
+    "download_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2013/09/tt-111.pdf",
+    "retrieved_at": "2026-11-11T20:45:56.831555+00:00",
+    "pdf_file": "TT111_2013.pdf",
+    "pdf_sha256": "757131141172ebaff7ecd11ca18ee360cb4234c9fe0fab8a738bde4fc59c1522",
+    "pdf_sha256_manifest": "757131141172ebaff7ecd11ca18ee360cb4234c9fe0fab8a738bde4fc59c1522",
+    "sha256_verified": true,
+    "total_pages": 78,
+    "pdf_page": 1,
+    "selection_reasons": [
+      "trang_scan",
+      "trang_đầu"
+    ],
+    "page_features": {
+      "scanned": true,
+      "table": false,
+      "colored_ink_pct": 0.0
+    },
+    "extraction_method": "tesseract_vie",
+    "ocr_config": {
+      "engine": "tesseract",
+      "lang": "vie",
+      "dpi": 150,
+      "binarize": "otsu",
+      "psm": 3
+    },
+    "mean_ocr_confidence": 89.28,
+    "text_sha256": "5aaec4836205cdf24c0fd5ec4bf984b14bed22a9333fa18a1a4cdc0c03c9d7b3",
+    "text_chars": 2041,
+    "suspicious_numbers": [],
+    "unicode": {
+      "is_nfc": true,
+      "combining_marks": 0,
+      "replacement_chars": 0,
+      "private_use_chars": 0,
+      "control_chars": 0,
+      "foreign_char_ratio": 0.00063
+    },
+    "quality_status": "verified_ok",
+    "quality_flags": [],
+    "error": null,
+    "processed_by": "Nguyen Gia Quy",
+    "processed_at": "2026-11-20T09:24:55+00:00",
+    "manual_review": {
+      "status": "done",
+      "assigned_to": "Nguyen Gia Quy",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh: số 111/2013/TT-BTC, ngày 15/8/2013 và tiêu đề/căn cứ chính đúng, nhưng OCR sai/garbled nhiều (vd. '1112013/TT- BTÈ', '8 nằm 2013', '65/2013/NĐ-CP' thành 'xố 63/2013/NĐ-CP' ở đoạn cuối, 'chỉ tiết', 'bỗ sung', dấu/ký hiệu lạ vùng đầu trang), cần hiệu đính. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
+      "reviewed_by": "Nguyen Gia Quy"
+    },
+    "retry": {
+      "needed": false,
+      "attempts": []
+    }
+  },
+  {
+    "source_id": "TT111_2013",
+    "legal_identifier": "111/2013/TT-BTC",
+    "official_url": "https://vanban.chinhphu.vn/?pageid=27160&docid=169566",
+    "download_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2013/09/tt-111.pdf",
+    "retrieved_at": "2026-11-11T20:45:56.831555+00:00",
+    "pdf_file": "TT111_2013.pdf",
+    "pdf_sha256": "757131141172ebaff7ecd11ca18ee360cb4234c9fe0fab8a738bde4fc59c1522",
+    "pdf_sha256_manifest": "757131141172ebaff7ecd11ca18ee360cb4234c9fe0fab8a738bde4fc59c1522",
+    "sha256_verified": true,
+    "total_pages": 78,
+    "pdf_page": 21,
+    "selection_reasons": [
+      "trang_có_bảng"
+    ],
+    "page_features": {
+      "scanned": true,
+      "table": true,
+      "colored_ink_pct": 0.0
+    },
+    "extraction_method": "tesseract_vie",
+    "ocr_config": {
+      "engine": "tesseract",
+      "lang": "vie",
+      "dpi": 150,
+      "binarize": "otsu",
+      "psm": 3
+    },
+    "mean_ocr_confidence": 92.69,
+    "text_sha256": "28c7dbfdb6407164891359324678943a0ff897e5720a95e0556c5b61e22b5ea7",
+    "text_chars": 1757,
+    "suspicious_numbers": [],
+    "unicode": {
+      "is_nfc": true,
+      "combining_marks": 0,
+      "replacement_chars": 0,
+      "private_use_chars": 0,
+      "control_chars": 0,
+      "foreign_char_ratio": 0.00075
+    },
+    "quality_status": "verified_ok",
+    "quality_flags": [
+      "bảng_chưa_tái_dựng_cấu_trúc"
+    ],
+    "error": null,
+    "processed_by": "Nguyen Gia Quy",
+    "processed_at": "2026-11-20T09:24:56+00:00",
+    "manual_review": {
+      "status": "done",
+      "assigned_to": "Nguyen Gia Quy",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh Biểu thuế lũy tiến 7 bậc: ngưỡng và thuế suất về số liệu cơ bản khớp, nhưng OCR làm phẳng bảng và sai nhãn/ký tự (bậc 1 'ET Đến 60', bậc 3 thiếu 'Trên', bậc 6-7 ký tự 'H/[ren', lỗi 'i với thu nhập...'). Cần soát nhãn từng bậc trước khi trích dùng. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
+      "reviewed_by": "Nguyen Gia Quy"
+    },
+    "retry": {
+      "needed": false,
+      "attempts": []
+    },
+    "preliminary_check": {
+      "by": "AI assistant (Copilot SDK in VS Code) - sơ bộ, KHÔNG phải đối chiếu thủ công của người",
+      "note": "AI xem sơ bộ: Bảng thuế lũy tiến có 7 bậc; OCR làm phẳng bảng, mất chữ đầu ở ngưỡng (ví dụ bậc 3 thiếu 'Trên') và có ký tự sai ở bậc 6-7. Cần xác nhận từng ngưỡng và mức thuế suất.",
+      "at": "2026-11-20T15:15:25+00:00"
+    }
+  },
+  {
+    "source_id": "TT111_2013",
+    "legal_identifier": "111/2013/TT-BTC",
+    "official_url": "https://vanban.chinhphu.vn/?pageid=27160&docid=169566",
+    "download_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2013/09/tt-111.pdf",
+    "retrieved_at": "2026-11-11T20:45:56.831555+00:00",
+    "pdf_file": "TT111_2013.pdf",
+    "pdf_sha256": "757131141172ebaff7ecd11ca18ee360cb4234c9fe0fab8a738bde4fc59c1522",
+    "pdf_sha256_manifest": "757131141172ebaff7ecd11ca18ee360cb4234c9fe0fab8a738bde4fc59c1522",
+    "sha256_verified": true,
+    "total_pages": 78,
+    "pdf_page": 40,
+    "selection_reasons": [
+      "trang_scan"
+    ],
+    "page_features": {
+      "scanned": true,
+      "table": false,
+      "colored_ink_pct": 0.0
+    },
+    "extraction_method": "tesseract_vie",
+    "ocr_config": {
+      "engine": "tesseract",
+      "lang": "vie",
+      "dpi": 150,
+      "binarize": "otsu",
+      "psm": 3
+    },
+    "mean_ocr_confidence": 93.21,
+    "text_sha256": "aa03b6e9c4ef758e9b4414da8f5638494d6f218dbbd91c01d507440f8f536cbb",
+    "text_chars": 2765,
+    "suspicious_numbers": [],
+    "unicode": {
+      "is_nfc": true,
+      "combining_marks": 0,
+      "replacement_chars": 0,
+      "private_use_chars": 0,
+      "control_chars": 0,
+      "foreign_char_ratio": 0.00046
+    },
+    "quality_status": "verified_ok",
+    "quality_flags": [],
+    "error": null,
+    "processed_by": "Nguyen Gia Quy",
+    "processed_at": "2026-11-20T09:24:57+00:00",
+    "manual_review": {
+      "status": "done",
+      "assigned_to": "Nguyen Gia Quy",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh: nội dung và các số tiền ví dụ 11 (800.000/tháng, 9.600.000/năm, 2.000.000/tháng, 24.000.000/năm, trừ tối đa 12.000.000/năm) đúng ý chính, nhưng OCR có lỗi như 'điêu chỉnh', 'hồ sợ', 'q2 triệu đồng/năm' (phải là 12 triệu đồng/năm), 'Vị dụ 11' và một số dấu/ký tự sai. Cần hiệu đính. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
+      "reviewed_by": "Nguyen Gia Quy"
+    },
+    "retry": {
+      "needed": false,
+      "attempts": []
+    }
+  },
+  {
+    "source_id": "TT111_2013",
+    "legal_identifier": "111/2013/TT-BTC",
+    "official_url": "https://vanban.chinhphu.vn/?pageid=27160&docid=169566",
+    "download_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2013/09/tt-111.pdf",
+    "retrieved_at": "2026-11-11T20:45:56.831555+00:00",
+    "pdf_file": "TT111_2013.pdf",
+    "pdf_sha256": "757131141172ebaff7ecd11ca18ee360cb4234c9fe0fab8a738bde4fc59c1522",
+    "pdf_sha256_manifest": "757131141172ebaff7ecd11ca18ee360cb4234c9fe0fab8a738bde4fc59c1522",
+    "sha256_verified": true,
+    "total_pages": 78,
+    "pdf_page": 78,
+    "selection_reasons": [
+      "trang_có_bảng",
+      "trang_cuối"
+    ],
+    "page_features": {
+      "scanned": true,
+      "table": true,
+      "colored_ink_pct": 0.0
+    },
+    "extraction_method": "tesseract_vie",
+    "ocr_config": {
+      "engine": "tesseract",
+      "lang": "vie",
+      "dpi": 150,
+      "binarize": "otsu",
+      "psm": 3
+    },
+    "mean_ocr_confidence": 77.87,
+    "text_sha256": "13a8831b8e6ebb2e080ccaec6e8419835420cd7b24060ae8d800d362a49ecc28",
+    "text_chars": 716,
+    "suspicious_numbers": [],
+    "unicode": {
+      "is_nfc": true,
+      "combining_marks": 0,
+      "replacement_chars": 0,
+      "private_use_chars": 0,
+      "control_chars": 0,
+      "foreign_char_ratio": 0.00181
+    },
+    "quality_status": "verified_ok",
+    "quality_flags": [
+      "bảng_chưa_tái_dựng_cấu_trúc",
+      "trang_cuối_chữ_ký",
+      "confidence_70_80"
+    ],
+    "error": null,
+    "processed_by": "Nguyen Gia Quy",
+    "processed_at": "2026-11-20T09:24:58+00:00",
+    "manual_review": {
+      "status": "done",
+      "assigned_to": "Nguyen Gia Quy",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh Phụ lục 02/PL-TNCN: OCR sai nhiều (phụ lục '62/PL~-TNCN', tiêu đề 'BẢNG QUY ĐÓI', 'tiên lương, tiên công', cột giá trị 'trổ', hàng 3 có ký tự lạ 'R', hàng 6 '(TNQĐ - 5,85 trđ}X/0,7', hàng 7 dùng dấu gạch dài/ký tự sai). Ngưỡng và công thức cần soát lại từng dòng theo ảnh. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
+      "reviewed_by": "Nguyen Gia Quy"
+    },
+    "retry": {
+      "needed": false,
+      "attempts": []
+    },
+    "preliminary_check": {
+      "by": "AI assistant (Copilot SDK in VS Code) - sơ bộ, KHÔNG phải đối chiếu thủ công của người",
+      "note": "AI xem sơ bộ: Bảng công thức phụ lục bị OCR sai nhiều ở tiêu đề và ký tự công thức; cần người soát từng ngưỡng, hệ số và liên kết giữa hai cột.",
+      "at": "2026-11-20T15:15:25+00:00"
+    }
+  },
+  {
+    "source_id": "TT96_2015",
+    "legal_identifier": "96/2015/TT-BTC",
+    "official_url": "https://vanban.chinhphu.vn/?pageid=27160&docid=180650",
+    "download_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2015/07/96.signed_01.pdf",
+    "retrieved_at": "2026-11-11T20:45:59.559220+00:00",
+    "pdf_file": "TT96_2015.pdf",
+    "pdf_sha256": "1138a972175033d271789d11cd871f9d022f512e46b04f2da6ace5c1b0b6bdd1",
+    "pdf_sha256_manifest": "1138a972175033d271789d11cd871f9d022f512e46b04f2da6ace5c1b0b6bdd1",
+    "sha256_verified": true,
+    "total_pages": 38,
+    "pdf_page": 1,
+    "selection_reasons": [
+      "trang_scan",
+      "trang_đầu"
+    ],
+    "page_features": {
+      "scanned": true,
+      "table": false,
+      "colored_ink_pct": 0.0817
+    },
+    "extraction_method": "tesseract_vie",
+    "ocr_config": {
+      "engine": "tesseract",
+      "lang": "vie",
+      "dpi": 150,
+      "binarize": "otsu",
+      "psm": 3
+    },
+    "mean_ocr_confidence": 89.63,
+    "text_sha256": "efb01daa912bff17142353c598711d1d9302fafbbce74369b3e655a6e66b2a50",
+    "text_chars": 2173,
+    "suspicious_numbers": [],
+    "unicode": {
+      "is_nfc": true,
+      "combining_marks": 0,
+      "replacement_chars": 0,
+      "private_use_chars": 0,
+      "control_chars": 0,
+      "foreign_char_ratio": 0.00058
+    },
+    "quality_status": "verified_ok",
+    "quality_flags": [],
+    "error": null,
+    "processed_by": "Nguyen Gia Quy",
+    "processed_at": "2026-11-20T09:25:00+00:00",
+    "manual_review": {
+      "status": "done",
+      "assigned_to": "Nguyen Gia Quy",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh: số 96/2015/TT-BTC và ngày 22/06/2015 đúng, nhưng có lớp dấu/ghi chú chồng lên (CÔNG THÔNG TIN ĐIỆN TỬ CHÍNH PHỦ, vùng văn bản đến/ghi chú bên trái) và OCR sai/nhiễu nhiều ở tiêu đề, căn cứ pháp lý và dòng tham chiếu thông tư (vd. 'Hướng d dẫn', 'bỗ sưng', đoạn 'VĂNih...' garbled, 'Luậi', 'thẳng 12', 'chỉ tiết'). Cần xác nhận phần bị che và hiệu đính. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
+      "reviewed_by": "Nguyen Gia Quy"
+    },
+    "retry": {
+      "needed": false,
+      "attempts": []
+    },
+    "preliminary_check": {
+      "by": "AI assistant (Copilot SDK in VS Code) - sơ bộ, KHÔNG phải đối chiếu thủ công của người",
+      "note": "AI xem sơ bộ: Dấu/ghi chú chồng lên phần tiêu đề. OCR có lỗi rõ ở tiêu đề và các dòng căn cứ pháp lý; cần so ảnh để xác nhận phần bị che.",
+      "at": "2026-11-20T15:15:25+00:00"
+    }
+  },
+  {
+    "source_id": "TT96_2015",
+    "legal_identifier": "96/2015/TT-BTC",
+    "official_url": "https://vanban.chinhphu.vn/?pageid=27160&docid=180650",
+    "download_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2015/07/96.signed_01.pdf",
+    "retrieved_at": "2026-11-11T20:45:59.559220+00:00",
+    "pdf_file": "TT96_2015.pdf",
+    "pdf_sha256": "1138a972175033d271789d11cd871f9d022f512e46b04f2da6ace5c1b0b6bdd1",
+    "pdf_sha256_manifest": "1138a972175033d271789d11cd871f9d022f512e46b04f2da6ace5c1b0b6bdd1",
+    "sha256_verified": true,
+    "total_pages": 38,
+    "pdf_page": 20,
+    "selection_reasons": [
+      "trang_scan"
+    ],
+    "page_features": {
+      "scanned": true,
+      "table": false,
+      "colored_ink_pct": 0.0
+    },
+    "extraction_method": "tesseract_vie",
+    "ocr_config": {
+      "engine": "tesseract",
+      "lang": "vie",
+      "dpi": 150,
+      "binarize": "otsu",
+      "psm": 3
+    },
+    "mean_ocr_confidence": 93.49,
+    "text_sha256": "30ac8dee2fb0ba1113b30aace4e44afd56b0ca21a26492ba095312ef919625ad",
+    "text_chars": 3075,
+    "suspicious_numbers": [],
+    "unicode": {
+      "is_nfc": true,
+      "combining_marks": 0,
+      "replacement_chars": 0,
+      "private_use_chars": 0,
+      "control_chars": 0,
+      "foreign_char_ratio": 0.00042
+    },
+    "quality_status": "verified_ok",
+    "quality_flags": [],
+    "error": null,
+    "processed_by": "Nguyen Gia Quy",
+    "processed_at": "2026-11-20T09:25:01+00:00",
+    "manual_review": {
+      "status": "done",
+      "assigned_to": "Nguyen Gia Quy",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh trang 20 (các khoản 2.32–2.37): nội dung chính khớp, nhưng OCR có nhiều lỗi dấu/từ/ký tự (vd. 'chịu thuê' thay 'chịu thuế', 'qừ cổ phiếu', 'vẫn chủ sở: hữu', 'thực tê', lỗi dấu câu/khoảng trắng); cần hiệu đính trước khi sử dụng văn bản. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
+      "reviewed_by": "Nguyen Gia Quy"
+    },
+    "retry": {
+      "needed": false,
+      "attempts": []
+    }
+  },
+  {
+    "source_id": "TT96_2015",
+    "legal_identifier": "96/2015/TT-BTC",
+    "official_url": "https://vanban.chinhphu.vn/?pageid=27160&docid=180650",
+    "download_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2015/07/96.signed_01.pdf",
+    "retrieved_at": "2026-11-11T20:45:59.559220+00:00",
+    "pdf_file": "TT96_2015.pdf",
+    "pdf_sha256": "1138a972175033d271789d11cd871f9d022f512e46b04f2da6ace5c1b0b6bdd1",
+    "pdf_sha256_manifest": "1138a972175033d271789d11cd871f9d022f512e46b04f2da6ace5c1b0b6bdd1",
+    "sha256_verified": true,
+    "total_pages": 38,
+    "pdf_page": 38,
+    "selection_reasons": [
+      "trang_cuối"
+    ],
+    "page_features": {
+      "scanned": true,
+      "table": false,
+      "colored_ink_pct": 0.0
+    },
+    "extraction_method": "tesseract_vie",
+    "ocr_config": {
+      "engine": "tesseract",
+      "lang": "vie",
+      "dpi": 150,
+      "binarize": "otsu",
+      "psm": 3
+    },
+    "mean_ocr_confidence": 90.52,
+    "text_sha256": "9b2d8f60d0b8603264dfe0ef2f31c301578467978d70e92b6d718c1929648a7d",
+    "text_chars": 1288,
+    "suspicious_numbers": [],
+    "unicode": {
+      "is_nfc": true,
+      "combining_marks": 0,
+      "replacement_chars": 0,
+      "private_use_chars": 0,
+      "control_chars": 0,
+      "foreign_char_ratio": 0.001
+    },
+    "quality_status": "verified_ok",
+    "quality_flags": [
+      "trang_cuối_chữ_ký"
+    ],
+    "error": null,
+    "processed_by": "Nguyen Gia Quy",
+    "processed_at": "2026-11-20T09:25:01+00:00",
+    "manual_review": {
+      "status": "done",
+      "assigned_to": "Nguyen Gia Quy",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh: trang cuối có Điều 15, danh sách nơi nhận và chữ ký/đóng dấu (KT. Bộ trưởng, Thứ trưởng Đỗ Hoàng Anh Tuấn). OCR nhận diện được phần lớn nội dung nhưng có lỗi chính tả/từ ('phể biến', 'để nghị', 'Trung ương...' vùng nơi nhận) và không thể hiện đầy đủ chữ ký/đóng dấu; cần xác nhận bằng ảnh. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
+      "reviewed_by": "Nguyen Gia Quy"
+    },
+    "retry": {
+      "needed": false,
+      "attempts": []
+    }
+  },
+  {
+    "source_id": "TT26_2015",
+    "legal_identifier": "26/2015/TT-BTC",
+    "official_url": "https://vanban.chinhphu.vn/?pageid=27160&docid=179270",
+    "download_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2015/03/26tt.signed.pdf",
+    "retrieved_at": "2026-11-11T20:46:01.351852+00:00",
+    "pdf_file": "TT26_2015.pdf",
+    "pdf_sha256": "c82351a7f3adb0866cb2ab9b19a60799902c04c599d15d9bcdc78d7210bfd300",
+    "pdf_sha256_manifest": "c82351a7f3adb0866cb2ab9b19a60799902c04c599d15d9bcdc78d7210bfd300",
+    "sha256_verified": true,
+    "total_pages": 43,
+    "pdf_page": 1,
+    "selection_reasons": [
+      "trang_scan",
+      "trang_đầu"
+    ],
+    "page_features": {
+      "scanned": true,
+      "table": false,
+      "colored_ink_pct": 0.0666
+    },
+    "extraction_method": "tesseract_vie",
+    "ocr_config": {
+      "engine": "tesseract",
+      "lang": "vie",
+      "dpi": 150,
+      "binarize": "otsu",
+      "psm": 3
+    },
+    "mean_ocr_confidence": 88.07,
+    "text_sha256": "2cb6d96bfa4d3a9d658d3bbe6202c3c1ff0ca3b41abaa68727989ee15d78e15f",
+    "text_chars": 2063,
+    "suspicious_numbers": [],
+    "unicode": {
+      "is_nfc": true,
+      "combining_marks": 0,
+      "replacement_chars": 0,
+      "private_use_chars": 0,
+      "control_chars": 0,
+      "foreign_char_ratio": 0.00062
+    },
+    "quality_status": "verified_ok",
+    "quality_flags": [],
+    "error": null,
+    "processed_by": "Nguyen Gia Quy",
+    "processed_at": "2026-11-20T09:25:04+00:00",
+    "manual_review": {
+      "status": "done",
+      "assigned_to": "Nguyen Gia Quy",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh: số 26/2015/TT-BTC, ngày 27/02/2015 và tiêu đề chính đúng, nhưng có lớp dấu/ghi chú chồng (CÔNG THÔNG TIN ĐIỆN TỬ CHÍNH PHỦ, CÔNG VĂN ĐẾN, vùng 'VĂN PHÒNG...') và OCR sai/nhiễu nặng (vd. 'TỊN ĐIỆN TỬ CHÍNH PHÙ', 'Tuất Quản Là thuế', dòng trích yếu 39/2014/TT-BTC bị garbled). Cần xác nhận phần bị che và hiệu đính. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
+      "reviewed_by": "Nguyen Gia Quy"
+    },
+    "retry": {
+      "needed": false,
+      "attempts": []
+    },
+    "preliminary_check": {
+      "by": "AI assistant (Copilot SDK in VS Code) - sơ bộ, KHÔNG phải đối chiếu thủ công của người",
+      "note": "AI xem sơ bộ: Dấu công văn chồng lên tiêu đề và phần hướng dẫn. OCR có ký tự nhiễu và lỗi ở các dòng tiêu đề; cần người xác nhận.",
+      "at": "2026-11-20T15:15:25+00:00"
+    }
+  },
+  {
+    "source_id": "TT26_2015",
+    "legal_identifier": "26/2015/TT-BTC",
+    "official_url": "https://vanban.chinhphu.vn/?pageid=27160&docid=179270",
+    "download_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2015/03/26tt.signed.pdf",
+    "retrieved_at": "2026-11-11T20:46:01.351852+00:00",
+    "pdf_file": "TT26_2015.pdf",
+    "pdf_sha256": "c82351a7f3adb0866cb2ab9b19a60799902c04c599d15d9bcdc78d7210bfd300",
+    "pdf_sha256_manifest": "c82351a7f3adb0866cb2ab9b19a60799902c04c599d15d9bcdc78d7210bfd300",
+    "sha256_verified": true,
+    "total_pages": 43,
+    "pdf_page": 22,
+    "selection_reasons": [
+      "trang_scan"
+    ],
+    "page_features": {
+      "scanned": true,
+      "table": false,
+      "colored_ink_pct": 0.0
+    },
+    "extraction_method": "tesseract_vie",
+    "ocr_config": {
+      "engine": "tesseract",
+      "lang": "vie",
+      "dpi": 150,
+      "binarize": "otsu",
+      "psm": 3
+    },
+    "mean_ocr_confidence": 93.52,
+    "text_sha256": "5632c549b05c893f014736412582c78753407aa6dae2165a85de36a93adcd251",
+    "text_chars": 2413,
+    "suspicious_numbers": [],
+    "unicode": {
+      "is_nfc": true,
+      "combining_marks": 0,
+      "replacement_chars": 0,
+      "private_use_chars": 0,
+      "control_chars": 0,
+      "foreign_char_ratio": 0.00053
+    },
+    "quality_status": "verified_ok",
+    "quality_flags": [],
+    "error": null,
+    "processed_by": "Nguyen Gia Quy",
+    "processed_at": "2026-11-20T09:25:05+00:00",
+    "manual_review": {
+      "status": "done",
+      "assigned_to": "Nguyen Gia Quy",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh trang 22: nội dung các điểm 6–9 về gia hạn nộp thuế/chậm nộp khớp ý chính, nhưng OCR có lỗi như 'ý' muốn' (ký tự lạ), 'Tai hạn giao thông' (phải là 'Tai nạn giao thông'), 'khoán', 'để nghị', và 'quả thời hạn nộp dân tiền thuế' (sai cụm từ); cần hiệu đính. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
+      "reviewed_by": "Nguyen Gia Quy"
+    },
+    "retry": {
+      "needed": false,
+      "attempts": []
+    }
+  },
+  {
+    "source_id": "TT26_2015",
+    "legal_identifier": "26/2015/TT-BTC",
+    "official_url": "https://vanban.chinhphu.vn/?pageid=27160&docid=179270",
+    "download_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2015/03/26tt.signed.pdf",
+    "retrieved_at": "2026-11-11T20:46:01.351852+00:00",
+    "pdf_file": "TT26_2015.pdf",
+    "pdf_sha256": "c82351a7f3adb0866cb2ab9b19a60799902c04c599d15d9bcdc78d7210bfd300",
+    "pdf_sha256_manifest": "c82351a7f3adb0866cb2ab9b19a60799902c04c599d15d9bcdc78d7210bfd300",
+    "sha256_verified": true,
+    "total_pages": 43,
+    "pdf_page": 36,
+    "selection_reasons": [
+      "trang_có_bảng"
+    ],
+    "page_features": {
+      "scanned": true,
+      "table": true,
+      "colored_ink_pct": 0.0
+    },
+    "extraction_method": "tesseract_vie",
+    "ocr_config": {
+      "engine": "tesseract",
+      "lang": "vie",
+      "dpi": 150,
+      "binarize": "otsu",
+      "psm": 3
+    },
+    "mean_ocr_confidence": 67.94,
+    "text_sha256": "04df467c73a77a293c85fd5bc4c54a19d524c38c57889f62e900012608531b4a",
+    "text_chars": 3173,
+    "suspicious_numbers": [],
+    "unicode": {
+      "is_nfc": true,
+      "combining_marks": 0,
+      "replacement_chars": 0,
+      "private_use_chars": 0,
+      "control_chars": 0,
+      "foreign_char_ratio": 0.00083
+    },
+    "quality_status": "verified_ok",
+    "quality_flags": [
+      "bảng_chưa_tái_dựng_cấu_trúc"
+    ],
+    "error": null,
+    "processed_by": "Nguyen Gia Quy",
+    "processed_at": "2026-11-20T09:25:06+00:00",
+    "manual_review": {
+      "status": "done",
+      "assigned_to": "Nguyen Gia Quy",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh Mẫu 01/GTGT (tờ khai GTGT): OCR hỏng cấu trúc bảng/ô và nhầm nhiều mã chỉ tiêu, nhãn trường, giá trị chỉ mục (các ô [01]-[43], bảng hàng hóa mua/bán); không bảo toàn bố cục biểu mẫu. Không dùng để tra cứu hay nhập số liệu. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
+      "reviewed_by": "Nguyen Gia Quy"
+    },
+    "retry": {
+      "needed": false,
+      "attempts": []
+    },
+    "preliminary_check": {
+      "by": "AI assistant (Copilot SDK in VS Code) - sơ bộ, KHÔNG phải đối chiếu thủ công của người",
+      "note": "AI xem sơ bộ: Ảnh là mẫu tờ khai có nhiều ô và mã chỉ tiêu; OCR nhầm nhiều mã/nhãn (ví dụ mẫu số và các chỉ tiêu dạng [xx]) và không giữ được bố cục. Không dùng kết quả số liệu.",
+      "at": "2026-11-20T15:15:25+00:00"
+    }
+  },
+  {
+    "source_id": "TT26_2015",
+    "legal_identifier": "26/2015/TT-BTC",
+    "official_url": "https://vanban.chinhphu.vn/?pageid=27160&docid=179270",
+    "download_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2015/03/26tt.signed.pdf",
+    "retrieved_at": "2026-11-11T20:46:01.351852+00:00",
+    "pdf_file": "TT26_2015.pdf",
+    "pdf_sha256": "c82351a7f3adb0866cb2ab9b19a60799902c04c599d15d9bcdc78d7210bfd300",
+    "pdf_sha256_manifest": "c82351a7f3adb0866cb2ab9b19a60799902c04c599d15d9bcdc78d7210bfd300",
+    "sha256_verified": true,
+    "total_pages": 43,
+    "pdf_page": 37,
+    "selection_reasons": [
+      "trang_có_bảng"
+    ],
+    "page_features": {
+      "scanned": true,
+      "table": true,
+      "colored_ink_pct": 0.0
+    },
+    "extraction_method": "tesseract_vie",
+    "ocr_config": {
+      "engine": "tesseract",
+      "lang": "vie",
+      "dpi": 150,
+      "binarize": "otsu",
+      "psm": 3
+    },
+    "mean_ocr_confidence": 82.16,
+    "text_sha256": "0a7d9745d7af7ce2e5268681b44eed8536516be3a5c0d21bc6f4582f12766e54",
+    "text_chars": 1270,
+    "suspicious_numbers": [],
+    "unicode": {
+      "is_nfc": true,
+      "combining_marks": 0,
+      "replacement_chars": 0,
+      "private_use_chars": 0,
+      "control_chars": 0,
+      "foreign_char_ratio": 0.00102
+    },
+    "quality_status": "verified_ok",
+    "quality_flags": [
+      "bảng_chưa_tái_dựng_cấu_trúc"
+    ],
+    "error": null,
+    "processed_by": "Nguyen Gia Quy",
+    "processed_at": "2026-11-20T09:25:07+00:00",
+    "manual_review": {
+      "status": "done",
+      "assigned_to": "Nguyen Gia Quy",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh Phụ lục 01-7/GTGT (Bảng phân bổ số thuế GTGT): OCR sai/garbled tiêu đề và nhãn ('SỞ THUÊ...' thay 'SỐ THUẾ', lỗi tên cột, trường mẫu) và làm phẳng cấu trúc bảng; cần đối chiếu từng cột/hàng theo ảnh. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
+      "reviewed_by": "Nguyen Gia Quy"
+    },
+    "retry": {
+      "needed": false,
+      "attempts": []
+    },
+    "preliminary_check": {
+      "by": "AI assistant (Copilot SDK in VS Code) - sơ bộ, KHÔNG phải đối chiếu thủ công của người",
+      "note": "AI xem sơ bộ: Ảnh là bảng biểu mẫu phân bổ thuế; OCR làm phẳng tiêu đề cột và nhầm nhiều nhãn/từ trong biểu mẫu. Cần đối chiếu từng cột và mã biểu mẫu.",
+      "at": "2026-11-20T15:15:25+00:00"
+    }
+  },
+  {
+    "source_id": "TT26_2015",
+    "legal_identifier": "26/2015/TT-BTC",
+    "official_url": "https://vanban.chinhphu.vn/?pageid=27160&docid=179270",
+    "download_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2015/03/26tt.signed.pdf",
+    "retrieved_at": "2026-11-11T20:46:01.351852+00:00",
+    "pdf_file": "TT26_2015.pdf",
+    "pdf_sha256": "c82351a7f3adb0866cb2ab9b19a60799902c04c599d15d9bcdc78d7210bfd300",
+    "pdf_sha256_manifest": "c82351a7f3adb0866cb2ab9b19a60799902c04c599d15d9bcdc78d7210bfd300",
+    "sha256_verified": true,
+    "total_pages": 43,
+    "pdf_page": 43,
+    "selection_reasons": [
+      "trang_cuối"
+    ],
+    "page_features": {
+      "scanned": true,
+      "table": false,
+      "colored_ink_pct": 0.0
+    },
+    "extraction_method": "tesseract_vie",
+    "ocr_config": {
+      "engine": "tesseract",
+      "lang": "vie",
+      "dpi": 150,
+      "binarize": "otsu",
+      "psm": 3
+    },
+    "mean_ocr_confidence": 77.21,
+    "text_sha256": "17ea77279a3e7528a6f1c60d93a7c0c47cf978c9c4ed24a370dbeabeebb3ebaf",
+    "text_chars": 960,
+    "suspicious_numbers": [],
+    "unicode": {
+      "is_nfc": true,
+      "combining_marks": 0,
+      "replacement_chars": 0,
+      "private_use_chars": 0,
+      "control_chars": 0,
+      "foreign_char_ratio": 0.00137
+    },
+    "quality_status": "verified_ok",
+    "quality_flags": [
+      "trang_cuối_chữ_ký",
+      "confidence_70_80"
+    ],
+    "error": null,
+    "processed_by": "Nguyen Gia Quy",
+    "processed_at": "2026-11-20T09:25:08+00:00",
+    "manual_review": {
+      "status": "done",
+      "assigned_to": "Nguyen Gia Quy",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh Mẫu BC01/AC (Báo cáo nhận in/cung cấp phần mềm tự in hóa đơn): OCR nhận sai mã mẫu ('BC0UAC'), làm vỡ bảng/cột (1)-(11) và nhãn trường, nhiều chuỗi garbled; có vùng ký/người đại diện theo pháp luật cần xác nhận trên ảnh. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
+      "reviewed_by": "Nguyen Gia Quy"
+    },
+    "retry": {
+      "needed": false,
+      "attempts": []
+    }
+  },
+  {
+    "source_id": "ND123_2020",
+    "legal_identifier": "123/2020/NĐ-CP",
+    "official_url": "https://vanban.chinhphu.vn/?pageid=27160&docid=201365",
+    "download_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2020/10/123.signed_01.pdf",
+    "retrieved_at": "2026-11-11T20:46:03.192695+00:00",
+    "pdf_file": "ND123_2020.pdf",
+    "pdf_sha256": "577e27071365311d6ce0bde7a85330fb6607bac5021a6e884105a051985a6a78",
+    "pdf_sha256_manifest": "577e27071365311d6ce0bde7a85330fb6607bac5021a6e884105a051985a6a78",
+    "sha256_verified": true,
+    "total_pages": 123,
+    "pdf_page": 1,
+    "selection_reasons": [
+      "trang_scan",
+      "trang_đầu"
+    ],
+    "page_features": {
+      "scanned": true,
+      "table": false,
+      "colored_ink_pct": 0.1497
+    },
+    "extraction_method": "tesseract_vie",
+    "ocr_config": {
+      "engine": "tesseract",
+      "lang": "vie",
+      "dpi": 150,
+      "binarize": "otsu",
+      "psm": 3
+    },
+    "mean_ocr_confidence": 88.33,
+    "text_sha256": "b26d2ed99da3391a113bcbd74d2c01efaaaf9ac3b392e592569ff4641f963cb1",
+    "text_chars": 1807,
+    "suspicious_numbers": [],
+    "unicode": {
+      "is_nfc": true,
+      "combining_marks": 0,
+      "replacement_chars": 0,
+      "private_use_chars": 0,
+      "control_chars": 0,
+      "foreign_char_ratio": 0.00072
+    },
+    "quality_status": "verified_ok",
+    "quality_flags": [],
+    "error": null,
+    "processed_by": "Nguyen Gia Quy",
+    "processed_at": "2026-11-20T09:25:14+00:00",
+    "manual_review": {
+      "status": "done",
+      "assigned_to": "Nguyen Gia Quy",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh: số đúng là 123/2020/NĐ-CP và ngày 19/10/2020, nhưng OCR đọc '723/2020/NĐ-CP' và '79 tháng 10 năm 2020'; vùng dấu 'CÔNG THÔNG TIN ĐIỆN TỬ CHÍNH PHỦ/ĐẾN' gây nhiễu đầu trang. Nội dung căn cứ chính phần lớn đọc được nhưng số hiệu/ngày sai, cần hiệu đính. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
+      "reviewed_by": "Nguyen Gia Quy"
+    },
+    "retry": {
+      "needed": false,
+      "attempts": []
+    },
+    "preliminary_check": {
+      "by": "AI assistant (Copilot SDK in VS Code) - sơ bộ, KHÔNG phải đối chiếu thủ công của người",
+      "note": "AI xem sơ bộ: Ảnh ghi số văn bản 123/2020/NĐ-CP nhưng OCR đọc thành 723/2020/NĐ-CP; dấu công văn cũng tạo nhiễu ở phần đầu trang.",
+      "at": "2026-11-20T15:15:25+00:00"
+    }
+  },
+  {
+    "source_id": "ND123_2020",
+    "legal_identifier": "123/2020/NĐ-CP",
+    "official_url": "https://vanban.chinhphu.vn/?pageid=27160&docid=201365",
+    "download_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2020/10/123.signed_01.pdf",
+    "retrieved_at": "2026-11-11T20:46:03.192695+00:00",
+    "pdf_file": "ND123_2020.pdf",
+    "pdf_sha256": "577e27071365311d6ce0bde7a85330fb6607bac5021a6e884105a051985a6a78",
+    "pdf_sha256_manifest": "577e27071365311d6ce0bde7a85330fb6607bac5021a6e884105a051985a6a78",
+    "sha256_verified": true,
+    "total_pages": 123,
+    "pdf_page": 62,
+    "selection_reasons": [
+      "trang_scan"
+    ],
+    "page_features": {
+      "scanned": true,
+      "table": false,
+      "colored_ink_pct": 0.0
+    },
+    "extraction_method": "tesseract_vie",
+    "ocr_config": {
+      "engine": "tesseract",
+      "lang": "vie",
+      "dpi": 150,
+      "binarize": "otsu",
+      "psm": 3
+    },
+    "mean_ocr_confidence": 91.89,
+    "text_sha256": "f1efab3a3ddbea9aa4fbdffd89cae6c6c24d13a6039bafb6cbed1483aefad342",
+    "text_chars": 1635,
+    "suspicious_numbers": [],
+    "unicode": {
+      "is_nfc": true,
+      "combining_marks": 0,
+      "replacement_chars": 0,
+      "private_use_chars": 0,
+      "control_chars": 0,
+      "foreign_char_ratio": 0.0008
+    },
+    "quality_status": "verified_ok",
+    "quality_flags": [],
+    "error": null,
+    "processed_by": "Nguyen Gia Quy",
+    "processed_at": "2026-11-20T09:25:15+00:00",
+    "manual_review": {
+      "status": "done",
+      "assigned_to": "Nguyen Gia Quy",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh trang 62 (Điều 53-55): nội dung và điều khoản khớp, nhưng OCR có lỗi chính tả/dấu/từ (vd. 'tỉn nhắn tra cứu', 'Kính phí', 'cưng cấp', 'yêu câu', 'Điêu 91', 'thuê/thuế', 'đôi tượng'); cần hiệu đính. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
+      "reviewed_by": "Nguyen Gia Quy"
+    },
+    "retry": {
+      "needed": false,
+      "attempts": []
+    }
+  },
+  {
+    "source_id": "ND123_2020",
+    "legal_identifier": "123/2020/NĐ-CP",
+    "official_url": "https://vanban.chinhphu.vn/?pageid=27160&docid=201365",
+    "download_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2020/10/123.signed_01.pdf",
+    "retrieved_at": "2026-11-11T20:46:03.192695+00:00",
+    "pdf_file": "ND123_2020.pdf",
+    "pdf_sha256": "577e27071365311d6ce0bde7a85330fb6607bac5021a6e884105a051985a6a78",
+    "pdf_sha256_manifest": "577e27071365311d6ce0bde7a85330fb6607bac5021a6e884105a051985a6a78",
+    "sha256_verified": true,
+    "total_pages": 123,
+    "pdf_page": 70,
+    "selection_reasons": [
+      "trang_có_bảng"
+    ],
+    "page_features": {
+      "scanned": true,
+      "table": true,
+      "colored_ink_pct": 0.0
+    },
+    "extraction_method": "tesseract_vie",
+    "ocr_config": {
+      "engine": "tesseract",
+      "lang": "vie",
+      "dpi": 150,
+      "binarize": "otsu",
+      "psm": 3
+    },
+    "mean_ocr_confidence": 93.09,
+    "text_sha256": "a5b8b4d7fa4fb2b86ca7a19ca48b4e87d8e2f2149bea149f1351b4a138d2c0aa",
+    "text_chars": 1936,
+    "suspicious_numbers": [],
+    "unicode": {
+      "is_nfc": true,
+      "combining_marks": 0,
+      "replacement_chars": 0,
+      "private_use_chars": 0,
+      "control_chars": 0,
+      "foreign_char_ratio": 0.00064
+    },
+    "quality_status": "verified_ok",
+    "quality_flags": [
+      "bảng_chưa_tái_dựng_cấu_trúc"
+    ],
+    "error": null,
+    "processed_by": "Nguyen Gia Quy",
+    "processed_at": "2026-11-20T09:25:16+00:00",
+    "manual_review": {
+      "status": "done",
+      "assigned_to": "Nguyen Gia Quy",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh Mẫu 01/ĐKTĐ/HĐĐT (tờ khai đăng ký/thay đổi HĐĐT): nội dung nhãn chính phần lớn có, nhưng OCR làm phẳng biểu mẫu/ô chọn và có lỗi ('đỗi', 'len người nộp thuế', 'điểu kiện', 'sử dựng', 'đữ liệu'); không bảo toàn cấu trúc checkbox/trường. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
+      "reviewed_by": "Nguyen Gia Quy"
+    },
+    "retry": {
+      "needed": false,
+      "attempts": []
+    },
+    "preliminary_check": {
+      "by": "AI assistant (Copilot SDK in VS Code) - sơ bộ, KHÔNG phải đối chiếu thủ công của người",
+      "note": "AI xem sơ bộ: Đây là biểu mẫu trống có ô chọn và các trường thông tin; OCR làm phẳng bảng, ký hiệu checkbox/nhãn trường không ổn định. Không suy diễn giá trị từ các ô trống.",
+      "at": "2026-11-20T15:15:25+00:00"
+    }
+  },
+  {
+    "source_id": "ND123_2020",
+    "legal_identifier": "123/2020/NĐ-CP",
+    "official_url": "https://vanban.chinhphu.vn/?pageid=27160&docid=201365",
+    "download_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2020/10/123.signed_01.pdf",
+    "retrieved_at": "2026-11-11T20:46:03.192695+00:00",
+    "pdf_file": "ND123_2020.pdf",
+    "pdf_sha256": "577e27071365311d6ce0bde7a85330fb6607bac5021a6e884105a051985a6a78",
+    "pdf_sha256_manifest": "577e27071365311d6ce0bde7a85330fb6607bac5021a6e884105a051985a6a78",
+    "sha256_verified": true,
+    "total_pages": 123,
+    "pdf_page": 71,
+    "selection_reasons": [
+      "trang_có_bảng"
+    ],
+    "page_features": {
+      "scanned": true,
+      "table": true,
+      "colored_ink_pct": 0.0
+    },
+    "extraction_method": "tesseract_vie",
+    "ocr_config": {
+      "engine": "tesseract",
+      "lang": "vie",
+      "dpi": 150,
+      "binarize": "otsu",
+      "psm": 3
+    },
+    "mean_ocr_confidence": 87.64,
+    "text_sha256": "e16df0dfe3197fe3fffe1365e947a10d771d9a91afb6ee3c4b28a79b5df1f6b8",
+    "text_chars": 1066,
+    "suspicious_numbers": [],
+    "unicode": {
+      "is_nfc": true,
+      "combining_marks": 0,
+      "replacement_chars": 0,
+      "private_use_chars": 0,
+      "control_chars": 0,
+      "foreign_char_ratio": 0.00123
+    },
+    "quality_status": "verified_ok",
+    "quality_flags": [
+      "bảng_chưa_tái_dựng_cấu_trúc"
+    ],
+    "error": null,
+    "processed_by": "Nguyen Gia Quy",
+    "processed_at": "2026-11-20T09:25:17+00:00",
+    "manual_review": {
+      "status": "done",
+      "assigned_to": "Nguyen Gia Quy",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh trang tiếp mẫu 01/ĐKTĐ/HĐĐT (mục 4-6, bảng chứng thư số/ủy nhiệm lập hóa đơn): OCR làm phẳng bảng, ghép/sai tiêu đề cột và nhãn trường, mất bố cục ô; cần soát từng trường theo ảnh. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
+      "reviewed_by": "Nguyen Gia Quy"
+    },
+    "retry": {
+      "needed": false,
+      "attempts": []
+    },
+    "preliminary_check": {
+      "by": "AI assistant (Copilot SDK in VS Code) - sơ bộ, KHÔNG phải đối chiếu thủ công của người",
+      "note": "AI xem sơ bộ: Trang tiếp của biểu mẫu có nhiều cột và hàng; OCR làm hỏng tiêu đề cột/nhãn trường và thứ tự dữ liệu. Cần soát trực tiếp từng trường.",
+      "at": "2026-11-20T15:15:25+00:00"
+    }
+  },
+  {
+    "source_id": "ND123_2020",
+    "legal_identifier": "123/2020/NĐ-CP",
+    "official_url": "https://vanban.chinhphu.vn/?pageid=27160&docid=201365",
+    "download_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2020/10/123.signed_01.pdf",
+    "retrieved_at": "2026-11-11T20:46:03.192695+00:00",
+    "pdf_file": "ND123_2020.pdf",
+    "pdf_sha256": "577e27071365311d6ce0bde7a85330fb6607bac5021a6e884105a051985a6a78",
+    "pdf_sha256_manifest": "577e27071365311d6ce0bde7a85330fb6607bac5021a6e884105a051985a6a78",
+    "sha256_verified": true,
+    "total_pages": 123,
+    "pdf_page": 123,
+    "selection_reasons": [
+      "trang_cuối"
+    ],
+    "page_features": {
+      "scanned": true,
+      "table": false,
+      "colored_ink_pct": 0.0
+    },
+    "extraction_method": "tesseract_vie",
+    "ocr_config": {
+      "engine": "tesseract",
+      "lang": "vie",
+      "dpi": 150,
+      "binarize": "otsu",
+      "psm": 3
+    },
+    "mean_ocr_confidence": 69.02,
+    "text_sha256": "60541d384f83fbb65444f81322d8b3f99a7382f9e82dead487db1ed28cbaf0c1",
+    "text_chars": 1050,
+    "suspicious_numbers": [],
+    "unicode": {
+      "is_nfc": true,
+      "combining_marks": 0,
+      "replacement_chars": 0,
+      "private_use_chars": 0,
+      "control_chars": 0,
+      "foreign_char_ratio": 0.0011
+    },
+    "quality_status": "verified_ok",
+    "quality_flags": [
+      "trang_cuối_chữ_ký"
+    ],
+    "error": null,
+    "processed_by": "Nguyen Gia Quy",
+    "processed_at": "2026-11-20T09:25:17+00:00",
+    "manual_review": {
+      "status": "done",
+      "assigned_to": "Nguyen Gia Quy",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh (phần thông tin thuế TNCN khấu trừ, song ngữ): nhãn tiếng Việt cơ bản còn nhận ra nhưng OCR sai nặng phần tiếng Anh/mã trường ('Nởi cấp/Place dƒissue', 'Tp oƒ iicOft@', 'dedutible lnsurance', 'J@6f', 'Ámourt oƒpersonal...'), bố cục phẳng; có vùng ký điện tử/chữ ký số cần xác nhận trên ảnh. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
+      "reviewed_by": "Nguyen Gia Quy"
+    },
+    "retry": {
+      "needed": false,
+      "attempts": []
+    },
+    "preliminary_check": {
+      "by": "AI assistant (Copilot SDK in VS Code) - sơ bộ, KHÔNG phải đối chiếu thủ công của người",
+      "note": "AI xem sơ bộ: Trang cuối biểu mẫu có các trường song ngữ và vùng ký tên. OCR nhận dạng sai một số từ tiếng Anh và không thể hiện tốt bố cục; cần xác nhận nội dung trước khi dùng.",
+      "at": "2026-11-20T15:15:25+00:00"
+    }
+  },
+  {
+    "source_id": "TT78_2014",
+    "legal_identifier": "78/2014/TT-BTC",
+    "official_url": "https://vanban.chinhphu.vn/?pageid=27160&docid=174750",
+    "download_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2014/07/tt-78.signed.pdf",
+    "retrieved_at": "2026-11-11T20:46:04.141600+00:00",
+    "pdf_file": "TT78_2014.pdf",
+    "pdf_sha256": "a15f9b7ea4e758e372b312e8b55300f62d82c11e11af0524fb8cd6272fb9d3df",
+    "pdf_sha256_manifest": "a15f9b7ea4e758e372b312e8b55300f62d82c11e11af0524fb8cd6272fb9d3df",
+    "sha256_verified": true,
+    "total_pages": 76,
+    "pdf_page": 1,
+    "selection_reasons": [
+      "trang_scan",
+      "trang_đầu"
+    ],
+    "page_features": {
+      "scanned": true,
+      "table": false,
+      "colored_ink_pct": 0.1306
+    },
+    "extraction_method": "tesseract_vie",
+    "ocr_config": {
+      "engine": "tesseract",
+      "lang": "vie",
+      "dpi": 150,
+      "binarize": "otsu",
+      "psm": 3
+    },
+    "mean_ocr_confidence": 88.31,
+    "text_sha256": "7fe164e5b5677a70612b01e525640edbfb82753136c018deae5a540daad2a41d",
+    "text_chars": 2054,
+    "suspicious_numbers": [],
+    "unicode": {
+      "is_nfc": true,
+      "combining_marks": 0,
+      "replacement_chars": 0,
+      "private_use_chars": 0,
+      "control_chars": 0,
+      "foreign_char_ratio": 0.00062
+    },
+    "quality_status": "verified_ok",
+    "quality_flags": [],
+    "error": null,
+    "processed_by": "Nguyen Gia Quy",
+    "processed_at": "2026-11-20T09:25:20+00:00",
+    "manual_review": {
+      "status": "done",
+      "assigned_to": "Nguyen Gia Quy",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh TT 78/2014/TT-BTC trang 1: OCR sai số hiệu ('7§' thay '78'), nhiễu nặng vùng dấu/ghi chú công văn đến, và nhiều lỗi chính tả/nhãn ('phú', 'chỉ tiết', 'Thuê/Thuế', 'quyên hạn', 'cơ cẩu', 'bỗ sung', 'Tô ng cục'). Tiêu đề và căn cứ pháp lý cần hiệu đính. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
+      "reviewed_by": "Nguyen Gia Quy"
+    },
+    "retry": {
+      "needed": false,
+      "attempts": []
+    },
+    "preliminary_check": {
+      "by": "AI assistant (Copilot SDK in VS Code) - sơ bộ, KHÔNG phải đối chiếu thủ công của người",
+      "note": "AI xem sơ bộ: Dấu công văn chồng lên tiêu đề; ảnh ghi số 78/2014/TT-BTC và hướng dẫn thi hành Nghị định 218/2013/NĐ-CP, trong khi OCR làm sai/thiếu một số phần tiêu đề. Cần xác nhận thủ công.",
+      "at": "2026-11-20T15:15:25+00:00"
+    }
+  },
+  {
+    "source_id": "TT78_2014",
+    "legal_identifier": "78/2014/TT-BTC",
+    "official_url": "https://vanban.chinhphu.vn/?pageid=27160&docid=174750",
+    "download_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2014/07/tt-78.signed.pdf",
+    "retrieved_at": "2026-11-11T20:46:04.141600+00:00",
+    "pdf_file": "TT78_2014.pdf",
+    "pdf_sha256": "a15f9b7ea4e758e372b312e8b55300f62d82c11e11af0524fb8cd6272fb9d3df",
+    "pdf_sha256_manifest": "a15f9b7ea4e758e372b312e8b55300f62d82c11e11af0524fb8cd6272fb9d3df",
+    "sha256_verified": true,
+    "total_pages": 76,
+    "pdf_page": 39,
+    "selection_reasons": [
+      "trang_scan"
+    ],
+    "page_features": {
+      "scanned": true,
+      "table": false,
+      "colored_ink_pct": 0.0
+    },
+    "extraction_method": "tesseract_vie",
+    "ocr_config": {
+      "engine": "tesseract",
+      "lang": "vie",
+      "dpi": 150,
+      "binarize": "otsu",
+      "psm": 3
+    },
+    "mean_ocr_confidence": 93.63,
+    "text_sha256": "f7aaf146df8639514b61ce60b60420e103f724b29cd29f5d9811ee3a4699c324",
+    "text_chars": 3239,
+    "suspicious_numbers": [],
+    "unicode": {
+      "is_nfc": true,
+      "combining_marks": 0,
+      "replacement_chars": 0,
+      "private_use_chars": 0,
+      "control_chars": 0,
+      "foreign_char_ratio": 0.00039
+    },
+    "quality_status": "verified_ok",
+    "quality_flags": [],
+    "error": null,
+    "processed_by": "Nguyen Gia Quy",
+    "processed_at": "2026-11-20T09:25:22+00:00",
+    "manual_review": {
+      "status": "done",
+      "assigned_to": "Nguyen Gia Quy",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh trang 39 (Ví dụ 15, hướng dẫn xác định doanh thu/thuế suất): số liệu chính còn thấy (20 tỷ, 167 tỷ, 1,67 tỷ, 22%/20%) nhưng OCR có nhiều lỗi dấu/từ và ký tự ('tải chính', 'tông/cung cập/liền kể', 'họat động', 'lả... chia Ệ) 9', 'thuê/tưu', 'Phụ lục ết quả', 'mã sô'); cần rà soát kỹ ngữ cảnh tính toán. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
+      "reviewed_by": "Nguyen Gia Quy"
+    },
+    "retry": {
+      "needed": false,
+      "attempts": []
+    }
+  },
+  {
+    "source_id": "TT78_2014",
+    "legal_identifier": "78/2014/TT-BTC",
+    "official_url": "https://vanban.chinhphu.vn/?pageid=27160&docid=174750",
+    "download_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2014/07/tt-78.signed.pdf",
+    "retrieved_at": "2026-11-11T20:46:04.141600+00:00",
+    "pdf_file": "TT78_2014.pdf",
+    "pdf_sha256": "a15f9b7ea4e758e372b312e8b55300f62d82c11e11af0524fb8cd6272fb9d3df",
+    "pdf_sha256_manifest": "a15f9b7ea4e758e372b312e8b55300f62d82c11e11af0524fb8cd6272fb9d3df",
+    "sha256_verified": true,
+    "total_pages": 76,
+    "pdf_page": 76,
+    "selection_reasons": [
+      "trang_cuối"
+    ],
+    "page_features": {
+      "scanned": true,
+      "table": false,
+      "colored_ink_pct": 0.0
+    },
+    "extraction_method": "tesseract_vie",
+    "ocr_config": {
+      "engine": "tesseract",
+      "lang": "vie",
+      "dpi": 150,
+      "binarize": "otsu",
+      "psm": 3
+    },
+    "mean_ocr_confidence": 72.37,
+    "text_sha256": "c4444322e2afd0c192cbd4a95ea19c919f2ec9ec5624ba259cfba45480142013",
+    "text_chars": 1501,
+    "suspicious_numbers": [],
+    "unicode": {
+      "is_nfc": true,
+      "combining_marks": 0,
+      "replacement_chars": 0,
+      "private_use_chars": 0,
+      "control_chars": 0,
+      "foreign_char_ratio": 0.00092
+    },
+    "quality_status": "verified_ok",
+    "quality_flags": [
+      "trang_cuối_chữ_ký",
+      "confidence_70_80"
+    ],
+    "error": null,
+    "processed_by": "Nguyen Gia Quy",
+    "processed_at": "2026-11-20T09:25:22+00:00",
+    "manual_review": {
+      "status": "done",
+      "assigned_to": "Nguyen Gia Quy",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh phụ lục kê khai (bảng chỉ tiêu/mã [25]-[37], số tiền) trang cuối có chữ ký/đóng dấu: OCR làm phẳng và garbled nhãn hàng/cột/công thức, bố cục bảng hỏng; vùng ký/đóng dấu không nhận dạng thành văn bản rõ. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
+      "reviewed_by": "Nguyen Gia Quy"
+    },
+    "retry": {
+      "needed": false,
+      "attempts": []
+    }
+  },
+  {
+    "source_id": "LUAT48_2024",
+    "legal_identifier": "48/2024/QH15",
+    "official_url": "https://vanban.chinhphu.vn/?pageid=27160&docid=212476",
+    "download_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2025/01/luat48.pdf",
+    "retrieved_at": "2026-11-11T20:47:18.507538+00:00",
+    "pdf_file": "LUAT48_2024.pdf",
+    "pdf_sha256": "8be4caa345b42bce86386831da0bf4a9ed2bebbc54b471535c758431a5277569",
+    "pdf_sha256_manifest": "8be4caa345b42bce86386831da0bf4a9ed2bebbc54b471535c758431a5277569",
+    "sha256_verified": true,
+    "total_pages": 20,
+    "pdf_page": 1,
+    "selection_reasons": [
+      "trang_đầu"
+    ],
+    "page_features": {
+      "scanned": false,
+      "table": false,
+      "colored_ink_pct": 0.0
+    },
+    "extraction_method": "native_pdf",
+    "ocr_config": null,
+    "mean_ocr_confidence": null,
+    "text_sha256": "757fbe0fff2242e7fa1bd577acbac305df39de6ddb77682f4e3d2e42a20af54d",
+    "text_chars": 1839,
+    "suspicious_numbers": [],
+    "unicode": {
+      "is_nfc": true,
+      "combining_marks": 0,
+      "replacement_chars": 0,
+      "private_use_chars": 0,
+      "control_chars": 0,
+      "foreign_char_ratio": 0.0007
+    },
+    "quality_status": "verified_ok",
+    "quality_flags": [],
+    "error": null,
+    "processed_by": "Nguyen Gia Quy",
+    "processed_at": "2026-11-20T09:25:24+00:00",
+    "manual_review": {
+      "status": "done",
+      "assigned_to": "Nguyen Gia Quy",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh Công báo/Luật 48/2024/QH15: nội dung chính và số hiệu đúng, nhưng OCR/native text kèm metadata ký số/chân trang ('Người ký CỔNG THÔNG TIN ĐIỆN TỬ CHÍNH PHỦ...') và bố cục đầu trang không khớp trình bày bản gốc. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
+      "reviewed_by": "Nguyen Gia Quy"
+    },
+    "retry": {
+      "needed": false,
+      "attempts": []
+    }
+  },
+  {
+    "source_id": "LUAT48_2024",
+    "legal_identifier": "48/2024/QH15",
+    "official_url": "https://vanban.chinhphu.vn/?pageid=27160&docid=212476",
+    "download_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2025/01/luat48.pdf",
+    "retrieved_at": "2026-11-11T20:47:18.507538+00:00",
+    "pdf_file": "LUAT48_2024.pdf",
+    "pdf_sha256": "8be4caa345b42bce86386831da0bf4a9ed2bebbc54b471535c758431a5277569",
+    "pdf_sha256_manifest": "8be4caa345b42bce86386831da0bf4a9ed2bebbc54b471535c758431a5277569",
+    "sha256_verified": true,
+    "total_pages": 20,
+    "pdf_page": 7,
+    "selection_reasons": [
+      "trang_có_bảng"
+    ],
+    "page_features": {
+      "scanned": false,
+      "table": true,
+      "colored_ink_pct": 0.0
+    },
+    "extraction_method": "native_pdf",
+    "ocr_config": null,
+    "mean_ocr_confidence": null,
+    "text_sha256": "d5d5ad214b2a9570e04b447c81b9d35052d927d6f14c4a4fa6adff78735dd8be",
+    "text_chars": 2611,
+    "suspicious_numbers": [],
+    "unicode": {
+      "is_nfc": true,
+      "combining_marks": 0,
+      "replacement_chars": 0,
+      "private_use_chars": 0,
+      "control_chars": 0,
+      "foreign_char_ratio": 0.00049
+    },
+    "quality_status": "verified_ok",
+    "quality_flags": [
+      "bảng_chưa_tái_dựng_cấu_trúc"
+    ],
+    "error": null,
+    "processed_by": "Nguyen Gia Quy",
+    "processed_at": "2026-11-20T09:25:24+00:00",
+    "manual_review": {
+      "status": "done",
+      "assigned_to": "Nguyen Gia Quy",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh trang 83 (Điều 7): phần văn bản b)-l) cơ bản khớp, nhưng công thức tính giá chưa có thuế GTGT (khoản k) bị render sai cấu trúc phân số/tử-mẫu (mất đặt 'Giá thanh toán' trên tử số), làm sai biểu diễn công thức. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
+      "reviewed_by": "Nguyen Gia Quy"
+    },
+    "retry": {
+      "needed": false,
+      "attempts": []
+    },
+    "preliminary_check": {
+      "by": "AI assistant (Copilot SDK in VS Code) - sơ bộ, KHÔNG phải đối chiếu thủ công của người",
+      "note": "AI xem sơ bộ: Ảnh chủ yếu là các khoản văn bản và công thức, không thấy bảng dữ liệu dạng hàng-cột. OCR native nhìn chung khớp phần chữ; cờ phát hiện bảng có thể là dương tính giả.",
+      "at": "2026-11-20T15:15:25+00:00"
+    }
+  },
+  {
+    "source_id": "LUAT48_2024",
+    "legal_identifier": "48/2024/QH15",
+    "official_url": "https://vanban.chinhphu.vn/?pageid=27160&docid=212476",
+    "download_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2025/01/luat48.pdf",
+    "retrieved_at": "2026-11-11T20:47:18.507538+00:00",
+    "pdf_file": "LUAT48_2024.pdf",
+    "pdf_sha256": "8be4caa345b42bce86386831da0bf4a9ed2bebbc54b471535c758431a5277569",
+    "pdf_sha256_manifest": "8be4caa345b42bce86386831da0bf4a9ed2bebbc54b471535c758431a5277569",
+    "sha256_verified": true,
+    "total_pages": 20,
+    "pdf_page": 18,
+    "selection_reasons": [
+      "trang_có_bảng"
+    ],
+    "page_features": {
+      "scanned": false,
+      "table": true,
+      "colored_ink_pct": 0.0
+    },
+    "extraction_method": "native_pdf",
+    "ocr_config": null,
+    "mean_ocr_confidence": null,
+    "text_sha256": "d935f63b22d3851294042e48cfafe4648d82303d227c4b4ef84a75a024daf761",
+    "text_chars": 2476,
+    "suspicious_numbers": [],
+    "unicode": {
+      "is_nfc": true,
+      "combining_marks": 0,
+      "replacement_chars": 0,
+      "private_use_chars": 0,
+      "control_chars": 0,
+      "foreign_char_ratio": 0.0
+    },
+    "quality_status": "verified_ok",
+    "quality_flags": [
+      "bảng_chưa_tái_dựng_cấu_trúc"
+    ],
+    "error": null,
+    "processed_by": "Nguyen Gia Quy",
+    "processed_at": "2026-11-20T09:25:24+00:00",
+    "manual_review": {
+      "status": "done",
+      "assigned_to": "Nguyen Gia Quy",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh trang 94 (Điều 15 khoản 7-11, Điều 16 mở đầu): nội dung văn bản khớp ảnh, không thấy sai số/ký tự đáng kể; cờ 'bảng' có vẻ dương tính giả (văn bản liên tục).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
+      "reviewed_by": "Nguyen Gia Quy"
+    },
+    "retry": {
+      "needed": false,
+      "attempts": []
+    },
+    "preliminary_check": {
+      "by": "AI assistant (Copilot SDK in VS Code) - sơ bộ, KHÔNG phải đối chiếu thủ công của người",
+      "note": "AI xem sơ bộ: Ảnh là các khoản văn bản liên tục, không thấy bảng dữ liệu dạng hàng-cột. OCR native nhìn chung khớp phần chữ; cần xác nhận cờ bảng trước khi dùng làm bằng chứng bảng.",
+      "at": "2026-11-20T15:15:25+00:00"
+    }
+  },
+  {
+    "source_id": "LUAT48_2024",
+    "legal_identifier": "48/2024/QH15",
+    "official_url": "https://vanban.chinhphu.vn/?pageid=27160&docid=212476",
+    "download_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2025/01/luat48.pdf",
+    "retrieved_at": "2026-11-11T20:47:18.507538+00:00",
+    "pdf_file": "LUAT48_2024.pdf",
+    "pdf_sha256": "8be4caa345b42bce86386831da0bf4a9ed2bebbc54b471535c758431a5277569",
+    "pdf_sha256_manifest": "8be4caa345b42bce86386831da0bf4a9ed2bebbc54b471535c758431a5277569",
+    "sha256_verified": true,
+    "total_pages": 20,
+    "pdf_page": 20,
+    "selection_reasons": [
+      "trang_cuối"
+    ],
+    "page_features": {
+      "scanned": false,
+      "table": false,
+      "colored_ink_pct": 0.0
+    },
+    "extraction_method": "tesseract_vie",
+    "ocr_config": {
+      "engine": "tesseract",
+      "lang": "vie",
+      "dpi": 150,
+      "binarize": "otsu",
+      "psm": 3
+    },
+    "mean_ocr_confidence": 88.18,
+    "text_sha256": "13e05f664809fa7a512946ca9f4baad3b119a9fb42516e6e41d4a157cd55c41f",
+    "text_chars": 268,
+    "suspicious_numbers": [],
+    "unicode": {
+      "is_nfc": true,
+      "combining_marks": 0,
+      "replacement_chars": 0,
+      "private_use_chars": 0,
+      "control_chars": 0,
+      "foreign_char_ratio": 0.00459
+    },
+    "quality_status": "verified_ok",
+    "quality_flags": [
+      "trang_cuối_chữ_ký"
+    ],
+    "error": null,
+    "processed_by": "Nguyen Gia Quy",
+    "processed_at": "2026-11-20T09:25:24+00:00",
+    "manual_review": {
+      "status": "done",
+      "assigned_to": "Nguyen Gia Quy",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh trang cuối (thông tin xuất bản): OCR sai ký tự trong thông tin liên hệ/in ấn ('0§0.44517' thay '080.44517', 'congbao(0chinhphu.vn' thay 'congbao@chinhphu.vn', 'Bản đồ !- Bộ Quốc phòng' thay '1- Bộ Quốc phòng'). | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
+      "reviewed_by": "Nguyen Gia Quy"
+    },
+    "retry": {
+      "needed": false,
+      "attempts": []
+    }
+  },
+  {
+    "source_id": "LUAT67_2025",
+    "legal_identifier": "67/2025/QH15",
+    "official_url": "https://vanban.chinhphu.vn/?pageid=27160&docid=214607",
+    "download_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2025/7/67qh.signed.pdf",
+    "retrieved_at": "2026-11-11T20:46:05.615122+00:00",
+    "pdf_file": "LUAT67_2025.pdf",
+    "pdf_sha256": "ae706468190afe8d111dd0fccf240e7a980eb002c5d0b5cb1cfe127d92f9c1cd",
+    "pdf_sha256_manifest": "ae706468190afe8d111dd0fccf240e7a980eb002c5d0b5cb1cfe127d92f9c1cd",
+    "sha256_verified": true,
+    "total_pages": 21,
+    "pdf_page": 1,
+    "selection_reasons": [
+      "trang_scan",
+      "trang_đầu"
+    ],
+    "page_features": {
+      "scanned": true,
+      "table": false,
+      "colored_ink_pct": 0.1143
+    },
+    "extraction_method": "tesseract_vie",
+    "ocr_config": {
+      "engine": "tesseract",
+      "lang": "vie",
+      "dpi": 150,
+      "binarize": "otsu",
+      "psm": 3
+    },
+    "mean_ocr_confidence": 92.28,
+    "text_sha256": "6654f6d7463696a9905efe4173542c6f0b82e4c1e2098fd47879cef242470e6e",
+    "text_chars": 1816,
+    "suspicious_numbers": [],
+    "unicode": {
+      "is_nfc": true,
+      "combining_marks": 0,
+      "replacement_chars": 0,
+      "private_use_chars": 0,
+      "control_chars": 0,
+      "foreign_char_ratio": 0.00071
+    },
+    "quality_status": "verified_ok",
+    "quality_flags": [],
+    "error": null,
+    "processed_by": "Nguyen Gia Quy",
+    "processed_at": "2026-11-20T09:25:26+00:00",
+    "manual_review": {
+      "status": "done",
+      "assigned_to": "Nguyen Gia Quy",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh Luật 67/2025/QH15 trang 1: dấu/ghi chú công văn và metadata ký số gây nhiễu đầu trang; OCR garbled nhiều nhãn/từ ('Căn cú Hiển pháp', 'Phạm vị điều chính', 'sân xuất', 'Tê chức', lỗi gộp khoản 2b) dù số luật/tiêu đề nhận ra. Cần hiệu đính. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
+      "reviewed_by": "Nguyen Gia Quy"
+    },
+    "retry": {
+      "needed": false,
+      "attempts": []
+    },
+    "preliminary_check": {
+      "by": "AI assistant (Copilot SDK in VS Code) - sơ bộ, KHÔNG phải đối chiếu thủ công của người",
+      "note": "AI xem sơ bộ: Số luật 67/2025/QH15 và tiêu đề chính khớp ảnh; OCR có nhiễu ở phần dấu/đầu trang nhưng chưa thấy sai khác rõ trong tiêu đề chính. Vẫn cần người xác nhận.",
+      "at": "2026-11-20T15:15:25+00:00"
+    }
+  },
+  {
+    "source_id": "LUAT67_2025",
+    "legal_identifier": "67/2025/QH15",
+    "official_url": "https://vanban.chinhphu.vn/?pageid=27160&docid=214607",
+    "download_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2025/7/67qh.signed.pdf",
+    "retrieved_at": "2026-11-11T20:46:05.615122+00:00",
+    "pdf_file": "LUAT67_2025.pdf",
+    "pdf_sha256": "ae706468190afe8d111dd0fccf240e7a980eb002c5d0b5cb1cfe127d92f9c1cd",
+    "pdf_sha256_manifest": "ae706468190afe8d111dd0fccf240e7a980eb002c5d0b5cb1cfe127d92f9c1cd",
+    "sha256_verified": true,
+    "total_pages": 21,
+    "pdf_page": 10,
+    "selection_reasons": [
+      "có_bản_chuẩn"
+    ],
+    "page_features": {
+      "scanned": true,
+      "table": false,
+      "colored_ink_pct": 0.0
+    },
+    "extraction_method": "tesseract_vie",
+    "ocr_config": {
+      "engine": "tesseract",
+      "lang": "vie",
+      "dpi": 150,
+      "binarize": "otsu",
+      "psm": 3
+    },
+    "mean_ocr_confidence": 94.69,
+    "text_sha256": "b7ac3f77fb69c3cccde2f0d19a42e6a5688500d0205957e534916323560de619",
+    "text_chars": 2318,
+    "suspicious_numbers": [],
+    "unicode": {
+      "is_nfc": true,
+      "combining_marks": 0,
+      "replacement_chars": 0,
+      "private_use_chars": 0,
+      "control_chars": 0,
+      "foreign_char_ratio": 0.00056
+    },
+    "quality_status": "verified_ok",
+    "quality_flags": [],
+    "error": null,
+    "processed_by": "Nguyen Gia Quy",
+    "processed_at": "2026-11-20T09:25:27+00:00",
+    "manual_review": {
+      "status": "done",
+      "assigned_to": "Nguyen Gia Quy",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh trang 10 (Điều 10-11): nội dung/thuế suất cơ bản đúng nhưng OCR có lỗi từ/ký tự ('liền kể'→'liền kề', 'thuê suất', 'wonf#am', 'đất hiểm', 'doanh thư', 'khoản I Điều 2'); cần hiệu đính trước trích dẫn. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
+      "reviewed_by": "Nguyen Gia Quy"
+    },
+    "retry": {
+      "needed": false,
+      "attempts": []
+    },
+    "gold_check": {
+      "gold_source": "bản chép sơ bộ do Claude, chưa người rà",
+      "cer": 0.00522,
+      "diacritic_char_accuracy": 0.99153
+    }
+  },
+  {
+    "source_id": "LUAT67_2025",
+    "legal_identifier": "67/2025/QH15",
+    "official_url": "https://vanban.chinhphu.vn/?pageid=27160&docid=214607",
+    "download_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2025/7/67qh.signed.pdf",
+    "retrieved_at": "2026-11-11T20:46:05.615122+00:00",
+    "pdf_file": "LUAT67_2025.pdf",
+    "pdf_sha256": "ae706468190afe8d111dd0fccf240e7a980eb002c5d0b5cb1cfe127d92f9c1cd",
+    "pdf_sha256_manifest": "ae706468190afe8d111dd0fccf240e7a980eb002c5d0b5cb1cfe127d92f9c1cd",
+    "sha256_verified": true,
+    "total_pages": 21,
+    "pdf_page": 11,
+    "selection_reasons": [
+      "trang_scan"
+    ],
+    "page_features": {
+      "scanned": true,
+      "table": false,
+      "colored_ink_pct": 0.0
+    },
+    "extraction_method": "tesseract_vie",
+    "ocr_config": {
+      "engine": "tesseract",
+      "lang": "vie",
+      "dpi": 150,
+      "binarize": "otsu",
+      "psm": 3
+    },
+    "mean_ocr_confidence": 94.85,
+    "text_sha256": "b9a67ec8748d5ac96616a19cb735b82d0bacd772c4f342319a61bd6f181935f8",
+    "text_chars": 2409,
+    "suspicious_numbers": [],
+    "unicode": {
+      "is_nfc": true,
+      "combining_marks": 0,
+      "replacement_chars": 0,
+      "private_use_chars": 0,
+      "control_chars": 0,
+      "foreign_char_ratio": 0.00053
+    },
+    "quality_status": "verified_ok",
+    "quality_flags": [],
+    "error": null,
+    "processed_by": "Nguyen Gia Quy",
+    "processed_at": "2026-11-20T09:25:28+00:00",
+    "manual_review": {
+      "status": "done",
+      "assigned_to": "Nguyen Gia Quy",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh trang 11 (Điều 12): OCR sai ký hiệu mục và từ ngữ ('phần mêm'→'phần mềm', 'e1)' thay cho 'c1)' ở mục sản phẩm công nghiệp hỗ trợ), nội dung còn lại cơ bản khớp. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
+      "reviewed_by": "Nguyen Gia Quy"
+    },
+    "retry": {
+      "needed": false,
+      "attempts": []
+    }
+  },
+  {
+    "source_id": "LUAT67_2025",
+    "legal_identifier": "67/2025/QH15",
+    "official_url": "https://vanban.chinhphu.vn/?pageid=27160&docid=214607",
+    "download_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2025/7/67qh.signed.pdf",
+    "retrieved_at": "2026-11-11T20:46:05.615122+00:00",
+    "pdf_file": "LUAT67_2025.pdf",
+    "pdf_sha256": "ae706468190afe8d111dd0fccf240e7a980eb002c5d0b5cb1cfe127d92f9c1cd",
+    "pdf_sha256_manifest": "ae706468190afe8d111dd0fccf240e7a980eb002c5d0b5cb1cfe127d92f9c1cd",
+    "sha256_verified": true,
+    "total_pages": 21,
+    "pdf_page": 15,
+    "selection_reasons": [
+      "có_bản_chuẩn"
+    ],
+    "page_features": {
+      "scanned": true,
+      "table": false,
+      "colored_ink_pct": 0.0
+    },
+    "extraction_method": "tesseract_vie",
+    "ocr_config": {
+      "engine": "tesseract",
+      "lang": "vie",
+      "dpi": 150,
+      "binarize": "otsu",
+      "psm": 3
+    },
+    "mean_ocr_confidence": 94.71,
+    "text_sha256": "e3ca6fc2117b4d5859f9e27409f74047d6f96a2a490c6d63df194256b43989be",
+    "text_chars": 2244,
+    "suspicious_numbers": [],
+    "unicode": {
+      "is_nfc": true,
+      "combining_marks": 0,
+      "replacement_chars": 0,
+      "private_use_chars": 0,
+      "control_chars": 0,
+      "foreign_char_ratio": 0.00058
+    },
+    "quality_status": "verified_ok",
+    "quality_flags": [],
+    "error": null,
+    "processed_by": "Nguyen Gia Quy",
+    "processed_at": "2026-11-20T09:25:29+00:00",
+    "manual_review": {
+      "status": "done",
+      "assigned_to": "Nguyen Gia Quy",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh trang 15 (Điều 14 khoản 4-7): nội dung/điều kiện chính khớp, nhưng OCR có lỗi chính tả ('10 năm đỗi với'→'đối với', 'kéo đài thêm'→'kéo dài thêm'). | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
+      "reviewed_by": "Nguyen Gia Quy"
+    },
+    "retry": {
+      "needed": false,
+      "attempts": []
+    },
+    "gold_check": {
+      "gold_source": "bản chép sơ bộ do Claude, chưa người rà",
+      "cer": 0.00314,
+      "diacritic_char_accuracy": 0.99211
+    }
+  },
+  {
+    "source_id": "LUAT67_2025",
+    "legal_identifier": "67/2025/QH15",
+    "official_url": "https://vanban.chinhphu.vn/?pageid=27160&docid=214607",
+    "download_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2025/7/67qh.signed.pdf",
+    "retrieved_at": "2026-11-11T20:46:05.615122+00:00",
+    "pdf_file": "LUAT67_2025.pdf",
+    "pdf_sha256": "ae706468190afe8d111dd0fccf240e7a980eb002c5d0b5cb1cfe127d92f9c1cd",
+    "pdf_sha256_manifest": "ae706468190afe8d111dd0fccf240e7a980eb002c5d0b5cb1cfe127d92f9c1cd",
+    "sha256_verified": true,
+    "total_pages": 21,
+    "pdf_page": 21,
+    "selection_reasons": [
+      "trang_cuối"
+    ],
+    "page_features": {
+      "scanned": true,
+      "table": false,
+      "colored_ink_pct": 0.0
+    },
+    "extraction_method": "tesseract_vie",
+    "ocr_config": {
+      "engine": "tesseract",
+      "lang": "vie",
+      "dpi": 150,
+      "binarize": "otsu",
+      "psm": 3
+    },
+    "mean_ocr_confidence": 93.68,
+    "text_sha256": "f3ae3c09a3bb139c0d9adcd328aa8a4093326bf68958f6c8ba91eafc9fa6387f",
+    "text_chars": 1957,
+    "suspicious_numbers": [],
+    "unicode": {
+      "is_nfc": true,
+      "combining_marks": 0,
+      "replacement_chars": 0,
+      "private_use_chars": 0,
+      "control_chars": 0,
+      "foreign_char_ratio": 0.00065
+    },
+    "quality_status": "verified_ok",
+    "quality_flags": [
+      "trang_cuối_chữ_ký"
+    ],
+    "error": null,
+    "processed_by": "Nguyen Gia Quy",
+    "processed_at": "2026-11-20T09:25:30+00:00",
+    "manual_review": {
+      "status": "done",
+      "assigned_to": "Nguyen Gia Quy",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh trang cuối (Điều 19-20, chuyển tiếp): OCR có lỗi chính tả/từ ('ưru đãi', 'đâu tư/đầu tư', 'quyển lựa chọn', 'bỗ sung/đoanh nghiệp') và không nhận dạng chuẩn vùng ký/chữ ký, con dấu Quốc hội/Chủ tịch Quốc hội. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
+      "reviewed_by": "Nguyen Gia Quy"
+    },
+    "retry": {
+      "needed": false,
+      "attempts": []
+    }
+  },
+  {
+    "source_id": "LUAT109_2025",
+    "legal_identifier": "109/2025/QH15",
+    "official_url": "https://vanban.chinhphu.vn/?pageid=27160&docid=216495",
+    "download_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/01/luat109-2025.pdf",
+    "retrieved_at": "2026-11-11T20:46:07.023093+00:00",
+    "pdf_file": "LUAT109_2025.pdf",
+    "pdf_sha256": "b169757e9015d3618d4b81640fbeb26bae9498a45bd8560467c3a71ce1a1c560",
+    "pdf_sha256_manifest": "b169757e9015d3618d4b81640fbeb26bae9498a45bd8560467c3a71ce1a1c560",
+    "sha256_verified": true,
+    "total_pages": 15,
+    "pdf_page": 1,
+    "selection_reasons": [
+      "trang_scan",
+      "trang_đầu"
+    ],
+    "page_features": {
+      "scanned": true,
+      "table": false,
+      "colored_ink_pct": 0.0008
+    },
+    "extraction_method": "tesseract_vie",
+    "ocr_config": {
+      "engine": "tesseract",
+      "lang": "vie",
+      "dpi": 150,
+      "binarize": "otsu",
+      "psm": 3
+    },
+    "mean_ocr_confidence": 93.91,
+    "text_sha256": "6232df9b559f7148b7ad01b901bbfdb29529666a04dd6825c3066921a0fbf9c9",
+    "text_chars": 1536,
+    "suspicious_numbers": [],
+    "unicode": {
+      "is_nfc": true,
+      "combining_marks": 0,
+      "replacement_chars": 0,
+      "private_use_chars": 0,
+      "control_chars": 0,
+      "foreign_char_ratio": 0.00085
+    },
+    "quality_status": "verified_ok",
+    "quality_flags": [],
+    "error": null,
+    "processed_by": "Nguyen Gia Quy",
+    "processed_at": "2026-11-20T09:25:31+00:00",
+    "manual_review": {
+      "status": "done",
+      "assigned_to": "Nguyen Gia Quy",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh Luật 109/2025/QH15 trang 1: OCR sai số hiệu ('109/2025/QHI15'), thêm ký tự thừa ('LUẬT —_'), và nhiều lỗi chính tả ('Hiễn pháp', 'đương lịch', 'lãnh thô', 'đề ở', 'chỉ tiết', 'sán xuất'); tiêu đề/nội dung chính nhận diện được nhưng cần hiệu đính. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
+      "reviewed_by": "Nguyen Gia Quy"
+    },
+    "retry": {
+      "needed": false,
+      "attempts": []
+    }
+  },
+  {
+    "source_id": "LUAT109_2025",
+    "legal_identifier": "109/2025/QH15",
+    "official_url": "https://vanban.chinhphu.vn/?pageid=27160&docid=216495",
+    "download_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/01/luat109-2025.pdf",
+    "retrieved_at": "2026-11-11T20:46:07.023093+00:00",
+    "pdf_file": "LUAT109_2025.pdf",
+    "pdf_sha256": "b169757e9015d3618d4b81640fbeb26bae9498a45bd8560467c3a71ce1a1c560",
+    "pdf_sha256_manifest": "b169757e9015d3618d4b81640fbeb26bae9498a45bd8560467c3a71ce1a1c560",
+    "sha256_verified": true,
+    "total_pages": 15,
+    "pdf_page": 4,
+    "selection_reasons": [
+      "có_bản_chuẩn"
+    ],
+    "page_features": {
+      "scanned": true,
+      "table": false,
+      "colored_ink_pct": 0.0
+    },
+    "extraction_method": "tesseract_vie",
+    "ocr_config": {
+      "engine": "tesseract",
+      "lang": "vie",
+      "dpi": 150,
+      "binarize": "otsu",
+      "psm": 3
+    },
+    "mean_ocr_confidence": 95.21,
+    "text_sha256": "5e0a9fb3f075763effdae0379b63fbdabeaabe725a2e5dc7dc7d6960a861f1fe",
+    "text_chars": 2028,
+    "suspicious_numbers": [],
+    "unicode": {
+      "is_nfc": true,
+      "combining_marks": 0,
+      "replacement_chars": 0,
+      "private_use_chars": 0,
+      "control_chars": 0,
+      "foreign_char_ratio": 0.00064
+    },
+    "quality_status": "verified_ok",
+    "quality_flags": [],
+    "error": null,
+    "processed_by": "Nguyen Gia Quy",
+    "processed_at": "2026-11-20T09:25:32+00:00",
+    "manual_review": {
+      "status": "done",
+      "assigned_to": "Nguyen Gia Quy",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh trang 4 (Điều 4 khoản 1-13, thu nhập miễn thuế): nội dung cơ bản khớp nhưng OCR sai từ ('kiều hồi'→'kiều hối' tại khoản 7, 'thầm quyền'→'thẩm quyền' tại khoản 13). | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
+      "reviewed_by": "Nguyen Gia Quy"
+    },
+    "retry": {
+      "needed": false,
+      "attempts": []
+    },
+    "gold_check": {
+      "gold_source": "bản chép sơ bộ do Claude, chưa người rà",
+      "cer": 0.00346,
+      "diacritic_char_accuracy": 0.99099
+    }
+  },
+  {
+    "source_id": "LUAT109_2025",
+    "legal_identifier": "109/2025/QH15",
+    "official_url": "https://vanban.chinhphu.vn/?pageid=27160&docid=216495",
+    "download_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/01/luat109-2025.pdf",
+    "retrieved_at": "2026-11-11T20:46:07.023093+00:00",
+    "pdf_file": "LUAT109_2025.pdf",
+    "pdf_sha256": "b169757e9015d3618d4b81640fbeb26bae9498a45bd8560467c3a71ce1a1c560",
+    "pdf_sha256_manifest": "b169757e9015d3618d4b81640fbeb26bae9498a45bd8560467c3a71ce1a1c560",
+    "sha256_verified": true,
+    "total_pages": 15,
+    "pdf_page": 8,
+    "selection_reasons": [
+      "trang_có_bảng",
+      "trang_scan"
+    ],
+    "page_features": {
+      "scanned": true,
+      "table": true,
+      "colored_ink_pct": 0.0036
+    },
+    "extraction_method": "tesseract_vie",
+    "ocr_config": {
+      "engine": "tesseract",
+      "lang": "vie",
+      "dpi": 150,
+      "binarize": "otsu",
+      "psm": 3
+    },
+    "mean_ocr_confidence": 94.68,
+    "text_sha256": "28d71372fbdc47e1464e19418b1579ce893437f8f22ef65fec27ab24b1d40c78",
+    "text_chars": 2216,
+    "suspicious_numbers": [],
+    "unicode": {
+      "is_nfc": true,
+      "combining_marks": 0,
+      "replacement_chars": 0,
+      "private_use_chars": 0,
+      "control_chars": 0,
+      "foreign_char_ratio": 0.00059
+    },
+    "quality_status": "verified_ok",
+    "quality_flags": [
+      "bảng_chưa_tái_dựng_cấu_trúc"
+    ],
+    "error": null,
+    "processed_by": "Nguyen Gia Quy",
+    "processed_at": "2026-11-20T09:25:33+00:00",
+    "manual_review": {
+      "status": "done",
+      "assigned_to": "Nguyen Gia Quy",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh trang 8 (Điều 8-10, Biểu thuế lũy tiến từng phần): các ngưỡng/thuế suất (120/10/5%, 360/30/10%, 720/60/20%, 1200/100/30%, >1200/>100/35%) đọc được trong OCR nhưng bảng bị làm phẳng/mất cấu trúc cột-hàng; cần giữ bố cục bảng khi sử dụng. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
+      "reviewed_by": "Nguyen Gia Quy"
+    },
+    "retry": {
+      "needed": false,
+      "attempts": []
+    },
+    "preliminary_check": {
+      "by": "AI assistant (Copilot SDK in VS Code) - sơ bộ, KHÔNG phải đối chiếu thủ công của người",
+      "note": "AI xem sơ bộ: Ảnh có bảng thuế suất 5 bậc; các ngưỡng và mức thuế suất trong OCR nhìn chung khớp khi đọc sơ bộ, nhưng bảng bị làm phẳng nên có nguy cơ gán nhầm cột/hàng. Cần soát từng dòng trước khi trích số liệu.",
+      "at": "2026-11-20T15:15:25+00:00"
+    }
+  },
+  {
+    "source_id": "LUAT109_2025",
+    "legal_identifier": "109/2025/QH15",
+    "official_url": "https://vanban.chinhphu.vn/?pageid=27160&docid=216495",
+    "download_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/01/luat109-2025.pdf",
+    "retrieved_at": "2026-11-11T20:46:07.023093+00:00",
+    "pdf_file": "LUAT109_2025.pdf",
+    "pdf_sha256": "b169757e9015d3618d4b81640fbeb26bae9498a45bd8560467c3a71ce1a1c560",
+    "pdf_sha256_manifest": "b169757e9015d3618d4b81640fbeb26bae9498a45bd8560467c3a71ce1a1c560",
+    "sha256_verified": true,
+    "total_pages": 15,
+    "pdf_page": 10,
+    "selection_reasons": [
+      "có_bản_chuẩn"
+    ],
+    "page_features": {
+      "scanned": true,
+      "table": false,
+      "colored_ink_pct": 0.0
+    },
+    "extraction_method": "tesseract_vie",
+    "ocr_config": {
+      "engine": "tesseract",
+      "lang": "vie",
+      "dpi": 150,
+      "binarize": "otsu",
+      "psm": 3
+    },
+    "mean_ocr_confidence": 94.2,
+    "text_sha256": "9f592e42a58983afece085a20e63957e1033fc3a4a90b288a236137a446e8012",
+    "text_chars": 2194,
+    "suspicious_numbers": [],
+    "unicode": {
+      "is_nfc": true,
+      "combining_marks": 0,
+      "replacement_chars": 0,
+      "private_use_chars": 0,
+      "control_chars": 0,
+      "foreign_char_ratio": 0.00059
+    },
+    "quality_status": "verified_ok",
+    "quality_flags": [],
+    "error": null,
+    "processed_by": "Nguyen Gia Quy",
+    "processed_at": "2026-11-20T09:25:34+00:00",
+    "manual_review": {
+      "status": "done",
+      "assigned_to": "Nguyen Gia Quy",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh trang 10 (Điều 12-15): nội dung/thuế suất nhận diện được nhưng OCR có nhiều lỗi ('khoán', 'thuê/thuế', 'thời điêm', 'chỉ tiết', 'nhân @&)', 'chuyên/chuyển nhượng', 'băng/bằng', '0,I%'); cần hiệu đính kỹ. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
+      "reviewed_by": "Nguyen Gia Quy"
+    },
+    "retry": {
+      "needed": false,
+      "attempts": []
+    },
+    "gold_check": {
+      "gold_source": "bản chép sơ bộ do Claude, chưa người rà",
+      "cer": 0.01471,
+      "diacritic_char_accuracy": 0.95248
+    }
+  },
+  {
+    "source_id": "LUAT109_2025",
+    "legal_identifier": "109/2025/QH15",
+    "official_url": "https://vanban.chinhphu.vn/?pageid=27160&docid=216495",
+    "download_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/01/luat109-2025.pdf",
+    "retrieved_at": "2026-11-11T20:46:07.023093+00:00",
+    "pdf_file": "LUAT109_2025.pdf",
+    "pdf_sha256": "b169757e9015d3618d4b81640fbeb26bae9498a45bd8560467c3a71ce1a1c560",
+    "pdf_sha256_manifest": "b169757e9015d3618d4b81640fbeb26bae9498a45bd8560467c3a71ce1a1c560",
+    "sha256_verified": true,
+    "total_pages": 15,
+    "pdf_page": 15,
+    "selection_reasons": [
+      "trang_cuối"
+    ],
+    "page_features": {
+      "scanned": true,
+      "table": false,
+      "colored_ink_pct": 0.8346
+    },
+    "extraction_method": "tesseract_vie",
+    "ocr_config": {
+      "engine": "tesseract",
+      "lang": "vie",
+      "dpi": 150,
+      "binarize": "otsu",
+      "psm": 3
+    },
+    "mean_ocr_confidence": 93.68,
+    "text_sha256": "1fe32fdfd74f0766ed7347ab0bdd2d938e44133536fbf47522d14929b598c2e2",
+    "text_chars": 1226,
+    "suspicious_numbers": [],
+    "unicode": {
+      "is_nfc": true,
+      "combining_marks": 0,
+      "replacement_chars": 0,
+      "private_use_chars": 0,
+      "control_chars": 0,
+      "foreign_char_ratio": 0.00104
+    },
+    "quality_status": "verified_ok",
+    "quality_flags": [
+      "trang_cuối_chữ_ký"
+    ],
+    "error": null,
+    "processed_by": "Nguyen Gia Quy",
+    "processed_at": "2026-11-20T09:25:35+00:00",
+    "manual_review": {
+      "status": "done",
+      "assigned_to": "Nguyen Gia Quy",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh trang cuối Luật 109/2025/QH15: OCR đọc sai số trang ('1§5'), nhiều lỗi từ ('thuê/thuế', 'Thú đô', 'khóa XE'→'XV', 'thẳng 12'→'tháng 12') và không nhận dạng chuẩn vùng ký/con dấu Chủ tịch Quốc hội; nội dung điều khoản chính còn nhận diện được. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
+      "reviewed_by": "Nguyen Gia Quy"
+    },
+    "retry": {
+      "needed": false,
+      "attempts": []
+    },
+    "preliminary_check": {
+      "by": "AI assistant (Copilot SDK in VS Code) - sơ bộ, KHÔNG phải đối chiếu thủ công của người",
+      "note": "AI xem sơ bộ: Ảnh có số trang 15 nhưng OCR đọc thành '1§5'; vùng chữ ký/dấu nằm cuối trang. Nội dung điều khoản có vẻ đọc được, nhưng số trang và vùng ký cần xác nhận.",
+      "at": "2026-11-20T15:15:25+00:00"
+    }
+  },
+  {
+    "source_id": "ND70_2025",
+    "legal_identifier": "70/2025/NĐ-CP",
+    "official_url": "https://vanban.chinhphu.vn/?pageid=27160&docid=213179",
+    "download_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2025/3/70-nd-cp.signed.pdf",
+    "retrieved_at": "2026-11-11T20:46:09.179388+00:00",
+    "pdf_file": "ND70_2025.pdf",
+    "pdf_sha256": "98abd34e952d976fbe6fcc99af12dc84df768bf54c131aa902c67f899c931c3a",
+    "pdf_sha256_manifest": "98abd34e952d976fbe6fcc99af12dc84df768bf54c131aa902c67f899c931c3a",
+    "sha256_verified": true,
+    "total_pages": 74,
+    "pdf_page": 1,
+    "selection_reasons": [
+      "trang_scan",
+      "trang_đầu"
+    ],
+    "page_features": {
+      "scanned": true,
+      "table": false,
+      "colored_ink_pct": 0.094
+    },
+    "extraction_method": "tesseract_vie",
+    "ocr_config": {
+      "engine": "tesseract",
+      "lang": "vie",
+      "dpi": 150,
+      "binarize": "otsu",
+      "psm": 3
+    },
+    "mean_ocr_confidence": 88.76,
+    "text_sha256": "292f89ee4f6b39816ed46ae3f179ef6f3bc13a85fb7191253e79c1e3dedf572f",
+    "text_chars": 1984,
+    "suspicious_numbers": [],
+    "unicode": {
+      "is_nfc": true,
+      "combining_marks": 0,
+      "replacement_chars": 0,
+      "private_use_chars": 0,
+      "control_chars": 0,
+      "foreign_char_ratio": 0.00065
+    },
+    "quality_status": "verified_ok",
+    "quality_flags": [],
+    "error": null,
+    "processed_by": "Nguyen Gia Quy",
+    "processed_at": "2026-11-20T09:25:38+00:00",
+    "manual_review": {
+      "status": "done",
+      "assigned_to": "Nguyen Gia Quy",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh Nghị định 70/2025/NĐ-CP trang 1: số hiệu/ngày ban hành đúng trên ảnh nhưng OCR garbled metadata ký số và vùng dấu công văn, sai dấu/ký tự và nhiều từ ('Số;' 'NGHỊĐỊNH', 'ưa đôi, bỗ sung một sô điều', 'sử dựng', 'thẳng 11', 'Luậi... SHfig... giả tị gia tăng', 'đê nghị'); cần hiệu đính. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
+      "reviewed_by": "Nguyen Gia Quy"
+    },
+    "retry": {
+      "needed": false,
+      "attempts": []
+    },
+    "preliminary_check": {
+      "by": "AI assistant (Copilot SDK in VS Code) - sơ bộ, KHÔNG phải đối chiếu thủ công của người",
+      "note": "AI xem sơ bộ: Số 70/2025/NĐ-CP và tiêu đề chính nhìn thấy trên ảnh; OCR bị nhiễu quanh dấu và phần tiêu đề đầu trang. Cần xác nhận các dòng bị che.",
+      "at": "2026-11-20T15:15:25+00:00"
+    }
+  },
+  {
+    "source_id": "ND70_2025",
+    "legal_identifier": "70/2025/NĐ-CP",
+    "official_url": "https://vanban.chinhphu.vn/?pageid=27160&docid=213179",
+    "download_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2025/3/70-nd-cp.signed.pdf",
+    "retrieved_at": "2026-11-11T20:46:09.179388+00:00",
+    "pdf_file": "ND70_2025.pdf",
+    "pdf_sha256": "98abd34e952d976fbe6fcc99af12dc84df768bf54c131aa902c67f899c931c3a",
+    "pdf_sha256_manifest": "98abd34e952d976fbe6fcc99af12dc84df768bf54c131aa902c67f899c931c3a",
+    "sha256_verified": true,
+    "total_pages": 74,
+    "pdf_page": 38,
+    "selection_reasons": [
+      "trang_scan"
+    ],
+    "page_features": {
+      "scanned": true,
+      "table": false,
+      "colored_ink_pct": 0.0
+    },
+    "extraction_method": "tesseract_vie",
+    "ocr_config": {
+      "engine": "tesseract",
+      "lang": "vie",
+      "dpi": 150,
+      "binarize": "otsu",
+      "psm": 3
+    },
+    "mean_ocr_confidence": 93.17,
+    "text_sha256": "207fba0a29292b3b4803628d042cd992963bf3d5c78f9807e8234f80aa9d86f4",
+    "text_chars": 2645,
+    "suspicious_numbers": [],
+    "unicode": {
+      "is_nfc": true,
+      "combining_marks": 0,
+      "replacement_chars": 0,
+      "private_use_chars": 0,
+      "control_chars": 0,
+      "foreign_char_ratio": 0.00049
+    },
+    "quality_status": "verified_ok",
+    "quality_flags": [],
+    "error": null,
+    "processed_by": "Nguyen Gia Quy",
+    "processed_at": "2026-11-20T09:25:39+00:00",
+    "manual_review": {
+      "status": "done",
+      "assigned_to": "Nguyen Gia Quy",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh trang 38 (sửa đổi khoản Điều 38-40): nội dung chính khớp nhưng OCR có lỗi chính tả/từ ('sô biên lai', 'thuê/thuế nơi chuyên/chuyển đi', 'đồng dẫu/đóng dấu', 'tô chức', 'Bố/Bổ sung', 'huý/hủy', 'xuât/xuất', 'mất/mắt, cháy/chảy' không nhất quán). | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
+      "reviewed_by": "Nguyen Gia Quy"
+    },
+    "retry": {
+      "needed": false,
+      "attempts": []
+    }
+  },
+  {
+    "source_id": "ND70_2025",
+    "legal_identifier": "70/2025/NĐ-CP",
+    "official_url": "https://vanban.chinhphu.vn/?pageid=27160&docid=213179",
+    "download_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2025/3/70-nd-cp.signed.pdf",
+    "retrieved_at": "2026-11-11T20:46:09.179388+00:00",
+    "pdf_file": "ND70_2025.pdf",
+    "pdf_sha256": "98abd34e952d976fbe6fcc99af12dc84df768bf54c131aa902c67f899c931c3a",
+    "pdf_sha256_manifest": "98abd34e952d976fbe6fcc99af12dc84df768bf54c131aa902c67f899c931c3a",
+    "sha256_verified": true,
+    "total_pages": 74,
+    "pdf_page": 46,
+    "selection_reasons": [
+      "trang_có_bảng"
+    ],
+    "page_features": {
+      "scanned": true,
+      "table": true,
+      "colored_ink_pct": 0.0
+    },
+    "extraction_method": "tesseract_vie",
+    "ocr_config": {
+      "engine": "tesseract",
+      "lang": "vie",
+      "dpi": 150,
+      "binarize": "otsu",
+      "psm": 3
+    },
+    "mean_ocr_confidence": 88.61,
+    "text_sha256": "235b3f806947f00288e9bb26f38d55a2f26e311a17e0b584443ab8375a457056",
+    "text_chars": 1072,
+    "suspicious_numbers": [],
+    "unicode": {
+      "is_nfc": true,
+      "combining_marks": 0,
+      "replacement_chars": 0,
+      "private_use_chars": 0,
+      "control_chars": 0,
+      "foreign_char_ratio": 0.00123
+    },
+    "quality_status": "verified_ok",
+    "quality_flags": [
+      "bảng_chưa_tái_dựng_cấu_trúc"
+    ],
+    "error": null,
+    "processed_by": "Nguyen Gia Quy",
+    "processed_at": "2026-11-20T09:25:40+00:00",
+    "manual_review": {
+      "status": "done",
+      "assigned_to": "Nguyen Gia Quy",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh Phụ lục IA (danh mục biểu mẫu): OCR nhầm mã/tiêu đề (vd. '01/7ÐKTĐ-HĐDT', 'ÁC BIÊU'), lỗi chính tả ('đôi/bồ/bỗ/tông/Bồ') và làm phẳng bảng Mẫu số/Tên hồ sơ/Tình trạng; không dùng mã biểu mẫu từ OCR khi chưa soát. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
+      "reviewed_by": "Nguyen Gia Quy"
+    },
+    "retry": {
+      "needed": false,
+      "attempts": []
+    },
+    "preliminary_check": {
+      "by": "AI assistant (Copilot SDK in VS Code) - sơ bộ, KHÔNG phải đối chiếu thủ công của người",
+      "note": "AI xem sơ bộ: Ảnh là bảng danh mục biểu mẫu; OCR nhầm một số mã (ví dụ mã đầu dòng 01/ĐKTĐ-HĐĐT) và làm phẳng các cột trạng thái/tên biểu mẫu. Không dùng mã OCR nếu chưa soát.",
+      "at": "2026-11-20T15:15:25+00:00"
+    }
+  },
+  {
+    "source_id": "ND70_2025",
+    "legal_identifier": "70/2025/NĐ-CP",
+    "official_url": "https://vanban.chinhphu.vn/?pageid=27160&docid=213179",
+    "download_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2025/3/70-nd-cp.signed.pdf",
+    "retrieved_at": "2026-11-11T20:46:09.179388+00:00",
+    "pdf_file": "ND70_2025.pdf",
+    "pdf_sha256": "98abd34e952d976fbe6fcc99af12dc84df768bf54c131aa902c67f899c931c3a",
+    "pdf_sha256_manifest": "98abd34e952d976fbe6fcc99af12dc84df768bf54c131aa902c67f899c931c3a",
+    "sha256_verified": true,
+    "total_pages": 74,
+    "pdf_page": 47,
+    "selection_reasons": [
+      "trang_có_bảng"
+    ],
+    "page_features": {
+      "scanned": true,
+      "table": true,
+      "colored_ink_pct": 0.0
+    },
+    "extraction_method": "tesseract_vie",
+    "ocr_config": {
+      "engine": "tesseract",
+      "lang": "vie",
+      "dpi": 150,
+      "binarize": "otsu",
+      "psm": 3
+    },
+    "mean_ocr_confidence": 87.39,
+    "text_sha256": "585caadc24a107a6da4db255c77a828a62c9f80a59079a191c9c6cd4c393be93",
+    "text_chars": 1802,
+    "suspicious_numbers": [],
+    "unicode": {
+      "is_nfc": true,
+      "combining_marks": 0,
+      "replacement_chars": 0,
+      "private_use_chars": 0,
+      "control_chars": 0,
+      "foreign_char_ratio": 0.00361
+    },
+    "quality_status": "verified_ok",
+    "quality_flags": [
+      "bảng_chưa_tái_dựng_cấu_trúc"
+    ],
+    "error": null,
+    "processed_by": "Nguyen Gia Quy",
+    "processed_at": "2026-11-20T09:25:41+00:00",
+    "manual_review": {
+      "status": "done",
+      "assigned_to": "Nguyen Gia Quy",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh Mẫu 01/ĐKTĐ-HĐĐT (tờ khai ĐKTĐ/thay đổi HĐĐT): OCR sai mã/nhãn ('Mẫn số: 01ĐKTĐ-HĐĐT', 'Thay đôi', 'ên người nộp thuế'), garbled hàng loạt trường/ô (CCCD/Hộ chiếu, đại diện, liên hệ) và làm phẳng cấu trúc biểu mẫu. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
+      "reviewed_by": "Nguyen Gia Quy"
+    },
+    "retry": {
+      "needed": false,
+      "attempts": []
+    },
+    "preliminary_check": {
+      "by": "AI assistant (Copilot SDK in VS Code) - sơ bộ, KHÔNG phải đối chiếu thủ công của người",
+      "note": "AI xem sơ bộ: Ảnh là biểu mẫu có bảng, ô chọn và trường trống; OCR có nhiều từ/mã trường sai và mất cấu trúc cột. Cần người soát các trường trước khi sử dụng.",
+      "at": "2026-11-20T15:15:25+00:00"
+    }
+  },
+  {
+    "source_id": "ND70_2025",
+    "legal_identifier": "70/2025/NĐ-CP",
+    "official_url": "https://vanban.chinhphu.vn/?pageid=27160&docid=213179",
+    "download_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2025/3/70-nd-cp.signed.pdf",
+    "retrieved_at": "2026-11-11T20:46:09.179388+00:00",
+    "pdf_file": "ND70_2025.pdf",
+    "pdf_sha256": "98abd34e952d976fbe6fcc99af12dc84df768bf54c131aa902c67f899c931c3a",
+    "pdf_sha256_manifest": "98abd34e952d976fbe6fcc99af12dc84df768bf54c131aa902c67f899c931c3a",
+    "sha256_verified": true,
+    "total_pages": 74,
+    "pdf_page": 74,
+    "selection_reasons": [
+      "trang_cuối"
+    ],
+    "page_features": {
+      "scanned": true,
+      "table": false,
+      "colored_ink_pct": 0.0
+    },
+    "extraction_method": "tesseract_vie",
+    "ocr_config": {
+      "engine": "tesseract",
+      "lang": "vie",
+      "dpi": 150,
+      "binarize": "otsu",
+      "psm": 3
+    },
+    "mean_ocr_confidence": 84.58,
+    "text_sha256": "f38b72184325742e00f30fd1620fb758846f27497d76dd1e20f8d06784cf24e6",
+    "text_chars": 1650,
+    "suspicious_numbers": [],
+    "unicode": {
+      "is_nfc": true,
+      "combining_marks": 0,
+      "replacement_chars": 0,
+      "private_use_chars": 0,
+      "control_chars": 0,
+      "foreign_char_ratio": 0.0007
+    },
+    "quality_status": "verified_ok",
+    "quality_flags": [
+      "trang_cuối_chữ_ký"
+    ],
+    "error": null,
+    "processed_by": "Nguyen Gia Quy",
+    "processed_at": "2026-11-20T09:25:41+00:00",
+    "manual_review": {
+      "status": "done",
+      "assigned_to": "Nguyen Gia Quy",
+      "result": "ok",
+      "error_types": [],
+      "notes": "Đối chiếu ảnh Mẫu 03/TNCN (Chứng từ khấu trừ thuế TNCN): OCR sai nhãn/từ ('Mẫn/Mẫu số', 'TRÁ/TRẢ', 'Tổng thụ/thu nhập', lỗi 'Họ và tên', '(?rường hợp...)', ký 'Chữ lý điện tủ'), làm phẳng bố cục trường; vùng ký số/đại diện khấu trừ không nhận dạng chuẩn. | ?? hi?u ch?nh th? c?ng t? ?nh review (review/img).",
+      "reviewed_at": "2026-11-21T14:41:34+00:00",
+      "reviewed_by": "Nguyen Gia Quy"
+    },
+    "retry": {
+      "needed": false,
+      "attempts": []
+    }
+  }
+]
