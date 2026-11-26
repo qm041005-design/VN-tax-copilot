@@ -21,7 +21,9 @@ Ngày hiệu lực trong dữ liệu là ngày hiệu lực cấp văn bản the
 - [evidence.csv](evidence.csv) có thứ hạng trước/sau và cột `qa_notes`. Tất cả câu đang ở trạng thái `draft` và chờ Đan rà soát.
 - [retrieval.json](retrieval.json) chứa ID top 10 từ script backend. [registry.sqlite3](registry.sqlite3) là snapshot đã nạp, có SHA-256 `7c3830788844d47636156883b20d933f5ad2b36dd8d56623a200eccc9ec3facc`. ID trong benchmark thuộc snapshot này.
 
-## Kết quả và cách chạy lại
+Kết quả mới nhất, bảng thứ hạng từng căn cứ và bản xuất tìm trên cả ba sắc thuế nằm trong [báo cáo SCRUM-41](../../reports/scrum41/README.md). Tệp `retrieval.json` ở đây chứa kết quả có lọc của SCRUM-41.
+
+## Kết quả SCRUM-31 và cách chạy lại
 
 API tìm kiếm và script xuất có cùng thứ tự ID ở cả 24 câu. Cả BM25 từ khóa và BM25 có ưu tiên tham chiếu đều tìm thấy 30/30 nhóm căn cứ trong top 10. Macro Recall@10 trên bộ nháp là 100%. Bộ lọc sắc thuế thu hẹp tập ứng viên còn 9 đoạn cho TNDN, 22 cho TNCN và 24 cho GTGT. Riêng với TNDN, top 10 đủ chỗ cho cả 9 đoạn, nên thứ hạng từng căn cứ trong CSV cho biết nhiều hơn Recall@10.
 

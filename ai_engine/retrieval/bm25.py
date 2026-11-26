@@ -12,7 +12,10 @@ IDENTIFIER_PATTERN = re.compile(
 ANCHOR_PATTERNS = {
     "article_number": re.compile(r"\b(?:điều|dieu)\s+(\d+[a-zđ]?)\b", re.IGNORECASE),
     "clause_number": re.compile(r"\b(?:khoản|khoan)\s+(\d+[a-zđ]?)\b", re.IGNORECASE),
-    "point_letter": re.compile(r"\b(?:điểm|diem)\s+([a-zđ])\b", re.IGNORECASE),
+    "point_letter": re.compile(
+        r"\b(?:điểm|diem)\s+([a-zđ]\b(?:\s*(?:,|và|với|hoặc|va|voi|hoac)\s*"
+        r"(?:(?:điểm|diem)\s+)?[a-zđ]\b)*)", re.IGNORECASE,
+    ),
 }
 
 
@@ -26,7 +29,7 @@ def canonical_identifier(identifier: str) -> str:
     return "".join(char for char in text if not char.isspace() and not combining(char))
 
 
-def query_references(query: str) -> tuple[set[str], dict[str, str]]:
+def query_references(query: str) -> tuple[set[str], dict[str, set[str]]]:
     query = normalize("NFC", query)
     identifiers = {canonical_identifier(match.group()) for match in IDENTIFIER_PATTERN.finditer(query)}
     anchors = {}
@@ -37,16 +40,18 @@ def query_references(query: str) -> tuple[set[str], dict[str, str]]:
             if len(values) > 1:
                 break
             if len(values) == 1:
-                anchors[field] = values.pop()
+                if field == "point_letter":
+                    values = set(re.findall(r"\b[a-zđ]\b", values.pop()))
+                anchors[field] = values
     if not identifiers and "article_number" not in anchors:
         anchors.clear()
     return identifiers, anchors
 
 
-def matching_anchor_depth(reference: dict[str, str], anchors: dict[str, str]) -> int:
+def matching_anchor_depth(reference: dict[str, str], anchors: dict[str, set[str]]) -> int:
     depth = 0
-    for field, value in anchors.items():
-        if reference[field] != value:
+    for field, values in anchors.items():
+        if reference[field] not in values:
             break
         depth += 1
     return depth
@@ -73,6 +78,10 @@ class BM25Retriever:
         self.index = (
             BM25Okapi(self.tokenized_passages) if any(self.tokenized_passages) else None
         )
+        self.phrase_index = None
+        if use_legal_references and any(len(tokens) > 1 for tokens in self.tokenized_passages):
+            pairs = [list(zip(tokens, tokens[1:])) for tokens in self.tokenized_passages]
+            self.phrase_index = BM25Okapi(pairs)
 
     def search(self, query: str, limit: int = 10) -> list[dict]:
         query_tokens = tokenize(query)
@@ -83,8 +92,17 @@ class BM25Retriever:
         identifiers, anchors = query_references(query) if self.use_legal_references else (set(), {})
         has_references = bool(identifiers or anchors)
         scores = self.index.get_scores(query_tokens)
+        ranking_scores = scores
+        if self.phrase_index is not None and len(query_tokens) > 1:
+            phrase_scores = self.phrase_index.get_scores(zip(query_tokens, query_tokens[1:]))
+            # Give each field equal weight despite the different IDF ranges
+            # for words and adjacent pairs, including in small filtered corpora.
+            phrase_scale = abs(phrase_scores).max()
+            if phrase_scale:
+                word_scale = abs(scores).max() or 1.0
+                ranking_scores = scores / word_scale + phrase_scores / phrase_scale
         hits = []
-        for index, (tokens, score) in enumerate(zip(self.tokenized_passages, scores)):
+        for index, tokens in enumerate(self.tokenized_passages):
             document_match = False
             anchor_depth = 0
             if has_references:
@@ -94,9 +112,8 @@ class BM25Retriever:
                     anchor_depth = matching_anchor_depth(reference, anchors)
             full_anchor_match = bool(anchors) and anchor_depth == len(anchors)
             if document_match or full_anchor_match or query_terms.intersection(tokens):
-                hits.append(((document_match, anchor_depth, float(score)), index))
+                hits.append(((document_match, anchor_depth, float(ranking_scores[index])), index))
 
-        # Stable ties keep the registry order. The score remains the original BM25
-        # score; explicit document/Điều/Khoản/Điểm matches are separate priorities.
+        # Keep the original word-level score for API consumers and stable registry ties.
         top_hits = nlargest(limit, hits, key=lambda item: item[0])
-        return [{**self.passages[index], "score": priority[-1]} for priority, index in top_hits]
+        return [{**self.passages[index], "score": float(scores[index])} for _, index in top_hits]

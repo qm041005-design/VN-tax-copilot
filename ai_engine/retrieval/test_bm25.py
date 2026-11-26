@@ -84,3 +84,18 @@ class TestBM25Retriever(unittest.TestCase):
                          clause_number="1", point_letter=letter, text="Nội dung mẫu giống nhau")
                     for letter in ("d", "đ")]
         self.assertEqual(BM25Retriever(passages).search("Điểm đ Khoản 1 Điều 1")[0]["passage_id"], "đ")
+
+    def test_point_lists_match_only_the_requested_parent(self):
+        passages = [
+            dict(passage_id=i, article_number=article, clause_number=clause, point_letter=point,
+                 text="Nội dung mẫu")
+            for i, (article, clause, point) in enumerate([
+                ("7", "3", "b"), ("12b", "4", "c"), ("12b", "3", "a"),
+                ("12b", "3", "b"), ("12b", "3", "c"),
+            ])
+        ]
+        retriever = BM25Retriever(passages)
+        for points in ("điểm b và c", "điểm b và điểm c", "điểm b, c"):
+            with self.subTest(points=points):
+                hits = retriever.search(f"{points} khoản 3 Điều 12b")
+                self.assertEqual([hit["passage_id"] for hit in hits], [3, 4])
