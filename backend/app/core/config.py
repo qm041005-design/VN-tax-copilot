@@ -42,6 +42,13 @@ class Settings(BaseSettings):
     # Rỗng = không ai gọi được API (an toàn mặc định). Token phải >= 16 ký tự.
     auth_tokens: str = ""
 
+    # --- Nối AI cho /research (prompt tuần 4 của Quân + guardrails của An) ---
+    # Đường dẫn "module:hàm" do nhóm AI cung cấp, chỉ cấu hình ở server. Bỏ trống = không gọi model (an toàn mặc định).
+    #   RESEARCH_ASSESSOR  : assess(SafeResearchInput) -> list[EvidenceAssessment]   (bộ đánh giá căn cứ của An)
+    #   RESEARCH_COMPLETION: complete(messages) -> JSON text | dict                 (hàm gọi model; key/model tự đọc env)
+    research_assessor: str = ""
+    research_completion: str = ""
+
     # env_file: đọc file .env; extra="ignore": bỏ qua biến lạ để không báo lỗi
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 

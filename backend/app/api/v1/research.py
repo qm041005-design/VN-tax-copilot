@@ -5,8 +5,10 @@ app/api/v1/research.py  –  TRA CỨU TRONG HỒ SƠ: tìm nguồn luật + lư
 
 Luồng: kiểm tra quyền ghi hồ sơ -> tìm đoạn luật -> lưu 1 dòng research_history (citations = nguồn tìm được)
 -> trả cả bản ghi lịch sử lẫn danh sách nguồn.
-Chưa nối LLM: answer = null. Không tìm thấy nguồn -> từ chối trả lời (abstention), ghi cảnh báo.
+AI: research_callbacks() trả (assess, generate) theo cấu hình server; chưa cấu hình -> answer = null.
+Không tìm thấy nguồn -> từ chối trả lời (abstention), ghi cảnh báo.
 """
+import importlib
 import json
 
 from fastapi import APIRouter, Depends, HTTPException, status
@@ -20,11 +22,28 @@ from app.schemas.source import ResearchRequest, ResearchResponse
 from app.services import matter_service, source_service
 from app.services.guarded_research_service import research_from_rows
 from ai_engine.guardrails import redact_text, to_contract
+from ai_engine.synthesis.backend_adapter import make_guarded_generator
+from app.core.config import settings
+
+
+def _load(path: str):
+    """"module:hàm" -> hàm. Sai đường dẫn -> lỗi ngay khi khởi động, không âm thầm tắt AI."""
+    if not path:
+        return None
+    module, _, name = path.partition(":")
+    return getattr(importlib.import_module(module), name)
+
+
+_ASSESS = _load(settings.research_assessor)
+_COMPLETE = _load(settings.research_completion)
+_GENERATE = make_guarded_generator(_COMPLETE) if _COMPLETE else None
 
 
 def research_callbacks():
-    """Server-only injection point. No configured providers => no generation."""
-    return None, None
+    """Server-only injection point (RESEARCH_ASSESSOR / RESEARCH_COMPLETION trong .env).
+    Không cấu hình -> (None, None): guardrails clarify/abstain, không gọi model.
+    Generator luôn đi qua prompt + validator (make_guarded_generator), không gọi model trực tiếp."""
+    return _ASSESS, _GENERATE
 
 router = APIRouter(prefix="/research", tags=["Research (Tra cứu)"])
 
