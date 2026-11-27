@@ -155,7 +155,8 @@ def test_bad_second_chunk_does_not_partially_import(client, payload):
 
 
 def test_conflicting_chunk_metadata_rejected(client, payload):
-    payload["chunks"][0]["effective_date"] = "2024-02-01"
+    # Ngày hiệu lực riêng của đoạn được phép khác văn bản (SCRUM-31); phiên bản thì phải khớp
+    payload["chunks"][0]["version"] = "2.0"
     with SessionLocal() as db, pytest.raises(ValidationError):
         ingest_legal_document(db, payload)
 

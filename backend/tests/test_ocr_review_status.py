@@ -55,3 +55,29 @@ def test_preamble_cac_doan_phai_khop_van_ban(client):
 def test_trang_thai_ocr_ngoai_danh_sach_bi_tu_choi(client):
     with pytest.raises(ValidationError):
         ingest_legal_document(None, _payload(ocr_quality_status="GOOD"))
+
+
+# Cột chưa lưu từ file nạp, có lý do: khóa/thời điểm do hệ thống sinh; `status` pháp lý chờ thống nhất (xem HUONG_DAN_TEST)
+NOT_FROM_FILE = {"id", "doc_id", "created_at", "updated_at", "status"}
+
+
+def test_moi_cot_metadata_trong_model_deu_duoc_luu(client):
+    """SCRUM-36: tránh "model có cột nhưng dữ liệu không được lưu" – file nạp đủ trường thì mọi cột đều có giá trị."""
+    payload = _payload(ocr_quality_status="VERIFIED", source_url="https://vbpl.vn/ocr-01", version="2.0",
+                       effective_date="2025-01-01")
+    payload["document"].update(issuer="Chính phủ", source_url="https://vbpl.vn/ocr-01", total_pages=5,
+                               issue_date="2024-12-01", expiry_date="2030-01-01", version="2.0",
+                               amends_doc_code="OCR-00", replaces_doc_code="OCR-OLD")
+    for c in payload["chunks"]:
+        c.update(article_title=c.get("article_title") or "Phạm vi", article_intro="Mở đầu Điều",
+                 clause_intro="Mở đầu Khoản", point_letter="a", source_page=2,
+                 source_url="https://vbpl.vn/ocr-01#page=2", effective_date="2025-01-01")
+    with SessionLocal.begin() as db:
+        receipt = ingest_legal_document(db, payload)
+    with SessionLocal() as db:
+        chunk = db.get(LegalChunk, receipt.chunk_ids[0])
+        for row in (chunk.document, chunk):
+            empty = [c.name for c in row.__table__.columns
+                     if c.name not in NOT_FROM_FILE and getattr(row, c.name) in (None, "")]
+            assert not empty, f"{row.__tablename__} không lưu: {empty}"
+        assert chunk.version == "2.0" and chunk.source_page == 2

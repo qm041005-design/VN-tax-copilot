@@ -48,14 +48,15 @@ def ingest_legal_document(db: Session, payload: dict) -> ImportReceipt:
     db.flush()
     rows = []
     for chunk in data.chunks:
-        # Metadata/intro fields are NOT legal_chunks ORM constructor fields.
-        # Complete content from parser retains article/clause lead-in context.
+        chunk_start = datetime.combine(chunk.effective_date, time.min) if chunk.effective_date else None
         row = LegalChunk(doc_id=doc.id, article_number=chunk.article_number,
-                         article_title=chunk.article_title,
-                         clause_number=chunk.clause_number or "0",
+                         article_title=chunk.article_title, article_intro=chunk.article_intro,
+                         clause_number=chunk.clause_number or "0", clause_intro=chunk.clause_intro,
                          point_letter=chunk.point_letter or "",
                          citation_path=chunk.citation_path, content=chunk.content,
-                         source_page=chunk.source_page, hierarchy_level=chunk.hierarchy_level)
+                         source_page=chunk.source_page, source_url=chunk.source_url,
+                         hierarchy_level=chunk.hierarchy_level, effective_date=chunk_start,
+                         version=doc.version)
         db.add(row)
         rows.append(row)
     for chunk, row in zip(data.chunks, rows):  # SCRUM-30: trạng thái OCR/duyệt của từng đoạn

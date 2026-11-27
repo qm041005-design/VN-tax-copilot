@@ -55,8 +55,10 @@ class DocumentInput(LegalDates):
     ocr_quality_status: OcrStatus = "RAW"
     expert_review_status: ReviewStatus = "PENDING"
     source_url: str | None = Field(default=None, max_length=1000)
+    total_pages: int | None = Field(default=None, ge=1, strict=True)
     version: str = Field(default="1.0", min_length=1, max_length=50)
     amends_doc_code: str | None = Field(default=None, max_length=100)
+    replaces_doc_code: str | None = Field(default=None, max_length=100)
 
     @field_validator("doc_code", "title", "version")
     @classmethod
@@ -72,13 +74,12 @@ class ChunkInput(LegalDates):
     article_intro: str | None = None
     clause_number: str | None = Field(default=None, max_length=20)
     clause_intro: str | None = None
-    point_letter: str | None = Field(default=None, max_length=5)
+    point_letter: str | None = Field(default=None, max_length=10)
     citation_path: str = Field(min_length=1, max_length=500)
     content: str = Field(min_length=1)
     source_page: int | None = Field(default=None, ge=1, strict=True)
     hierarchy_level: int = Field(ge=1, le=5)
-    # Parser metadata is validated against the parent, not passed to ORM blindly.
-    source_url: str | None = None
+    source_url: str | None = Field(default=None, max_length=1000)
     doc_type: str | None = None
     version: str | None = None
     amends_doc_code: str | None = None
@@ -100,12 +101,19 @@ class ChunkInput(LegalDates):
     def point(cls, value):
         return value.strip() or None if isinstance(value, str) else value
 
-    @field_validator("article_number", "citation_path", "content")
+    @field_validator("article_number", "citation_path")
     @classmethod
     def nonblank(cls, value):
         if not value.strip():
             raise ValueError("Không được để trống.")
         return value.strip()
+
+    @field_validator("content")
+    @classmethod
+    def nonblank_content(cls, value):
+        if not value.strip():
+            raise ValueError("Không được để trống.")
+        return value
 
 
 class ImportInput(BaseModel):
@@ -136,7 +144,7 @@ class ImportInput(BaseModel):
         expected = {"LUAT": 1, "NGHI_DINH": 2, "THONG_TU": 3, "CONG_VAN": 4, "UNKNOWN": 5}
         if expected[self.document.doc_type] != self.document.hierarchy_level:
             raise ValueError("Loại văn bản không khớp hierarchy_level.")
-        keys = ("issue_date", "effective_date", "expiry_date", "source_url", "version", "amends_doc_code")
+        keys = ("issue_date", "expiry_date", "version", "amends_doc_code", "replaces_doc_code")
         for i, chunk in enumerate(self.chunks):
             for key in keys:
                 # Omitted/null duplicate metadata is inherited; any supplied value must agree.
@@ -147,6 +155,10 @@ class ImportInput(BaseModel):
                 raise ValueError(f"chunks[{i}].doc_type không khớp văn bản.")
             if chunk.hierarchy_level != self.document.hierarchy_level:
                 raise ValueError(f"chunks[{i}].hierarchy_level không khớp văn bản.")
-            if chunk.replaces_doc_code is not None:
-                raise ValueError("Quan hệ thay thế chưa được importer này lưu; cần adapter registry riêng.")
+            if (chunk.effective_date and self.document.expiry_date
+                    and chunk.effective_date >= self.document.expiry_date):
+                raise ValueError(f"chunks[{i}].effective_date phải trước ngày hết hiệu lực của văn bản.")
+            if (chunk.source_page and self.document.total_pages
+                    and chunk.source_page > self.document.total_pages):
+                raise ValueError(f"chunks[{i}].source_page vượt số trang PDF.")
         return self
