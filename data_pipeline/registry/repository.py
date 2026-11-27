@@ -6,6 +6,27 @@ from data_pipeline.parser.chunker import _to_datetime
 from data_pipeline.registry.models import LegalChunk, LegalDocument
 
 
+def normalize_tax_types(value: Any) -> List[str]:
+    """Chuẩn hóa tax_types về danh sách mã thuế viết hoa, không trùng (VD: ['VAT', 'TNDN'])."""
+    if not value:
+        return []
+    if isinstance(value, str):
+        raw_items = value.split(",")
+    elif isinstance(value, (list, tuple, set)):
+        raw_items = list(value)
+    else:
+        raise ValueError(
+            "Trường 'tax_types' phải là danh sách hoặc chuỗi phân tách bằng dấu phẩy."
+        )
+
+    result: List[str] = []
+    for item in raw_items:
+        code = str(item or "").strip().upper()
+        if code and code not in result:
+            result.append(code)
+    return result
+
+
 def sync_parsed_document(
     session: Session,
     doc_metadata: Dict[str, Any],
@@ -40,7 +61,12 @@ def sync_parsed_document(
     )
     version = str(doc_metadata.get("version") or first_chunk.get("version") or "1.0")
     source_url = doc_metadata.get("source_url") or first_chunk.get("source_url")
-    hierarchy_level = int(doc_metadata.get("hierarchy_level") or first_chunk.get("hierarchy_level") or 5)
+    tax_types = normalize_tax_types(
+        doc_metadata.get("tax_types") or first_chunk.get("tax_types")
+    )
+    hierarchy_level = int(
+        doc_metadata.get("hierarchy_level") or first_chunk.get("hierarchy_level") or 5
+    )
     preamble = doc_metadata.get("preamble") or first_chunk.get("preamble") or ""
 
     pages = [c["source_page"] for c in parsed_chunks if c.get("source_page") is not None]
@@ -55,12 +81,18 @@ def sync_parsed_document(
         session.add(doc)
 
     doc.title = doc_metadata.get("title") or doc.title or doc_code
-    doc.doc_type = doc_metadata.get("doc_type") or first_chunk.get("doc_type") or doc.doc_type or "UNKNOWN"
+    doc.doc_type = (
+        doc_metadata.get("doc_type")
+        or first_chunk.get("doc_type")
+        or doc.doc_type
+        or "UNKNOWN"
+    )
     doc.hierarchy_level = hierarchy_level
     doc.preamble = preamble or doc.preamble
     doc.issuer = doc_metadata.get("issuer") or doc.issuer
     doc.source_url = source_url or doc.source_url
     doc.total_pages = total_pages or doc.total_pages
+    doc.tax_types = tax_types or doc.tax_types or []
     doc.issue_date = issue_date or doc.issue_date
     doc.effective_date = eff_date if eff_date is not None else doc.effective_date
     doc.expiry_date = exp_date if exp_date is not None else doc.expiry_date
@@ -86,6 +118,8 @@ def sync_parsed_document(
 
     for item in parsed_chunks:
         chunk_eff = _to_datetime(item.get("effective_date")) or eff_date
+        chunk_exp = _to_datetime(item.get("expiry_date")) or exp_date
+        chunk_tax_types = normalize_tax_types(item.get("tax_types")) or doc.tax_types
         chunk = LegalChunk(
             doc_id=doc.id,
             article_number=str(item.get("article_number", "0")),
@@ -98,8 +132,10 @@ def sync_parsed_document(
             content=item["content"],
             source_page=item.get("source_page"),
             source_url=item.get("source_url") or source_url,
+            tax_types=chunk_tax_types,
             hierarchy_level=int(item.get("hierarchy_level") or hierarchy_level),
             effective_date=chunk_eff,
+            expiry_date=chunk_exp,
             status=item.get("status") or status,
             ocr_quality_status=item.get("ocr_quality_status") or ocr_status,
             expert_review_status=item.get("expert_review_status") or expert_status,
