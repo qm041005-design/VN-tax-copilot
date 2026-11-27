@@ -43,6 +43,8 @@ def test_import_round_trip_and_exclusive_expiry(client, payload):
         assert to_detail(row).khoan == "1a"
         assert to_detail(row).dieu == "1a"
         assert to_detail(row).content == payload["chunks"][0]["content"]
+        # Importer không lưu status của parser -> nguồn hiện trạng thái tính từ ngày (hết hạn 2025-01-01)
+        assert to_detail(row).status == "HET_HIEU_LUC"
         assert db.scalar(select(func.count()).select_from(LegalDocumentTaxScope)) == 1
         assert search(db, "fixture_tax", as_of=date(2024, 12, 31))
         assert search(db, "fixture_tax", as_of=date(2025, 1, 1)) == []
@@ -180,7 +182,7 @@ def test_caller_can_rollback_import(client, payload):
         assert db.scalar(select(func.count()).select_from(LegalDocument)) == 0
 
 
-@pytest.mark.parametrize("as_of,expected", [("2023-12-31", "CHUA_XAC_DINH"),
+@pytest.mark.parametrize("as_of,expected", [("2023-12-31", "CHUA_CO_HIEU_LUC"),
                                           ("2024-01-01", "CON_HIEU_LUC"),
                                           ("2025-01-01", "HET_HIEU_LUC"),
                                           ("2025-01-02", "HET_HIEU_LUC")])

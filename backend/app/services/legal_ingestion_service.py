@@ -11,6 +11,7 @@ from sqlalchemy.orm import Session
 
 from app.models import LegalDocument, LegalChunk, LegalDocumentTaxScope
 from app.schemas.ingestion import ImportInput
+from app.services.legal_metadata import date_status
 
 
 @dataclass(frozen=True)
@@ -23,11 +24,7 @@ class ImportReceipt:
 
 def temporal_status(document, as_of):
     """Date classification only, not expert validation of legal applicability."""
-    if document.expiry_date is not None and as_of >= document.expiry_date:
-        return "HET_HIEU_LUC"
-    if document.effective_date is None or as_of < document.effective_date:
-        return "CHUA_XAC_DINH"
-    return "CON_HIEU_LUC"
+    return date_status(document.effective_date, document.expiry_date, as_of)
 
 
 def ingest_legal_document(db: Session, payload: dict) -> ImportReceipt:

@@ -1,7 +1,18 @@
 """Shared conversion for parser/backend/guardrail boundaries."""
 import calendar
 import re
-from datetime import date
+from datetime import date, datetime
+
+
+def date_status(effective, expiry, as_of):
+    """Trạng thái hiệu lực suy ra từ ngày tại as_of; không phải xác minh pháp lý."""
+    day = lambda v: v.date() if isinstance(v, datetime) else v
+    effective, expiry, as_of = day(effective), day(expiry), day(as_of)
+    if expiry is not None and as_of >= expiry:
+        return "HET_HIEU_LUC"
+    if effective is None:
+        return "CHUA_XAC_DINH"
+    return "CHUA_CO_HIEU_LUC" if as_of < effective else "CON_HIEU_LUC"
 
 
 def clause_label(value):

@@ -12,7 +12,7 @@ from sqlalchemy.orm import Session, contains_eager
 from app.models import LegalChunk, LegalDocument, LegalDocumentTaxScope
 from app.models.legal_source import STATUS_UNKNOWN
 from app.schemas.source import SourceDetail, SourceHit
-from app.services.legal_metadata import clause_label, period_bounds
+from app.services.legal_metadata import clause_label, date_status, period_bounds
 from ai_engine.retrieval.bm25 import BM25Retriever, tokenize
 
 SNIPPET_LEN = 300
@@ -70,8 +70,10 @@ def to_hit(chunk: LegalChunk) -> SourceHit:
         url=chunk.source_url or doc.source_url, citation_path=chunk.citation_path,
         source_page=chunk.source_page, version=doc.version,
         doc_type=doc.doc_type, hierarchy_level=chunk.hierarchy_level,
-        # Trạng thái riêng của đoạn (vd 1 Khoản bị sửa đổi) ưu tiên hơn trạng thái cả văn bản
-        status=chunk.status if chunk.status and chunk.status != STATUS_UNKNOWN else doc.status or STATUS_UNKNOWN,
+        # Trạng thái riêng của đoạn (vd 1 Khoản bị sửa đổi) ưu tiên hơn trạng thái cả văn bản;
+        # chưa ai ghi trạng thái thì tính từ ngày tại hôm nay (importer không tin status của parser)
+        status=next((s for s in (chunk.status, doc.status) if s and s != STATUS_UNKNOWN), None)
+        or date_status(chunk.effective_date or doc.effective_date, doc.expiry_date, date.today()),
         effective_date=chunk.effective_date or doc.effective_date, expiry_date=doc.expiry_date,
         snippet=chunk.content[:SNIPPET_LEN],
     )
