@@ -115,6 +115,8 @@ Bảng tự tạo khi server khởi động (`create_all`), nhưng `create_all` 
 | `AUTH_TOKENS` | `token:user_id:tenant_id`, ngăn cách bằng dấu phẩy, token ≥ 16 ký tự. Rỗng → mọi API 401; sai định dạng → server không chạy |
 | `CORS_ORIGINS` | Địa chỉ frontend được gọi backend (mặc định `localhost:3000`) |
 | `APP_ENV` | `dev` / `staging` / `prod` |
+| `RESEARCH_ASSESSOR` | `module:hàm` bộ đánh giá căn cứ (An). Trống = không sinh câu trả lời |
+| `RESEARCH_COMPLETION` | `module:hàm` gọi model, trả JSON 6 phần (Quân/An). Key của model đặt ở biến riêng hàm đó đọc. Sai đường dẫn → server không khởi động |
 
 ## 7. Quy tắc khi sửa code
 
@@ -123,17 +125,17 @@ Bảng tự tạo khi server khởi động (`create_all`), nhưng `create_all` 
 - `DELETE` hồ sơ chỉ đổi `status = archived`.
 - Audit ghi cùng giao dịch với thao tác chính.
 - Độ dài/NOT NULL trong schema khớp cột DB, để lỗi là **422** chứ không phải **500**.
-- Callback AI (`research_callbacks`) chỉ cấu hình ở server, không nhận từ request.
+- Callback AI (`research_callbacks`) chỉ cấu hình ở server (`RESEARCH_ASSESSOR`, `RESEARCH_COMPLETION`), không nhận từ request. Model chỉ được gọi qua `make_guarded_generator` (prompt + kiểm tra JSON/trích dẫn), không gọi thẳng.
 
 ## 8. Các nhóm nối vào backend
 
 | Nhóm | Nối ở đâu | Trạng thái |
 |---|---|---|
 | Frontend (Phước) | API trong `API_CONTRACT.md` | Đã nối hồ sơ, tra cứu, lịch sử, nguồn. **Chưa** nối xuất Word (nút hiện tạo `.txt`), chưa gửi `material_facts` |
-| Dữ liệu (Duyên) | `scripts/import_legal_document.py` | Nhận đủ metadata parser SCRUM-30: `preamble`, trạng thái OCR, trạng thái duyệt (importer chỉ nhận `PENDING`; phê duyệt do chuyên gia). Model khớp registry, kiểm bằng `tests/test_data_pipeline_sync.py`. Lưu metadata cấp đoạn (intro, ngày hiệu lực, URL) nằm ở nhánh SCRUM-31 của Thanh |
+| Dữ liệu (Duyên) | `scripts/import_legal_document.py` | Nhận đủ metadata parser SCRUM-30: `preamble`, trạng thái OCR, trạng thái duyệt (importer chỉ nhận `PENDING`; phê duyệt do chuyên gia). Model khớp registry, kiểm bằng `tests/test_data_pipeline_sync.py`. Lưu đủ metadata cấp đoạn (đoạn mở đầu Điều/Khoản, ngày hiệu lực riêng, URL, phiên bản) theo cùng quy tắc với SCRUM-31 của Thanh; test `test_moi_cot_metadata_trong_model_deu_duoc_luu`. Riêng `status` pháp lý chưa lưu từ file (chờ chốt với Duyên) |
 | Retrieval (Thanh) | `ai_engine/retrieval` qua `source_service.search` | BM25 đã dùng |
-| Guardrails (An) | `ai_engine/guardrails` qua `guarded_research_service` | Đã nối. Chưa có `assess`/`generate` nên kết quả luôn `clarify`/`abstain`. Metadata cấp đoạn chờ thống nhất |
-| Export (Quân) | `export_service.py` + `ai_engine/synthesis/backend_adapter.py` | Đã nối vào API xuất Word |
+| Guardrails (An) | `ai_engine/guardrails` qua `guarded_research_service` | Đã nối, kể cả hỏi làm rõ theo `case_facts` và metadata cấp đoạn (SCRUM-32) |
+| Prompt + Export (Quân) | `ai_engine/synthesis/backend_adapter.py` (`make_guarded_generator`, prompt tuần 4) + `export_service.py` | Đã nối: `research_callbacks()` đọc `RESEARCH_ASSESSOR` / `RESEARCH_COMPLETION` (dạng `module:hàm`) trong `.env`. Chưa có hàm thật nên mặc định không gọi model |
 | DevOps (Phúc) | `backend/Dockerfile`, `docker-compose.yml`, `/health` | Build context ở gốc repo |
 
 ## 9. Thêm tính năng mới

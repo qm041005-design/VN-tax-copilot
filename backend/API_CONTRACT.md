@@ -129,6 +129,9 @@ Luồng: kiểm tra quyền ghi hồ sơ → lọc và tìm đoạn luật (BM25
   "tax_period": null,
   "research_as_of": null,
   "material_facts": "Công ty bán máy tính cho doanh nghiệp trong nước",
+  "clarification_scenario": "goods_rate",
+  "case_facts": { "goods_description": "Máy tính xách tay", "transaction_type": "Bán trong nước",
+                  "transaction_date": "2026-03" },
   "doc_type": null,
   "limit": 10 }
 ```
@@ -140,7 +143,9 @@ Luồng: kiểm tra quyền ghi hồ sơ → lọc và tìm đoạn luật (BM25
 | `tax_type` | | Có gửi → **chỉ** tìm văn bản đã gán nhãn sắc thuế đó |
 | `tax_period` | | Bỏ trống → dùng kỳ thuế của hồ sơ. Lọc văn bản (và từng đoạn) có hiệu lực trong kỳ |
 | `research_as_of` | | Ngày `YYYY-MM-DD`, chỉ dùng khi không có kỳ thuế |
-| `material_facts` | | Tình tiết vụ việc. **Thiếu thì guardrails luôn trả `clarify`** |
+| `material_facts` | | Tình tiết vụ việc (văn bản tự do). **Thiếu thì guardrails luôn trả `clarify`** |
+| `clarification_scenario` | | `goods_rate` (thuế suất hàng hóa) \| `residency` (cư trú). Bỏ trống thì guardrails tự nhận theo từ khóa trong câu hỏi |
+| `case_facts` | | Dữ kiện có cấu trúc, tối đa 20 khóa, mỗi giá trị ≤ 2000 ký tự. `goods_rate`: `goods_description`, `transaction_type`, `transaction_date`. `residency`: `presence_period`, `accommodation`, `foreign_residency`. Khóa lạ → 422. **Câu hỏi thuế suất hàng hóa / cư trú mà thiếu khóa nào thì luôn `clarify`**, `clarification_questions` hỏi đúng khóa còn thiếu |
 | `doc_type` | | `LUAT` \| `NGHI_DINH` \| `THONG_TU` \| `CONG_VAN` |
 | `limit` | | 1–50, mặc định 10 |
 
@@ -200,7 +205,7 @@ Trả về `ResearchResponse` (rút gọn):
 
 | Giá trị | Nghĩa | Hiện nay xảy ra khi |
 |---|---|---|
-| `clarify` | Cần người dùng bổ sung thông tin. Xem `clarification_questions` | Thiếu `material_facts` hoặc thiếu kỳ thuế |
+| `clarify` | Cần người dùng bổ sung thông tin. Xem `clarification_questions` | Thiếu `material_facts`, kỳ thuế, hoặc `case_facts` của tình huống thuế suất hàng hóa / cư trú |
 | `abstain` | Hệ thống từ chối trả lời | Không tìm thấy nguồn; hoặc **chưa nối AI** (`assessment_unavailable`) |
 | `draft` | Có bản nháp 6 phần, mỗi ý có `citation_ids` trỏ tới `source_id` | Chỉ khi đã nối AI (chưa có) |
 
@@ -356,6 +361,7 @@ export interface HistoryItem {
 export interface ResearchRequest {
   matter_id: string; question: string; tax_type?: TaxType | null; tax_period?: string | null;
   research_as_of?: string | null; material_facts?: string | null; doc_type?: string | null; limit?: number;
+  clarification_scenario?: "goods_rate" | "residency" | null; case_facts?: Record<string, string>;
 }
 export interface ResearchResponse { history: HistoryItem; sources: SourceHit[]; research_result: ResearchResult | null; }
 ```
@@ -366,12 +372,12 @@ export interface ResearchResponse { history: HistoryItem; sources: SourceHit[]; 
 
 | Hiện tượng | Lý do | Ai xử lý |
 |---|---|---|
-| `answer: null`, `research_result.status` là `clarify`/`abstain`, 6 phần trống | Chưa nối AI (bộ đánh giá + bộ sinh câu trả lời) | Nhóm AI (An, Quân) |
-| Luôn `clarify: missing_context` | Frontend chưa gửi `material_facts` | Frontend (Phước) |
+| `answer: null`, `research_result.status` là `clarify`/`abstain`, 6 phần trống | Server chưa cấu hình `RESEARCH_ASSESSOR` / `RESEARCH_COMPLETION` (chưa có bộ đánh giá căn cứ và hàm gọi model thật). Backend đã nối sẵn, test bằng model giả ra `draft` đủ 6 phần | Nhóm AI (An, Quân), cấu hình key: Phúc |
+| Luôn `clarify: missing_context` | Frontend chưa gửi `material_facts` / `case_facts` | Frontend (Phước) |
+| Xuất Word lượt `draft` trả 422 "requires a verified PDF page number" | Đoạn luật được trích dẫn thiếu `source_page` | Dữ liệu (Duyên, Thanh) |
 | Tra cứu không ra nguồn dù có văn bản | Văn bản chưa gán nhãn sắc thuế (`tax_types` khi nạp) | Dữ liệu (Duyên) |
 | `status` nguồn luôn `CHUA_XAC_DINH` | Importer chưa ghi trạng thái hiệu lực vào DB | Backend + Dữ liệu |
 | `review_status` luôn `draft` | Chưa có API phê duyệt | Sprint sau |
-| Chưa có `clarification_scenario`, `case_facts` trong `POST /research` | Nằm ở nhánh SCRUM-32 của An, chưa merge. Khi merge sẽ cập nhật mục 3.6 | AI (An) |
 
 ## 6. Khi muốn đổi hợp đồng
 
