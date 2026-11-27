@@ -111,7 +111,7 @@ def archive_matter(db: Session, user: CurrentUser, matter: Matter) -> Matter:
     return matter
 
 
-def add_history(db: Session, user: CurrentUser, matter: Matter, data: HistoryCreate) -> ResearchHistory:
+def add_history(db: Session, user: CurrentUser, matter: Matter, data: HistoryCreate, *, guardrail_audit: dict | None = None) -> ResearchHistory:
     """
     Lưu 1 lượt tra cứu (câu hỏi + trả lời + trích dẫn) vào hồ sơ.
     Nếu client không gửi tax_period thì lấy kỳ thuế mặc định của hồ sơ.
@@ -134,6 +134,8 @@ def add_history(db: Session, user: CurrentUser, matter: Matter, data: HistoryCre
     db.add(item)
     db.flush()
     _audit(db, user, "history.create", "research_history", item.id, {"matter_id": str(matter.id)})
+    if guardrail_audit is not None:
+        _audit(db, user, "research.guardrail", "research_history", item.id, guardrail_audit)
     db.commit()
     db.refresh(item)
     return item

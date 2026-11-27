@@ -4,11 +4,11 @@ Run backend with repository root on PYTHONPATH so ai_engine is importable.
 Callbacks are injected by server code, never request-body fields.
 """
 from ai_engine.guardrails import ResearchContext, run_guarded_research
-from app.services.legal_metadata import clause_label
+from .legal_metadata import clause_label
 
 
 def research_from_rows(question, rows, *, tax_period=None, material_facts=None,
-                       assess=None, generate=None):
+                       assess=None, generate=None, scenario=None, case_facts=None):
     passages = [
         {"passage_id": str(chunk.id), "legal_identifier": chunk.document.doc_code,
          "text": chunk.content,
@@ -16,13 +16,16 @@ def research_from_rows(question, rows, *, tax_period=None, material_facts=None,
          "khoan": clause_label(getattr(chunk, "clause_number", None)),
          "diem": getattr(chunk, "point_letter", None) or None,
          "doc_type": getattr(chunk.document, "doc_type", None),
-         "effective_date": chunk.document.effective_date.isoformat() if getattr(chunk.document, "effective_date", None) else None,
+         "effective_date": chunk.effective_date.isoformat() if getattr(chunk, "effective_date", None) else None,
          "expiry_date": chunk.document.expiry_date.isoformat() if getattr(chunk.document, "expiry_date", None) else None,
-         "version": getattr(chunk.document, "version", None),
+         "version": getattr(chunk, "version", None),
+         "status": getattr(chunk, "status", None),
+         "document_effective_date": chunk.document.effective_date.isoformat() if getattr(chunk.document, "effective_date", None) else None,
+         "document_version": getattr(chunk.document, "version", None),
          "source_page": getattr(chunk, "source_page", None)}
         for chunk, _score in rows
     ]
     return run_guarded_research(
-        question, passages, ResearchContext(tax_period, material_facts),
+        question, passages, ResearchContext(tax_period, material_facts, scenario=scenario, case_facts=case_facts),
         assess=assess, generate=generate,
     )
