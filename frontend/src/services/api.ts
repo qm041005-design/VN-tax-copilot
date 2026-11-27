@@ -84,6 +84,8 @@ export interface SourceHit extends Citation {
   hierarchy_level: number;
   effective_date: string | null;
   expiry_date: string | null;
+  source_page?: number | null;
+  version?: string | null;
   snippet: string;
 }
 
