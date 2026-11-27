@@ -97,3 +97,27 @@ def test_doc_cau_hinh_module_ham():
     assert _load("json:dumps") is json.dumps
     with pytest.raises(ModuleNotFoundError):
         _load("khong_ton_tai:ham")
+
+
+def test_ca_3_trang_thai_deu_luu_va_mo_lai_dung(ai_wired):
+    """SCRUM-36 task 3: draft / clarify / abstain đều lưu nguyên object 6 phần và trả lại khi mở hồ sơ."""
+    client = ai_wired
+    mid = client.post("/api/v1/matters", json={"title": "VAT", "client_name": "ABC", "tax_types": ["VAT"],
+                                               "tax_period": "2026"}, headers=A).json()["id"]
+    facts = {"material_facts": "Bán máy tính trong nước",
+             "case_facts": {"goods_description": "Máy tính", "transaction_type": "Bán trong nước",
+                            "transaction_date": "2026-03"}}
+    asks = {"draft": {"question": "Mức thuế suất 10% áp dụng cho hàng hóa nào?", "tax_type": "VAT", **facts},
+            "clarify": {"question": "Mức thuế suất 10% áp dụng cho hàng hóa nào?", "tax_type": "VAT"},
+            "abstain": {"question": "quy định về hóa đơn điện tử", "tax_type": "CIT", **facts}}   # không có nguồn
+    saved = {}
+    for status, body in asks.items():
+        r = client.post("/api/v1/research", headers=A, json={"matter_id": mid, **body}).json()
+        assert r["research_result"]["status"] == status, (status, r["research_result"])
+        saved[r["history"]["id"]] = r["research_result"]
+    reopened = {h["id"]: h["research_result"]
+                for h in client.get(f"/api/v1/matters/{mid}/history", headers=A).json()}
+    assert reopened == saved
+    for result in saved.values():
+        assert set(result) == {"status", "sections", "clarification_questions", "warnings"}
+        assert set(result["sections"]) == {"issue", "facts", "authority", "analysis", "limitations", "next_steps"}

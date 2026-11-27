@@ -96,3 +96,12 @@ def test_xuat_word_khi_nguon_khong_co_link(client, researched):
         db.commit()
     r = client.get(f"/api/v1/matters/{mid}/history/{body['history']['id']}/export", headers=A)
     assert r.status_code == 422 and r.json()["detail"].startswith("Không xuất được báo cáo")
+
+
+def test_ho_so_da_luu_tru_van_xuat_duoc_nhung_khong_tra_cuu_them(client, researched):
+    """Hồ sơ lưu trữ chỉ đọc: xem và xuất Word được (lưu hồ sơ kiểm toán), tra cứu thêm thì 409."""
+    mid, body = researched
+    assert client.delete(f"/api/v1/matters/{mid}", headers=A).status_code == 200
+    r = client.get(f"/api/v1/matters/{mid}/history/{body['history']['id']}/export", headers=A)
+    assert r.status_code == 200
+    assert client.post("/api/v1/research", json={"matter_id": mid, "question": "thuế suất"}, headers=A).status_code == 409
