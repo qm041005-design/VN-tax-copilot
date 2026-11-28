@@ -433,6 +433,54 @@ def annotate(records_path: Path, notes_path: Path, out_dir: Path, evidence_dir: 
     return finalize(records, expected, present, previous_quota(out_dir), MIN_PAGES, out_dir, evidence_dir)
 
 
+def export_normalized(records_path: Path, text_dir: Path, out_dir: Path,
+                      manifest_path: Path = EVIDENCE / "ocr_pilot_manifest.json",
+                      metadata_path: Path | None = None) -> dict:
+    """Xuất từng văn bản theo schema metadata + ocr_pages."""
+    records = json.loads(records_path.read_text("utf-8"))
+    manifests = {r["source_id"]: r for r in json.loads(manifest_path.read_text("utf-8"))}
+    metadata = json.loads(metadata_path.read_text("utf-8")) if metadata_path and metadata_path.exists() else {}
+    if isinstance(metadata, list):
+        metadata = {m["doc_code"]: m for m in metadata}
+    out_dir.mkdir(parents=True, exist_ok=True)
+    exported = []
+
+    for source_id in sorted({r["source_id"] for r in records}):
+        source_records = sorted((r for r in records if r["source_id"] == source_id),
+                                key=lambda r: int(r["pdf_page"]))
+        source_manifest = manifests.get(source_id, {})
+        extra = metadata.get(source_id, {})
+        prefix = source_id.split("_", 1)[0].upper()
+        doc_type = extra.get("doc_type") or {"LUAT": "Luật", "ND": "Nghị định", "TT": "Thông tư"}.get(prefix)
+        normalized = {
+            "metadata": {
+                "doc_code": source_id,
+                "title": extra.get("title"),
+                "doc_type": doc_type,
+                "effective_date": extra.get("effective_date"),
+                "expiry_date": extra.get("expiry_date"),
+                "source_url": source_manifest.get("official_url"),
+                "tax_types": extra.get("tax_types", []),
+                "ocr_quality_status": "verified_ok",
+            },
+            "ocr_pages": [],
+        }
+        for record in source_records:
+            text_path = text_dir / f"{source_id}_p{int(record['pdf_page']):03d}.txt"
+            if not text_path.exists():
+                raise FileNotFoundError(f"Thiếu text OCR: {text_path}")
+            text = text_path.read_text("utf-8")
+            if str(record.get("quality_status", "")).startswith("quarantined_"):
+                continue
+            normalized["ocr_pages"].append({"page": int(record["pdf_page"]), "text": text.rstrip("\n")})
+        (out_dir / f"{source_id}.json").write_text(
+            json.dumps(normalized, ensure_ascii=False, indent=2), encoding="utf-8")
+        exported.append(source_id)
+    return {"documents": len(exported), "pages": sum(
+        len(json.loads((out_dir / f"{source_id}.json").read_text("utf-8"))["ocr_pages"])
+        for source_id in exported)}
+
+
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -453,8 +501,16 @@ def main(argv=None) -> int:
     n.add_argument("--notes", type=Path, required=True)
     n.add_argument("--out", type=Path, default=Path("data_pipeline/local_data/intake"))
     n.add_argument("--evidence", type=Path, default=EVIDENCE)
+    e = sub.add_parser("export-normalized", help="xuất JSON metadata + ocr_pages cho từng văn bản")
+    e.add_argument("--records", type=Path, default=EVIDENCE / "ocr_intake_pages.json")
+    e.add_argument("--text-dir", type=Path, default=Path("data_pipeline/local_data/intake/pages"))
+    e.add_argument("--out", type=Path, required=True)
+    e.add_argument("--manifest", type=Path, default=EVIDENCE / "ocr_pilot_manifest.json")
+    e.add_argument("--metadata", type=Path, help="JSON metadata bổ sung, theo doc_code")
     a = ap.parse_args(argv)
-    if a.cmd == "annotate":
+    if a.cmd == "export-normalized":
+        s = export_normalized(a.records, a.text_dir, a.out, a.manifest, a.metadata)
+    elif a.cmd == "annotate":
         s = annotate(a.out / "intake_pages.json", a.notes, a.out, a.evidence)
     elif a.cmd == "run":
         a.out.mkdir(parents=True, exist_ok=True)

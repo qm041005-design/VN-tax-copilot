@@ -34,6 +34,7 @@ python -m data_pipeline.ocr.pilot --max-pages 1     # tải đủ 10 PDF vào da
 python -m data_pipeline.ocr.intake run              # >= 20 trang; ghi data_pipeline/evidence/ocr_intake_*.json|csv
 python -m data_pipeline.ocr.intake annotate --notes <json>        # (tuỳ chọn) ghi chú sơ bộ
 python -m data_pipeline.ocr.intake apply-review --csv <phiếu đã điền>   # nạp kết quả đối chiếu thủ công
+python -m data_pipeline.ocr.intake export-normalized --out <thư-mục-json>  # xuất metadata + ocr_pages
 ```
 Đối chiếu thủ công: mở `local_data/intake/review/index.html` (ảnh trang cạnh text), điền `nguoi_doi_chieu`,
 `ket_qua` (`ok`/`loi`), `loai_loi`, `ghi_chu` trong `ocr_intake_manual_review.csv`. Khi nạp phiếu,

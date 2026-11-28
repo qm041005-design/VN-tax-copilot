@@ -7,8 +7,8 @@ import fitz
 import pytest
 from PIL import Image, ImageDraw
 
-from data_pipeline.ocr.intake import (OPERATOR, annotate, apply_review, assess, has_table_scan, run,
-                                      select_pages)
+from data_pipeline.ocr.intake import (OPERATOR, annotate, apply_review, assess, export_normalized,
+                                      has_table_scan, run, select_pages)
 
 BODY = "Dieu 1. Pham vi dieu chinh cua van ban nay quy dinh ve nguoi nop thue va can cu tinh thue. " * 4
 
@@ -110,6 +110,20 @@ def test_records_hold_provenance_hash_page_method_status(tmp_path):
         text = (out / "pages" / f"DOC1_p{r['pdf_page']:03d}.txt").read_text("utf-8").rstrip("\n")
         assert r["text_sha256"] == hashlib.sha256(text.encode()).hexdigest()
     assert summary["van_ban_thieu"] == [] and summary["trang_loi_can_xu_ly_lai"] == 0
+
+
+def test_export_normalized_metadata_and_pages(tmp_path):
+    pdf_dir, manifest = setup(tmp_path, pages=3)
+    _, out, ev = do_run(tmp_path, pdf_dir, manifest)
+    exported = tmp_path / "exported"
+    result = export_normalized(ev / "ocr_intake_pages.json",
+                               out / "pages", exported, manifest)
+    assert result == {"documents": 1, "pages": 3}
+    data = json.loads((exported / "DOC1.json").read_text("utf-8"))
+    assert set(data) == {"metadata", "ocr_pages"}
+    assert data["metadata"]["doc_code"] == "DOC1"
+    assert data["metadata"]["effective_date"] is None
+    assert [p["page"] for p in data["ocr_pages"]] == [1, 2, 3]
 
 
 def test_hash_mismatch_quarantines_every_page(tmp_path):
