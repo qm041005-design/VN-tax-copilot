@@ -372,7 +372,7 @@ export interface ResearchResponse { history: HistoryItem; sources: SourceHit[]; 
 
 | Hiện tượng | Lý do | Ai xử lý |
 |---|---|---|
-| `answer: null`, `research_result.status` là `clarify`/`abstain`, 6 phần trống | Server chưa cấu hình `RESEARCH_ASSESSOR` / `RESEARCH_COMPLETION` (chưa có bộ đánh giá căn cứ và hàm gọi model thật). Backend đã nối sẵn, test bằng model giả ra `draft` đủ 6 phần | Nhóm AI (An, Quân), cấu hình key: Phúc |
+| `answer: null`, `research_result.status` là `clarify`/`abstain`, 6 phần trống | Server chưa bật AI. Hàm của An đã có (`RESEARCH_ASSESSOR=ai_engine.guardrails.llm_assessor:assess`, `RESEARCH_COMPLETION=ai_engine.providers.chat_json:complete`) nhưng nhóm chưa chốt nhà cung cấp (`RESEARCH_AI_URL/MODEL/API_KEY`, `RESEARCH_AI_ENABLED=true`). Test bằng model giả ra `draft` đủ 6 phần | Cả nhóm chốt nhà cung cấp; cấu hình key trên server |
 | Luôn `clarify: missing_context` | Frontend chưa gửi `material_facts` / `case_facts` | Frontend (Phước) |
 | Xuất Word lượt `draft` trả 422 "requires a verified PDF page number" | Đoạn luật được trích dẫn thiếu `source_page` | Dữ liệu (Duyên, Thanh) |
 | Tra cứu không ra nguồn dù có văn bản | Văn bản chưa gán nhãn sắc thuế (`tax_types` khi nạp) | Dữ liệu (Duyên) |
