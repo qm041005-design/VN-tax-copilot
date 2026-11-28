@@ -56,7 +56,7 @@ backend/
 │       ├── matters.py               #   hồ sơ, lịch sử, xuất Word
 │       ├── research.py              #   tra cứu
 │       └── sources.py               #   nguồn luật
-├── migrations/                      # SQL nâng cấp DB cũ (001 → 004)
+├── migrations/                      # SQL nâng cấp DB cũ (001 → 005)
 ├── scripts/                         # import_legal_document, export_bm25_retrieval, smoke_public_source
 ├── tests/                           # pytest
 ├── evidence/                        # Bằng chứng smoke test trên PostgreSQL (của Quân)
@@ -97,7 +97,7 @@ PostgreSQL
 | `legal_chunks` | Importer | Điều/Khoản/Điểm, `citation_path`, `content`, `source_page`, `effective_date` riêng của đoạn, `ocr_quality_status`, `expert_review_status` |
 | `legal_document_tax_scopes` | Importer | Nhãn sắc thuế của văn bản (`VAT`/`CIT`/`PIT`) |
 
-Bảng tự tạo khi server khởi động (`create_all`), nhưng `create_all` **không sửa** bảng đã có. DB cũ → chạy `migrations/001` → `004` (xem `HUONG_DAN_TEST.md`). Đổi cột trong model thì phải thêm file migration mới và cập nhật `tests/test_migrations.py`.
+Bảng tự tạo khi server khởi động (`create_all`), nhưng `create_all` **không sửa** bảng đã có. DB cũ → chạy `migrations/001` → `005` (xem `HUONG_DAN_TEST.md`). Đổi cột trong model thì phải thêm file migration mới và cập nhật `tests/test_migrations.py`.
 
 ## 6. Xác thực và quyền
 
@@ -117,6 +117,7 @@ Bảng tự tạo khi server khởi động (`create_all`), nhưng `create_all` 
 | `APP_ENV` | `dev` / `staging` / `prod` |
 | `RESEARCH_ASSESSOR` | `module:hàm` bộ đánh giá căn cứ (An). Trống = không sinh câu trả lời |
 | `RESEARCH_COMPLETION` | `module:hàm` gọi model, trả JSON 6 phần (Quân/An). Key của model đặt ở biến riêng hàm đó đọc. Sai đường dẫn → server không khởi động |
+| `RESEARCH_AI_ENABLED`, `RESEARCH_AI_URL`, `RESEARCH_AI_MODEL`, `RESEARCH_AI_API_KEY` | Nhà cung cấp AI cho 2 hàm của An (SCRUM-38). Mặc định tắt; key chỉ đặt trên server, không commit |
 
 ## 7. Quy tắc khi sửa code
 
@@ -135,7 +136,7 @@ Bảng tự tạo khi server khởi động (`create_all`), nhưng `create_all` 
 | Dữ liệu (Duyên) | `scripts/import_legal_document.py` | Nhận đủ metadata parser SCRUM-30: `preamble`, trạng thái OCR, trạng thái duyệt (importer chỉ nhận `PENDING`; phê duyệt do chuyên gia). Model khớp registry, kiểm bằng `tests/test_data_pipeline_sync.py`. Lưu đủ metadata cấp đoạn (đoạn mở đầu Điều/Khoản, ngày hiệu lực riêng, URL, phiên bản) theo cùng quy tắc với SCRUM-31 của Thanh; test `test_moi_cot_metadata_trong_model_deu_duoc_luu`. Riêng `status` pháp lý chưa lưu từ file (chờ chốt với Duyên) |
 | Retrieval (Thanh) | `ai_engine/retrieval` qua `source_service.search` | BM25 đã dùng |
 | Guardrails (An) | `ai_engine/guardrails` qua `guarded_research_service` | Đã nối, kể cả hỏi làm rõ theo `case_facts` và metadata cấp đoạn (SCRUM-32) |
-| Prompt + Export (Quân) | `ai_engine/synthesis/backend_adapter.py` (`make_guarded_generator`, prompt tuần 4) + `export_service.py` | Đã nối: `research_callbacks()` đọc `RESEARCH_ASSESSOR` / `RESEARCH_COMPLETION` (dạng `module:hàm`) trong `.env`. Chưa có hàm thật nên mặc định không gọi model |
+| Prompt + Export (Quân) | `ai_engine/synthesis/backend_adapter.py` (`make_guarded_generator`, prompt tuần 4) + `export_service.py` | Đã nối: `research_callbacks()` đọc `RESEARCH_ASSESSOR` / `RESEARCH_COMPLETION` (dạng `module:hàm`) trong `.env`. Hàm của An (SCRUM-38): `ai_engine.guardrails.llm_assessor:assess`, `ai_engine.providers.chat_json:complete`; cần nhóm chốt `RESEARCH_AI_URL/MODEL/API_KEY` mới gọi model thật |
 | DevOps (Phúc) | `backend/Dockerfile`, `docker-compose.yml`, `/health` | Build context ở gốc repo |
 
 ## 9. Thêm tính năng mới

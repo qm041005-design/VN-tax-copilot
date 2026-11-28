@@ -64,7 +64,8 @@ def old_db():
 
 def test_migration_nang_cap_db_cu_khong_mat_du_lieu(old_db):
     assert [m.name for m in MIGRATIONS] == ["001_clause_number_text.sql", "002_legal_status_and_registry_columns.sql",
-                                            "003_research_result.sql", "004_ocr_and_expert_review_status.sql"]
+                                            "003_research_result.sql", "004_ocr_and_expert_review_status.sql",
+                                            "005_tax_types_and_chunk_expiry.sql"]
     for _ in range(2):  # chạy lại lần 2 không được lỗi
         for m in MIGRATIONS:
             _run_sql(m.read_text(encoding="utf-8"))
@@ -91,6 +92,7 @@ def test_migration_nang_cap_db_cu_khong_mat_du_lieu(old_db):
         old_doc = db.query(LegalDocument).one()                  # 004: 2 trạng thái mới nhận mặc định
         assert (old_doc.ocr_quality_status, old_doc.expert_review_status, old_doc.preamble) == ("RAW", "PENDING", None)
         assert {(c.ocr_quality_status, c.expert_review_status) for c in chunks.values()} == {("RAW", "PENDING")}
+        assert old_doc.tax_types == [] and {c.expiry_date for c in chunks.values()} == {None}  # 005
 
         # Ghi mới bằng model hiện tại (có cột của nhóm 5) và tìm kiếm vẫn chạy
         doc = LegalDocument(doc_code="MOI-01", title="Văn bản mới", doc_type="NGHI_DINH", hierarchy_level=2,

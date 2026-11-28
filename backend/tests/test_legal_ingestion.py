@@ -211,3 +211,56 @@ def test_parser_naive_midnight_datetime_is_accepted(payload):
 def test_times_are_not_silently_truncated(value):
     with pytest.raises(ValueError):
         legal_date(value)
+
+
+# --- SCRUM-36 + SCRUM-38/40: dữ liệu nạp bằng importer phải đi qua được bộ đánh giá AI của An ---
+@pytest.mark.parametrize("period,expected", [("2023", "CHUA_CO_HIEU_LUC"), ("2024", "CON_HIEU_LUC"),
+                                             ("2025", "HET_HIEU_LUC")])
+def test_status_gui_guardrails_tinh_tu_ngay_theo_ky_thue(client, payload, period, expected):
+    from app.services.guarded_research_service import research_from_rows
+    with SessionLocal.begin() as db:
+        chunk_id = ingest_legal_document(db, payload).chunk_ids[0]
+    seen = []
+    with SessionLocal() as db:
+        research_from_rows("q", [(db.get(LegalChunk, chunk_id), 1)], tax_period=period, material_facts="Giả lập",
+                           assess=lambda safe: seen.append(safe.passages[0]["status"]) or [])
+    assert seen == [expected]
+
+
+def test_assessor_cua_an_goi_model_voi_du_lieu_tu_importer(client, payload):
+    """Trước đây status luôn CHUA_XAC_DINH -> assessor của An chặn hết, không bao giờ gọi model."""
+    from ai_engine.guardrails.llm_assessor import make_assessor
+    from app.services.guarded_research_service import research_from_rows
+    with SessionLocal.begin() as db:
+        chunk_id = ingest_legal_document(db, payload).chunk_ids[0]
+    calls = []
+
+    def completion(messages):
+        calls.append(messages)
+        return {"context_complete": True, "query_supported": False, "conflicts_resolved": True,
+                "assessments": [{"passage_id": str(chunk_id), "sufficient": False, "reason_code": "unsupported"}]}
+    with SessionLocal() as db:
+        research_from_rows("q", [(db.get(LegalChunk, chunk_id), 1)], tax_period="2024", material_facts="Giả lập",
+                           assess=make_assessor(completion))
+    assert len(calls) == 1
+
+
+def test_ma_thue_tieng_viet_va_ngay_het_hieu_luc_cua_doan(client, payload):
+    payload["tax_types"] = ["TNDN", "GTGT", "VAT"]
+    payload["chunks"][0].update(expiry_date="2024-07-01", tax_types=["TNDN"])
+    with SessionLocal.begin() as db:
+        receipt = ingest_legal_document(db, payload)
+    with SessionLocal() as db:
+        chunk = db.get(LegalChunk, receipt.chunk_ids[0])
+        assert chunk.document.tax_types == ["CIT", "VAT"] and chunk.tax_types == ["CIT"]
+        assert chunk.expiry_date == datetime(2024, 7, 1)
+        assert db.scalars(select(LegalDocumentTaxScope.tax_type)).all() == ["CIT", "VAT"]
+        # Khoản bị bãi bỏ từ 01/07/2024 -> không còn xuất hiện khi tra cứu sau ngày đó
+        assert search(db, "fixture_tax", as_of=date(2024, 3, 1))
+        assert search(db, "fixture_tax", as_of=date(2024, 8, 1)) == []
+
+
+def test_ngay_het_hieu_luc_cua_doan_sau_van_ban_bi_tu_choi(client, payload):
+    payload["chunks"][0]["expiry_date"] = "2026-01-01"
+    with pytest.raises(ValidationError, match="expiry_date"):
+        ImportInput.model_validate(payload)

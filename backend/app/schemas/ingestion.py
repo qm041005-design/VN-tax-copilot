@@ -10,6 +10,18 @@ from app.services.legal_metadata import clause_label
 
 OcrStatus = Literal["RAW", "VERIFIED", "NEEDS_REVIEW"]
 ReviewStatus = Literal["PENDING", "APPROVED", "REJECTED"]
+TaxCode = Literal["VAT", "CIT", "PIT"]
+# Registry nhóm 5 ghi mã tiếng Việt; backend/API dùng VAT/CIT/PIT
+TAX_ALIASES = {"GTGT": "VAT", "TNDN": "CIT", "TNCN": "PIT"}
+
+
+def tax_codes(value):
+    if isinstance(value, str):
+        value = value.split(",")
+    if not isinstance(value, (list, tuple)):
+        return value
+    codes = [TAX_ALIASES.get(c.strip().upper(), c.strip().upper()) if isinstance(c, str) else c for c in value]
+    return [c for i, c in enumerate(codes) if c and c not in codes[:i]]
 
 
 def legal_date(value):
@@ -88,6 +100,9 @@ class ChunkInput(LegalDates):
     preamble: str | None = None
     ocr_quality_status: OcrStatus | None = None  # chất lượng OCR theo trang của đoạn; thiếu -> lấy của văn bản
     expert_review_status: ReviewStatus | None = None
+    tax_types: list[TaxCode] | None = None  # thiếu -> lấy tax_types của lần nạp
+
+    _tax = field_validator("tax_types", mode="before")(lambda cls, v: tax_codes(v))
 
     @field_validator("clause_number", mode="before")
     @classmethod
@@ -120,8 +135,10 @@ class ImportInput(BaseModel):
     model_config = ConfigDict(extra="forbid")
     document: DocumentInput
     chunks: list[ChunkInput] = Field(min_length=1)
-    tax_types: list[Literal["VAT", "CIT", "PIT"]] = Field(default_factory=list)
+    tax_types: list[TaxCode] = Field(default_factory=list)
     as_of: date
+
+    _tax = field_validator("tax_types", mode="before")(lambda cls, v: tax_codes(v))
 
     @field_validator("as_of", mode="before")
     @classmethod
@@ -144,7 +161,7 @@ class ImportInput(BaseModel):
         expected = {"LUAT": 1, "NGHI_DINH": 2, "THONG_TU": 3, "CONG_VAN": 4, "UNKNOWN": 5}
         if expected[self.document.doc_type] != self.document.hierarchy_level:
             raise ValueError("Loại văn bản không khớp hierarchy_level.")
-        keys = ("issue_date", "expiry_date", "version", "amends_doc_code", "replaces_doc_code")
+        keys = ("issue_date", "version", "amends_doc_code", "replaces_doc_code")
         for i, chunk in enumerate(self.chunks):
             for key in keys:
                 # Omitted/null duplicate metadata is inherited; any supplied value must agree.
@@ -158,6 +175,13 @@ class ImportInput(BaseModel):
             if (chunk.effective_date and self.document.expiry_date
                     and chunk.effective_date >= self.document.expiry_date):
                 raise ValueError(f"chunks[{i}].effective_date phải trước ngày hết hiệu lực của văn bản.")
+            # 1 Khoản có thể hết hiệu lực sớm hơn văn bản (bị bãi bỏ), không được muộn hơn
+            if (chunk.expiry_date and self.document.expiry_date
+                    and chunk.expiry_date > self.document.expiry_date):
+                raise ValueError(f"chunks[{i}].expiry_date không được sau ngày hết hiệu lực của văn bản.")
+            if (chunk.expiry_date and (chunk.effective_date or self.document.effective_date)
+                    and chunk.expiry_date <= (chunk.effective_date or self.document.effective_date)):
+                raise ValueError(f"chunks[{i}].expiry_date phải sau ngày hiệu lực của đoạn.")
             if (chunk.source_page and self.document.total_pages
                     and chunk.source_page > self.document.total_pages):
                 raise ValueError(f"chunks[{i}].source_page vượt số trang PDF.")

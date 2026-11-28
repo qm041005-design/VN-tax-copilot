@@ -44,7 +44,9 @@ def search(db: Session, q: str, doc_type: str | None = None, as_of: date | None 
             (LegalDocument.expiry_date > datetime.combine(start, time.min)),
             # Một Khoản/Điểm sửa đổi có thể có ngày hiệu lực riêng, muộn hơn văn bản chứa nó
             (LegalChunk.effective_date.is_(None)) |
-            (LegalChunk.effective_date <= datetime.combine(end, time.max)))
+            (LegalChunk.effective_date <= datetime.combine(end, time.max)),
+            (LegalChunk.expiry_date.is_(None)) |
+            (LegalChunk.expiry_date > datetime.combine(start, time.min)))
     chunks = list(db.scalars(stmt.order_by(LegalChunk.id)).all())
     lookup = {str(c.id): c for c in chunks}
     passages = [
@@ -73,8 +75,8 @@ def to_hit(chunk: LegalChunk) -> SourceHit:
         # Trạng thái riêng của đoạn (vd 1 Khoản bị sửa đổi) ưu tiên hơn trạng thái cả văn bản;
         # chưa ai ghi trạng thái thì tính từ ngày tại hôm nay (importer không tin status của parser)
         status=next((s for s in (chunk.status, doc.status) if s and s != STATUS_UNKNOWN), None)
-        or date_status(chunk.effective_date or doc.effective_date, doc.expiry_date, date.today()),
-        effective_date=chunk.effective_date or doc.effective_date, expiry_date=doc.expiry_date,
+        or date_status(chunk.effective_date or doc.effective_date, chunk.expiry_date or doc.expiry_date, date.today()),
+        effective_date=chunk.effective_date or doc.effective_date, expiry_date=chunk.expiry_date or doc.expiry_date,
         snippet=chunk.content[:SNIPPET_LEN],
     )
 

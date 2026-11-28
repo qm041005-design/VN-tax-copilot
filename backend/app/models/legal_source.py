@@ -11,7 +11,7 @@ thiếu cột thì code nạp dữ liệu của nhóm 5 sẽ lỗi. Nhóm 5 đ�
 """
 from datetime import datetime, timezone
 
-from sqlalchemy import DateTime, ForeignKey, Integer, String, Text
+from sqlalchemy import JSON, DateTime, ForeignKey, Integer, String, Text
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.core.database import Base
@@ -42,6 +42,7 @@ class LegalDocument(Base):
     issuer: Mapped[str | None] = mapped_column(String(200), nullable=True)
     source_url: Mapped[str | None] = mapped_column(String(1000), nullable=True)
     total_pages: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    tax_types: Mapped[list] = mapped_column(JSON, default=list)  # giống registry nhóm 5; lọc vẫn dùng legal_document_tax_scopes
     issue_date: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)
     effective_date: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)
     expiry_date: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)
@@ -75,8 +76,10 @@ class LegalChunk(Base):
     content: Mapped[str] = mapped_column(Text)
     source_page: Mapped[int | None] = mapped_column(Integer, nullable=True)
     source_url: Mapped[str | None] = mapped_column(String(1000), nullable=True)
+    tax_types: Mapped[list] = mapped_column(JSON, default=list)
     hierarchy_level: Mapped[int] = mapped_column(Integer, default=5)
     effective_date: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)
+    expiry_date: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)  # thiếu -> theo văn bản
     status: Mapped[str] = mapped_column(String(50), default=STATUS_UNKNOWN)
     ocr_quality_status: Mapped[str] = mapped_column(String(50), default="RAW")
     expert_review_status: Mapped[str] = mapped_column(String(50), default="PENDING")

@@ -19,8 +19,8 @@ Mỗi task có **test tự động** (chạy ở bước 6) và **bước kiểm
 
 | Task SCRUM-36 | Trạng thái | Test tự động chứng minh |
 |---|---|---|
-| 1. Tích hợp backend với parser/registry, BM25, guardrails, prompt mới | ✅ phần backend (BM25 SCRUM-31 của Thanh chờ merge) | `test_ai_integration.py::test_tra_cuu_ra_ban_nhap_6_phan_luu_lich_su_va_xuat_word` (registry → BM25 → guardrails → prompt tuần 4 → lưu lịch sử → Word, model giả)<br>`::test_thieu_tinh_tiet_thi_khong_goi_model`<br>`::test_doc_cau_hinh_module_ham`<br>`tests/guardrails/test_prompt_integration.py` (của Quân), `test_scrum32.py` (của An) |
-| 2. Giữ đầy đủ metadata khi nạp; thống nhất importer với Duyên, Thanh | ✅ (trừ `status` pháp lý – chờ chốt) | `test_ocr_review_status.py::test_moi_cot_metadata_trong_model_deu_duoc_luu` (mọi cột model đều được lưu; importer cũ thì test fail)<br>`test_data_pipeline_sync.py` (khớp registry của Duyên)<br>`test_legal_ingestion.py` (dùng chung quy tắc importer với SCRUM-31 của Thanh) |
+| 1. Tích hợp backend với parser/registry, BM25, guardrails, prompt mới | ✅ phần backend (BM25 SCRUM-31 của Thanh chờ merge) | `test_ai_integration.py::test_tra_cuu_ra_ban_nhap_6_phan_luu_lich_su_va_xuat_word` (registry → BM25 → guardrails → prompt tuần 4 → lưu lịch sử → Word, model giả)<br>`::test_thieu_tinh_tiet_thi_khong_goi_model`<br>`::test_doc_cau_hinh_module_ham`<br>`tests/guardrails/test_prompt_integration.py` (của Quân), `test_scrum32.py`, `test_scrum38.py` (của An)<br>`test_legal_ingestion.py::test_assessor_cua_an_goi_model_voi_du_lieu_tu_importer` (dữ liệu nạp bằng importer qua được bộ đánh giá AI của An)<br>`::test_status_gui_guardrails_tinh_tu_ngay_theo_ky_thue` |
+| 2. Giữ đầy đủ metadata khi nạp; thống nhất importer với Duyên, Thanh | ✅ | `test_ocr_review_status.py::test_moi_cot_metadata_trong_model_deu_duoc_luu` (mọi cột model đều được lưu; importer cũ thì test fail)<br>`test_data_pipeline_sync.py` (khớp registry của Duyên)<br>`test_legal_ingestion.py` (dùng chung quy tắc importer với SCRUM-31 của Thanh)<br>`::test_ma_thue_tieng_viet_va_ngay_het_hieu_luc_cua_doan` (SCRUM-40 của Duyên: `tax_types` GTGT/TNDN/TNCN, ngày hết hiệu lực riêng của đoạn)<br>`test_migrations.py` (migration 005) |
 | 3. Kiểm tra lưu và mở lại kết quả 6 phần | ✅ API + giao diện | `test_ai_integration.py::test_ca_3_trang_thai_deu_luu_va_mo_lai_dung` (draft / clarify / abstain)<br>Giao diện (frontend trên `main`): mở lại hồ sơ hiện đủ trạng thái, 6 mục, câu hỏi bổ sung, cảnh báo |
 | 4. Kiểm tra API xuất Word và quyền; hỗ trợ Phước | ✅ backend; bản sửa nút cho Phước đã chạy thử | `test_research_export.py` (401/404/409/422, audit, hồ sơ lưu trữ vẫn xuất được)<br>`test_ai_integration.py` (Word có nội dung bản nháp AI)<br>Giao diện: nút "Xuất báo cáo" gọi API → 200, tải `.docx`; lượt cũ → hiện thông báo 409 tiếng Việt |
 
@@ -169,7 +169,7 @@ Tắt backend/frontend: `Ctrl+C`. Tắt DB: `docker compose stop`.
 | `No module named 'ai_engine'` hoặc `'app'` | Chưa gõ `$env:PYTHONPATH = ".."`, hoặc không đứng trong thư mục `backend` |
 | `docker compose` báo thiếu `POSTGRES_USER` | Chưa có `.env` ở thư mục gốc → bước 0 |
 | Lỗi kết nối Docker / `dockerDesktopLinuxEngine` | Docker Desktop chưa bật |
-| `column ... does not exist` | DB tạo từ bản cũ → chạy 4 lệnh migration bên dưới |
+| `column ... does not exist` | DB tạo từ bản cũ → chạy 5 lệnh migration bên dưới |
 
 Migration (từ thư mục gốc, chạy lại nhiều lần vẫn an toàn, không mất dữ liệu):
 ```powershell
@@ -177,4 +177,5 @@ Get-Content backend\migrations\001_clause_number_text.sql | docker compose exec 
 Get-Content backend\migrations\002_legal_status_and_registry_columns.sql | docker compose exec -T db psql -U vntax_admin -d vntax_copilot
 Get-Content backend\migrations\003_research_result.sql | docker compose exec -T db psql -U vntax_admin -d vntax_copilot
 Get-Content backend\migrations\004_ocr_and_expert_review_status.sql | docker compose exec -T db psql -U vntax_admin -d vntax_copilot
+Get-Content backend\migrations\005_tax_types_and_chunk_expiry.sql | docker compose exec -T db psql -U vntax_admin -d vntax_copilot
 ```

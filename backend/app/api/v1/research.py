@@ -64,7 +64,8 @@ def research(data: ResearchRequest, db: Session = Depends(get_db), user: Current
     hits = [source_service.to_hit(c) for c, _ in rows]
     assess, generate = callbacks
     result = research_from_rows(data.question, rows, tax_period=period, material_facts=data.material_facts,
-                                assess=assess, generate=generate, scenario=data.clarification_scenario, case_facts=data.case_facts)
+                                assess=assess, generate=generate, scenario=data.clarification_scenario, case_facts=data.case_facts,
+                                as_of=data.research_as_of)
     warnings = ([] if hits else [NO_SOURCE]) + [f"{result.status}: {result.reason}"]
     warnings += [w for w in (result.message, *result.questions) if w]
     warnings.append("Nguồn tìm thấy chưa xác minh đầy đủ hiệu lực, chuyển tiếp và khả năng áp dụng.")
