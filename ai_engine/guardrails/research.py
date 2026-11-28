@@ -11,6 +11,7 @@ from .pipeline import prepare_research
 from .redaction import redact_text
 from .contract import validate_output
 from .clarification import clarification_questions
+from .provider_errors import SafeProviderError
 import hashlib
 import json
 
@@ -149,6 +150,9 @@ def run_guarded_research(
                             "version": source.get("version"), "effective_date": source.get("effective_date"),
                             "expiry_date": source.get("expiry_date"), "status": source.get("status"),
                             "snapshot_sha256": hashlib.sha256(json.dumps(source, sort_keys=True, ensure_ascii=False).encode()).hexdigest()})
+        if any(a.reason_code == "missing_facts" for a in assessments):
+            return finish("clarify", "assessment_missing_facts", questions=(
+                "Thông tin hiện có chưa đủ để đánh giá căn cứ. Vui lòng bổ sung chi tiết giao dịch hoặc chuyển chuyên gia xác định dữ kiện còn thiếu.",))
         gate = decide_abstention(safe.query, safe.passages, assessments)
         if gate.should_abstain:
             return finish("abstain", gate.reason, gate.message)
@@ -189,6 +193,8 @@ def run_guarded_research(
         answer = "\n".join(redact_text(c.text).text for c in generated.claims)
         payload["warnings"].append("Bản dự thảo AI; cần chuyên gia kiểm tra nội dung và căn cứ.")
         return finish("draft", "validated_source_ids", answer=answer, citation_ids=ids, payload=payload)
+    except SafeProviderError as exc:
+        return finish("abstain", exc.code, "Dịch vụ AI chưa hoàn tất xử lý an toàn; vui lòng thử lại hoặc liên hệ quản trị.")
     except Exception:
         # Provider exceptions may embed prompts/PII; do not propagate their messages.
         return finish("abstain", "guardrail_or_provider_error", "Không thể hoàn tất kiểm tra an toàn; chưa phát hành câu trả lời.")

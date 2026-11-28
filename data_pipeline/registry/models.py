@@ -2,6 +2,7 @@ from datetime import datetime, timezone
 from sqlalchemy import (
     Column,
     Integer,
+    JSON,
     String,
     Text,
     ForeignKey,
@@ -31,6 +32,7 @@ class LegalDocument(Base):
     issuer = Column(String(200), nullable=True)
     source_url = Column(String(1000), nullable=True)
     total_pages = Column(Integer, nullable=True)
+    tax_types = Column(JSON, nullable=False, default=list)  # VD: ["VAT", "TNDN", "TNCN"]
 
     issue_date = Column(DateTime, nullable=True)
     effective_date = Column(DateTime, nullable=True)
@@ -109,11 +111,13 @@ class LegalChunk(Base):
     citation_path = Column(String(500), nullable=False)
     content = Column(Text, nullable=False)
 
-    # Nguồn trang & siêu dữ liệu đồng bộ từ văn bản
+    
     source_page = Column(Integer, nullable=True)
     source_url = Column(String(1000), nullable=True)
+    tax_types = Column(JSON, nullable=False, default=list)
     hierarchy_level = Column(Integer, nullable=False, default=5)
     effective_date = Column(DateTime, nullable=True)
+    expiry_date = Column(DateTime, nullable=True)
     status = Column(String(50), nullable=False, default="CHUA_XAC_DINH")
     ocr_quality_status = Column(String(50), nullable=False, default="RAW")
     expert_review_status = Column(String(50), nullable=False, default="PENDING")
