@@ -1,0 +1,697 @@
+{
+  "benchmark_version": "legal-pilot-v1",
+  "cases": [
+    {
+      "case_id": "VN-TAX-001",
+      "category": "VAT",
+      "answerability": "answerable",
+      "question": "Tìm văn bản mang số 48 / 2024 / QH15.",
+      "tax_period": null,
+      "research_as_of": null,
+      "required_evidence": [
+        {
+          "evidence_id": "E1",
+          "source_id": "LUAT48_2024",
+          "description": "Một đoạn thuộc 48/2024/QH15",
+          "acceptable_passage_ids": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24"
+          ]
+        }
+      ],
+      "assumptions": [
+        "Định vị trong bản ban hành được trích trong bộ dữ liệu."
+      ],
+      "acceptable_conclusions": [],
+      "material_claims": [],
+      "reviewers": [],
+      "review_status": "draft"
+    },
+    {
+      "case_id": "VN-TAX-002",
+      "category": "VAT",
+      "answerability": "answerable",
+      "question": "Quy định nào mô tả giá trị tăng thêm qua sản xuất, lưu thông và tiêu dùng?",
+      "tax_period": null,
+      "research_as_of": null,
+      "required_evidence": [
+        {
+          "evidence_id": "E1",
+          "source_id": "LUAT48_2024",
+          "description": "Điều 2, 48/2024/QH15 (trang PDF 1)",
+          "acceptable_passage_ids": [
+            "2"
+          ]
+        }
+      ],
+      "assumptions": [
+        "Định vị trong bản ban hành được trích trong bộ dữ liệu."
+      ],
+      "acceptable_conclusions": [],
+      "material_claims": [],
+      "reviewers": [],
+      "review_status": "draft"
+    },
+    {
+      "case_id": "VN-TAX-003",
+      "category": "VAT",
+      "answerability": "answerable",
+      "question": "Trong bản ban hành Luật Thuế GTGT, căn cứ nào nêu hàng hóa, dịch vụ dùng cho sản xuất và kinh doanh ở Việt Nam thuộc đối tượng chịu thuế?",
+      "tax_period": null,
+      "research_as_of": null,
+      "required_evidence": [
+        {
+          "evidence_id": "E1",
+          "source_id": "LUAT48_2024",
+          "description": "Điều 3, 48/2024/QH15 (trang PDF 1)",
+          "acceptable_passage_ids": [
+            "3"
+          ]
+        }
+      ],
+      "assumptions": [
+        "Định vị trong bản ban hành được trích trong bộ dữ liệu."
+      ],
+      "acceptable_conclusions": [],
+      "material_claims": [],
+      "reviewers": [],
+      "review_status": "draft"
+    },
+    {
+      "case_id": "VN-TAX-004",
+      "category": "VAT",
+      "answerability": "answerable",
+      "question": "Tra hai khoản về người nhập khẩu và nhà quản lý sàn giao dịch có chức năng thanh toán.",
+      "tax_period": null,
+      "research_as_of": null,
+      "required_evidence": [
+        {
+          "evidence_id": "E1",
+          "source_id": "LUAT48_2024",
+          "description": "Khoản 2, Điều 4, 48/2024/QH15 (trang PDF 1)",
+          "acceptable_passage_ids": [
+            "5"
+          ]
+        },
+        {
+          "evidence_id": "E2",
+          "source_id": "LUAT48_2024",
+          "description": "Khoản 5, Điều 4, 48/2024/QH15 (trang PDF 2)",
+          "acceptable_passage_ids": [
+            "8"
+          ]
+        }
+      ],
+      "assumptions": [
+        "Định vị trong bản ban hành được trích trong bộ dữ liệu."
+      ],
+      "acceptable_conclusions": [],
+      "material_claims": [],
+      "reviewers": [],
+      "review_status": "draft"
+    },
+    {
+      "case_id": "VN-TAX-005",
+      "category": "VAT",
+      "answerability": "answerable",
+      "question": "Trong Điều 5, đoạn nào nói đến muối i-ốt và thành phần NaCl?",
+      "tax_period": null,
+      "research_as_of": null,
+      "required_evidence": [
+        {
+          "evidence_id": "E1",
+          "source_id": "LUAT48_2024",
+          "description": "Khoản 4, Điều 5, 48/2024/QH15 (trang PDF 2)",
+          "acceptable_passage_ids": [
+            "13"
+          ]
+        }
+      ],
+      "assumptions": [
+        "Định vị trong bản ban hành được trích trong bộ dữ liệu."
+      ],
+      "acceptable_conclusions": [],
+      "material_claims": [],
+      "reviewers": [],
+      "review_status": "draft"
+    },
+    {
+      "case_id": "VN-TAX-006",
+      "category": "VAT",
+      "answerability": "answerable",
+      "question": "Đối chiếu điểm d với điểm đ khoản 9 Điều 5 Luật 48/2024/QH15.",
+      "tax_period": null,
+      "research_as_of": null,
+      "required_evidence": [
+        {
+          "evidence_id": "E1",
+          "source_id": "LUAT48_2024",
+          "description": "Điểm d, Khoản 9, Điều 5, 48/2024/QH15 (trang PDF 3)",
+          "acceptable_passage_ids": [
+            "20"
+          ]
+        },
+        {
+          "evidence_id": "E2",
+          "source_id": "LUAT48_2024",
+          "description": "Điểm đ, Khoản 9, Điều 5, 48/2024/QH15 (trang PDF 3)",
+          "acceptable_passage_ids": [
+            "21"
+          ]
+        }
+      ],
+      "assumptions": [
+        "Định vị trong bản ban hành được trích trong bộ dữ liệu."
+      ],
+      "acceptable_conclusions": [],
+      "material_claims": [],
+      "reviewers": [],
+      "review_status": "draft"
+    },
+    {
+      "case_id": "VN-TAX-007",
+      "category": "VAT",
+      "answerability": "answerable",
+      "question": "Đơn vị cho vay không phải là tổ chức tín dụng được nhắc đến ở đâu?",
+      "tax_period": null,
+      "research_as_of": null,
+      "required_evidence": [
+        {
+          "evidence_id": "E1",
+          "source_id": "LUAT48_2024",
+          "description": "Điểm b, Khoản 9, Điều 5, 48/2024/QH15 (trang PDF 3)",
+          "acceptable_passage_ids": [
+            "18"
+          ]
+        }
+      ],
+      "assumptions": [
+        "Định vị trong bản ban hành được trích trong bộ dữ liệu."
+      ],
+      "acceptable_conclusions": [],
+      "material_claims": [],
+      "reviewers": [],
+      "review_status": "draft"
+    },
+    {
+      "case_id": "VN-TAX-008",
+      "category": "VAT",
+      "answerability": "answerable",
+      "question": "Tìm khoản về nạo vét kênh mương phục vụ nông nghiệp.",
+      "tax_period": null,
+      "research_as_of": null,
+      "required_evidence": [
+        {
+          "evidence_id": "E1",
+          "source_id": "LUAT48_2024",
+          "description": "Khoản 6, Điều 5, 48/2024/QH15 (trang PDF 2)",
+          "acceptable_passage_ids": [
+            "15"
+          ]
+        }
+      ],
+      "assumptions": [
+        "Định vị trong bản ban hành được trích trong bộ dữ liệu."
+      ],
+      "acceptable_conclusions": [],
+      "material_claims": [],
+      "reviewers": [],
+      "review_status": "draft"
+    },
+    {
+      "case_id": "VN-TAX-009",
+      "category": "CIT",
+      "answerability": "answerable",
+      "question": "Tìm quy định chung về thuế suất tại khoản 1 Điều 10 của 67 / 2025 / QH15.",
+      "tax_period": null,
+      "research_as_of": null,
+      "required_evidence": [
+        {
+          "evidence_id": "E1",
+          "source_id": "LUAT67_2025",
+          "description": "Khoản 1, Điều 10, 67/2025/QH15 (trang PDF 9)",
+          "acceptable_passage_ids": [
+            "25"
+          ]
+        }
+      ],
+      "assumptions": [
+        "Định vị trong bản ban hành được trích trong bộ dữ liệu."
+      ],
+      "acceptable_conclusions": [],
+      "material_claims": [],
+      "reviewers": [],
+      "review_status": "draft"
+    },
+    {
+      "case_id": "VN-TAX-010",
+      "category": "CIT",
+      "answerability": "answerable",
+      "question": "Hai ngưỡng doanh thu khác nhau để tra thuế suất doanh nghiệp được đặt ở những khoản nào của Điều 10?",
+      "tax_period": null,
+      "research_as_of": null,
+      "required_evidence": [
+        {
+          "evidence_id": "E1",
+          "source_id": "LUAT67_2025",
+          "description": "Khoản 2, Điều 10, 67/2025/QH15 (trang PDF 10)",
+          "acceptable_passage_ids": [
+            "26"
+          ]
+        },
+        {
+          "evidence_id": "E2",
+          "source_id": "LUAT67_2025",
+          "description": "Khoản 3, Điều 10, 67/2025/QH15 (trang PDF 10)",
+          "acceptable_passage_ids": [
+            "27"
+          ]
+        }
+      ],
+      "assumptions": [
+        "Định vị trong bản ban hành được trích trong bộ dữ liệu."
+      ],
+      "acceptable_conclusions": [],
+      "material_claims": [],
+      "reviewers": [],
+      "review_status": "draft"
+    },
+    {
+      "case_id": "VN-TAX-011",
+      "category": "CIT",
+      "answerability": "answerable",
+      "question": "Tìm đoạn nói đến điều kiện khai thác và trữ lượng mỏ trong hợp đồng dầu khí.",
+      "tax_period": null,
+      "research_as_of": null,
+      "required_evidence": [
+        {
+          "evidence_id": "E1",
+          "source_id": "LUAT67_2025",
+          "description": "Điểm a, Khoản 4, Điều 10, 67/2025/QH15 (trang PDF 10)",
+          "acceptable_passage_ids": [
+            "28"
+          ]
+        }
+      ],
+      "assumptions": [
+        "Định vị trong bản ban hành được trích trong bộ dữ liệu."
+      ],
+      "acceptable_conclusions": [],
+      "material_claims": [],
+      "reviewers": [],
+      "review_status": "draft"
+    },
+    {
+      "case_id": "VN-TAX-012",
+      "category": "CIT",
+      "answerability": "answerable",
+      "question": "Tìm căn cứ đề cập bạch kim, vàng và đất hiếm trong phần thuế suất.",
+      "tax_period": null,
+      "research_as_of": null,
+      "required_evidence": [
+        {
+          "evidence_id": "E1",
+          "source_id": "LUAT67_2025",
+          "description": "Điểm b, Khoản 4, Điều 10, 67/2025/QH15 (trang PDF 10)",
+          "acceptable_passage_ids": [
+            "29"
+          ]
+        }
+      ],
+      "assumptions": [
+        "Định vị trong bản ban hành được trích trong bộ dữ liệu."
+      ],
+      "acceptable_conclusions": [],
+      "material_claims": [],
+      "reviewers": [],
+      "review_status": "draft"
+    },
+    {
+      "case_id": "VN-TAX-013",
+      "category": "CIT",
+      "answerability": "answerable",
+      "question": "Định vị công thức tính số thuế thu nhập doanh nghiệp phải nộp trong kỳ.",
+      "tax_period": null,
+      "research_as_of": null,
+      "required_evidence": [
+        {
+          "evidence_id": "E1",
+          "source_id": "LUAT67_2025",
+          "description": "Khoản 1, Điều 11, 67/2025/QH15 (trang PDF 10)",
+          "acceptable_passage_ids": [
+            "30"
+          ]
+        }
+      ],
+      "assumptions": [
+        "Định vị trong bản ban hành được trích trong bộ dữ liệu."
+      ],
+      "acceptable_conclusions": [],
+      "material_claims": [],
+      "reviewers": [],
+      "review_status": "draft"
+    },
+    {
+      "case_id": "VN-TAX-014",
+      "category": "CIT",
+      "answerability": "answerable",
+      "question": "Phân biệt điểm b và điểm c khoản 2 Điều 11 Luật 67/2025/QH15.",
+      "tax_period": null,
+      "research_as_of": null,
+      "required_evidence": [
+        {
+          "evidence_id": "E1",
+          "source_id": "LUAT67_2025",
+          "description": "Điểm b, Khoản 2, Điều 11, 67/2025/QH15 (trang PDF 10)",
+          "acceptable_passage_ids": [
+            "32"
+          ]
+        },
+        {
+          "evidence_id": "E2",
+          "source_id": "LUAT67_2025",
+          "description": "Điểm c, Khoản 2, Điều 11, 67/2025/QH15 (trang PDF 10)",
+          "acceptable_passage_ids": [
+            "33"
+          ]
+        }
+      ],
+      "assumptions": [
+        "Định vị trong bản ban hành được trích trong bộ dữ liệu."
+      ],
+      "acceptable_conclusions": [],
+      "material_claims": [],
+      "reviewers": [],
+      "review_status": "draft"
+    },
+    {
+      "case_id": "VN-TAX-015",
+      "category": "CIT",
+      "answerability": "answerable",
+      "question": "Trường hợp hợp tác xã hạch toán được doanh thu nhưng không xác định được chi phí nằm ở đoạn nào?",
+      "tax_period": null,
+      "research_as_of": null,
+      "required_evidence": [
+        {
+          "evidence_id": "E1",
+          "source_id": "LUAT67_2025",
+          "description": "Điểm c, Khoản 2, Điều 11, 67/2025/QH15 (trang PDF 10)",
+          "acceptable_passage_ids": [
+            "33"
+          ]
+        }
+      ],
+      "assumptions": [
+        "Định vị trong bản ban hành được trích trong bộ dữ liệu."
+      ],
+      "acceptable_conclusions": [],
+      "material_claims": [],
+      "reviewers": [],
+      "review_status": "draft"
+    },
+    {
+      "case_id": "VN-TAX-016",
+      "category": "PIT",
+      "answerability": "answerable",
+      "question": "Tìm nguồn có số hiệu 109 / 2025 / QH15.",
+      "tax_period": null,
+      "research_as_of": null,
+      "required_evidence": [
+        {
+          "evidence_id": "E1",
+          "source_id": "LUAT109_2025",
+          "description": "Một đoạn thuộc 109/2025/QH15",
+          "acceptable_passage_ids": [
+            "34",
+            "35",
+            "36",
+            "37",
+            "38",
+            "39",
+            "40",
+            "41",
+            "42",
+            "43",
+            "44",
+            "45",
+            "46",
+            "47",
+            "48",
+            "49",
+            "50",
+            "51",
+            "52",
+            "53",
+            "54",
+            "55"
+          ]
+        }
+      ],
+      "assumptions": [
+        "Định vị trong bản ban hành được trích trong bộ dữ liệu."
+      ],
+      "acceptable_conclusions": [],
+      "material_claims": [],
+      "reviewers": [],
+      "review_status": "draft"
+    },
+    {
+      "case_id": "VN-TAX-017",
+      "category": "PIT",
+      "answerability": "answerable",
+      "question": "Ở Điều 4, khoản nào đề cập tiền người thân gửi về dưới dạng kiều hối?",
+      "tax_period": null,
+      "research_as_of": null,
+      "required_evidence": [
+        {
+          "evidence_id": "E1",
+          "source_id": "LUAT109_2025",
+          "description": "Khoản 7, Điều 4, 109/2025/QH15 (trang PDF 4)",
+          "acceptable_passage_ids": [
+            "39"
+          ]
+        }
+      ],
+      "assumptions": [
+        "Định vị trong bản ban hành được trích trong bộ dữ liệu."
+      ],
+      "acceptable_conclusions": [],
+      "material_claims": [],
+      "reviewers": [],
+      "review_status": "draft"
+    },
+    {
+      "case_id": "VN-TAX-018",
+      "category": "PIT",
+      "answerability": "answerable",
+      "question": "Tra hai căn cứ về học bổng từ ngân sách và học bổng theo chương trình khuyến học của tổ chức.",
+      "tax_period": null,
+      "research_as_of": null,
+      "required_evidence": [
+        {
+          "evidence_id": "E1",
+          "source_id": "LUAT109_2025",
+          "description": "Điểm a, Khoản 10, Điều 4, 109/2025/QH15 (trang PDF 4)",
+          "acceptable_passage_ids": [
+            "42"
+          ]
+        },
+        {
+          "evidence_id": "E2",
+          "source_id": "LUAT109_2025",
+          "description": "Điểm b, Khoản 10, Điều 4, 109/2025/QH15 (trang PDF 4)",
+          "acceptable_passage_ids": [
+            "43"
+          ]
+        }
+      ],
+      "assumptions": [
+        "Định vị trong bản ban hành được trích trong bộ dữ liệu."
+      ],
+      "acceptable_conclusions": [],
+      "material_claims": [],
+      "reviewers": [],
+      "review_status": "draft"
+    },
+    {
+      "case_id": "VN-TAX-019",
+      "category": "PIT",
+      "answerability": "answerable",
+      "question": "Điều khoản nào đề cập lãi tiền gửi tại tổ chức tín dụng?",
+      "tax_period": null,
+      "research_as_of": null,
+      "required_evidence": [
+        {
+          "evidence_id": "E1",
+          "source_id": "LUAT109_2025",
+          "description": "Khoản 6, Điều 4, 109/2025/QH15 (trang PDF 4)",
+          "acceptable_passage_ids": [
+            "38"
+          ]
+        }
+      ],
+      "assumptions": [
+        "Định vị trong bản ban hành được trích trong bộ dữ liệu."
+      ],
+      "acceptable_conclusions": [],
+      "material_claims": [],
+      "reviewers": [],
+      "review_status": "draft"
+    },
+    {
+      "case_id": "VN-TAX-020",
+      "category": "PIT",
+      "answerability": "answerable",
+      "question": "Tìm nguồn về thu nhập từ chuyển nhượng chứng khoán của cá nhân trong Điều 13.",
+      "tax_period": null,
+      "research_as_of": null,
+      "required_evidence": [
+        {
+          "evidence_id": "E1",
+          "source_id": "LUAT109_2025",
+          "description": "Khoản 2, Điều 13, 109/2025/QH15 (trang PDF 10)",
+          "acceptable_passage_ids": [
+            "48"
+          ]
+        }
+      ],
+      "assumptions": [
+        "Định vị trong bản ban hành được trích trong bộ dữ liệu."
+      ],
+      "acceptable_conclusions": [],
+      "material_claims": [],
+      "reviewers": [],
+      "review_status": "draft"
+    },
+    {
+      "case_id": "VN-TAX-021",
+      "category": "PIT",
+      "answerability": "answerable",
+      "question": "Khoản nào của Điều 14 nhắc cả thời điểm hợp đồng chuyển nhượng có hiệu lực và thời điểm đăng ký quyền sử dụng đất?",
+      "tax_period": null,
+      "research_as_of": null,
+      "required_evidence": [
+        {
+          "evidence_id": "E1",
+          "source_id": "LUAT109_2025",
+          "description": "Khoản 2, Điều 14, 109/2025/QH15 (trang PDF 10)",
+          "acceptable_passage_ids": [
+            "52"
+          ]
+        }
+      ],
+      "assumptions": [
+        "Định vị trong bản ban hành được trích trong bộ dữ liệu."
+      ],
+      "acceptable_conclusions": [],
+      "material_claims": [],
+      "reviewers": [],
+      "review_status": "draft"
+    },
+    {
+      "case_id": "VN-TAX-022",
+      "category": "PIT",
+      "answerability": "answerable",
+      "question": "Khoản quy định thời điểm ghi nhận giao dịch chuyển nhượng vốn nằm ở đâu?",
+      "tax_period": null,
+      "research_as_of": null,
+      "required_evidence": [
+        {
+          "evidence_id": "E1",
+          "source_id": "LUAT109_2025",
+          "description": "Khoản 3, Điều 13, 109/2025/QH15 (trang PDF 10)",
+          "acceptable_passage_ids": [
+            "49"
+          ]
+        }
+      ],
+      "assumptions": [
+        "Định vị trong bản ban hành được trích trong bộ dữ liệu."
+      ],
+      "acceptable_conclusions": [],
+      "material_claims": [],
+      "reviewers": [],
+      "review_status": "draft"
+    },
+    {
+      "case_id": "VN-TAX-023",
+      "category": "PIT",
+      "answerability": "answerable",
+      "question": "Định vị riêng khoản về thuế suất và khoản về phần giá trị giải thưởng vượt ngưỡng tại Điều 15.",
+      "tax_period": null,
+      "research_as_of": null,
+      "required_evidence": [
+        {
+          "evidence_id": "E1",
+          "source_id": "LUAT109_2025",
+          "description": "Khoản 1, Điều 15, 109/2025/QH15 (trang PDF 10)",
+          "acceptable_passage_ids": [
+            "54"
+          ]
+        },
+        {
+          "evidence_id": "E2",
+          "source_id": "LUAT109_2025",
+          "description": "Khoản 2, Điều 15, 109/2025/QH15 (trang PDF 10)",
+          "acceptable_passage_ids": [
+            "55"
+          ]
+        }
+      ],
+      "assumptions": [
+        "Định vị trong bản ban hành được trích trong bộ dữ liệu."
+      ],
+      "acceptable_conclusions": [],
+      "material_claims": [],
+      "reviewers": [],
+      "review_status": "draft"
+    },
+    {
+      "case_id": "VN-TAX-024",
+      "category": "PIT",
+      "answerability": "answerable",
+      "question": "Tìm khoản nhắc tới thu nhập từ chuyển đổi đất nông nghiệp được Nhà nước giao để sản xuất.",
+      "tax_period": null,
+      "research_as_of": null,
+      "required_evidence": [
+        {
+          "evidence_id": "E1",
+          "source_id": "LUAT109_2025",
+          "description": "Khoản 5, Điều 4, 109/2025/QH15 (trang PDF 4)",
+          "acceptable_passage_ids": [
+            "37"
+          ]
+        }
+      ],
+      "assumptions": [
+        "Định vị trong bản ban hành được trích trong bộ dữ liệu."
+      ],
+      "acceptable_conclusions": [],
+      "material_claims": [],
+      "reviewers": [],
+      "review_status": "draft"
+    }
+  ]
+}

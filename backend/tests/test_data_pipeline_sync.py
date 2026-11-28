@@ -53,7 +53,7 @@ ND_CODE = "Nghị định số 126/2020/NĐ-CP"
 UNK_CODE = "Văn bản chưa phân loại 01"
 
 # Khóa trong dict của parser là thông tin CẤP VĂN BẢN, bảng legal_chunks không có -> đưa sang LegalDocument
-DOC_LEVEL_KEYS = {"doc_type", "expiry_date", "amends_doc_code", "replaces_doc_code"}
+DOC_LEVEL_KEYS = {"doc_type", "expiry_date", "amends_doc_code", "replaces_doc_code", "preamble"}
 CHUNK_COLUMNS = {c.name for c in dp.LegalChunk.__table__.columns}
 
 

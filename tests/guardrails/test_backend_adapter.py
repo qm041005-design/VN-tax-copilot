@@ -1,4 +1,5 @@
 import unittest
+from datetime import datetime
 from types import SimpleNamespace
 from unittest.mock import Mock
 
@@ -8,7 +9,8 @@ from ai_engine.guardrails import Claim, GeneratedResearch, EvidenceAssessment
 
 class BackendAdapterTests(unittest.TestCase):
     def test_full_content_and_database_id_used(self):
-        chunk = SimpleNamespace(id=42, document=SimpleNamespace(doc_code="TEST/2099"),
+        chunk = SimpleNamespace(id=42, effective_date=datetime(2099, 2, 1),
+                                document=SimpleNamespace(doc_code="TEST/2099", effective_date=datetime(2099, 1, 1)),
                                 content="Nguồn giả lập CCCD 012345678901")
         assess = Mock(return_value=[EvidenceAssessment("42", True)])
         generate = Mock(return_value=GeneratedResearch((Claim("Nguồn giả lập", ("42",), "authority"), Claim("Nhận định giả lập", ("42",)),)))
@@ -17,6 +19,7 @@ class BackendAdapterTests(unittest.TestCase):
         self.assertEqual(result.status, "draft")
         self.assertEqual(result.citation_ids, ("42",))
         self.assertNotIn("012345678901", repr(assess.call_args))
+        self.assertEqual(assess.call_args.args[0].passages[0]["effective_date"], "2099-02-01T00:00:00")
 
     def test_default_blocks_generation(self):
         result = research_from_rows("Tra cứu", [], tax_period="2099", material_facts="Giả lập")

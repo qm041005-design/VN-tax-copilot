@@ -9,6 +9,7 @@ import uuid
 from datetime import date, datetime
 
 from pydantic import BaseModel, Field, field_validator
+from typing import Literal
 
 from app.schemas.matter import Citation, HistoryOut, TaxType
 
@@ -45,6 +46,17 @@ class ResearchRequest(BaseModel):
         default=None, description="Lọc theo ngày tra cứu khi thiếu kỳ thuế. Giữ ngày chưa biết ở dạng null."
     )
     material_facts: str | None = None
+    clarification_scenario: Literal["goods_rate", "residency"] | None = None
+    case_facts: dict[str, str] = Field(default_factory=dict, max_length=20)
+
+    @field_validator("case_facts")
+    @classmethod
+    def bounded_case_facts(cls, values):
+        allowed = {"goods_description", "transaction_type", "transaction_date", "presence_period", "accommodation", "foreign_residency"}
+        if set(values) - allowed or any(len(value) > 2000 for value in values.values()):
+            raise ValueError("case_facts contains unknown or oversized fields")
+        return values
+
     doc_type: str | None = Field(default=None, max_length=50, examples=["LUAT"])
     limit: int = Field(default=10, ge=1, le=50)
 

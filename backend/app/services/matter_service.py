@@ -111,7 +111,7 @@ def archive_matter(db: Session, user: CurrentUser, matter: Matter) -> Matter:
     return matter
 
 
-def add_history(db: Session, user: CurrentUser, matter: Matter, data: HistoryCreate) -> ResearchHistory:
+def add_history(db: Session, user: CurrentUser, matter: Matter, data: HistoryCreate, *, guardrail_audit: dict | None = None) -> ResearchHistory:
     """
     Lưu 1 lượt tra cứu (câu hỏi + trả lời + trích dẫn) vào hồ sơ.
     Nếu client không gửi tax_period thì lấy kỳ thuế mặc định của hồ sơ.
@@ -129,10 +129,13 @@ def add_history(db: Session, user: CurrentUser, matter: Matter, data: HistoryCre
         answer=data.answer,
         citations=[c.model_dump() for c in data.citations],  # object Citation -> dict để lưu JSON
         warnings=data.warnings,
+        research_result=data.research_result,
     )
     db.add(item)
     db.flush()
     _audit(db, user, "history.create", "research_history", item.id, {"matter_id": str(matter.id)})
+    if guardrail_audit is not None:
+        _audit(db, user, "research.guardrail", "research_history", item.id, guardrail_audit)
     db.commit()
     db.refresh(item)
     return item
@@ -146,3 +149,16 @@ def list_history(db: Session, user: CurrentUser, matter: Matter, limit: int, off
     total = db.scalar(select(func.count()).select_from(stmt.subquery())) or 0
     items = db.scalars(stmt.order_by(ResearchHistory.created_at.desc()).limit(limit).offset(offset)).all()
     return list(items), total
+
+
+def get_history(db: Session, user: CurrentUser, matter: Matter, history_id: uuid.UUID) -> ResearchHistory | None:
+    """1 lượt tra cứu của hồ sơ, CÓ lọc tenant. Không thuộc hồ sơ / khác tenant -> None (endpoint trả 404)."""
+    return db.scalar(select(ResearchHistory).where(
+        ResearchHistory.id == history_id, ResearchHistory.matter_id == matter.id,
+        ResearchHistory.tenant_id == user.tenant_id))
+
+
+def log_export(db: Session, user: CurrentUser, item: ResearchHistory) -> None:
+    """Ghi audit việc xuất báo cáo Word (RFP: log cả hành động xuất tài liệu)."""
+    _audit(db, user, "history.export_docx", "research_history", item.id, {"matter_id": str(item.matter_id)})
+    db.commit()

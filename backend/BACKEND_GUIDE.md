@@ -1,192 +1,146 @@
-> **Cập nhật SCRUM-24 (14/11/2026):** xem [hướng dẫn tích hợp mới](SCRUM_24_FIXES.md) trước các lệnh bên dưới; backend hiện phụ thuộc ai_engine ở gốc repo, dùng migration cho DB cũ và Docker build context ở gốc.
+# BACKEND GUIDE – VN Tax Copilot
 
-# 📘 BACKEND GUIDE – VN Tax Copilot
+Giải thích backend cho mọi thành viên, kể cả người chưa dùng FastAPI.
+Cài đặt, chạy và kiểm thử → [`HUONG_DAN_TEST.md`](HUONG_DAN_TEST.md) · Gửi/nhận JSON → [`API_CONTRACT.md`](API_CONTRACT.md).
 
-Tài liệu giải thích backend cho **mọi thành viên** (kể cả người chưa từng dùng FastAPI).
-Muốn chạy thử → `README.md`. Muốn biết gửi/nhận JSON thế nào → `API_CONTRACT.md`.
-
-Jira: SCRUM-12 (khung backend, hồ sơ), SCRUM-24 (tìm kiếm, nguồn, lịch sử, xác thực) · Công nghệ: Python 3.12, FastAPI, SQLAlchemy 2, PostgreSQL (pgvector) · Người phụ trách: thành viên 8.
+Jira: SCRUM-12 (khung backend, hồ sơ), SCRUM-24 (tìm kiếm, nguồn, lịch sử, xác thực), SCRUM-33 (lưu kết quả 6 phần, xuất Word) · Python 3.12/3.13, FastAPI, SQLAlchemy 2, PostgreSQL · Phụ trách: Luân (thành viên 8).
 
 ---
 
-## 1. Backend làm gì trong hệ thống?
+## 1. Backend làm gì?
 
-Backend là **cửa ngõ duy nhất** giữa giao diện web và dữ liệu. Frontend không đọc DB trực tiếp, mà gọi API của backend.
+Backend là cửa duy nhất giữa giao diện và dữ liệu. Frontend không đọc DB, chỉ gọi API.
 
 ```
- ┌──────────────┐  HTTP + JSON   ┌──────────────────────────┐        ┌───────────────────────┐
- │  Frontend    │ ─────────────▶ │  Backend (FastAPI)       │ ─────▶ │  PostgreSQL            │
- │  (nhóm 9)    │ ◀───────────── │  - kiểm tra token        │ ◀───── │  matters, history,     │
- │  3 cột       │                │  - hồ sơ, lịch sử        │        │  audit_logs            │
- └──────────────┘                │  - tìm & xem nguồn luật  │        │  legal_documents,      │
-                                 │  - ghi audit log         │        │  legal_chunks (nhóm 5) │
-                                 └───────────┬──────────────┘        └───────────────────────┘
-                                             │ (sau này) gọi module AI
-                                             ▼
-                                 Retrieval (nhóm 6) · Guardrails (nhóm 7) · Prompt/Export (nhóm 1)
+Frontend (Phước) ──HTTP+JSON──▶ Backend (FastAPI) ──▶ PostgreSQL
+                                 │  token, quyền hồ sơ, audit log
+                                 ├─▶ ai_engine/retrieval   (BM25 – Thanh)
+                                 ├─▶ ai_engine/guardrails  (kiểm duyệt kết quả – An)
+                                 └─▶ ai_engine/synthesis + export_service (báo cáo Word – Quân)
 ```
-
-Các chức năng hiện có:
 
 | Chức năng | Ý nghĩa nghiệp vụ |
 |---|---|
-| **Hồ sơ vụ việc** (Matter) | Chuyên viên gom các câu hỏi về một khách hàng/vụ việc vào một hồ sơ (cột 1 giao diện) |
-| **Tra cứu** (`/research`) | Nhận câu hỏi → tìm đoạn luật liên quan → lưu câu hỏi + trích dẫn vào lịch sử hồ sơ (cột 2) |
-| **Nguồn luật** (`/sources`) | Tìm đoạn luật theo từ khóa, xem nguyên văn Điều/Khoản/Điểm (cột 3 – Citation Drawer) |
-| **Xác thực** | Mỗi request phải có token; token cho biết người gọi là ai, thuộc tổ chức (tenant) nào |
-| **Audit log** | Ghi lại ai làm gì, lúc nào – yêu cầu kiểm toán của RFP |
-
----
+| Hồ sơ vụ việc | Gom các câu hỏi về một khách hàng/vụ việc (cột trái giao diện) |
+| Tra cứu `/research` | Tìm đoạn luật → guardrails ra kết quả 6 phần → **lưu vào lịch sử hồ sơ** (cột giữa) |
+| Xuất Word | Tải báo cáo `.docx` của một lượt tra cứu, kiểm tra quyền trước khi xuất |
+| Nguồn luật `/sources` | Tìm và xem nguyên văn Điều/Khoản/Điểm (cột phải) |
+| Xác thực + audit | Token cho biết người gọi và tổ chức; mọi thao tác ghi vào `audit_logs` |
 
 ## 2. Cấu trúc thư mục
 
 ```
 backend/
 ├── app/
-│   ├── main.py                    # Điểm khởi động: tạo app, tạo bảng, bật CORS, /health
-│   ├── core/                      # Hạ tầng dùng chung
-│   │   ├── config.py              #   Đọc cấu hình từ .env / biến môi trường
-│   │   ├── database.py            #   Kết nối DB: engine, Session, Base, get_db()
-│   │   └── security.py            #   Kiểm tra token "Authorization: Bearer ..." → CurrentUser
-│   ├── models/                    # Cấu trúc BẢNG trong DB
-│   │   ├── matter.py              #   matters, research_history
-│   │   ├── audit.py               #   audit_logs
-│   │   ├── legal_source.py        #   legal_documents, legal_chunks (CHỈ ĐỌC, schema của nhóm 5)
-│   │   └── base_mixins.py         #   utcnow()
-│   ├── schemas/                   # Hình dạng JSON vào/ra + kiểm tra dữ liệu (Pydantic)
-│   │   ├── matter.py              #   hồ sơ, lịch sử, Citation
-│   │   └── source.py              #   kết quả tìm kiếm, nguyên văn nguồn, research
-│   ├── services/                  # Logic nghiệp vụ + truy vấn DB
-│   │   ├── matter_service.py      #   tạo/sửa/lưu trữ hồ sơ, lưu lịch sử, ghi audit
-│   │   └── source_service.py      #   tìm đoạn luật, lấy nguyên văn
-│   └── api/v1/                    # Endpoint HTTP (tiền tố /api/v1)
-│       ├── __init__.py            #   gom các router
-│       ├── matters.py             #   /matters ...
-│       ├── sources.py             #   /sources ...
-│       └── research.py            #   /research
-├── tests/                         # Test tự động (pytest) – xem TESTING.md
-├── requirements.txt               # Thư viện Python
-├── Dockerfile, .dockerignore      # Đóng gói container
-├── .env.example                   # Mẫu cấu hình (copy thành .env)
-├── README.md                      # Cách chạy
-├── BACKEND_GUIDE.md               # File này
-├── API_CONTRACT.md                # Hợp đồng dữ liệu với frontend
-└── TESTING.md                     # Hướng dẫn kiểm thử
+│   ├── main.py                      # Khởi động app, tạo bảng, CORS, /health
+│   ├── core/
+│   │   ├── config.py                #   Đọc cấu hình .env
+│   │   ├── database.py              #   engine, Session, get_db()
+│   │   └── security.py              #   Bearer token → CurrentUser(user_id, tenant_id)
+│   ├── models/                      # Bảng DB
+│   │   ├── matter.py                #   matters, research_history
+│   │   ├── audit.py                 #   audit_logs
+│   │   └── legal_source.py          #   legal_documents, legal_chunks, legal_document_tax_scopes
+│   ├── schemas/                     # JSON vào/ra (Pydantic) – sai dữ liệu → 422
+│   │   ├── matter.py                #   hồ sơ, lịch sử, Citation
+│   │   ├── source.py                #   tìm kiếm, nguyên văn, research
+│   │   └── ingestion.py             #   định dạng file nạp luật
+│   ├── services/                    # Logic nghiệp vụ
+│   │   ├── matter_service.py        #   hồ sơ, lịch sử, audit
+│   │   ├── source_service.py        #   lọc + tìm đoạn luật (BM25)
+│   │   ├── guarded_research_service.py  # đổi đoạn luật thành đầu vào guardrails
+│   │   ├── legal_ingestion_service.py   # nạp văn bản luật (importer)
+│   │   ├── legal_metadata.py        #   kỳ thuế, nhãn Khoản
+│   │   └── export_service.py        #   tạo file Word (code của Quân)
+│   └── api/v1/                      # Endpoint /api/v1/...
+│       ├── matters.py               #   hồ sơ, lịch sử, xuất Word
+│       ├── research.py              #   tra cứu
+│       └── sources.py               #   nguồn luật
+├── migrations/                      # SQL nâng cấp DB cũ (001 → 005)
+├── scripts/                         # import_legal_document, export_bm25_retrieval, smoke_public_source
+├── tests/                           # pytest
+├── evidence/                        # Bằng chứng smoke test trên PostgreSQL (của Quân)
+├── SCRUM_24_FIXES.md, PARSER_IMPORT.md  # Ghi chú tích hợp của Quân
+└── BACKEND_GUIDE.md, API_CONTRACT.md, HUONG_DAN_TEST.md
 ```
 
----
-
-## 3. Kiến trúc 3 tầng (quan trọng nhất)
+## 3. Kiến trúc 3 tầng
 
 ```
-Request ─▶ api/v1/*.py        nhận HTTP, kiểm tra quyền, gọi service, trả JSON   (không viết SQL ở đây)
-              │ dùng schemas/ để kiểm tra dữ liệu vào/ra (sai → 422 tự động)
-              ▼
-           services/*.py      logic nghiệp vụ, truy vấn DB, ghi audit
-              │ dùng models/
-              ▼
-           PostgreSQL         qua core/database.py
+api/v1/*.py     nhận HTTP, kiểm tra quyền, gọi service, trả JSON (không viết SQL)
+   ▼ dùng schemas/ kiểm tra dữ liệu
+services/*.py   logic nghiệp vụ, truy vấn DB, ghi audit
+   ▼ dùng models/
+PostgreSQL
 ```
 
-Vì sao tách tầng: mỗi file một việc → sửa chỗ này không vỡ chỗ khác; module nhóm khác (vd xuất DOCX) gọi thẳng service mà không cần đi qua HTTP.
+## 4. Một lượt tra cứu đi qua đâu (`POST /api/v1/research`)
 
----
+1. `core/security.py` kiểm tra token → biết người gọi và tổ chức. Sai/thiếu → **401**.
+2. `schemas/source.py` kiểm tra body. Sai → **422**.
+3. `api/v1/research.py` lấy hồ sơ trong tổ chức của người gọi. Không có → **404**; đã lưu trữ → **409**.
+4. `source_service.search`: lọc theo sắc thuế (bảng nhãn), kỳ thuế/ngày hiệu lực (cả cấp văn bản và cấp đoạn), loại văn bản → xếp hạng BM25.
+5. `guarded_research_service` + `ai_engine/guardrails` ra kết quả `clarify` / `abstain` / `draft` với 6 phần.
+6. `matter_service.add_history` lưu câu hỏi (đã che thông tin cá nhân), trích dẫn, cảnh báo và **object 6 phần** vào `research_history`, ghi audit – cùng một giao dịch.
+7. Trả **201**.
 
-## 4. Một request đi qua những đâu? (ví dụ `POST /api/v1/research`)
-
-1. Frontend gửi câu hỏi kèm header `Authorization: Bearer dev-token-alice-0001`.
-2. `core/security.py` kiểm tra token → biết người gọi là `alice`, tenant `thtax`. Sai/thiếu token → **401**.
-3. `schemas/source.py::ResearchRequest` kiểm tra body (câu hỏi rỗng, ngày sai định dạng…) → sai thì **422**.
-4. `api/v1/research.py` lấy hồ sơ theo `matter_id`, **chỉ trong tenant của alice** → không có thì **404**; hồ sơ đã lưu trữ → **409**.
-5. `services/source_service.py::search` tìm các đoạn luật khớp câu hỏi (lọc theo ngày hiệu lực nếu có).
-6. `services/matter_service.py::add_history` lưu câu hỏi + danh sách trích dẫn vào `research_history`, ghi 1 dòng `audit_logs` – cả hai trong **cùng một giao dịch**.
-7. Trả **201** gồm bản ghi lịch sử + danh sách nguồn tìm được.
-
----
+**Xuất Word** (`GET /matters/{id}/history/{history_id}/export`): kiểm tra token → hồ sơ → lượt tra cứu thuộc hồ sơ → có kết quả 6 phần → nguồn còn trong kho → `prepare_backend_export` đối chiếu với nguyên văn → `export_research_docx` tạo file → ghi audit `history.export_docx`.
 
 ## 5. Cơ sở dữ liệu
 
-| Bảng | Ai ghi | Nội dung |
+| Bảng | Ai ghi | Nội dung chính |
 |---|---|---|
-| `matters` | Backend | Hồ sơ: `id` (UUID), `tenant_id`, `title`, `client_name`, `description`, `tax_types` (`["VAT","CIT","PIT"]`), `tax_period`, `status` (`active`/`archived`), `created_by`, `created_at`, `updated_at` |
-| `research_history` | Backend | Mỗi lượt tra cứu: `matter_id`, `actor`, `question`, `tax_type`, `tax_period`, `research_as_of`, `material_facts`, `answer`, `citations` (JSON), `warnings` (JSON), `review_status` (`draft`…), `answer_version`, `created_at` |
-| `audit_logs` | Backend | Nhật ký chỉ thêm, không sửa/xóa: `actor`, `action` (vd `matter.create`), `resource_type`, `resource_id`, `detail`, `created_at` |
-| `legal_documents` | Nhóm 5 (Data) | Văn bản luật: `doc_code` (vd `48/2024/QH15`), `title`, `doc_type` (`LUAT`/`NGHI_DINH`/`THONG_TU`/`CONG_VAN`/`UNKNOWN`), `hierarchy_level` (1–5, 5 = chưa xác định), `status` (hiệu lực), `effective_date`, `expiry_date`, `source_url`… |
-| `legal_chunks` | Nhóm 5 (Data) | Đoạn luật đã tách theo Điều → Khoản → Điểm: `article_number`, `clause_number` (chuỗi, vd `"2a"`; `"0"` = không có Khoản), `point_letter`, `citation_path`, `content`, `status`… |
+| `matters` | Backend | `id`, `tenant_id`, `title`, `client_name`, `tax_types`, `tax_period`, `status` (`active`/`archived`) |
+| `research_history` | Backend | `question`, `material_facts`, `answer`, `citations`, `warnings`, **`research_result`** (6 phần), `review_status` |
+| `audit_logs` | Backend | Chỉ thêm: `actor`, `action` (`matter.create`, `history.create`, `history.export_docx`…), `resource_id` |
+| `legal_documents` | Importer (dữ liệu của Duyên) | `doc_code`, `doc_type`, `hierarchy_level`, `effective_date`, `expiry_date`, `version`, `source_url`, `preamble` (căn cứ / mở đầu), 3 trạng thái: `status` (pháp lý), `ocr_quality_status` (`RAW`/`VERIFIED`/`NEEDS_REVIEW`), `expert_review_status` (`PENDING`/`APPROVED`/`REJECTED`) |
+| `legal_chunks` | Importer | Điều/Khoản/Điểm, `citation_path`, `content`, `source_page`, `effective_date` riêng của đoạn, `ocr_quality_status`, `expert_review_status` |
+| `legal_document_tax_scopes` | Importer | Nhãn sắc thuế của văn bản (`VAT`/`CIT`/`PIT`) |
 
-Bảng được tự tạo khi server khởi động (`create_all`). Lưu ý: `create_all` **không sửa** bảng đã có – đổi cột thì phải xóa DB dev (`docker compose down -v`) hoặc dùng Alembic (sprint sau).
+Bảng tự tạo khi server khởi động (`create_all`), nhưng `create_all` **không sửa** bảng đã có. DB cũ → chạy `migrations/001` → `005` (xem `HUONG_DAN_TEST.md`). Đổi cột trong model thì phải thêm file migration mới và cập nhật `tests/test_migrations.py`.
 
----
+## 6. Xác thực và quyền
 
-## 6. Xác thực và quyền truy cập
+- Token thử nghiệm cấu hình trong `AUTH_TOKENS`, mỗi token gắn 1 user + 1 tổ chức. Client **không** tự khai tổ chức.
+- Hồ sơ / lượt tra cứu của tổ chức khác → **404** (không 403, để người ngoài không biết hồ sơ có tồn tại).
+- Hồ sơ đã lưu trữ: xem và xuất Word được; sửa, tra cứu, thêm lịch sử → **409**.
+- Nguồn luật dùng chung mọi tổ chức nhưng vẫn cần token. `/health` không cần token.
+- Chưa có: SSO/MFA, token hết hạn, phân vai trò. Sau này chỉ cần thay `get_current_user`.
 
-**Xác thực (bạn là ai?)** – bản tối thiểu cho môi trường thử nghiệm:
-- Server đọc danh sách token từ biến `AUTH_TOKENS`, mỗi token gắn sẵn với 1 user và 1 tenant.
-- Client gửi `Authorization: Bearer <token>`. Không có / sai → **401**.
-- Client **không thể tự khai** tenant: tenant luôn lấy từ token.
-- Chưa có: hết hạn token, đăng nhập SSO/MFA, phân vai trò. Sprint sau chỉ cần thay hàm `get_current_user` trong `core/security.py`, các endpoint giữ nguyên.
+**Cấu hình** (`backend/.env`, copy từ `.env.example`; sửa xong phải chạy lại server):
 
-**Quyền (bạn được làm gì?)**
-
-| Tình huống | Kết quả |
+| Biến | Ý nghĩa |
 |---|---|
-| Xem/sửa hồ sơ của tenant khác | **404** (không trả 403 để người ngoài không biết hồ sơ có tồn tại) |
-| Sửa / thêm lịch sử / tra cứu trên hồ sơ đã lưu trữ | **409** – hồ sơ lưu trữ chỉ được xem |
-| Xem hồ sơ / lịch sử của hồ sơ đã lưu trữ | Được (giữ dữ liệu cho kiểm toán) |
-| Nguồn luật | Dùng chung cho mọi tenant (luật là dữ liệu công khai) nhưng vẫn phải có token |
-| `/health` | Không cần token (dùng cho healthcheck) |
+| `DATABASE_URL` | Chuỗi kết nối PostgreSQL |
+| `AUTH_TOKENS` | `token:user_id:tenant_id`, ngăn cách bằng dấu phẩy, token ≥ 16 ký tự. Rỗng → mọi API 401; sai định dạng → server không chạy |
+| `CORS_ORIGINS` | Địa chỉ frontend được gọi backend (mặc định `localhost:3000`) |
+| `APP_ENV` | `dev` / `staging` / `prod` |
+| `RESEARCH_ASSESSOR` | `module:hàm` bộ đánh giá căn cứ (An). Trống = không sinh câu trả lời |
+| `RESEARCH_COMPLETION` | `module:hàm` gọi model, trả JSON 6 phần (Quân/An). Key của model đặt ở biến riêng hàm đó đọc. Sai đường dẫn → server không khởi động |
+| `RESEARCH_AI_ENABLED`, `RESEARCH_AI_URL`, `RESEARCH_AI_MODEL`, `RESEARCH_AI_API_KEY` | Nhà cung cấp AI cho 2 hàm của An (SCRUM-38). Mặc định tắt; key chỉ đặt trên server, không commit |
 
----
+## 7. Quy tắc khi sửa code
 
-## 7. Quy tắc thiết kế cần nhớ khi sửa code
+- Mọi truy vấn dữ liệu nghiệp vụ phải lọc `tenant_id` của người gọi.
+- `tenant_id`, `actor`, `created_by` lấy từ token, không lấy từ body.
+- `DELETE` hồ sơ chỉ đổi `status = archived`.
+- Audit ghi cùng giao dịch với thao tác chính.
+- Độ dài/NOT NULL trong schema khớp cột DB, để lỗi là **422** chứ không phải **500**.
+- Callback AI (`research_callbacks`) chỉ cấu hình ở server (`RESEARCH_ASSESSOR`, `RESEARCH_COMPLETION`), không nhận từ request. Model chỉ được gọi qua `make_guarded_generator` (prompt + kiểm tra JSON/trích dẫn), không gọi thẳng.
 
-- **Mọi truy vấn dữ liệu nghiệp vụ phải lọc `tenant_id`** của người gọi.
-- **Không tin client**: `tenant_id`, `created_by`, `actor` luôn lấy từ token, không lấy từ body.
-- **Xóa mềm**: `DELETE` chỉ đổi `status = archived`.
-- **Audit cùng giao dịch** với thao tác chính (cùng thành công hoặc cùng hủy).
-- **Thời gian lưu UTC**; frontend đổi sang giờ Việt Nam khi hiển thị.
-- **Độ dài trong schema = độ dài cột DB**, và cột NOT NULL phải chặn `null` ngay ở schema → lỗi trả **422** thay vì **500**.
-- **Danh sách hồ sơ mặc định ẩn hồ sơ đã lưu trữ** (`status=all` để xem tất cả).
+## 8. Các nhóm nối vào backend
 
----
-
-## 8. Các nhóm khác nối vào backend thế nào?
-
-| Nhóm | Nối ở đâu | Ghi chú |
+| Nhóm | Nối ở đâu | Trạng thái |
 |---|---|---|
-| **9 – Frontend** | Gọi các API trong `API_CONTRACT.md` | Gửi header `Authorization`; CORS đã mở cho `localhost:3000` |
-| **5 – Data (Parser & DB)** | Nạp dữ liệu vào `legal_documents`, `legal_chunks` | `app/models/legal_source.py` phải khớp **đủ mọi cột** với `data_pipeline/registry/models.py`. Đổi cột → báo backend; kiểm tra khớp bằng `tests/test_data_pipeline_sync.py` |
-| **6 – Retrieval** | Thay nội dung hàm `source_service.search` bằng Hybrid Search (BM25 + vector) | Giữ nguyên đầu vào/đầu ra `[(chunk, score)]` thì API không phải đổi |
-| **7 – Guardrails** / **1 – Prompt** | Sinh `answer` trong `api/v1/research.py` (chỗ có ghi chú `shortcut:`) | Che thông tin cá nhân trước khi gửi câu hỏi ra dịch vụ AI bên ngoài |
-| **1 – Export DOCX** | Gọi `matter_service.get_matter` / `list_history` để lấy dữ liệu xuất báo cáo | Thêm endpoint export theo mục 9 |
-| **3 – DevOps** | `backend/Dockerfile`, service `backend` trong `docker-compose.yml`, healthcheck `GET /health` | Biến môi trường cần đặt: `DATABASE_URL`, `AUTH_TOKENS`, `CORS_ORIGINS` |
-
-Hiện trạng tìm kiếm: so khớp từ khóa (ILIKE) – đủ để nối luồng, **chưa đủ chất lượng** cho sản phẩm. `answer` hiện luôn `null`.
-
----
+| Frontend (Phước) | API trong `API_CONTRACT.md` | Đã nối hồ sơ, tra cứu, lịch sử, nguồn. **Chưa** nối xuất Word (nút hiện tạo `.txt`), chưa gửi `material_facts` |
+| Dữ liệu (Duyên) | `scripts/import_legal_document.py` | Nhận đủ metadata parser SCRUM-30: `preamble`, trạng thái OCR, trạng thái duyệt (importer chỉ nhận `PENDING`; phê duyệt do chuyên gia). Model khớp registry, kiểm bằng `tests/test_data_pipeline_sync.py`. Lưu đủ metadata cấp đoạn (đoạn mở đầu Điều/Khoản, ngày hiệu lực riêng, URL, phiên bản) theo cùng quy tắc với SCRUM-31 của Thanh; test `test_moi_cot_metadata_trong_model_deu_duoc_luu`. Riêng `status` pháp lý chưa lưu từ file (chờ chốt với Duyên) |
+| Retrieval (Thanh) | `ai_engine/retrieval` qua `source_service.search` | BM25 đã dùng |
+| Guardrails (An) | `ai_engine/guardrails` qua `guarded_research_service` | Đã nối, kể cả hỏi làm rõ theo `case_facts` và metadata cấp đoạn (SCRUM-32) |
+| Prompt + Export (Quân) | `ai_engine/synthesis/backend_adapter.py` (`make_guarded_generator`, prompt tuần 4) + `export_service.py` | Đã nối: `research_callbacks()` đọc `RESEARCH_ASSESSOR` / `RESEARCH_COMPLETION` (dạng `module:hàm`) trong `.env`. Hàm của An (SCRUM-38): `ai_engine.guardrails.llm_assessor:assess`, `ai_engine.providers.chat_json:complete`; cần nhóm chốt `RESEARCH_AI_URL/MODEL/API_KEY` mới gọi model thật |
+| DevOps (Phúc) | `backend/Dockerfile`, `docker-compose.yml`, `/health` | Build context ở gốc repo |
 
 ## 9. Thêm tính năng mới
 
-**Thêm endpoint** (ví dụ `/api/v1/exports`):
-1. `schemas/export.py` – khai báo body/response.
-2. `services/export_service.py` – viết logic (nhớ lọc `tenant_id`).
-3. `api/v1/export.py` – tạo `APIRouter`, viết route gọi service.
-4. `api/v1/__init__.py` – thêm `api_router.include_router(export.router)`.
-5. Cập nhật `API_CONTRACT.md` và báo frontend.
-
-**Thêm bảng**: tạo model trong `app/models/` và **import vào `app/models/__init__.py`** (không import thì bảng không được tạo).
-
----
-
-## 10. Hỏi đáp nhanh
-
-- **Mọi API trả 401?** Thiếu header `Authorization` hoặc `.env` thiếu `AUTH_TOKENS`.
-- **`Fatal error in launcher`?** Thư mục `.venv` bị di chuyển sau khi tạo → tạo lại `.venv` (README mục 5). `.venv` mỗi người tự tạo, không có trên GitHub.
-- **`/docs` lỗi kết nối DB?** Chưa `docker compose up -d db`; kiểm tra `/health`.
-- **Đổi cột mà DB không đổi?** `create_all` không migrate – xem mục 5.
-- **Frontend báo CORS error?** Thêm địa chỉ frontend vào `CORS_ORIGINS`.
-- **Test ở đâu?** Thư mục `backend/tests/` (37 test, chạy `python -m pytest` trong thư mục `backend`), hướng dẫn chi tiết ở `backend/TESTING.md`.
-
-## 11. Việc tiếp theo (Sprint 3+)
-
-Đăng nhập SSO/JWT + phân quyền (researcher / reviewer / admin / auditor) · Alembic migration · Hybrid Retrieval (nhóm 6) · sinh câu trả lời AI + guardrails (nhóm 7, 1) · luồng duyệt draft → approved · xuất DOCX/PDF.
+1. Schema trong `schemas/`, logic trong `services/` (nhớ lọc `tenant_id`), route trong `api/v1/`.
+2. Router mới thì thêm vào `api/v1/__init__.py`. Bảng mới thì import trong `models/__init__.py` và viết migration.
+3. Viết test trong `tests/`, cập nhật `API_CONTRACT.md` và báo frontend.

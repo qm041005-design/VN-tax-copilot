@@ -11,6 +11,7 @@ from sqlalchemy.orm import Session
 
 from app.models import LegalDocument, LegalChunk, LegalDocumentTaxScope
 from app.schemas.ingestion import ImportInput
+from app.services.legal_metadata import date_status
 
 
 @dataclass(frozen=True)
@@ -23,11 +24,7 @@ class ImportReceipt:
 
 def temporal_status(document, as_of):
     """Date classification only, not expert validation of legal applicability."""
-    if document.expiry_date is not None and as_of >= document.expiry_date:
-        return "HET_HIEU_LUC"
-    if document.effective_date is None or as_of < document.effective_date:
-        return "CHUA_XAC_DINH"
-    return "CON_HIEU_LUC"
+    return date_status(document.effective_date, document.expiry_date, as_of)
 
 
 def ingest_legal_document(db: Session, payload: dict) -> ImportReceipt:
@@ -43,21 +40,27 @@ def ingest_legal_document(db: Session, payload: dict) -> ImportReceipt:
             fields[key] = datetime.combine(fields[key], time.min)
     if db.scalar(select(LegalDocument.id).where(LegalDocument.doc_code == data.document.doc_code)):
         raise ValueError("Mã văn bản đã tồn tại; không ghi đè phiên bản đang được trích dẫn.")
-    doc = LegalDocument(**fields)
+    doc = LegalDocument(**fields, tax_types=sorted(set(data.tax_types)))
     db.add(doc)
     db.flush()
     rows = []
     for chunk in data.chunks:
-        # Metadata/intro fields are NOT legal_chunks ORM constructor fields.
-        # Complete content from parser retains article/clause lead-in context.
+        chunk_start = datetime.combine(chunk.effective_date, time.min) if chunk.effective_date else None
+        chunk_end = datetime.combine(chunk.expiry_date, time.min) if chunk.expiry_date else doc.expiry_date
         row = LegalChunk(doc_id=doc.id, article_number=chunk.article_number,
-                         article_title=chunk.article_title,
-                         clause_number=chunk.clause_number or "0",
+                         article_title=chunk.article_title, article_intro=chunk.article_intro,
+                         clause_number=chunk.clause_number or "0", clause_intro=chunk.clause_intro,
                          point_letter=chunk.point_letter or "",
                          citation_path=chunk.citation_path, content=chunk.content,
-                         source_page=chunk.source_page, hierarchy_level=chunk.hierarchy_level)
+                         source_page=chunk.source_page, source_url=chunk.source_url,
+                         hierarchy_level=chunk.hierarchy_level, effective_date=chunk_start,
+                         expiry_date=chunk_end, tax_types=sorted(set(chunk.tax_types or data.tax_types)),
+                         version=doc.version)
         db.add(row)
         rows.append(row)
+    for chunk, row in zip(data.chunks, rows):  # SCRUM-30: trạng thái OCR/duyệt của từng đoạn
+        row.ocr_quality_status = chunk.ocr_quality_status or data.document.ocr_quality_status
+        row.expert_review_status = "PENDING"
     for tax_type in sorted(set(data.tax_types)):
         db.add(LegalDocumentTaxScope(doc_id=doc.id, tax_type=tax_type))
     db.flush()
