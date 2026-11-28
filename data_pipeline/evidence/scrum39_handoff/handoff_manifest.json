@@ -1,0 +1,12 @@
+{
+  "jira_issue": "SCRUM-39",
+  "scope": "44 representative pages across 10 legal documents",
+  "not_full_document": true,
+  "document_directory": "documents",
+  "document_count": 10,
+  "page_count": 44,
+  "pdf_hashes_verified": 10,
+  "effective_date_status": "not present in intake metadata",
+  "expiry_date_status": "not present in intake metadata",
+  "team_validation": "Pending"
+}
